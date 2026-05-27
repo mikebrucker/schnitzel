@@ -1,7 +1,9 @@
+import { Accordion } from "@/components/Accordion";
 import { CURRICULUM } from "@/lib/curriculum";
 import { haptics } from "@/lib/haptics";
 import { loadQuizProgress } from "@/lib/quizStorage";
 import { scoreCardBg } from "@/lib/scoreColors";
+import { storage } from "@/lib/storage";
 import type { Lesson } from "@/lib/types";
 import { useApp } from "@/store/useApp";
 import { useEffect, useState } from "react";
@@ -20,6 +22,19 @@ export function Home() {
   const theme = useApp((s) => s.theme);
 
   const [quizSummaries, setQuizSummaries] = useState<Map<number, QuizSummary>>(new Map());
+  const [levelOpen, setLevelOpen] = useState<Record<string, boolean>>({});
+
+  useEffect(() => {
+    storage.getJSON<Record<string, boolean>>("home-level-state").then((saved) => {
+      if (saved) setLevelOpen(saved);
+    });
+  }, []);
+
+  const toggleLevel = (level: string) => {
+    const next = { ...levelOpen, [level]: !(levelOpen[level] !== false) };
+    setLevelOpen(next);
+    void storage.setJSON("home-level-state", next);
+  };
 
   useEffect(() => {
     void (async () => {
@@ -48,66 +63,80 @@ export function Home() {
     haptics.tap();
   };
 
+  const levels = [...new Set(CURRICULUM.map((l) => l.level))];
+
+  const lessonGrid = (lessons: Array<Lesson>) => (
+    <div className="grid gap-4 md:grid-cols-2 pt-4">
+      {lessons.map((lesson) => {
+        const summary = quizSummaries.get(lesson.id);
+        return (
+          <button
+            type="button"
+            key={lesson.id}
+            onClick={() => openLesson(lesson)}
+            className="text-left p-5 border-2 bd-default transition-all hover:translate-x-[-2px] hover:translate-y-[-2px]"
+            style={
+              summary?.finished
+                ? {
+                    backgroundColor: scoreCardBg(
+                      Math.round((summary.score / summary.total) * 100),
+                      theme === "dark",
+                    ),
+                  }
+                : { backgroundColor: "var(--surface)" }
+            }
+          >
+            <div className="flex items-start justify-between mb-2">
+              <div className="text-xs font-mono uppercase tracking-wider tx-muted">
+                Unit {lesson.unit} · Lesson {lesson.lessonNum}
+              </div>
+              {summary?.finished ? (
+                <div className="font-mono font-bold text-sm tx-accent">
+                  {summary.score}/{summary.total}
+                </div>
+              ) : summary ? (
+                <div className="font-mono text-xs tx-muted">
+                  {summary.answered}/{summary.total} →
+                </div>
+              ) : null}
+            </div>
+            <div className="font-serif text-xl font-bold tx-text mb-1">{lesson.title}</div>
+            <div className="tx-muted text-sm">{lesson.titleDe}</div>
+            <div className="mt-3 flex items-center justify-between">
+              <div className="text-xs font-mono tx-muted">{lesson.vocab.length} vocab words</div>
+              {summary?.finished && (
+                <div className="text-xs font-mono tx-muted">
+                  {Math.round((summary.score / summary.total) * 100)}%
+                </div>
+              )}
+            </div>
+          </button>
+        );
+      })}
+    </div>
+  );
+
   return (
     <div className="max-w-5xl mx-auto px-6 py-10">
-      <div className="mb-10">
-        <div className="flex items-baseline justify-between mb-5 border-b-2 bd-default pb-2">
-          <h2 className="font-serif text-2xl font-bold tx-text">Lessons</h2>
-          <div className="text-xs font-mono tx-muted">
-            {completed.size} / {CURRICULUM.length} done
-          </div>
-        </div>
-
-        <div className="grid gap-4 md:grid-cols-2">
-          {CURRICULUM.map((lesson) => {
-            const summary = quizSummaries.get(lesson.id);
-            return (
-              <button
-                type="button"
-                key={lesson.id}
-                onClick={() => openLesson(lesson)}
-                className="text-left p-5 border-2 bd-default transition-all hover:translate-x-[-2px] hover:translate-y-[-2px]"
-                style={
-                  summary?.finished
-                    ? {
-                        backgroundColor: scoreCardBg(
-                          Math.round((summary.score / summary.total) * 100),
-                          theme === "dark",
-                        ),
-                      }
-                    : { backgroundColor: "var(--surface)" }
-                }
-              >
-                <div className="flex items-start justify-between mb-2">
-                  <div className="text-xs font-mono uppercase tracking-wider tx-muted">
-                    {lesson.level} · U{lesson.unit} · L{lesson.lessonNum}
-                  </div>
-                  {summary?.finished ? (
-                    <div className="font-mono font-bold text-sm tx-accent">
-                      {summary.score}/{summary.total}
-                    </div>
-                  ) : summary ? (
-                    <div className="font-mono text-xs tx-muted">
-                      {summary.answered}/{summary.total} →
-                    </div>
-                  ) : null}
-                </div>
-                <div className="font-serif text-xl font-bold tx-text mb-1">{lesson.title}</div>
-                <div className="tx-muted text-sm">{lesson.titleDe}</div>
-                <div className="mt-3 flex items-center justify-between">
-                  <div className="text-xs font-mono tx-muted">
-                    {lesson.vocab.length} vocab words
-                  </div>
-                  {summary?.finished && (
-                    <div className="text-xs font-mono tx-muted">
-                      {Math.round((summary.score / summary.total) * 100)}%
-                    </div>
-                  )}
-                </div>
-              </button>
-            );
-          })}
-        </div>
+      <div className="mb-10 space-y-6">
+        {levels.map((level) => {
+          const lessons = CURRICULUM.filter((l) => l.level === level);
+          const doneCount = lessons.filter((l) => completed.has(l.id)).length;
+          return (
+            <Accordion
+              key={level}
+              openIndex={levelOpen[level] !== false ? 0 : null}
+              onOpenChange={() => toggleLevel(level)}
+              items={[
+                {
+                  title: level,
+                  subtitle: `${doneCount} / ${lessons.length} done`,
+                  content: lessonGrid(lessons),
+                },
+              ]}
+            />
+          );
+        })}
       </div>
 
       <div className="border-2 bd-accent bg-accent-bg p-6">

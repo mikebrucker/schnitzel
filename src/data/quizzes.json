@@ -198,5 +198,84 @@
       "correct": 1,
       "explanation": "Die Piste = ski slope. Essential vocab for winter in Tirol."
     }
+  ],
+  "6": [
+    {
+      "question": "How do you ask 'How much does that cost?'",
+      "options": ["Was ist das?", "Wie viel kostet das?", "Wo kaufe ich das?", "Haben Sie das?"],
+      "correct": 1,
+      "explanation": "'Wie viel kostet das?' is the standard way to ask a price. 'Wie viel' = how much, 'kosten' = to cost."
+    },
+    {
+      "question": "What does 'zu teuer' mean?",
+      "options": ["very cheap", "a good deal", "too expensive", "on sale"],
+      "correct": 2,
+      "explanation": "'Zu' = too (as in excessively), 'teuer' = expensive. Useful for markets and tourist shops."
+    },
+    {
+      "question": "In the accusative case, 'der Apfel' becomes…",
+      "options": ["der Apfel", "die Apfel", "das Apfel", "den Apfel"],
+      "correct": 3,
+      "explanation": "Masculine 'der' changes to 'den' in the accusative (object) case. Die and das stay unchanged."
+    },
+    {
+      "question": "Where do you pay in a German/Austrian shop?",
+      "options": ["die Tür", "die Kasse", "der Markt", "das Regal"],
+      "correct": 1,
+      "explanation": "'Die Kasse' is the checkout or till. You'll hear 'Zur Kasse, bitte' — to the checkout, please."
+    },
+    {
+      "question": "How do you say 'I'll take it'?",
+      "options": ["Ich kaufe nichts.", "Ich nehme das.", "Das ist günstig.", "Ich zahle später."],
+      "correct": 1,
+      "explanation": "'Ich nehme das' literally means 'I take that' — the natural way to say you're buying something."
+    }
+  ],
+  "7": [
+    {
+      "question": "How do you ask for a double room?",
+      "options": [
+        "Ich möchte ein Einzelzimmer.",
+        "Haben Sie ein Doppelzimmer?",
+        "Wo ist das Zimmer?",
+        "Ich brauche den Schlüssel."
+      ],
+      "correct": 1,
+      "explanation": "'Doppelzimmer' = double room, 'Einzelzimmer' = single room. 'Haben Sie…?' = do you have…?"
+    },
+    {
+      "question": "What is 'das Frühstück'?",
+      "options": ["dinner", "lunch", "breakfast", "a snack"],
+      "correct": 2,
+      "explanation": "'Früh' = early — breakfast. Austrian hotels almost always include it."
+    },
+    {
+      "question": "Translate: 'Can you help me?'",
+      "options": [
+        "Wollen Sie mir helfen?",
+        "Müssen Sie mir helfen?",
+        "Können Sie mir helfen?",
+        "Dürfen Sie mir helfen?"
+      ],
+      "correct": 2,
+      "explanation": "'Können' = can/able to — the polite modal for requests. 'Mir helfen' = help me (dative)."
+    },
+    {
+      "question": "Where does the infinitive go with a modal verb?",
+      "options": [
+        "Right after the modal",
+        "At the start of the sentence",
+        "At the end of the sentence",
+        "It can go anywhere"
+      ],
+      "correct": 2,
+      "explanation": "Modal verbs send the infinitive to the end: 'Ich kann Deutsch sprechen.' The modal takes second position, infinitive goes last."
+    },
+    {
+      "question": "What does 'auschecken' mean?",
+      "options": ["to check in", "to check out", "to pay the bill", "to book a room"],
+      "correct": 1,
+      "explanation": "'Aus-' = out, 'ein-' = in. Einchecken = check in, auschecken = check out."
+    }
   ]
 }

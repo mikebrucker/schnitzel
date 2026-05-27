@@ -299,5 +299,55 @@
       "de": "Wo ist die Bergbahn, bitte?",
       "en": "Where is the cable car, please?"
     }
+  },
+  {
+    "id": 6,
+    "level": "A2",
+    "unit": 1,
+    "lessonNum": 1,
+    "title": "Shopping & Prices",
+    "titleDe": "Einkaufen & Preise",
+    "vocab": [
+      { "de": "Wie viel kostet das?", "en": "How much does that cost?" },
+      { "de": "zu teuer", "en": "too expensive" },
+      { "de": "günstig", "en": "cheap / good value" },
+      { "de": "die Kasse", "en": "checkout / till" },
+      { "de": "das Wechselgeld", "en": "change (money)" },
+      { "de": "kaufen", "en": "to buy" },
+      { "de": "der Markt", "en": "market", "note": "Innsbruck's Markthalle is worth a visit" },
+      { "de": "der Preis", "en": "price" },
+      { "de": "billiger?", "en": "cheaper?" },
+      { "de": "Ich nehme das.", "en": "I'll take it." }
+    ],
+    "grammar": "The accusative case: when something is the object of a verb, masculine 'der' changes to 'den'. Die and das stay the same. Example: 'Ich kaufe den Apfel' (masc.) but 'Ich kaufe die Birne' (fem.) and 'Ich kaufe das Brot' (neut.).",
+    "example": {
+      "de": "Wie viel kostet das? — Zu teuer. Haben Sie etwas Günstigeres?",
+      "en": "How much does that cost? — Too expensive. Do you have something cheaper?"
+    }
+  },
+  {
+    "id": 7,
+    "level": "A2",
+    "unit": 1,
+    "lessonNum": 2,
+    "title": "At the Hotel",
+    "titleDe": "Im Hotel",
+    "vocab": [
+      { "de": "das Zimmer", "en": "room" },
+      { "de": "das Einzelzimmer", "en": "single room" },
+      { "de": "das Doppelzimmer", "en": "double room" },
+      { "de": "der Schlüssel", "en": "key" },
+      { "de": "einchecken", "en": "to check in" },
+      { "de": "auschecken", "en": "to check out" },
+      { "de": "das Frühstück", "en": "breakfast", "note": "Almost always included in Austrian hotels" },
+      { "de": "die Nacht", "en": "night" },
+      { "de": "Haben Sie…?", "en": "Do you have…?" },
+      { "de": "Können Sie mir helfen?", "en": "Can you help me?" }
+    ],
+    "grammar": "Modal verbs: können (can), müssen (must), wollen (want), dürfen (may). They always pair with an infinitive at the end of the sentence. 'Ich kann Deutsch sprechen.' — I can speak German.",
+    "example": {
+      "de": "Ich möchte ein Doppelzimmer für zwei Nächte, bitte.",
+      "en": "I would like a double room for two nights, please."
+    }
   }
 ]

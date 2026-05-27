@@ -8,10 +8,24 @@ export type AccordionItem = {
 
 type Props = {
   items: Array<AccordionItem>;
+  defaultOpenIndex?: number;
+  openIndex?: number | null;
+  onOpenChange?: (i: number | null) => void;
 };
 
-export function Accordion({ items }: Props) {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+export function Accordion({ items, defaultOpenIndex, openIndex: controlledIndex, onOpenChange }: Props) {
+  const isControlled = controlledIndex !== undefined;
+  const [internalIndex, setInternalIndex] = useState<number | null>(defaultOpenIndex ?? null);
+  const openIndex = isControlled ? controlledIndex : internalIndex;
+
+  const toggle = (i: number) => {
+    const next = openIndex === i ? null : i;
+    if (isControlled) {
+      onOpenChange?.(next);
+    } else {
+      setInternalIndex(next);
+    }
+  };
 
   return (
     <div>
@@ -21,11 +35,11 @@ export function Accordion({ items }: Props) {
           <div key={item.title} className={i > 0 ? "border-t-2 bd-default" : ""}>
             <button
               type="button"
-              onClick={() => setOpenIndex(isOpen ? null : i)}
+              onClick={() => toggle(i)}
               className="w-full flex items-center justify-between pr-4 py-4 text-left tx-text hover:opacity-80 transition-opacity"
             >
               <div className="flex-1 flex items-center gap-4 justify-between mr-4">
-                <span className="font-serif font-bold">{item.title}</span>
+                <span className="font-serif text-2xl font-bold tx-text">{item.title}</span>
                 {item.subtitle ? (
                   <span className="text-xs font-mono tx-muted">{item.subtitle}</span>
                 ) : null}
