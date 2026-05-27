@@ -23,10 +23,14 @@ export function Home() {
 
   const [quizSummaries, setQuizSummaries] = useState<Map<number, QuizSummary>>(new Map());
   const [levelOpen, setLevelOpen] = useState<Record<string, boolean>>({});
+  const [unitOpen, setUnitOpen] = useState<Record<string, number | null>>({});
 
   useEffect(() => {
     storage.getJSON<Record<string, boolean>>("home-level-state").then((saved) => {
       if (saved) setLevelOpen(saved);
+    });
+    storage.getJSON<Record<string, number | null>>("home-unit-state").then((saved) => {
+      if (saved) setUnitOpen(saved);
     });
   }, []);
 
@@ -34,6 +38,12 @@ export function Home() {
     const next = { ...levelOpen, [level]: !(levelOpen[level] !== false) };
     setLevelOpen(next);
     void storage.setJSON("home-level-state", next);
+  };
+
+  const toggleUnit = (level: string, i: number | null) => {
+    const next = { ...unitOpen, [level]: i };
+    setUnitOpen(next);
+    void storage.setJSON("home-unit-state", next);
   };
 
   useEffect(() => {
@@ -118,7 +128,7 @@ export function Home() {
 
   return (
     <div className="max-w-5xl mx-auto px-6 py-10">
-      <div className="mb-10 space-y-6">
+      <div className="mb-10 space-y-12">
         {levels.map((level) => {
           const lessons = CURRICULUM.filter((l) => l.level === level);
           const doneCount = lessons.filter((l) => completed.has(l.id)).length;
@@ -131,7 +141,22 @@ export function Home() {
                 {
                   title: level,
                   subtitle: `${doneCount} / ${lessons.length} done`,
-                  content: lessonGrid(lessons),
+                  content: (
+                    <Accordion
+                      compact
+                      openIndex={unitOpen[level] !== undefined ? unitOpen[level] : 0}
+                      onOpenChange={(i) => toggleUnit(level, i)}
+                      items={[...new Set(lessons.map((l) => l.unit))].map((unit) => {
+                        const unitLessons = lessons.filter((l) => l.unit === unit);
+                        const unitDone = unitLessons.filter((l) => completed.has(l.id)).length;
+                        return {
+                          title: `Unit ${unit}`,
+                          subtitle: `${unitDone} / ${unitLessons.length} done`,
+                          content: lessonGrid(unitLessons),
+                        };
+                      })}
+                    />
+                  ),
                 },
               ]}
             />

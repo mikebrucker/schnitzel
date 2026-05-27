@@ -11,9 +11,16 @@ type Props = {
   defaultOpenIndex?: number;
   openIndex?: number | null;
   onOpenChange?: (i: number | null) => void;
+  compact?: boolean;
 };
 
-export function Accordion({ items, defaultOpenIndex, openIndex: controlledIndex, onOpenChange }: Props) {
+export function Accordion({
+  items,
+  defaultOpenIndex,
+  openIndex: controlledIndex,
+  onOpenChange,
+  compact,
+}: Props) {
   const isControlled = controlledIndex !== undefined;
   const [internalIndex, setInternalIndex] = useState<number | null>(defaultOpenIndex ?? null);
   const openIndex = isControlled ? controlledIndex : internalIndex;
@@ -30,16 +37,28 @@ export function Accordion({ items, defaultOpenIndex, openIndex: controlledIndex,
   return (
     <div>
       {items.map((item, i) => {
+        console.log(i, items.length - 1);
         const isOpen = openIndex === i;
         return (
-          <div key={item.title} className={i > 0 ? "border-t-2 bd-default" : ""}>
+          <div
+            key={item.title}
+            className={`bd-default ${!compact || i !== items.length - 1 ? "border-b" : ""}`}
+          >
             <button
               type="button"
               onClick={() => toggle(i)}
               className="w-full flex items-center justify-between pr-4 py-4 text-left tx-text hover:opacity-80 transition-opacity"
             >
               <div className="flex-1 flex items-center gap-4 justify-between mr-4">
-                <span className="font-serif text-2xl font-bold tx-text">{item.title}</span>
+                <span
+                  className={
+                    compact
+                      ? "font-serif font-bold tx-text"
+                      : "font-serif text-2xl font-bold tx-text"
+                  }
+                >
+                  {item.title}
+                </span>
                 {item.subtitle ? (
                   <span className="text-xs font-mono tx-muted">{item.subtitle}</span>
                 ) : null}
