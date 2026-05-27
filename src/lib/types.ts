@@ -10,7 +10,9 @@ export type VocabItem = {
 
 export type Lesson = {
   id: number;
-  unit: string;
+  level: string;
+  unit: number;
+  lessonNum: number;
   title: string;
   titleDe: string;
   vocab: Array<VocabItem>;

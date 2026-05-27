@@ -80,7 +80,7 @@ export function Home() {
               >
                 <div className="flex items-start justify-between mb-2">
                   <div className="text-xs font-mono uppercase tracking-wider tx-muted">
-                    {lesson.unit} · Lesson {lesson.id}
+                    {lesson.level} · U{lesson.unit} · L{lesson.lessonNum}
                   </div>
                   {summary?.finished ? (
                     <div className="font-mono font-bold text-sm tx-accent">

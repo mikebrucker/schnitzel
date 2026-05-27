@@ -64,7 +64,7 @@ export function LessonView({ lesson }: { lesson: Lesson }) {
       </button>
 
       <div className="text-xs font-mono uppercase tracking-[0.3em] tx-muted mb-2">
-        {lesson.unit} · Lesson {lesson.id}
+        {lesson.level} · Unit {lesson.unit} · Lesson {lesson.lessonNum}
       </div>
       <h1 className="font-serif text-4xl font-black tx-text mb-1">{lesson.title}</h1>
       <div className="tx-muted text-lg mb-8">{lesson.titleDe}</div>

@@ -120,7 +120,7 @@ export function SettingsView() {
                 <div className="flex items-center justify-between mb-1">
                   <div className="flex-1 min-w-0">
                     <span className="font-mono font-bold tx-text text-sm uppercase tracking-wider">
-                      {lesson.unit} · L{lesson.id}
+                      {lesson.level} · U{lesson.unit} · L{lesson.lessonNum}
                     </span>
                     <span className="font-serif text-xs tx-muted ml-2">{lesson.title}</span>
                   </div>
