@@ -1,0 +1,117 @@
+[
+  {
+    "id": 1,
+    "unit": "Unit 1",
+    "title": "Greetings & Introductions",
+    "titleDe": "Begrüßungen",
+    "vocab": [
+      { "de": "Hallo", "en": "Hello" },
+      { "de": "Guten Morgen", "en": "Good morning" },
+      { "de": "Guten Tag", "en": "Good day", "note": "Most common daytime greeting" },
+      { "de": "Guten Abend", "en": "Good evening" },
+      { "de": "Auf Wiedersehen", "en": "Goodbye (formal)" },
+      { "de": "Tschüss", "en": "Bye (casual)" },
+      { "de": "Wie heißt du?", "en": "What is your name? (informal)" },
+      { "de": "Ich heiße…", "en": "My name is…" },
+      { "de": "Servus", "en": "Hi/bye", "note": "Austrian — use this in Tirol!" },
+      { "de": "Grüß Gott", "en": "Hello", "note": "Formal Austrian greeting" }
+    ],
+    "grammar": "German has formal (Sie) and informal (du) 'you'. In Tirol, locals are very friendly and often jump to 'du' fast — but use 'Sie' first with strangers, older people, and in shops.",
+    "example": { "de": "Grüß Gott! Ich heiße Bruck.", "en": "Hello! My name is Bruck." }
+  },
+  {
+    "id": 2,
+    "unit": "Unit 1",
+    "title": "Numbers 1–20",
+    "titleDe": "Zahlen",
+    "vocab": [
+      { "de": "eins", "en": "1" },
+      { "de": "zwei", "en": "2" },
+      { "de": "drei", "en": "3" },
+      { "de": "vier", "en": "4" },
+      { "de": "fünf", "en": "5" },
+      { "de": "sechs", "en": "6" },
+      { "de": "sieben", "en": "7" },
+      { "de": "acht", "en": "8" },
+      { "de": "neun", "en": "9" },
+      { "de": "zehn", "en": "10" },
+      { "de": "elf", "en": "11" },
+      { "de": "zwölf", "en": "12" },
+      { "de": "zwanzig", "en": "20" }
+    ],
+    "grammar": "Numbers 21–99 are 'backwards' in German: 21 = einundzwanzig = 'one and twenty'. Same in Tyrolean dialect, just sounds different.",
+    "example": { "de": "Ich bin dreißig Jahre alt.", "en": "I am thirty years old." }
+  },
+  {
+    "id": 3,
+    "unit": "Unit 2",
+    "title": "Ordering Food & Drink",
+    "titleDe": "Essen & Trinken bestellen",
+    "vocab": [
+      { "de": "Ich möchte…", "en": "I would like…" },
+      { "de": "ein Bier", "en": "a beer" },
+      { "de": "ein Glas Wasser", "en": "a glass of water" },
+      { "de": "der Kaffee", "en": "coffee" },
+      { "de": "das Brot", "en": "bread" },
+      { "de": "der Käse", "en": "cheese" },
+      { "de": "die Rechnung, bitte", "en": "The bill, please" },
+      { "de": "Zahlen, bitte", "en": "Pay, please", "note": "Austrian way to ask for bill" },
+      { "de": "Prost!", "en": "Cheers!" },
+      {
+        "de": "Mahlzeit!",
+        "en": "Enjoy your meal / hello at lunch",
+        "note": "Heard everywhere in Austria"
+      }
+    ],
+    "grammar": "German nouns have three genders: der (masc), die (fem), das (neut). You MUST learn the article with the noun. There is no shortcut.",
+    "example": {
+      "de": "Ich möchte ein Bier und die Rechnung, bitte.",
+      "en": "I would like a beer and the bill, please."
+    }
+  },
+  {
+    "id": 4,
+    "unit": "Unit 2",
+    "title": "Days, Time, Weather",
+    "titleDe": "Tage, Zeit, Wetter",
+    "vocab": [
+      { "de": "Montag", "en": "Monday" },
+      { "de": "Dienstag", "en": "Tuesday" },
+      { "de": "Mittwoch", "en": "Wednesday" },
+      { "de": "Donnerstag", "en": "Thursday" },
+      { "de": "Freitag", "en": "Friday" },
+      { "de": "Samstag", "en": "Saturday", "note": "In Austria. (Sonnabend in north Germany)" },
+      { "de": "Sonntag", "en": "Sunday" },
+      { "de": "heute", "en": "today" },
+      { "de": "morgen", "en": "tomorrow" },
+      { "de": "Es schneit", "en": "It is snowing" },
+      { "de": "Es ist kalt", "en": "It is cold" },
+      { "de": "die Sonne", "en": "the sun" }
+    ],
+    "grammar": "To say time: 'Es ist drei Uhr' = It is three o'clock. 'Halb drei' = 2:30 (literally 'half three' — meaning halfway TO three). This trips up English speakers.",
+    "example": {
+      "de": "Heute ist Montag und es schneit.",
+      "en": "Today is Monday and it is snowing."
+    }
+  },
+  {
+    "id": 5,
+    "unit": "Unit 3",
+    "title": "Getting Around Tirol",
+    "titleDe": "Unterwegs in Tirol",
+    "vocab": [
+      { "de": "der Bahnhof", "en": "train station" },
+      { "de": "die Straßenbahn", "en": "tram" },
+      { "de": "der Bus", "en": "bus" },
+      { "de": "das Auto", "en": "car" },
+      { "de": "links / rechts", "en": "left / right" },
+      { "de": "geradeaus", "en": "straight ahead" },
+      { "de": "Wo ist…?", "en": "Where is…?" },
+      { "de": "die Bergbahn", "en": "mountain cable car" },
+      { "de": "die Piste", "en": "ski slope" },
+      { "de": "die Hütte", "en": "mountain hut" }
+    ],
+    "grammar": "Question words: Wer (who), Was (what), Wo (where), Wann (when), Warum (why), Wie (how). All start with W. Easy to remember.",
+    "example": { "de": "Wo ist die Bergbahn, bitte?", "en": "Where is the cable car, please?" }
+  }
+]

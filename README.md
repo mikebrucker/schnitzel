@@ -1,6 +1,6 @@
 # Deutsch Schule 🏔️
 
-Learn German for Tirol. 7th grade middle-school style. Built for Bruck.
+Learn German for Tirol. Classroom style. Built for Bruck.
 
 PWA + native Android via Capacitor. Static quizzes, no backend, works offline.
 

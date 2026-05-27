@@ -1,0 +1,181 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0f1614;
+  --text: #fef3c7;
+  --muted: #d4b876;
+  --body: #f5e6b8;
+  --border: rgba(254, 243, 199, 0.3);
+  --surface: rgba(28, 25, 23, 0.7);
+  --surface-solid: #1c1917;
+  --header-bg: #1a2420;
+  --accent: #6ee7b7;
+  --accent-bg: rgba(6, 78, 59, 0.5);
+  --accent-border: #34d399;
+  --btn-bg: #fef3c7;
+  --btn-text: #1c1917;
+  --dot: rgba(254, 243, 199, 0.06);
+  --correct-bg: rgba(6, 78, 59, 0.8);
+  --correct-border: #34d399;
+  --wrong-bg: rgba(69, 10, 10, 0.8);
+  --wrong-border: #ef4444;
+  --wrong: #f87171;
+  --score-low: #f97316;
+  --score-mid: #eab308;
+  --score-high: #84cc16;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+}
+
+:root[data-theme="light"] {
+  --bg: #fbf5e5;
+  --text: #1c1917;
+  --muted: #57534e;
+  --body: #292524;
+  --border: #1c1917;
+  --surface: #f4ead5;
+  --surface-solid: #ffffff;
+  --header-bg: #f4ead5;
+  --accent: #065f46;
+  --accent-bg: #ecfdf5;
+  --accent-border: #065f46;
+  --btn-bg: #1c1917;
+  --btn-text: #f4ead5;
+  --dot: rgba(28, 25, 23, 0.08);
+  --correct-bg: #d1fae5;
+  --correct-border: #065f46;
+  --wrong-bg: #fee2e2;
+  --wrong-border: #dc2626;
+  --wrong: #dc2626;
+  --score-low: #c2410c;
+  --score-mid: #a16207;
+  --score-high: #4d7c0f;
+}
+
+html,
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  overscroll-behavior-y: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  padding-top: var(--safe-top);
+  padding-bottom: var(--safe-bottom);
+  padding-left: var(--safe-left);
+  padding-right: var(--safe-right);
+  font-family: "Libre Caslon Text", Georgia, "Times New Roman", serif;
+}
+
+#root {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* Theme helper classes — used throughout components */
+.tx-text {
+  color: var(--text);
+}
+
+.tx-btn {
+  color: var(--btn-text);
+}
+
+.tx-muted {
+  color: var(--muted);
+}
+
+.tx-body {
+  color: var(--body);
+}
+
+.tx-accent {
+  color: var(--accent);
+}
+
+.tx-wrong {
+  color: var(--wrong);
+}
+
+.tx-score-low {
+  color: var(--score-low);
+}
+
+.tx-score-mid {
+  color: var(--score-mid);
+}
+
+.tx-score-high {
+  color: var(--score-high);
+}
+
+.bg-app {
+  background-color: var(--bg);
+}
+
+.bg-surface {
+  background-color: var(--surface);
+}
+
+.bg-surface-solid {
+  background-color: var(--surface-solid);
+}
+
+.bg-accent-bg {
+  background-color: var(--accent-bg);
+}
+
+.bg-btn {
+  background-color: var(--btn-bg);
+}
+
+.bg-header {
+  background-color: var(--header-bg);
+}
+
+.bd-default {
+  border-color: var(--border);
+}
+
+.bd-accent {
+  border-color: var(--accent-border);
+}
+
+.bd-btn {
+  border-color: var(--btn-bg);
+}
+
+.state-correct {
+  background-color: var(--correct-bg) !important;
+  border-color: var(--correct-border) !important;
+}
+
+.state-wrong {
+  background-color: var(--wrong-bg) !important;
+  border-color: var(--wrong-border) !important;
+}
+
+.dot-pattern {
+  background-image: radial-gradient(circle at 1px 1px, var(--dot) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+@keyframes spin-full {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.group:hover .spin-on-hover {
+  animation: spin-full 0.75s ease-in-out;
+}

@@ -1,0 +1,13 @@
+export function scoreCardBg(pct: number, dark: boolean): string {
+  const hue = Math.round(pct * 1.2);
+  return dark ? `hsl(${hue}, 55%, 11%)` : `hsl(${hue}, 50%, 93%)`;
+}
+
+export function scoreTextClass(pct: number | null): string {
+  if (pct === null) return "tx-accent";
+  if (pct >= 80) return "tx-accent";
+  if (pct >= 60) return "tx-score-high";
+  if (pct >= 40) return "tx-score-mid";
+  if (pct >= 20) return "tx-score-low";
+  return "tx-wrong";
+}

@@ -13,9 +13,7 @@ dist-ssr
 *.local
 
 # Editor
-.vscode/*
-!.vscode/settings.json
-!.vscode/extensions.json
+.vscode/
 .idea
 .DS_Store
 *.suo
@@ -47,3 +45,8 @@ ios/App/App/public
 .vite
 .tsbuildinfo
 *.tsbuildinfo
+
+# Claude
+.claude
+CLAUDE.md
+memory/

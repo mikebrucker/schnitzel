@@ -1,0 +1,202 @@
+{
+  "1": [
+    {
+      "question": "How would a local in Tirol most naturally greet you on the street?",
+      "options": ["Hallo", "Guten Tag", "Servus", "Auf Wiedersehen"],
+      "correct": 2,
+      "explanation": "'Servus' is the everyday Austrian greeting — works for both hello and goodbye."
+    },
+    {
+      "question": "Which greeting is most formal and typical when entering an Austrian shop?",
+      "options": ["Tschüss", "Grüß Gott", "Wie heißt du?", "Hallo"],
+      "correct": 1,
+      "explanation": "'Grüß Gott' is the standard formal greeting in Austria and southern Germany — use it in shops and with strangers."
+    },
+    {
+      "question": "Translate: 'My name is Bruck.'",
+      "options": [
+        "Wie heißt du, Bruck?",
+        "Ich heiße Bruck.",
+        "Bruck ist Servus.",
+        "Guten Tag, Bruck."
+      ],
+      "correct": 1,
+      "explanation": "'Ich heiße…' literally means 'I am called…' and is the standard way to introduce yourself."
+    },
+    {
+      "question": "When should you use 'Sie' instead of 'du'?",
+      "options": [
+        "With close friends only",
+        "With strangers, older people, and in shops",
+        "Only when speaking to children",
+        "Never — Austrians always use 'du'"
+      ],
+      "correct": 1,
+      "explanation": "Sie is formal — for strangers, elders, professional contexts. Tyroleans often shift to du quickly though."
+    },
+    {
+      "question": "Which of these means 'Goodbye' formally?",
+      "options": ["Tschüss", "Servus", "Guten Morgen", "Auf Wiedersehen"],
+      "correct": 3,
+      "explanation": "'Auf Wiedersehen' literally means 'until seeing again' — the formal goodbye."
+    }
+  ],
+  "2": [
+    {
+      "question": "What number is 'sieben'?",
+      "options": ["6", "7", "8", "9"],
+      "correct": 1,
+      "explanation": "Sieben = 7. Easy to mix up with 'sechs' (6) — listen for the 'b' sound."
+    },
+    {
+      "question": "How would you say '21' in German?",
+      "options": ["zwanzigundeins", "zwanzig-eins", "einundzwanzig", "eins zwanzig"],
+      "correct": 2,
+      "explanation": "Numbers 21–99 are spoken 'ones-and-tens': einundzwanzig = one-and-twenty."
+    },
+    {
+      "question": "What is 'zwölf'?",
+      "options": ["10", "11", "12", "20"],
+      "correct": 2,
+      "explanation": "Zwölf = 12. The German word for a dozen has its own unique form."
+    },
+    {
+      "question": "Translate: 'I am thirty years old.'",
+      "options": [
+        "Ich habe dreißig Jahre.",
+        "Ich bin dreißig Jahre alt.",
+        "Mir ist dreißig Jahre.",
+        "Dreißig Jahre ich bin."
+      ],
+      "correct": 1,
+      "explanation": "German uses 'sein' (to be) for age, not 'haben' (to have) like French or Spanish."
+    },
+    {
+      "question": "Which is the correct order: 'four', 'one', 'ten'?",
+      "options": ["vier, eins, zehn", "fünf, eins, zehn", "vier, ein, zehn", "vier, eins, elf"],
+      "correct": 0,
+      "explanation": "Vier = 4, eins = 1, zehn = 10. 'Ein' (without -s) is used as an article ('a/an'), not the number."
+    }
+  ],
+  "3": [
+    {
+      "question": "How do you ask for the bill in an Austrian restaurant?",
+      "options": ["Bitte das Geld!", "Zahlen, bitte", "Ich gehe jetzt", "Wo ist das Bier?"],
+      "correct": 1,
+      "explanation": "'Zahlen, bitte' is the typical Austrian way — literally 'Pay, please'. 'Die Rechnung, bitte' also works."
+    },
+    {
+      "question": "What is the gender of 'Brot' (bread)?",
+      "options": ["der (masc)", "die (fem)", "das (neut)", "no gender"],
+      "correct": 2,
+      "explanation": "Das Brot — neuter. German has three noun genders and you must memorise the article with each noun."
+    },
+    {
+      "question": "Translate: 'I would like a beer.'",
+      "options": [
+        "Ich will ein Bier.",
+        "Ich möchte ein Bier.",
+        "Geben Sie mir ein Bier.",
+        "Ein Bier, danke."
+      ],
+      "correct": 1,
+      "explanation": "'Ich möchte' is the polite way — softer than 'ich will' (I want), which sounds demanding."
+    },
+    {
+      "question": "When do Austrians typically say 'Mahlzeit'?",
+      "options": [
+        "Only at dinner parties",
+        "Around lunchtime, as a greeting or before eating",
+        "After dessert",
+        "When entering a bakery"
+      ],
+      "correct": 1,
+      "explanation": "'Mahlzeit' is heard all day around lunch — used as a greeting, a 'bon appétit', or even just a hello at midday."
+    },
+    {
+      "question": "What does 'der Käse' mean?",
+      "options": ["coffee", "water", "cheese", "cake"],
+      "correct": 2,
+      "explanation": "Der Käse = cheese. Masculine article. (Kaffee = coffee, also masc.)"
+    }
+  ],
+  "4": [
+    {
+      "question": "What day comes after 'Mittwoch'?",
+      "options": ["Dienstag", "Donnerstag", "Freitag", "Samstag"],
+      "correct": 1,
+      "explanation": "Mittwoch (Wednesday) is followed by Donnerstag (Thursday). All Tag = day."
+    },
+    {
+      "question": "What does 'halb drei' mean?",
+      "options": ["2:30", "3:00", "3:30", "Half a three"],
+      "correct": 0,
+      "explanation": "Tricky! 'Half three' in German means 'halfway TO three' = 2:30. Opposite of British English."
+    },
+    {
+      "question": "How do you say 'It is snowing' in German?",
+      "options": ["Es ist Schnee", "Schnee fällt", "Es schneit", "Der Schnee kommt"],
+      "correct": 2,
+      "explanation": "'Es schneit' is the standard weather verb construction — like 'es regnet' (it's raining)."
+    },
+    {
+      "question": "In Austria, what do they call Saturday?",
+      "options": ["Sonnabend", "Samstag", "Sabbattag", "Wochenende"],
+      "correct": 1,
+      "explanation": "Austrians and southern Germans say 'Samstag'. Northern Germans sometimes say 'Sonnabend'."
+    },
+    {
+      "question": "Translate: 'tomorrow'",
+      "options": ["heute", "morgen", "gestern", "jetzt"],
+      "correct": 1,
+      "explanation": "Morgen = tomorrow (and also 'morning'). Heute = today, gestern = yesterday."
+    }
+  ],
+  "5": [
+    {
+      "question": "You need to find the cable car. How do you ask?",
+      "options": [
+        "Wo ist die Bergbahn?",
+        "Was ist die Bergbahn?",
+        "Wer ist die Bergbahn?",
+        "Wann ist die Bergbahn?"
+      ],
+      "correct": 0,
+      "explanation": "Wo = where. All German question words start with W: Wer, Was, Wo, Wann, Warum, Wie."
+    },
+    {
+      "question": "What does 'die Hütte' mean in a Tirol context?",
+      "options": [
+        "A hat",
+        "A hotel reception",
+        "A mountain hut (restaurant/bar on the slopes)",
+        "A small village"
+      ],
+      "correct": 2,
+      "explanation": "A Hütte is a mountain hut — usually a rustic restaurant on a ski slope or hiking trail. Essential Tirol vocab."
+    },
+    {
+      "question": "Translate: 'Go straight ahead, then left.'",
+      "options": [
+        "Geradeaus, dann rechts.",
+        "Links, dann geradeaus.",
+        "Geradeaus, dann links.",
+        "Rechts und geradeaus."
+      ],
+      "correct": 2,
+      "explanation": "Geradeaus = straight ahead, links = left, rechts = right. Order matters!"
+    },
+    {
+      "question": "Which question word means 'why'?",
+      "options": ["Wer", "Wann", "Warum", "Wie"],
+      "correct": 2,
+      "explanation": "Warum = why. Wer = who, Wann = when, Wie = how. All start with W."
+    },
+    {
+      "question": "What is 'die Piste'?",
+      "options": ["A pastry", "A ski slope", "A cable car", "A train platform"],
+      "correct": 1,
+      "explanation": "Die Piste = ski slope. Essential vocab for winter in Tirol."
+    }
+  ]
+}
