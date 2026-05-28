@@ -4,11 +4,29 @@ import { haptics } from "@/lib/haptics";
 import { loadQuizProgress, saveQuizProgress } from "@/lib/quizStorage";
 import type { Lesson, QuizMode, QuizQuestion } from "@/lib/types";
 import { useApp } from "@/store/useApp";
+import { createFileRoute, useLoaderData, useNavigate } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 
-export function QuizView({ lesson, mode }: { lesson: Lesson; mode: QuizMode }) {
-  const setView = useApp((s) => s.setView);
+function validateQuizMode(m: unknown): QuizMode {
+  return m === "view" || m === "retake" || m === "wrong" || m === "normal" ? m : "normal";
+}
+
+function QuizRoute() {
+  const { lesson } = useLoaderData({ from: "/lessons/$id" });
+  const { mode } = Route.useSearch();
+  return <QuizInner key={`${lesson.id}-${mode}`} lesson={lesson} mode={mode} />;
+}
+
+function QuizInner({ lesson, mode }: { lesson: Lesson; mode: QuizMode }) {
+  const navigate = useNavigate();
+  const setActiveLesson = useApp((s) => s.setActiveLesson);
+  const setQuizMode = useApp((s) => s.setQuizMode);
   const markLessonComplete = useApp((s) => s.markLessonComplete);
+
+  useEffect(() => {
+    setActiveLesson(lesson);
+    setQuizMode(mode);
+  }, [lesson, mode, setActiveLesson, setQuizMode]);
 
   const [questions, setQuestions] = useState<Array<QuizQuestion> | null>(null);
   const [activeQuestions, setActiveQuestions] = useState<Array<QuizQuestion> | null>(null);
@@ -19,12 +37,10 @@ export function QuizView({ lesson, mode }: { lesson: Lesson; mode: QuizMode }) {
   const [hydrated, setHydrated] = useState(false);
   const [isReattempt, setIsReattempt] = useState(false);
 
-  // Wrong-mode merge tracking
   const [wrongIndices, setWrongIndices] = useState<Array<number>>([]);
   const [canonicalAnswers, setCanonicalAnswers] = useState<Array<number>>([]);
   const [mergedAndSaved, setMergedAndSaved] = useState(false);
 
-  // Shared back handler — used by both UI button and Android hardware back
   const handleBackRef = useRef<() => void>(() => {});
   handleBackRef.current = () => {
     if (mode === "wrong" && wrongIndices.length > 0 && questions && !mergedAndSaved) {
@@ -42,10 +58,9 @@ export function QuizView({ lesson, mode }: { lesson: Lesson; mode: QuizMode }) {
       });
     }
     haptics.tap();
-    setView("lesson");
+    navigate({ to: "/lessons/$id", params: { id: String(lesson.id) } });
   };
 
-  // Android back button
   useEffect(() => {
     const handler = (e: Event) => {
       e.preventDefault();
@@ -55,7 +70,6 @@ export function QuizView({ lesson, mode }: { lesson: Lesson; mode: QuizMode }) {
     return () => window.removeEventListener("appBackButton", handler);
   }, []);
 
-  // Load saved state + apply mode
   useEffect(() => {
     let cancelled = false;
     const load = async () => {
@@ -83,7 +97,6 @@ export function QuizView({ lesson, mode }: { lesson: Lesson; mode: QuizMode }) {
         setWrongIndices(indices);
 
         if (indices.length === 0) {
-          // All already correct — fall back to viewing canonical results
           setActiveQuestions(baseQuestions);
           setIdx(saved.idx);
           setScore(saved.score);
@@ -98,7 +111,6 @@ export function QuizView({ lesson, mode }: { lesson: Lesson; mode: QuizMode }) {
           setIsReattempt(true);
         }
       } else if (saved) {
-        // "normal" (resume) or "view" — restore exact saved state
         setActiveQuestions(baseQuestions);
         setIdx(saved.idx);
         setScore(saved.score);
@@ -116,14 +128,12 @@ export function QuizView({ lesson, mode }: { lesson: Lesson; mode: QuizMode }) {
     };
   }, [lesson.id, mode]);
 
-  // Persist on every change — all modes except wrong (wrong uses merge logic below)
   useEffect(() => {
     if (!hydrated || !questions) return;
     if (mode === "wrong") return;
     saveQuizProgress(lesson.id, { questions, idx, score, answers, picked });
   }, [hydrated, questions, idx, score, answers, picked, mode, lesson.id]);
 
-  // Wrong-mode: merge corrected answers into canonical when quiz finishes
   useEffect(() => {
     if (!hydrated || !questions || !activeQuestions) return;
     if (mode !== "wrong" || !isReattempt || mergedAndSaved) return;
@@ -184,8 +194,8 @@ export function QuizView({ lesson, mode }: { lesson: Lesson; mode: QuizMode }) {
         questions={activeQuestions}
         answers={answers}
         isReattempt={isReattempt}
-        onBack={() => setView("lesson")}
-        onComplete={() => setView("home")}
+        onBack={() => navigate({ to: "/lessons/$id", params: { id: String(lesson.id) } })}
+        onComplete={() => navigate({ to: "/" })}
         onMarkDone={() => markLessonComplete(lesson.id)}
         onRetake={handleRetake}
       />
@@ -284,3 +294,10 @@ export function QuizView({ lesson, mode }: { lesson: Lesson; mode: QuizMode }) {
     </div>
   );
 }
+
+export const Route = createFileRoute("/lessons/$id/quiz")({
+  validateSearch: (search: Record<string, unknown>): { mode: QuizMode } => ({
+    mode: validateQuizMode(search.mode),
+  }),
+  component: QuizRoute,
+});

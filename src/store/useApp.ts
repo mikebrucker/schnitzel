@@ -1,11 +1,10 @@
 import { applyStatusBarTheme } from "@/lib/statusBar";
 import { storage } from "@/lib/storage";
-import type { Lesson, Profile, QuizMode, Theme, View } from "@/lib/types";
+import type { Lesson, Profile, QuizMode, Theme } from "@/lib/types";
 import { create } from "zustand";
 
 type AppState = {
-  // UI state
-  view: View;
+  // URL-mirrored state (set by route components)
   activeLesson: Lesson | null;
   quizMode: QuizMode;
 
@@ -18,7 +17,6 @@ type AppState = {
   hydrated: boolean;
 
   // Actions
-  setView: (view: View) => void;
   setActiveLesson: (lesson: Lesson | null) => void;
   setQuizMode: (mode: QuizMode) => void;
   setTheme: (theme: Theme) => void;
@@ -36,7 +34,6 @@ const DEFAULT_PROFILE: Profile = {
 };
 
 export const useApp = create<AppState>((set, get) => ({
-  view: "home",
   activeLesson: null,
   quizMode: "normal",
   theme: "dark",
@@ -44,7 +41,6 @@ export const useApp = create<AppState>((set, get) => ({
   profile: DEFAULT_PROFILE,
   hydrated: false,
 
-  setView: (view) => set({ view }),
   setActiveLesson: (activeLesson) => set({ activeLesson }),
   setQuizMode: (quizMode) => set({ quizMode }),
 

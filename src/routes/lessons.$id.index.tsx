@@ -1,14 +1,22 @@
 import { haptics } from "@/lib/haptics";
 import { loadQuizProgress } from "@/lib/quizStorage";
-import type { Lesson, QuizMode } from "@/lib/types";
+import type { QuizMode } from "@/lib/types";
 import { useApp } from "@/store/useApp";
+import { createFileRoute, useLoaderData, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
 type QuizState = "none" | "progress" | "done";
 
-export function LessonView({ lesson }: { lesson: Lesson }) {
-  const setView = useApp((s) => s.setView);
+function LessonRoute() {
+  const { lesson } = useLoaderData({ from: "/lessons/$id" });
+  const navigate = useNavigate();
+  const setActiveLesson = useApp((s) => s.setActiveLesson);
   const setQuizMode = useApp((s) => s.setQuizMode);
+
+  useEffect(() => {
+    setActiveLesson(lesson);
+  }, [lesson, setActiveLesson]);
+
   const [quizState, setQuizState] = useState<QuizState>("none");
   const [savedScore, setSavedScore] = useState<{ score: number; total: number } | null>(null);
   const [inProgressCount, setInProgressCount] = useState<{
@@ -19,12 +27,12 @@ export function LessonView({ lesson }: { lesson: Lesson }) {
   useEffect(() => {
     const handler = (e: Event) => {
       e.preventDefault();
-      setView("home");
       haptics.tap();
+      navigate({ to: "/" });
     };
     window.addEventListener("appBackButton", handler);
     return () => window.removeEventListener("appBackButton", handler);
-  }, [setView]);
+  }, [navigate]);
 
   useEffect(() => {
     let cancelled = false;
@@ -46,8 +54,12 @@ export function LessonView({ lesson }: { lesson: Lesson }) {
 
   const startQuiz = (mode: QuizMode) => {
     setQuizMode(mode);
-    setView("quiz");
     haptics.tap();
+    navigate({
+      to: "/lessons/$id/quiz",
+      params: { id: String(lesson.id) },
+      search: { mode },
+    });
   };
 
   return (
@@ -55,8 +67,8 @@ export function LessonView({ lesson }: { lesson: Lesson }) {
       <button
         type="button"
         onClick={() => {
-          setView("home");
           haptics.tap();
+          navigate({ to: "/" });
         }}
         className="text-sm font-mono tx-muted mb-6"
       >
@@ -185,3 +197,7 @@ export function LessonView({ lesson }: { lesson: Lesson }) {
     </div>
   );
 }
+
+export const Route = createFileRoute("/lessons/$id/")({
+  component: LessonRoute,
+});

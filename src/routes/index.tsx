@@ -6,6 +6,7 @@ import { scoreCardBg } from "@/lib/scoreColors";
 import { storage } from "@/lib/storage";
 import type { Lesson } from "@/lib/types";
 import { useApp } from "@/store/useApp";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
 type QuizSummary = {
@@ -15,21 +16,20 @@ type QuizSummary = {
   answered: number;
 };
 
-export function Home() {
-  const setView = useApp((s) => s.setView);
-  const setActiveLesson = useApp((s) => s.setActiveLesson);
+function HomeRoute() {
+  const navigate = useNavigate();
   const completed = useApp((s) => s.completed);
   const theme = useApp((s) => s.theme);
 
   const [quizSummaries, setQuizSummaries] = useState<Map<number, QuizSummary>>(new Map());
   const [levelOpen, setLevelOpen] = useState<Record<string, boolean>>({});
-  const [unitOpen, setUnitOpen] = useState<Record<string, number | null>>({});
+  const [unitOpen, setUnitOpen] = useState<Record<string, Array<number>>>({});
 
   useEffect(() => {
     storage.getJSON<Record<string, boolean>>("home-level-state").then((saved) => {
       if (saved) setLevelOpen(saved);
     });
-    storage.getJSON<Record<string, number | null>>("home-unit-state").then((saved) => {
+    storage.getJSON<Record<string, Array<number>>>("home-unit-state-multi").then((saved) => {
       if (saved) setUnitOpen(saved);
     });
   }, []);
@@ -40,10 +40,10 @@ export function Home() {
     void storage.setJSON("home-level-state", next);
   };
 
-  const toggleUnit = (level: string, i: number | null) => {
-    const next = { ...unitOpen, [level]: i };
+  const setUnitOpenFor = (level: string, indices: Array<number>) => {
+    const next = { ...unitOpen, [level]: indices };
     setUnitOpen(next);
-    void storage.setJSON("home-unit-state", next);
+    void storage.setJSON("home-unit-state-multi", next);
   };
 
   useEffect(() => {
@@ -68,9 +68,8 @@ export function Home() {
   }, []);
 
   const openLesson = (lesson: Lesson) => {
-    setActiveLesson(lesson);
-    setView("lesson");
     haptics.tap();
+    navigate({ to: "/lessons/$id", params: { id: String(lesson.id) } });
   };
 
   const levels = [...new Set(CURRICULUM.map((l) => l.level))];
@@ -143,9 +142,10 @@ export function Home() {
                   subtitle: `${doneCount} / ${lessons.length} done`,
                   content: (
                     <Accordion
+                      multi
                       compact
-                      openIndex={unitOpen[level] !== undefined ? unitOpen[level] : 0}
-                      onOpenChange={(i) => toggleUnit(level, i)}
+                      openIndices={unitOpen[level] ?? [0]}
+                      onOpenChange={(indices) => setUnitOpenFor(level, indices)}
                       items={[...new Set(lessons.map((l) => l.unit))].map((unit) => {
                         const unitLessons = lessons.filter((l) => l.unit === unit);
                         const unitDone = unitLessons.filter((l) => completed.has(l.id)).length;
@@ -176,8 +176,8 @@ export function Home() {
           <button
             type="button"
             onClick={() => {
-              setView("dialect");
               haptics.tap();
+              navigate({ to: "/dialect" });
             }}
             className="bg-btn tx-btn px-5 py-2 font-bold border-2 bd-btn hover:opacity-80 transition-opacity"
           >
@@ -188,3 +188,7 @@ export function Home() {
     </div>
   );
 }
+
+export const Route = createFileRoute("/")({
+  component: HomeRoute,
+});

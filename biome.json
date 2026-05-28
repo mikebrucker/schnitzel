@@ -7,7 +7,7 @@
   },
   "files": {
     "ignoreUnknown": true,
-    "ignore": ["dist", "android", "ios", "node_modules", ".vite", ".claude"]
+    "ignore": ["dist", "android", "ios", "node_modules", ".vite", ".claude", "src/routeTree.gen.ts"]
   },
   "formatter": {
     "enabled": true,

@@ -1,17 +1,17 @@
 import { TYROLEAN } from "@/lib/curriculum";
 import { haptics } from "@/lib/haptics";
-import { useApp } from "@/store/useApp";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 
-export function DialectView() {
-  const setView = useApp((s) => s.setView);
+function DialectRoute() {
+  const navigate = useNavigate();
 
   return (
     <div className="max-w-3xl mx-auto px-6 py-10">
       <button
         type="button"
         onClick={() => {
-          setView("home");
           haptics.tap();
+          navigate({ to: "/" });
         }}
         className="text-sm font-mono tx-muted mb-6"
       >
@@ -52,3 +52,7 @@ export function DialectView() {
     </div>
   );
 }
+
+export const Route = createFileRoute("/dialect")({
+  component: DialectRoute,
+});

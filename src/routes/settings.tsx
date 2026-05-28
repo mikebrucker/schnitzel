@@ -4,10 +4,11 @@ import { clearQuizProgress, loadQuizProgress } from "@/lib/quizStorage";
 import { scoreCardBg, scoreTextClass } from "@/lib/scoreColors";
 import type { LessonStat, Theme } from "@/lib/types";
 import { useApp } from "@/store/useApp";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
-export function SettingsView() {
-  const setView = useApp((s) => s.setView);
+function SettingsRoute() {
+  const navigate = useNavigate();
   const theme = useApp((s) => s.theme);
   const setTheme = useApp((s) => s.setTheme);
   const completed = useApp((s) => s.completed);
@@ -55,8 +56,8 @@ export function SettingsView() {
       <button
         type="button"
         onClick={() => {
-          setView("home");
           haptics.tap();
+          navigate({ to: "/" });
         }}
         className="text-sm font-mono mb-6 tx-muted"
       >
@@ -217,3 +218,7 @@ export function SettingsView() {
     </div>
   );
 }
+
+export const Route = createFileRoute("/settings")({
+  component: SettingsRoute,
+});

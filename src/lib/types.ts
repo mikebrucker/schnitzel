@@ -1,5 +1,3 @@
-export type View = "home" | "lesson" | "quiz" | "dialect" | "settings" | "profile";
-
 export type Theme = "dark" | "light";
 
 export type VocabItem = {

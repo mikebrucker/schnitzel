@@ -4,6 +4,7 @@ import { loadQuizProgress } from "@/lib/quizStorage";
 import { scoreCardBg, scoreTextClass } from "@/lib/scoreColors";
 import type { LessonStat } from "@/lib/types";
 import { useApp } from "@/store/useApp";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
 type Stats = {
@@ -15,8 +16,8 @@ type Stats = {
 
 type LessonEntry = (LessonStat & { id: number; title: string }) | null;
 
-export function ProfileView() {
-  const setView = useApp((s) => s.setView);
+function ProfileRoute() {
+  const navigate = useNavigate();
   const profile = useApp((s) => s.profile);
   const setProfile = useApp((s) => s.setProfile);
   const completed = useApp((s) => s.completed);
@@ -34,7 +35,6 @@ export function ProfileView() {
   });
   const [lessonStats, setLessonStats] = useState<Array<LessonEntry>>([]);
 
-  // Compute stats from saved quiz progress
   useEffect(() => {
     let cancelled = false;
     const load = async () => {
@@ -93,8 +93,8 @@ export function ProfileView() {
       <button
         type="button"
         onClick={() => {
-          setView("home");
           haptics.tap();
+          navigate({ to: "/" });
         }}
         className="text-sm font-mono mb-6 tx-muted"
       >
@@ -295,3 +295,7 @@ function StatTile({
     </div>
   );
 }
+
+export const Route = createFileRoute("/profile")({
+  component: ProfileRoute,
+});

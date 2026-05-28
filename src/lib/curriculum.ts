@@ -5,7 +5,10 @@ import type { Lesson, QuizQuestion, TyroleanEntry } from "@/lib/types";
 
 export const CURRICULUM: Array<Lesson> = lessonsRaw as Array<Lesson>;
 
-export const QUIZZES: Record<string, Array<QuizQuestion>> = quizzesRaw as Record<string, Array<QuizQuestion>>;
+export const QUIZZES: Record<string, Array<QuizQuestion>> = quizzesRaw as Record<
+  string,
+  Array<QuizQuestion>
+>;
 
 export const TYROLEAN: Array<TyroleanEntry> = tyroleanRaw as Array<TyroleanEntry>;
 

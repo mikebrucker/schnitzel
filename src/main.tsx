@@ -1,20 +1,28 @@
 import { App as CapApp } from "@capacitor/app";
+import { RouterProvider, createHashHistory, createRouter } from "@tanstack/react-router";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import App from "./App.tsx";
+import { routeTree } from "./routeTree.gen";
 import "./styles/index.css";
 
-// Handle Android hardware back button — listen at app level
-// Components push handlers via window event; here we just exit if nobody handled it
-CapApp.addListener("backButton", ({ canGoBack }) => {
-  const event = new CustomEvent<{ handled: boolean }>("appBackButton", {
-    detail: { handled: false },
-    cancelable: true,
-  });
-  window.dispatchEvent(event);
+const router = createRouter({
+  routeTree,
+  history: createHashHistory(),
+});
 
-  // If no component handled it AND we can't go back, exit
-  if (!event.defaultPrevented && !canGoBack) {
+declare module "@tanstack/react-router" {
+  interface Register {
+    router: typeof router;
+  }
+}
+
+CapApp.addListener("backButton", ({ canGoBack }) => {
+  const event = new CustomEvent("appBackButton", { cancelable: true });
+  window.dispatchEvent(event);
+  if (event.defaultPrevented) return;
+  if (canGoBack || window.history.length > 1) {
+    window.history.back();
+  } else {
     CapApp.exitApp();
   }
 }).catch(() => {
@@ -23,6 +31,6 @@ CapApp.addListener("backButton", ({ canGoBack }) => {
 
 createRoot(document.getElementById("root") as HTMLElement).render(
   <StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </StrictMode>,
 );

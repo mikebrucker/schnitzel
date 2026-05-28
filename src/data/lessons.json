@@ -339,7 +339,11 @@
       { "de": "der Schlüssel", "en": "key" },
       { "de": "einchecken", "en": "to check in" },
       { "de": "auschecken", "en": "to check out" },
-      { "de": "das Frühstück", "en": "breakfast", "note": "Almost always included in Austrian hotels" },
+      {
+        "de": "das Frühstück",
+        "en": "breakfast",
+        "note": "Almost always included in Austrian hotels"
+      },
       { "de": "die Nacht", "en": "night" },
       { "de": "Haben Sie…?", "en": "Do you have…?" },
       { "de": "Können Sie mir helfen?", "en": "Can you help me?" }

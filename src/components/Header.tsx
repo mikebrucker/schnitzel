@@ -1,15 +1,16 @@
 import { haptics } from "@/lib/haptics";
 import { useApp } from "@/store/useApp";
+import { useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
+type Path = "/" | "/profile" | "/settings";
+
 export function Header() {
-  const view = useApp((s) => s.view);
-  const setView = useApp((s) => s.setView);
+  const navigate = useNavigate();
   const theme = useApp((s) => s.theme);
   const setTheme = useApp((s) => s.setTheme);
   const [open, setOpen] = useState(false);
 
-  // Lock body scroll when drawer open
   useEffect(() => {
     if (!open) return;
     const prev = document.body.style.overflow;
@@ -19,7 +20,6 @@ export function Header() {
     };
   }, [open]);
 
-  // Escape key closes drawer
   useEffect(() => {
     if (!open) return;
     const handler = (e: KeyboardEvent) => {
@@ -29,7 +29,6 @@ export function Header() {
     return () => window.removeEventListener("keydown", handler);
   }, [open]);
 
-  // Android back button closes drawer
   useEffect(() => {
     if (!open) return;
     const handler = (e: Event) => {
@@ -40,21 +39,17 @@ export function Header() {
     return () => window.removeEventListener("appBackButton", handler);
   }, [open]);
 
-  const goto = (next: typeof view) => {
+  const goto = (to: Path) => {
     setOpen(false);
-    setView(next);
     haptics.tap();
+    navigate({ to });
   };
 
   return (
     <>
       <header className="border-b-4 bd-default bg-header">
         <div className="max-w-5xl mx-auto px-6 py-5 flex items-center justify-between">
-          <button
-            type="button"
-            onClick={() => goto("home")}
-            className="flex items-center gap-3 group"
-          >
+          <button type="button" onClick={() => goto("/")} className="flex items-center gap-3 group">
             <div className="spin-on-hover w-10 h-10 flex items-center justify-center font-black text-xl rounded-sm bg-btn tx-btn">
               D
             </div>
@@ -149,7 +144,7 @@ export function Header() {
           <MenuItem
             label="Home"
             sub="All lessons"
-            onClick={() => goto("home")}
+            onClick={() => goto("/")}
             icon={
               <>
                 <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
@@ -161,7 +156,7 @@ export function Header() {
           <MenuItem
             label="Profile"
             sub="Stats & settings"
-            onClick={() => goto("profile")}
+            onClick={() => goto("/profile")}
             icon={
               <>
                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
@@ -212,7 +207,7 @@ export function Header() {
           <MenuItem
             label="Settings"
             sub="Progress, resets, more"
-            onClick={() => goto("settings")}
+            onClick={() => goto("/settings")}
             icon={
               <>
                 <circle cx="12" cy="12" r="3" />
