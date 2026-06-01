@@ -1,4 +1,4 @@
-import { base, type IconProps } from "./types";
+import { type IconProps, base } from "./types";
 
 export function PersonIcon({ size = 20, className, style }: IconProps) {
   return (

@@ -1,4 +1,4 @@
-import { base, type IconProps } from "./types";
+import { type IconProps, base } from "./types";
 
 export function SearchIcon({ size = 20, className, style }: IconProps) {
   return (
