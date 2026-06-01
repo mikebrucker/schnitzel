@@ -1,4 +1,6 @@
 import { Header } from "@/components/Header";
+import { Card } from "@/components/card";
+import { HeroCard } from "@/components/card/HeroCard";
 import { ChevronLeftIcon } from "@/components/icons";
 import { CURRICULUM, lessonToPath } from "@/lib/curriculum";
 import { haptics } from "@/lib/haptics";
@@ -67,8 +69,11 @@ function LevelIndexRoute() {
         {nextLesson ? (
           <div className="mb-8">
             <div className="text-xs font-mono uppercase tracking-[0.3em] tx-muted mb-2">Weiter</div>
-            <button
-              type="button"
+            <HeroCard
+              size="md"
+              breadcrumb={`Unit ${nextLesson.unit} · Lesson ${nextLesson.lessonNum}`}
+              title={nextLesson.title}
+              subtitle={nextLesson.titleDe}
               onClick={() => {
                 haptics.tap();
                 navigate({
@@ -76,19 +81,12 @@ function LevelIndexRoute() {
                   params: lessonToPath(nextLesson),
                 });
               }}
-              className="w-full text-left p-5 border-2 bd-accent bg-accent-bg transition-all hover:translate-x-[-2px] hover:translate-y-[-2px]"
-            >
-              <div className="text-xs font-mono uppercase tracking-wider tx-muted mb-2">
-                Unit {nextLesson.unit} · Lesson {nextLesson.lessonNum}
-              </div>
-              <div className="font-serif text-2xl font-black tx-text mb-1">{nextLesson.title}</div>
-              <div className="tx-muted text-sm">{nextLesson.titleDe}</div>
-            </button>
+            />
           </div>
         ) : (
-          <div className="mb-8 p-4 border-2 bd-default bg-surface text-center font-mono tx-muted text-sm">
+          <Card padding="sm" className="mb-8 text-center font-mono tx-muted text-sm">
             Alles fertig! 🏔️
-          </div>
+          </Card>
         )}
 
         <div className="text-xs font-mono uppercase tracking-[0.3em] tx-muted mb-3">Units</div>
@@ -101,9 +99,9 @@ function LevelIndexRoute() {
               unitSummaries.length === unitLessons.length &&
               unitSummaries.every((s) => s?.finished);
             return (
-              <button
-                type="button"
+              <Card
                 key={unit}
+                className="w-full"
                 onClick={() => {
                   haptics.tap();
                   navigate({
@@ -111,18 +109,15 @@ function LevelIndexRoute() {
                     params: { level: level.toLowerCase(), unit: String(unit) },
                   });
                 }}
-                className="w-full text-left p-5 border-2 bd-default bg-surface transition-all hover:translate-x-[-2px] hover:translate-y-[-2px]"
               >
-                <div className="flex items-center justify-between mb-2">
-                  <span className="font-serif text-xl font-bold tx-text">Unit {unit}</span>
-                  <span className={`text-xs font-mono ${allFinished ? "tx-accent" : "tx-muted"}`}>
+                <Card.Row align="center" className="mb-2">
+                  <Card.Title size="sm">{`Unit ${unit}`}</Card.Title>
+                  <Card.Caption className={allFinished ? "tx-accent" : ""}>
                     {unitDone} / {unitLessons.length} done
-                  </span>
-                </div>
-                <div className="text-sm tx-muted">
-                  {unitLessons.map((l) => l.title).join(" · ")}
-                </div>
-              </button>
+                  </Card.Caption>
+                </Card.Row>
+                <Card.Subtitle>{unitLessons.map((l) => l.title).join(" · ")}</Card.Subtitle>
+              </Card>
             );
           })}
         </div>

@@ -1,4 +1,6 @@
 import { Header } from "@/components/Header";
+import { Card } from "@/components/card";
+import { HeroCard } from "@/components/card/HeroCard";
 import { ChevronLeftIcon } from "@/components/icons";
 import { CURRICULUM, lessonToPath } from "@/lib/curriculum";
 import { haptics } from "@/lib/haptics";
@@ -68,72 +70,56 @@ function UnitIndexRoute() {
         {nextLesson ? (
           <div className="mb-8">
             <div className="text-xs font-mono uppercase tracking-[0.3em] tx-muted mb-2">Weiter</div>
-            <button
-              type="button"
+            <HeroCard
+              size="md"
+              breadcrumb={`Lesson ${nextLesson.lessonNum}`}
+              title={nextLesson.title}
+              subtitle={nextLesson.titleDe}
               onClick={() => openLesson(nextLesson)}
-              className="w-full text-left p-5 border-2 bd-accent bg-accent-bg transition-all hover:translate-x-[-2px] hover:translate-y-[-2px]"
-            >
-              <div className="text-xs font-mono uppercase tracking-wider tx-muted mb-2">
-                Lesson {nextLesson.lessonNum}
-              </div>
-              <div className="font-serif text-2xl font-black tx-text mb-1">{nextLesson.title}</div>
-              <div className="tx-muted text-sm">{nextLesson.titleDe}</div>
-            </button>
+            />
           </div>
         ) : (
-          <div className="mb-8 p-4 border-2 bd-default bg-surface text-center font-mono tx-muted text-sm">
+          <Card padding="sm" className="mb-8 text-center font-mono tx-muted text-sm">
             Alles fertig! 🏔️
-          </div>
+          </Card>
         )}
 
         <div className="text-xs font-mono uppercase tracking-[0.3em] tx-muted mb-3">Lektionen</div>
         <div className="grid gap-4 md:grid-cols-2">
           {lessons.map((lesson) => {
             const summary = quizSummaries.get(lesson.id);
+            const pct = summary ? Math.round((summary.score / summary.total) * 100) : 0;
             return (
-              <button
-                type="button"
+              <Card
                 key={lesson.id}
                 onClick={() => openLesson(lesson)}
-                className="text-left p-5 border-2 bd-default transition-all hover:translate-x-[-2px] hover:translate-y-[-2px]"
                 style={
                   summary?.finished
-                    ? {
-                        backgroundColor: scoreCardBg(
-                          Math.round((summary.score / summary.total) * 100),
-                          theme === "dark",
-                        ),
-                      }
+                    ? { backgroundColor: scoreCardBg(pct, theme === "dark") }
                     : { backgroundColor: "var(--surface)" }
                 }
               >
-                <div className="flex items-start justify-between mb-2">
-                  <div className="text-xs font-mono uppercase tracking-wider tx-muted">
+                <Card.Row className="mb-2">
+                  <span className="text-xs font-mono uppercase tracking-wider tx-muted">
                     Lesson {lesson.lessonNum}
-                  </div>
+                  </span>
                   {summary?.finished ? (
-                    <div className="font-mono font-bold text-sm tx-accent">
+                    <Card.Badge accent>
                       {summary.score}/{summary.total}
-                    </div>
+                    </Card.Badge>
                   ) : summary ? (
-                    <div className="font-mono text-xs tx-muted">
+                    <Card.Caption>
                       {summary.answered}/{summary.total} →
-                    </div>
+                    </Card.Caption>
                   ) : null}
-                </div>
-                <div className="font-serif text-xl font-bold tx-text mb-1">{lesson.title}</div>
-                <div className="tx-muted text-sm">{lesson.titleDe}</div>
-                <div className="mt-3 flex items-center justify-between">
-                  <div className="text-xs font-mono tx-muted">
-                    {lesson.vocab.length} vocab words
-                  </div>
-                  {summary?.finished && (
-                    <div className="text-xs font-mono tx-muted">
-                      {Math.round((summary.score / summary.total) * 100)}%
-                    </div>
-                  )}
-                </div>
-              </button>
+                </Card.Row>
+                <Card.Title size="sm">{lesson.title}</Card.Title>
+                <Card.Subtitle>{lesson.titleDe}</Card.Subtitle>
+                <Card.Row align="center" className="mt-3">
+                  <Card.Caption>{lesson.vocab.length} vocab words</Card.Caption>
+                  {summary?.finished && <Card.Caption>{pct}%</Card.Caption>}
+                </Card.Row>
+              </Card>
             );
           })}
         </div>
