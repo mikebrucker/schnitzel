@@ -1,5 +1,5 @@
 import { Results } from "@/components/Results";
-import { getQuiz } from "@/lib/curriculum";
+import { getQuiz, lessonToPath } from "@/lib/curriculum";
 import { haptics } from "@/lib/haptics";
 import { loadQuizProgress, saveQuizProgress } from "@/lib/quizStorage";
 import type { Lesson, QuizMode, QuizQuestion } from "@/lib/types";
@@ -12,7 +12,7 @@ function validateQuizMode(m: unknown): QuizMode {
 }
 
 function QuizRoute() {
-  const { lesson } = useLoaderData({ from: "/lessons/$id" });
+  const { lesson } = useLoaderData({ from: "/lessons/$level/$unit/$lessonNum" });
   const { mode } = Route.useSearch();
   return <QuizInner key={`${lesson.id}-${mode}`} lesson={lesson} mode={mode} />;
 }
@@ -41,6 +41,8 @@ function QuizInner({ lesson, mode }: { lesson: Lesson; mode: QuizMode }) {
   const [canonicalAnswers, setCanonicalAnswers] = useState<Array<number>>([]);
   const [mergedAndSaved, setMergedAndSaved] = useState(false);
 
+  const path = lessonToPath(lesson);
+
   const handleBackRef = useRef<() => void>(() => {});
   handleBackRef.current = () => {
     if (mode === "wrong" && wrongIndices.length > 0 && questions && !mergedAndSaved) {
@@ -58,7 +60,7 @@ function QuizInner({ lesson, mode }: { lesson: Lesson; mode: QuizMode }) {
       });
     }
     haptics.tap();
-    navigate({ to: "/lessons/$id", params: { id: String(lesson.id) } });
+    navigate({ to: "/lessons/$level/$unit/$lessonNum", params: path });
   };
 
   useEffect(() => {
@@ -194,7 +196,7 @@ function QuizInner({ lesson, mode }: { lesson: Lesson; mode: QuizMode }) {
         questions={activeQuestions}
         answers={answers}
         isReattempt={isReattempt}
-        onBack={() => navigate({ to: "/lessons/$id", params: { id: String(lesson.id) } })}
+        onBack={() => navigate({ to: "/lessons/$level/$unit/$lessonNum", params: path })}
         onComplete={() => navigate({ to: "/" })}
         onMarkDone={() => markLessonComplete(lesson.id)}
         onRetake={handleRetake}
@@ -295,7 +297,7 @@ function QuizInner({ lesson, mode }: { lesson: Lesson; mode: QuizMode }) {
   );
 }
 
-export const Route = createFileRoute("/lessons/$id/quiz")({
+export const Route = createFileRoute("/lessons/$level/$unit/$lessonNum/quiz")({
   validateSearch: (search: Record<string, unknown>): { mode: QuizMode } => ({
     mode: validateQuizMode(search.mode),
   }),

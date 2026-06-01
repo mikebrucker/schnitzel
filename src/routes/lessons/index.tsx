@@ -1,50 +1,30 @@
-import { Accordion } from "@/components/Accordion";
-import { CURRICULUM } from "@/lib/curriculum";
+import { CURRICULUM, lessonToPath } from "@/lib/curriculum";
 import { haptics } from "@/lib/haptics";
 import { loadQuizProgress } from "@/lib/quizStorage";
 import { scoreCardBg } from "@/lib/scoreColors";
-import { storage } from "@/lib/storage";
-import type { Lesson } from "@/lib/types";
 import { useApp } from "@/store/useApp";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
-type QuizSummary = {
-  score: number;
-  total: number;
-  finished: boolean;
-  answered: number;
+const LEVEL_DESC: Record<string, string> = {
+  A1: "Beginner",
+  A2: "Elementary",
+  B1: "Intermediate",
+  B2: "Upper Intermediate",
 };
+
+type QuizSummary = { score: number; total: number; finished: boolean };
 
 function LessonsIndexRoute() {
   const navigate = useNavigate();
   const completed = useApp((s) => s.completed);
   const theme = useApp((s) => s.theme);
 
+  const levels = [...new Set(CURRICULUM.map((l) => l.level))];
+  const nextLesson =
+    CURRICULUM.find((l) => !completed.has(l.id)) ?? CURRICULUM[CURRICULUM.length - 1];
+
   const [quizSummaries, setQuizSummaries] = useState<Map<number, QuizSummary>>(new Map());
-  const [levelOpen, setLevelOpen] = useState<Record<string, boolean>>({});
-  const [unitOpen, setUnitOpen] = useState<Record<string, Array<number>>>({});
-
-  useEffect(() => {
-    storage.getJSON<Record<string, boolean>>("home-level-state").then((saved) => {
-      if (saved) setLevelOpen(saved);
-    });
-    storage.getJSON<Record<string, Array<number>>>("home-unit-state-multi").then((saved) => {
-      if (saved) setUnitOpen(saved);
-    });
-  }, []);
-
-  const toggleLevel = (level: string) => {
-    const next = { ...levelOpen, [level]: !(levelOpen[level] !== false) };
-    setLevelOpen(next);
-    void storage.setJSON("home-level-state", next);
-  };
-
-  const setUnitOpenFor = (level: string, indices: Array<number>) => {
-    const next = { ...unitOpen, [level]: indices };
-    setUnitOpen(next);
-    void storage.setJSON("home-unit-state-multi", next);
-  };
 
   useEffect(() => {
     void (async () => {
@@ -58,7 +38,6 @@ function LessonsIndexRoute() {
               score: saved.score,
               total: saved.questions.length,
               finished: saved.idx >= saved.questions.length,
-              answered: saved.answers.length,
             },
           ] as const;
         }),
@@ -67,99 +46,90 @@ function LessonsIndexRoute() {
     })();
   }, []);
 
-  const openLesson = (lesson: Lesson) => {
-    haptics.tap();
-    navigate({ to: "/lessons/$id", params: { id: String(lesson.id) } });
-  };
-
-  const levels = [...new Set(CURRICULUM.map((l) => l.level))];
-
-  const lessonGrid = (lessons: Array<Lesson>) => (
-    <div className="grid gap-4 md:grid-cols-2 pt-4">
-      {lessons.map((lesson) => {
-        const summary = quizSummaries.get(lesson.id);
-        return (
-          <button
-            type="button"
-            key={lesson.id}
-            onClick={() => openLesson(lesson)}
-            className="text-left p-5 border-2 bd-default transition-all hover:translate-x-[-2px] hover:translate-y-[-2px]"
-            style={
-              summary?.finished
-                ? {
-                    backgroundColor: scoreCardBg(
-                      Math.round((summary.score / summary.total) * 100),
-                      theme === "dark",
-                    ),
-                  }
-                : { backgroundColor: "var(--surface)" }
-            }
-          >
-            <div className="flex items-start justify-between mb-2">
-              <div className="text-xs font-mono uppercase tracking-wider tx-muted">
-                Unit {lesson.unit} · Lesson {lesson.lessonNum}
-              </div>
-              {summary?.finished ? (
-                <div className="font-mono font-bold text-sm tx-accent">
-                  {summary.score}/{summary.total}
-                </div>
-              ) : summary ? (
-                <div className="font-mono text-xs tx-muted">
-                  {summary.answered}/{summary.total} →
-                </div>
-              ) : null}
-            </div>
-            <div className="font-serif text-xl font-bold tx-text mb-1">{lesson.title}</div>
-            <div className="tx-muted text-sm">{lesson.titleDe}</div>
-            <div className="mt-3 flex items-center justify-between">
-              <div className="text-xs font-mono tx-muted">{lesson.vocab.length} vocab words</div>
-              {summary?.finished && (
-                <div className="text-xs font-mono tx-muted">
-                  {Math.round((summary.score / summary.total) * 100)}%
-                </div>
-              )}
-            </div>
-          </button>
-        );
-      })}
-    </div>
-  );
+  const allDone = CURRICULUM.every((l) => completed.has(l.id));
+  const nextSummary = quizSummaries.get(nextLesson.id);
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-4">
-      <div className="mb-10 space-y-12">
+      <div className="mb-10">
+        <div className="text-xs font-mono uppercase tracking-[0.3em] tx-muted mb-2">
+          {allDone ? "Alles fertig" : "Weiter"}
+        </div>
+        <button
+          type="button"
+          onClick={() => {
+            haptics.tap();
+            navigate({ to: "/lessons/$level/$unit/$lessonNum", params: lessonToPath(nextLesson) });
+          }}
+          className="w-full text-left p-6 border-2 bd-accent bg-accent-bg transition-all hover:translate-x-[-2px] hover:translate-y-[-2px]"
+        >
+          <div>
+            <div className="font-serif text-3xl font-black tx-text">{nextLesson.level}</div>
+            <div className="text-sm font-mono tracking-wider tx-muted mb-3 mt-0.5">
+              Unit {nextLesson.unit} · Lesson {nextLesson.lessonNum}
+            </div>
+          </div>
+          <div className="font-serif text-3xl font-black tx-text mb-1">{nextLesson.title}</div>
+          <div className="tx-muted mb-4">{nextLesson.titleDe}</div>
+          {nextSummary?.finished && (
+            <div
+              className="inline-block font-mono text-sm px-2 py-0.5"
+              style={{
+                backgroundColor: scoreCardBg(
+                  Math.round((nextSummary.score / nextSummary.total) * 100),
+                  theme === "dark",
+                ),
+              }}
+            >
+              {nextSummary.score}/{nextSummary.total} ·{" "}
+              {Math.round((nextSummary.score / nextSummary.total) * 100)}%
+            </div>
+          )}
+        </button>
+      </div>
+
+      <div className="text-xs font-mono uppercase tracking-[0.3em] tx-muted mb-3">Levels</div>
+      <div className="grid gap-4 md:grid-cols-2">
         {levels.map((level) => {
           const lessons = CURRICULUM.filter((l) => l.level === level);
+          const units = [...new Set(lessons.map((l) => l.unit))];
           const doneCount = lessons.filter((l) => completed.has(l.id)).length;
+          const allLevelDone = doneCount === lessons.length;
           return (
-            <Accordion
+            <button
+              type="button"
               key={level}
-              openIndex={levelOpen[level] !== false ? 0 : null}
-              onOpenChange={() => toggleLevel(level)}
-              items={[
-                {
-                  title: level,
-                  subtitle: `${doneCount} / ${lessons.length} done`,
-                  content: (
-                    <Accordion
-                      multi
-                      compact
-                      openIndices={unitOpen[level] ?? [0]}
-                      onOpenChange={(indices) => setUnitOpenFor(level, indices)}
-                      items={[...new Set(lessons.map((l) => l.unit))].map((unit) => {
-                        const unitLessons = lessons.filter((l) => l.unit === unit);
-                        const unitDone = unitLessons.filter((l) => completed.has(l.id)).length;
-                        return {
-                          title: `Unit ${unit}`,
-                          subtitle: `${unitDone} / ${unitLessons.length} done`,
-                          content: lessonGrid(unitLessons),
-                        };
-                      })}
-                    />
-                  ),
-                },
-              ]}
-            />
+              onClick={() => {
+                haptics.tap();
+                navigate({ to: "/lessons/$level", params: { level: level.toLowerCase() } });
+              }}
+              className="text-left p-5 border-2 bd-default bg-surface transition-all hover:translate-x-[-2px] hover:translate-y-[-2px]"
+            >
+              <div className="flex items-start justify-between mb-3">
+                <div>
+                  <div className="font-serif text-3xl font-black tx-text">{level}</div>
+                  <div className="text-xs font-mono tx-muted mt-0.5">{LEVEL_DESC[level] ?? ""}</div>
+                </div>
+                <div
+                  className={`font-mono text-sm font-bold ${allLevelDone ? "tx-accent" : "tx-muted"}`}
+                >
+                  {doneCount}/{lessons.length}
+                </div>
+              </div>
+              <div className="text-xs font-mono tx-muted">
+                {units.length} {units.length === 1 ? "unit" : "units"} · {lessons.length}{" "}
+                {lessons.length === 1 ? "lesson" : "lessons"}
+              </div>
+              <div className="mt-3 w-full h-1 bg-surface-solid">
+                <div
+                  className="h-full"
+                  style={{
+                    width: `${Math.round((doneCount / lessons.length) * 100)}%`,
+                    backgroundColor: "var(--accent-border)",
+                  }}
+                />
+              </div>
+            </button>
           );
         })}
       </div>

@@ -1,3 +1,4 @@
+import { lessonToPath } from "@/lib/curriculum";
 import { haptics } from "@/lib/haptics";
 import { loadQuizProgress } from "@/lib/quizStorage";
 import type { QuizMode } from "@/lib/types";
@@ -8,7 +9,7 @@ import { useEffect, useState } from "react";
 type QuizState = "none" | "progress" | "done";
 
 function LessonRoute() {
-  const { lesson } = useLoaderData({ from: "/lessons/$id" });
+  const { lesson } = useLoaderData({ from: "/lessons/$level/$unit/$lessonNum" });
   const navigate = useNavigate();
   const setActiveLesson = useApp((s) => s.setActiveLesson);
   const setQuizMode = useApp((s) => s.setQuizMode);
@@ -24,15 +25,22 @@ function LessonRoute() {
     total: number;
   } | null>(null);
 
+  const goBack = () => {
+    haptics.tap();
+    const { level, unit } = lessonToPath(lesson);
+    navigate({ to: "/lessons/$level/$unit", params: { level, unit } });
+  };
+
   useEffect(() => {
     const handler = (e: Event) => {
       e.preventDefault();
       haptics.tap();
-      navigate({ to: "/" });
+      const { level, unit } = lessonToPath(lesson);
+      navigate({ to: "/lessons/$level/$unit", params: { level, unit } });
     };
     window.addEventListener("appBackButton", handler);
     return () => window.removeEventListener("appBackButton", handler);
-  }, [navigate]);
+  }, [navigate, lesson]);
 
   useEffect(() => {
     let cancelled = false;
@@ -56,23 +64,16 @@ function LessonRoute() {
     setQuizMode(mode);
     haptics.tap();
     navigate({
-      to: "/lessons/$id/quiz",
-      params: { id: String(lesson.id) },
+      to: "/lessons/$level/$unit/$lessonNum/quiz",
+      params: lessonToPath(lesson),
       search: { mode },
     });
   };
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-4">
-      <button
-        type="button"
-        onClick={() => {
-          haptics.tap();
-          navigate({ to: "/" });
-        }}
-        className="text-sm font-mono tx-muted mb-6"
-      >
-        ← Back to lessons
+      <button type="button" onClick={goBack} className="text-sm font-mono tx-muted mb-6">
+        ← Unit {lesson.unit}
       </button>
 
       <div className="text-xs font-mono uppercase tracking-[0.3em] tx-muted mb-2">
@@ -198,6 +199,6 @@ function LessonRoute() {
   );
 }
 
-export const Route = createFileRoute("/lessons/$id/")({
+export const Route = createFileRoute("/lessons/$level/$unit/$lessonNum/")({
   component: LessonRoute,
 });

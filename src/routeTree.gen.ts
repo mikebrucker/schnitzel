@@ -17,9 +17,13 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProfileIndexRouteImport } from './routes/profile/index'
 import { Route as LessonsIndexRouteImport } from './routes/lessons/index'
 import { Route as ProfileSettingsRouteImport } from './routes/profile/settings'
-import { Route as LessonsIdRouteImport } from './routes/lessons/$id'
-import { Route as LessonsIdIndexRouteImport } from './routes/lessons/$id/index'
-import { Route as LessonsIdQuizRouteImport } from './routes/lessons/$id/quiz'
+import { Route as LessonsLevelRouteImport } from './routes/lessons/$level'
+import { Route as LessonsLevelIndexRouteImport } from './routes/lessons/$level/index'
+import { Route as LessonsLevelUnitRouteImport } from './routes/lessons/$level/$unit'
+import { Route as LessonsLevelUnitIndexRouteImport } from './routes/lessons/$level/$unit/index'
+import { Route as LessonsLevelUnitLessonNumRouteImport } from './routes/lessons/$level/$unit/$lessonNum'
+import { Route as LessonsLevelUnitLessonNumIndexRouteImport } from './routes/lessons/$level/$unit/$lessonNum/index'
+import { Route as LessonsLevelUnitLessonNumQuizRouteImport } from './routes/lessons/$level/$unit/$lessonNum/quiz'
 
 const ProfileRoute = ProfileRouteImport.update({
   id: '/profile',
@@ -61,21 +65,44 @@ const ProfileSettingsRoute = ProfileSettingsRouteImport.update({
   path: '/settings',
   getParentRoute: () => ProfileRoute,
 } as any)
-const LessonsIdRoute = LessonsIdRouteImport.update({
-  id: '/lessons/$id',
-  path: '/lessons/$id',
+const LessonsLevelRoute = LessonsLevelRouteImport.update({
+  id: '/lessons/$level',
+  path: '/lessons/$level',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LessonsIdIndexRoute = LessonsIdIndexRouteImport.update({
+const LessonsLevelIndexRoute = LessonsLevelIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => LessonsIdRoute,
+  getParentRoute: () => LessonsLevelRoute,
 } as any)
-const LessonsIdQuizRoute = LessonsIdQuizRouteImport.update({
-  id: '/quiz',
-  path: '/quiz',
-  getParentRoute: () => LessonsIdRoute,
+const LessonsLevelUnitRoute = LessonsLevelUnitRouteImport.update({
+  id: '/$unit',
+  path: '/$unit',
+  getParentRoute: () => LessonsLevelRoute,
 } as any)
+const LessonsLevelUnitIndexRoute = LessonsLevelUnitIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => LessonsLevelUnitRoute,
+} as any)
+const LessonsLevelUnitLessonNumRoute =
+  LessonsLevelUnitLessonNumRouteImport.update({
+    id: '/$lessonNum',
+    path: '/$lessonNum',
+    getParentRoute: () => LessonsLevelUnitRoute,
+  } as any)
+const LessonsLevelUnitLessonNumIndexRoute =
+  LessonsLevelUnitLessonNumIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => LessonsLevelUnitLessonNumRoute,
+  } as any)
+const LessonsLevelUnitLessonNumQuizRoute =
+  LessonsLevelUnitLessonNumQuizRouteImport.update({
+    id: '/quiz',
+    path: '/quiz',
+    getParentRoute: () => LessonsLevelUnitLessonNumRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -83,12 +110,16 @@ export interface FileRoutesByFullPath {
   '/hobbies': typeof HobbiesRoute
   '/phrasebook': typeof PhrasebookRoute
   '/profile': typeof ProfileRouteWithChildren
-  '/lessons/$id': typeof LessonsIdRouteWithChildren
+  '/lessons/$level': typeof LessonsLevelRouteWithChildren
   '/profile/settings': typeof ProfileSettingsRoute
   '/lessons/': typeof LessonsIndexRoute
   '/profile/': typeof ProfileIndexRoute
-  '/lessons/$id/quiz': typeof LessonsIdQuizRoute
-  '/lessons/$id/': typeof LessonsIdIndexRoute
+  '/lessons/$level/$unit': typeof LessonsLevelUnitRouteWithChildren
+  '/lessons/$level/': typeof LessonsLevelIndexRoute
+  '/lessons/$level/$unit/$lessonNum': typeof LessonsLevelUnitLessonNumRouteWithChildren
+  '/lessons/$level/$unit/': typeof LessonsLevelUnitIndexRoute
+  '/lessons/$level/$unit/$lessonNum/quiz': typeof LessonsLevelUnitLessonNumQuizRoute
+  '/lessons/$level/$unit/$lessonNum/': typeof LessonsLevelUnitLessonNumIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -98,8 +129,10 @@ export interface FileRoutesByTo {
   '/profile/settings': typeof ProfileSettingsRoute
   '/lessons': typeof LessonsIndexRoute
   '/profile': typeof ProfileIndexRoute
-  '/lessons/$id/quiz': typeof LessonsIdQuizRoute
-  '/lessons/$id': typeof LessonsIdIndexRoute
+  '/lessons/$level': typeof LessonsLevelIndexRoute
+  '/lessons/$level/$unit': typeof LessonsLevelUnitIndexRoute
+  '/lessons/$level/$unit/$lessonNum/quiz': typeof LessonsLevelUnitLessonNumQuizRoute
+  '/lessons/$level/$unit/$lessonNum': typeof LessonsLevelUnitLessonNumIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -108,12 +141,16 @@ export interface FileRoutesById {
   '/hobbies': typeof HobbiesRoute
   '/phrasebook': typeof PhrasebookRoute
   '/profile': typeof ProfileRouteWithChildren
-  '/lessons/$id': typeof LessonsIdRouteWithChildren
+  '/lessons/$level': typeof LessonsLevelRouteWithChildren
   '/profile/settings': typeof ProfileSettingsRoute
   '/lessons/': typeof LessonsIndexRoute
   '/profile/': typeof ProfileIndexRoute
-  '/lessons/$id/quiz': typeof LessonsIdQuizRoute
-  '/lessons/$id/': typeof LessonsIdIndexRoute
+  '/lessons/$level/$unit': typeof LessonsLevelUnitRouteWithChildren
+  '/lessons/$level/': typeof LessonsLevelIndexRoute
+  '/lessons/$level/$unit/$lessonNum': typeof LessonsLevelUnitLessonNumRouteWithChildren
+  '/lessons/$level/$unit/': typeof LessonsLevelUnitIndexRoute
+  '/lessons/$level/$unit/$lessonNum/quiz': typeof LessonsLevelUnitLessonNumQuizRoute
+  '/lessons/$level/$unit/$lessonNum/': typeof LessonsLevelUnitLessonNumIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -123,12 +160,16 @@ export interface FileRouteTypes {
     | '/hobbies'
     | '/phrasebook'
     | '/profile'
-    | '/lessons/$id'
+    | '/lessons/$level'
     | '/profile/settings'
     | '/lessons/'
     | '/profile/'
-    | '/lessons/$id/quiz'
-    | '/lessons/$id/'
+    | '/lessons/$level/$unit'
+    | '/lessons/$level/'
+    | '/lessons/$level/$unit/$lessonNum'
+    | '/lessons/$level/$unit/'
+    | '/lessons/$level/$unit/$lessonNum/quiz'
+    | '/lessons/$level/$unit/$lessonNum/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -138,8 +179,10 @@ export interface FileRouteTypes {
     | '/profile/settings'
     | '/lessons'
     | '/profile'
-    | '/lessons/$id/quiz'
-    | '/lessons/$id'
+    | '/lessons/$level'
+    | '/lessons/$level/$unit'
+    | '/lessons/$level/$unit/$lessonNum/quiz'
+    | '/lessons/$level/$unit/$lessonNum'
   id:
     | '__root__'
     | '/'
@@ -147,12 +190,16 @@ export interface FileRouteTypes {
     | '/hobbies'
     | '/phrasebook'
     | '/profile'
-    | '/lessons/$id'
+    | '/lessons/$level'
     | '/profile/settings'
     | '/lessons/'
     | '/profile/'
-    | '/lessons/$id/quiz'
-    | '/lessons/$id/'
+    | '/lessons/$level/$unit'
+    | '/lessons/$level/'
+    | '/lessons/$level/$unit/$lessonNum'
+    | '/lessons/$level/$unit/'
+    | '/lessons/$level/$unit/$lessonNum/quiz'
+    | '/lessons/$level/$unit/$lessonNum/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -161,7 +208,7 @@ export interface RootRouteChildren {
   HobbiesRoute: typeof HobbiesRoute
   PhrasebookRoute: typeof PhrasebookRoute
   ProfileRoute: typeof ProfileRouteWithChildren
-  LessonsIdRoute: typeof LessonsIdRouteWithChildren
+  LessonsLevelRoute: typeof LessonsLevelRouteWithChildren
   LessonsIndexRoute: typeof LessonsIndexRoute
 }
 
@@ -223,26 +270,54 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProfileSettingsRouteImport
       parentRoute: typeof ProfileRoute
     }
-    '/lessons/$id': {
-      id: '/lessons/$id'
-      path: '/lessons/$id'
-      fullPath: '/lessons/$id'
-      preLoaderRoute: typeof LessonsIdRouteImport
+    '/lessons/$level': {
+      id: '/lessons/$level'
+      path: '/lessons/$level'
+      fullPath: '/lessons/$level'
+      preLoaderRoute: typeof LessonsLevelRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/lessons/$id/': {
-      id: '/lessons/$id/'
+    '/lessons/$level/': {
+      id: '/lessons/$level/'
       path: '/'
-      fullPath: '/lessons/$id/'
-      preLoaderRoute: typeof LessonsIdIndexRouteImport
-      parentRoute: typeof LessonsIdRoute
+      fullPath: '/lessons/$level/'
+      preLoaderRoute: typeof LessonsLevelIndexRouteImport
+      parentRoute: typeof LessonsLevelRoute
     }
-    '/lessons/$id/quiz': {
-      id: '/lessons/$id/quiz'
+    '/lessons/$level/$unit': {
+      id: '/lessons/$level/$unit'
+      path: '/$unit'
+      fullPath: '/lessons/$level/$unit'
+      preLoaderRoute: typeof LessonsLevelUnitRouteImport
+      parentRoute: typeof LessonsLevelRoute
+    }
+    '/lessons/$level/$unit/': {
+      id: '/lessons/$level/$unit/'
+      path: '/'
+      fullPath: '/lessons/$level/$unit/'
+      preLoaderRoute: typeof LessonsLevelUnitIndexRouteImport
+      parentRoute: typeof LessonsLevelUnitRoute
+    }
+    '/lessons/$level/$unit/$lessonNum': {
+      id: '/lessons/$level/$unit/$lessonNum'
+      path: '/$lessonNum'
+      fullPath: '/lessons/$level/$unit/$lessonNum'
+      preLoaderRoute: typeof LessonsLevelUnitLessonNumRouteImport
+      parentRoute: typeof LessonsLevelUnitRoute
+    }
+    '/lessons/$level/$unit/$lessonNum/': {
+      id: '/lessons/$level/$unit/$lessonNum/'
+      path: '/'
+      fullPath: '/lessons/$level/$unit/$lessonNum/'
+      preLoaderRoute: typeof LessonsLevelUnitLessonNumIndexRouteImport
+      parentRoute: typeof LessonsLevelUnitLessonNumRoute
+    }
+    '/lessons/$level/$unit/$lessonNum/quiz': {
+      id: '/lessons/$level/$unit/$lessonNum/quiz'
       path: '/quiz'
-      fullPath: '/lessons/$id/quiz'
-      preLoaderRoute: typeof LessonsIdQuizRouteImport
-      parentRoute: typeof LessonsIdRoute
+      fullPath: '/lessons/$level/$unit/$lessonNum/quiz'
+      preLoaderRoute: typeof LessonsLevelUnitLessonNumQuizRouteImport
+      parentRoute: typeof LessonsLevelUnitLessonNumRoute
     }
   }
 }
@@ -260,18 +335,47 @@ const ProfileRouteChildren: ProfileRouteChildren = {
 const ProfileRouteWithChildren =
   ProfileRoute._addFileChildren(ProfileRouteChildren)
 
-interface LessonsIdRouteChildren {
-  LessonsIdQuizRoute: typeof LessonsIdQuizRoute
-  LessonsIdIndexRoute: typeof LessonsIdIndexRoute
+interface LessonsLevelUnitLessonNumRouteChildren {
+  LessonsLevelUnitLessonNumQuizRoute: typeof LessonsLevelUnitLessonNumQuizRoute
+  LessonsLevelUnitLessonNumIndexRoute: typeof LessonsLevelUnitLessonNumIndexRoute
 }
 
-const LessonsIdRouteChildren: LessonsIdRouteChildren = {
-  LessonsIdQuizRoute: LessonsIdQuizRoute,
-  LessonsIdIndexRoute: LessonsIdIndexRoute,
+const LessonsLevelUnitLessonNumRouteChildren: LessonsLevelUnitLessonNumRouteChildren =
+  {
+    LessonsLevelUnitLessonNumQuizRoute: LessonsLevelUnitLessonNumQuizRoute,
+    LessonsLevelUnitLessonNumIndexRoute: LessonsLevelUnitLessonNumIndexRoute,
+  }
+
+const LessonsLevelUnitLessonNumRouteWithChildren =
+  LessonsLevelUnitLessonNumRoute._addFileChildren(
+    LessonsLevelUnitLessonNumRouteChildren,
+  )
+
+interface LessonsLevelUnitRouteChildren {
+  LessonsLevelUnitLessonNumRoute: typeof LessonsLevelUnitLessonNumRouteWithChildren
+  LessonsLevelUnitIndexRoute: typeof LessonsLevelUnitIndexRoute
 }
 
-const LessonsIdRouteWithChildren = LessonsIdRoute._addFileChildren(
-  LessonsIdRouteChildren,
+const LessonsLevelUnitRouteChildren: LessonsLevelUnitRouteChildren = {
+  LessonsLevelUnitLessonNumRoute: LessonsLevelUnitLessonNumRouteWithChildren,
+  LessonsLevelUnitIndexRoute: LessonsLevelUnitIndexRoute,
+}
+
+const LessonsLevelUnitRouteWithChildren =
+  LessonsLevelUnitRoute._addFileChildren(LessonsLevelUnitRouteChildren)
+
+interface LessonsLevelRouteChildren {
+  LessonsLevelUnitRoute: typeof LessonsLevelUnitRouteWithChildren
+  LessonsLevelIndexRoute: typeof LessonsLevelIndexRoute
+}
+
+const LessonsLevelRouteChildren: LessonsLevelRouteChildren = {
+  LessonsLevelUnitRoute: LessonsLevelUnitRouteWithChildren,
+  LessonsLevelIndexRoute: LessonsLevelIndexRoute,
+}
+
+const LessonsLevelRouteWithChildren = LessonsLevelRoute._addFileChildren(
+  LessonsLevelRouteChildren,
 )
 
 const rootRouteChildren: RootRouteChildren = {
@@ -280,7 +384,7 @@ const rootRouteChildren: RootRouteChildren = {
   HobbiesRoute: HobbiesRoute,
   PhrasebookRoute: PhrasebookRoute,
   ProfileRoute: ProfileRouteWithChildren,
-  LessonsIdRoute: LessonsIdRouteWithChildren,
+  LessonsLevelRoute: LessonsLevelRouteWithChildren,
   LessonsIndexRoute: LessonsIndexRoute,
 }
 export const routeTree = rootRouteImport

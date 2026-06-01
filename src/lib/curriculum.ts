@@ -19,3 +19,11 @@ export function getQuiz(lessonId: number): Array<QuizQuestion> {
 export function getLesson(id: number): Lesson | undefined {
   return CURRICULUM.find((l) => l.id === id);
 }
+
+export function lessonToPath(lesson: Lesson): { level: string; unit: string; lessonNum: string } {
+  return {
+    level: lesson.level.toLowerCase(),
+    unit: String(lesson.unit),
+    lessonNum: String(lesson.lessonNum),
+  };
+}

@@ -65,10 +65,7 @@ export function Accordion(props: Props) {
       {items.map((item, i) => {
         const open = isOpen(i);
         return (
-          <div
-            key={item.title}
-            className={`bd-default ${!compact || i !== items.length - 1 ? "border-b" : ""}`}
-          >
+          <div key={item.title}>
             <button
               type="button"
               onClick={() => toggle(i)}
@@ -109,9 +106,7 @@ export function Accordion(props: Props) {
               style={{ gridTemplateRows: open ? "1fr" : "0fr" }}
             >
               <div className="overflow-hidden">
-                <div className="pb-5 pt-1 tx-body text-sm leading-relaxed border-t bd-default">
-                  {item.content}
-                </div>
+                <div className="pt-1 tx-body text-sm leading-relaxed">{item.content}</div>
               </div>
             </div>
           </div>
