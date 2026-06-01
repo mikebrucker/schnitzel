@@ -10,6 +10,7 @@ type AppState = {
 
   // Persisted state
   theme: Theme;
+  defaultTab: string;
   completed: Set<number>;
   profile: Profile;
 
@@ -20,6 +21,7 @@ type AppState = {
   setActiveLesson: (lesson: Lesson | null) => void;
   setQuizMode: (mode: QuizMode) => void;
   setTheme: (theme: Theme) => void;
+  setDefaultTab: (tab: string) => void;
   markLessonComplete: (id: number) => void;
   unmarkLessonComplete: (id: number) => void;
   setProfile: (profile: Profile) => void;
@@ -37,12 +39,18 @@ export const useApp = create<AppState>((set, get) => ({
   activeLesson: null,
   quizMode: "normal",
   theme: "dark",
+  defaultTab: "/lessons",
   completed: new Set<number>(),
   profile: DEFAULT_PROFILE,
   hydrated: false,
 
   setActiveLesson: (activeLesson) => set({ activeLesson }),
   setQuizMode: (quizMode) => set({ quizMode }),
+
+  setDefaultTab: (tab) => {
+    set({ defaultTab: tab });
+    storage.set("default-tab", tab);
+  },
 
   setTheme: (theme) => {
     set({ theme });
@@ -80,16 +88,18 @@ export const useApp = create<AppState>((set, get) => ({
   },
 
   hydrate: async () => {
-    const [themeRaw, completedRaw, profileRaw] = await Promise.all([
+    const [themeRaw, completedRaw, profileRaw, defaultTabRaw] = await Promise.all([
       storage.get("theme"),
       storage.getJSON<Array<number>>("completed-lessons"),
       storage.getJSON<Profile>("profile"),
+      storage.get("default-tab"),
     ]);
 
     const theme: Theme = themeRaw === "light" || themeRaw === "dark" ? themeRaw : "dark";
 
     set({
       theme,
+      defaultTab: defaultTabRaw ?? "/lessons",
       completed: new Set(completedRaw ?? []),
       profile: profileRaw ?? DEFAULT_PROFILE,
       hydrated: true,

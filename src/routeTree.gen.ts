@@ -13,6 +13,7 @@ import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as DialectRouteImport } from './routes/dialect'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as LessonsIndexRouteImport } from './routes/lessons.index'
 import { Route as LessonsIdRouteImport } from './routes/lessons.$id'
 import { Route as LessonsIdIndexRouteImport } from './routes/lessons.$id.index'
 import { Route as LessonsIdQuizRouteImport } from './routes/lessons.$id.quiz'
@@ -37,6 +38,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LessonsIndexRoute = LessonsIndexRouteImport.update({
+  id: '/lessons/',
+  path: '/lessons/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LessonsIdRoute = LessonsIdRouteImport.update({
   id: '/lessons/$id',
   path: '/lessons/$id',
@@ -59,6 +65,7 @@ export interface FileRoutesByFullPath {
   '/profile': typeof ProfileRoute
   '/settings': typeof SettingsRoute
   '/lessons/$id': typeof LessonsIdRouteWithChildren
+  '/lessons/': typeof LessonsIndexRoute
   '/lessons/$id/quiz': typeof LessonsIdQuizRoute
   '/lessons/$id/': typeof LessonsIdIndexRoute
 }
@@ -67,6 +74,7 @@ export interface FileRoutesByTo {
   '/dialect': typeof DialectRoute
   '/profile': typeof ProfileRoute
   '/settings': typeof SettingsRoute
+  '/lessons': typeof LessonsIndexRoute
   '/lessons/$id/quiz': typeof LessonsIdQuizRoute
   '/lessons/$id': typeof LessonsIdIndexRoute
 }
@@ -77,6 +85,7 @@ export interface FileRoutesById {
   '/profile': typeof ProfileRoute
   '/settings': typeof SettingsRoute
   '/lessons/$id': typeof LessonsIdRouteWithChildren
+  '/lessons/': typeof LessonsIndexRoute
   '/lessons/$id/quiz': typeof LessonsIdQuizRoute
   '/lessons/$id/': typeof LessonsIdIndexRoute
 }
@@ -88,6 +97,7 @@ export interface FileRouteTypes {
     | '/profile'
     | '/settings'
     | '/lessons/$id'
+    | '/lessons/'
     | '/lessons/$id/quiz'
     | '/lessons/$id/'
   fileRoutesByTo: FileRoutesByTo
@@ -96,6 +106,7 @@ export interface FileRouteTypes {
     | '/dialect'
     | '/profile'
     | '/settings'
+    | '/lessons'
     | '/lessons/$id/quiz'
     | '/lessons/$id'
   id:
@@ -105,6 +116,7 @@ export interface FileRouteTypes {
     | '/profile'
     | '/settings'
     | '/lessons/$id'
+    | '/lessons/'
     | '/lessons/$id/quiz'
     | '/lessons/$id/'
   fileRoutesById: FileRoutesById
@@ -115,6 +127,7 @@ export interface RootRouteChildren {
   ProfileRoute: typeof ProfileRoute
   SettingsRoute: typeof SettingsRoute
   LessonsIdRoute: typeof LessonsIdRouteWithChildren
+  LessonsIndexRoute: typeof LessonsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -145,6 +158,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lessons/': {
+      id: '/lessons/'
+      path: '/lessons'
+      fullPath: '/lessons/'
+      preLoaderRoute: typeof LessonsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lessons/$id': {
@@ -191,6 +211,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProfileRoute: ProfileRoute,
   SettingsRoute: SettingsRoute,
   LessonsIdRoute: LessonsIdRouteWithChildren,
+  LessonsIndexRoute: LessonsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
