@@ -37,7 +37,7 @@ export function Results({
 
   if (reviewing) {
     return (
-      <div className="max-w-2xl mx-auto px-6 py-10">
+      <div className="max-w-4xl mx-auto px-6 py-10">
         <button
           type="button"
           onClick={() => setReviewing(false)}
@@ -86,7 +86,7 @@ export function Results({
   }
 
   return (
-    <div className="max-w-2xl mx-auto px-6 py-16 text-center">
+    <div className="max-w-4xl mx-auto px-6 py-16 text-center">
       <div className="text-xs font-mono uppercase tracking-[0.3em] tx-muted mb-3">
         {isReattempt ? "Practice fertig" : "Quiz fertig"}
       </div>

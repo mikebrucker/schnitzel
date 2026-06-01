@@ -168,7 +168,7 @@ function QuizInner({ lesson, mode }: { lesson: Lesson; mode: QuizMode }) {
 
   if (!questions || !activeQuestions) {
     return (
-      <div className="max-w-2xl mx-auto px-6 py-20 text-center">
+      <div className="max-w-4xl mx-auto px-6 py-20 text-center">
         <div className="inline-block animate-pulse font-serif text-2xl tx-body">Lädt…</div>
       </div>
     );
@@ -207,7 +207,7 @@ function QuizInner({ lesson, mode }: { lesson: Lesson; mode: QuizMode }) {
   const correct = picked === q.correct;
 
   return (
-    <div className="max-w-2xl mx-auto px-6 py-10">
+    <div className="max-w-4xl mx-auto px-6 py-10">
       <button
         type="button"
         onClick={() => handleBackRef.current()}

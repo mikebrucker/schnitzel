@@ -52,12 +52,12 @@ function SettingsRoute() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto px-6 py-10">
+    <div className="max-w-4xl mx-auto px-6 py-10">
       <button
         type="button"
         onClick={() => {
           haptics.tap();
-          navigate({ to: "/" });
+          navigate({ to: "/profile" });
         }}
         className="text-sm font-mono mb-6 tx-muted"
       >
@@ -219,6 +219,6 @@ function SettingsRoute() {
   );
 }
 
-export const Route = createFileRoute("/settings")({
+export const Route = createFileRoute("/profile/settings")({
   component: SettingsRoute,
 });

@@ -3,10 +3,16 @@ import { storage } from "@/lib/storage";
 import type { Lesson, Profile, QuizMode, Theme } from "@/lib/types";
 import { create } from "zustand";
 
+const TAB_ROOTS = ["/lessons", "/dictionary", "/phrasebook", "/hobbies", "/profile"] as const;
+type TabRoot = (typeof TAB_ROOTS)[number];
+
 type AppState = {
   // URL-mirrored state (set by route components)
   activeLesson: Lesson | null;
   quizMode: QuizMode;
+
+  // Per-tab navigation memory (in-memory only, not persisted)
+  tabPaths: Record<TabRoot, string>;
 
   // Persisted state
   theme: Theme;
@@ -20,6 +26,7 @@ type AppState = {
   // Actions
   setActiveLesson: (lesson: Lesson | null) => void;
   setQuizMode: (mode: QuizMode) => void;
+  setTabPath: (root: TabRoot, path: string) => void;
   setTheme: (theme: Theme) => void;
   setDefaultTab: (tab: string) => void;
   markLessonComplete: (id: number) => void;
@@ -35,9 +42,21 @@ const DEFAULT_PROFILE: Profile = {
   level: "A1 — Beginner",
 };
 
+const DEFAULT_TAB_PATHS: Record<TabRoot, string> = {
+  "/lessons": "/lessons",
+  "/dictionary": "/dictionary",
+  "/phrasebook": "/phrasebook",
+  "/hobbies": "/hobbies",
+  "/profile": "/profile",
+};
+
+export { TAB_ROOTS };
+export type { TabRoot };
+
 export const useApp = create<AppState>((set, get) => ({
   activeLesson: null,
   quizMode: "normal",
+  tabPaths: { ...DEFAULT_TAB_PATHS },
   theme: "dark",
   defaultTab: "/lessons",
   completed: new Set<number>(),
@@ -46,6 +65,7 @@ export const useApp = create<AppState>((set, get) => ({
 
   setActiveLesson: (activeLesson) => set({ activeLesson }),
   setQuizMode: (quizMode) => set({ quizMode }),
+  setTabPath: (root, path) => set((s) => ({ tabPaths: { ...s.tabPaths, [root]: path } })),
 
   setDefaultTab: (tab) => {
     set({ defaultTab: tab });

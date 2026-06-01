@@ -1,4 +1,5 @@
 import { Header } from "@/components/Header";
+import { TabBar } from "@/components/TabBar";
 import { useApp } from "@/store/useApp";
 import { Outlet, createRootRoute } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
@@ -23,12 +24,10 @@ function RootLayout() {
   return (
     <div className="min-h-screen bg-app dot-pattern flex flex-col">
       <Header />
-      <main className="flex-1">
+      <main className="flex-1 pb-16">
         <Outlet />
       </main>
-      <footer className="border-t-2 bd-default py-6 text-center text-xs font-mono tx-muted">
-        Made for Bruck · Tirol, AT · 2026
-      </footer>
+      <TabBar />
       <TanStackRouterDevtools position="bottom-right" />
     </div>
   );

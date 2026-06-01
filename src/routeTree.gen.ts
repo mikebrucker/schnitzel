@@ -9,28 +9,36 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as ProfileRouteImport } from './routes/profile'
-import { Route as DialectRouteImport } from './routes/dialect'
+import { Route as PhrasebookRouteImport } from './routes/phrasebook'
+import { Route as HobbiesRouteImport } from './routes/hobbies'
+import { Route as DictionaryRouteImport } from './routes/dictionary'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProfileIndexRouteImport } from './routes/profile/index'
 import { Route as LessonsIndexRouteImport } from './routes/lessons.index'
+import { Route as ProfileSettingsRouteImport } from './routes/profile/settings'
 import { Route as LessonsIdRouteImport } from './routes/lessons.$id'
 import { Route as LessonsIdIndexRouteImport } from './routes/lessons.$id.index'
 import { Route as LessonsIdQuizRouteImport } from './routes/lessons.$id.quiz'
 
-const SettingsRoute = SettingsRouteImport.update({
-  id: '/settings',
-  path: '/settings',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ProfileRoute = ProfileRouteImport.update({
   id: '/profile',
   path: '/profile',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DialectRoute = DialectRouteImport.update({
-  id: '/dialect',
-  path: '/dialect',
+const PhrasebookRoute = PhrasebookRouteImport.update({
+  id: '/phrasebook',
+  path: '/phrasebook',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HobbiesRoute = HobbiesRouteImport.update({
+  id: '/hobbies',
+  path: '/hobbies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DictionaryRoute = DictionaryRouteImport.update({
+  id: '/dictionary',
+  path: '/dictionary',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -38,10 +46,20 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProfileIndexRoute = ProfileIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ProfileRoute,
+} as any)
 const LessonsIndexRoute = LessonsIndexRouteImport.update({
   id: '/lessons/',
   path: '/lessons/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileSettingsRoute = ProfileSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => ProfileRoute,
 } as any)
 const LessonsIdRoute = LessonsIdRouteImport.update({
   id: '/lessons/$id',
@@ -61,31 +79,39 @@ const LessonsIdQuizRoute = LessonsIdQuizRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/dialect': typeof DialectRoute
-  '/profile': typeof ProfileRoute
-  '/settings': typeof SettingsRoute
+  '/dictionary': typeof DictionaryRoute
+  '/hobbies': typeof HobbiesRoute
+  '/phrasebook': typeof PhrasebookRoute
+  '/profile': typeof ProfileRouteWithChildren
   '/lessons/$id': typeof LessonsIdRouteWithChildren
+  '/profile/settings': typeof ProfileSettingsRoute
   '/lessons/': typeof LessonsIndexRoute
+  '/profile/': typeof ProfileIndexRoute
   '/lessons/$id/quiz': typeof LessonsIdQuizRoute
   '/lessons/$id/': typeof LessonsIdIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/dialect': typeof DialectRoute
-  '/profile': typeof ProfileRoute
-  '/settings': typeof SettingsRoute
+  '/dictionary': typeof DictionaryRoute
+  '/hobbies': typeof HobbiesRoute
+  '/phrasebook': typeof PhrasebookRoute
+  '/profile/settings': typeof ProfileSettingsRoute
   '/lessons': typeof LessonsIndexRoute
+  '/profile': typeof ProfileIndexRoute
   '/lessons/$id/quiz': typeof LessonsIdQuizRoute
   '/lessons/$id': typeof LessonsIdIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/dialect': typeof DialectRoute
-  '/profile': typeof ProfileRoute
-  '/settings': typeof SettingsRoute
+  '/dictionary': typeof DictionaryRoute
+  '/hobbies': typeof HobbiesRoute
+  '/phrasebook': typeof PhrasebookRoute
+  '/profile': typeof ProfileRouteWithChildren
   '/lessons/$id': typeof LessonsIdRouteWithChildren
+  '/profile/settings': typeof ProfileSettingsRoute
   '/lessons/': typeof LessonsIndexRoute
+  '/profile/': typeof ProfileIndexRoute
   '/lessons/$id/quiz': typeof LessonsIdQuizRoute
   '/lessons/$id/': typeof LessonsIdIndexRoute
 }
@@ -93,52 +119,54 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/dialect'
+    | '/dictionary'
+    | '/hobbies'
+    | '/phrasebook'
     | '/profile'
-    | '/settings'
     | '/lessons/$id'
+    | '/profile/settings'
     | '/lessons/'
+    | '/profile/'
     | '/lessons/$id/quiz'
     | '/lessons/$id/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/dialect'
-    | '/profile'
-    | '/settings'
+    | '/dictionary'
+    | '/hobbies'
+    | '/phrasebook'
+    | '/profile/settings'
     | '/lessons'
+    | '/profile'
     | '/lessons/$id/quiz'
     | '/lessons/$id'
   id:
     | '__root__'
     | '/'
-    | '/dialect'
+    | '/dictionary'
+    | '/hobbies'
+    | '/phrasebook'
     | '/profile'
-    | '/settings'
     | '/lessons/$id'
+    | '/profile/settings'
     | '/lessons/'
+    | '/profile/'
     | '/lessons/$id/quiz'
     | '/lessons/$id/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  DialectRoute: typeof DialectRoute
-  ProfileRoute: typeof ProfileRoute
-  SettingsRoute: typeof SettingsRoute
+  DictionaryRoute: typeof DictionaryRoute
+  HobbiesRoute: typeof HobbiesRoute
+  PhrasebookRoute: typeof PhrasebookRoute
+  ProfileRoute: typeof ProfileRouteWithChildren
   LessonsIdRoute: typeof LessonsIdRouteWithChildren
   LessonsIndexRoute: typeof LessonsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/settings': {
-      id: '/settings'
-      path: '/settings'
-      fullPath: '/settings'
-      preLoaderRoute: typeof SettingsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/profile': {
       id: '/profile'
       path: '/profile'
@@ -146,11 +174,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProfileRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/dialect': {
-      id: '/dialect'
-      path: '/dialect'
-      fullPath: '/dialect'
-      preLoaderRoute: typeof DialectRouteImport
+    '/phrasebook': {
+      id: '/phrasebook'
+      path: '/phrasebook'
+      fullPath: '/phrasebook'
+      preLoaderRoute: typeof PhrasebookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hobbies': {
+      id: '/hobbies'
+      path: '/hobbies'
+      fullPath: '/hobbies'
+      preLoaderRoute: typeof HobbiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dictionary': {
+      id: '/dictionary'
+      path: '/dictionary'
+      fullPath: '/dictionary'
+      preLoaderRoute: typeof DictionaryRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -160,12 +202,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/profile/': {
+      id: '/profile/'
+      path: '/'
+      fullPath: '/profile/'
+      preLoaderRoute: typeof ProfileIndexRouteImport
+      parentRoute: typeof ProfileRoute
+    }
     '/lessons/': {
       id: '/lessons/'
       path: '/lessons'
       fullPath: '/lessons/'
       preLoaderRoute: typeof LessonsIndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/profile/settings': {
+      id: '/profile/settings'
+      path: '/settings'
+      fullPath: '/profile/settings'
+      preLoaderRoute: typeof ProfileSettingsRouteImport
+      parentRoute: typeof ProfileRoute
     }
     '/lessons/$id': {
       id: '/lessons/$id'
@@ -191,6 +247,19 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface ProfileRouteChildren {
+  ProfileSettingsRoute: typeof ProfileSettingsRoute
+  ProfileIndexRoute: typeof ProfileIndexRoute
+}
+
+const ProfileRouteChildren: ProfileRouteChildren = {
+  ProfileSettingsRoute: ProfileSettingsRoute,
+  ProfileIndexRoute: ProfileIndexRoute,
+}
+
+const ProfileRouteWithChildren =
+  ProfileRoute._addFileChildren(ProfileRouteChildren)
+
 interface LessonsIdRouteChildren {
   LessonsIdQuizRoute: typeof LessonsIdQuizRoute
   LessonsIdIndexRoute: typeof LessonsIdIndexRoute
@@ -207,9 +276,10 @@ const LessonsIdRouteWithChildren = LessonsIdRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  DialectRoute: DialectRoute,
-  ProfileRoute: ProfileRoute,
-  SettingsRoute: SettingsRoute,
+  DictionaryRoute: DictionaryRoute,
+  HobbiesRoute: HobbiesRoute,
+  PhrasebookRoute: PhrasebookRoute,
+  ProfileRoute: ProfileRouteWithChildren,
   LessonsIdRoute: LessonsIdRouteWithChildren,
   LessonsIndexRoute: LessonsIndexRoute,
 }

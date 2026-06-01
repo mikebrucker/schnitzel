@@ -127,6 +127,7 @@ body {
   background-color: var(--surface-solid);
 }
 
+/* avoids collision with tailwind's .bg-accent */
 .bg-accent-bg {
   background-color: var(--accent-bg);
 }

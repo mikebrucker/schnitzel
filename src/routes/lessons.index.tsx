@@ -126,7 +126,7 @@ function LessonsIndexRoute() {
   );
 
   return (
-    <div className="max-w-5xl mx-auto px-6 py-10">
+    <div className="max-w-4xl mx-auto px-6 py-10">
       <div className="mb-10 space-y-12">
         {levels.map((level) => {
           const lessons = CURRICULUM.filter((l) => l.level === level);
@@ -177,7 +177,7 @@ function LessonsIndexRoute() {
             type="button"
             onClick={() => {
               haptics.tap();
-              navigate({ to: "/dialect" });
+              navigate({ to: "/dictionary" });
             }}
             className="bg-btn tx-btn px-5 py-2 font-bold border-2 bd-btn hover:opacity-80 transition-opacity"
           >
