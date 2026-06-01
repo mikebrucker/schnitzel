@@ -1,3 +1,5 @@
+import { Header } from "@/components/Header";
+import { ChevronLeftIcon } from "@/components/icons";
 import { CURRICULUM, lessonToPath } from "@/lib/curriculum";
 import { haptics } from "@/lib/haptics";
 import { loadQuizProgress } from "@/lib/quizStorage";
@@ -48,88 +50,84 @@ function LevelIndexRoute() {
   }, [level]);
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-4">
-      <button
-        type="button"
-        onClick={() => {
-          haptics.tap();
-          navigate({ to: "/lessons" });
+    <>
+      <Header
+        title={level}
+        subtitle={`${LEVEL_DESC[level] ?? level} · ${doneCount}/${lessons.length}`}
+        secondaryAction={{
+          label: "Lektionen",
+          icon: <ChevronLeftIcon size={16} />,
+          onClick: () => {
+            haptics.tap();
+            navigate({ to: "/lessons" });
+          },
         }}
-        className="text-sm font-mono tx-muted mb-6"
-      >
-        ← Lessons
-      </button>
-
-      <div className="text-xs font-mono uppercase tracking-[0.3em] tx-muted mb-1">
-        {LEVEL_DESC[level] ?? level}
-      </div>
-      <div className="flex items-center justify-between mb-8">
-        <h1 className="font-serif text-4xl font-black tx-text">{level}</h1>
-        <span className="text-xs font-mono tx-muted">
-          {doneCount} / {lessons.length} done
-        </span>
-      </div>
-
-      {nextLesson ? (
-        <div className="mb-8">
-          <div className="text-xs font-mono uppercase tracking-[0.3em] tx-muted mb-2">Weiter</div>
-          <button
-            type="button"
-            onClick={() => {
-              haptics.tap();
-              navigate({
-                to: "/lessons/$level/$unit/$lessonNum",
-                params: lessonToPath(nextLesson),
-              });
-            }}
-            className="w-full text-left p-5 border-2 bd-accent bg-accent-bg transition-all hover:translate-x-[-2px] hover:translate-y-[-2px]"
-          >
-            <div className="text-xs font-mono uppercase tracking-wider tx-muted mb-2">
-              Unit {nextLesson.unit} · Lesson {nextLesson.lessonNum}
-            </div>
-            <div className="font-serif text-2xl font-black tx-text mb-1">{nextLesson.title}</div>
-            <div className="tx-muted text-sm">{nextLesson.titleDe}</div>
-          </button>
-        </div>
-      ) : (
-        <div className="mb-8 p-4 border-2 bd-default bg-surface text-center font-mono tx-muted text-sm">
-          Alles fertig! 🏔️
-        </div>
-      )}
-
-      <div className="text-xs font-mono uppercase tracking-[0.3em] tx-muted mb-3">Units</div>
-      <div className="space-y-3">
-        {units.map((unit) => {
-          const unitLessons = lessons.filter((l) => l.unit === unit);
-          const unitDone = unitLessons.filter((l) => completed.has(l.id)).length;
-          const unitSummaries = unitLessons.map((l) => quizSummaries.get(l.id)).filter(Boolean);
-          const allFinished =
-            unitSummaries.length === unitLessons.length && unitSummaries.every((s) => s?.finished);
-          return (
+      />
+      <div className="max-w-4xl mx-auto px-4 py-4">
+        {nextLesson ? (
+          <div className="mb-8">
+            <div className="text-xs font-mono uppercase tracking-[0.3em] tx-muted mb-2">Weiter</div>
             <button
               type="button"
-              key={unit}
               onClick={() => {
                 haptics.tap();
                 navigate({
-                  to: "/lessons/$level/$unit",
-                  params: { level: level.toLowerCase(), unit: String(unit) },
+                  to: "/lessons/$level/$unit/$lessonNum",
+                  params: lessonToPath(nextLesson),
                 });
               }}
-              className="w-full text-left p-5 border-2 bd-default bg-surface transition-all hover:translate-x-[-2px] hover:translate-y-[-2px]"
+              className="w-full text-left p-5 border-2 bd-accent bg-accent-bg transition-all hover:translate-x-[-2px] hover:translate-y-[-2px]"
             >
-              <div className="flex items-center justify-between mb-2">
-                <span className="font-serif text-xl font-bold tx-text">Unit {unit}</span>
-                <span className={`text-xs font-mono ${allFinished ? "tx-accent" : "tx-muted"}`}>
-                  {unitDone} / {unitLessons.length} done
-                </span>
+              <div className="text-xs font-mono uppercase tracking-wider tx-muted mb-2">
+                Unit {nextLesson.unit} · Lesson {nextLesson.lessonNum}
               </div>
-              <div className="text-sm tx-muted">{unitLessons.map((l) => l.title).join(" · ")}</div>
+              <div className="font-serif text-2xl font-black tx-text mb-1">{nextLesson.title}</div>
+              <div className="tx-muted text-sm">{nextLesson.titleDe}</div>
             </button>
-          );
-        })}
+          </div>
+        ) : (
+          <div className="mb-8 p-4 border-2 bd-default bg-surface text-center font-mono tx-muted text-sm">
+            Alles fertig! 🏔️
+          </div>
+        )}
+
+        <div className="text-xs font-mono uppercase tracking-[0.3em] tx-muted mb-3">Units</div>
+        <div className="space-y-3">
+          {units.map((unit) => {
+            const unitLessons = lessons.filter((l) => l.unit === unit);
+            const unitDone = unitLessons.filter((l) => completed.has(l.id)).length;
+            const unitSummaries = unitLessons.map((l) => quizSummaries.get(l.id)).filter(Boolean);
+            const allFinished =
+              unitSummaries.length === unitLessons.length &&
+              unitSummaries.every((s) => s?.finished);
+            return (
+              <button
+                type="button"
+                key={unit}
+                onClick={() => {
+                  haptics.tap();
+                  navigate({
+                    to: "/lessons/$level/$unit",
+                    params: { level: level.toLowerCase(), unit: String(unit) },
+                  });
+                }}
+                className="w-full text-left p-5 border-2 bd-default bg-surface transition-all hover:translate-x-[-2px] hover:translate-y-[-2px]"
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <span className="font-serif text-xl font-bold tx-text">Unit {unit}</span>
+                  <span className={`text-xs font-mono ${allFinished ? "tx-accent" : "tx-muted"}`}>
+                    {unitDone} / {unitLessons.length} done
+                  </span>
+                </div>
+                <div className="text-sm tx-muted">
+                  {unitLessons.map((l) => l.title).join(" · ")}
+                </div>
+              </button>
+            );
+          })}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

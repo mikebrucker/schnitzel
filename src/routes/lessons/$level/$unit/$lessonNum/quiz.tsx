@@ -1,4 +1,6 @@
+import { Header } from "@/components/Header";
 import { Results } from "@/components/Results";
+import { ChevronLeftIcon } from "@/components/icons";
 import { getQuiz, lessonToPath } from "@/lib/curriculum";
 import { haptics } from "@/lib/haptics";
 import { loadQuizProgress, saveQuizProgress } from "@/lib/quizStorage";
@@ -209,91 +211,90 @@ function QuizInner({ lesson, mode }: { lesson: Lesson; mode: QuizMode }) {
   const correct = picked === q.correct;
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-4">
-      <button
-        type="button"
-        onClick={() => handleBackRef.current()}
-        className="text-sm font-mono tx-muted mb-6"
-      >
-        ← Lesson
-      </button>
-      {mode === "wrong" && isReattempt && (
-        <div className="mb-4 px-3 py-2 border-2 bd-default bg-surface text-xs font-mono tx-muted text-center">
-          Correcting wrong answers
-        </div>
-      )}
-      <div className="flex items-center justify-between mb-8">
-        <div className="text-xs font-mono uppercase tracking-[0.3em] tx-muted">
-          Question {idx + 1} / {activeQuestions.length}
-        </div>
-        <div className="flex items-center gap-3">
+    <>
+      <Header
+        title={`Frage ${idx + 1} / ${activeQuestions.length}`}
+        subtitle={`${lesson.level} · Unit ${lesson.unit}`}
+        secondaryAction={{
+          label: "Lektion",
+          icon: <ChevronLeftIcon size={16} />,
+          onClick: () => handleBackRef.current(),
+        }}
+      />
+      <div className="max-w-4xl mx-auto px-4 py-4">
+        {mode === "wrong" && isReattempt && (
+          <div className="mb-4 px-3 py-2 border-2 bd-default bg-surface text-xs font-mono tx-muted text-center">
+            Correcting wrong answers
+          </div>
+        )}
+        <div className="flex items-center justify-end gap-3 mb-8">
           <div className="text-xs font-mono tx-accent" title="Progress auto-saved">
             ● saved
           </div>
           <div className="text-xs font-mono tx-muted">Score: {score}</div>
         </div>
-      </div>
 
-      <div className="font-serif text-2xl tx-text font-bold mb-8 leading-snug">{q.question}</div>
+        <div className="font-serif text-2xl tx-text font-bold mb-8 leading-snug">{q.question}</div>
 
-      <div className="space-y-3 mb-6">
-        {q.options.map((opt, i) => {
-          const isCorrect = i === q.correct;
-          const isPicked = i === picked;
-          let cls =
-            "w-full text-left p-4 border-2 bd-default bg-surface tx-text font-serif text-lg transition-colors";
-          if (answered) {
-            if (isCorrect) cls += " state-correct";
-            else if (isPicked) cls += " state-wrong";
-            else cls += " opacity-40";
-          }
-          return (
-            <button
-              type="button"
-              key={opt}
-              disabled={answered}
-              onClick={() => {
-                setPicked(i);
-                setAnswers((prev) => [...prev, i]);
-                if (i === q.correct) {
-                  setScore((s) => s + 1);
-                  haptics.correct();
-                } else {
-                  haptics.wrong();
-                }
-              }}
-              className={cls}
-            >
-              <span className="font-mono text-sm tx-muted mr-3">
-                {String.fromCharCode(65 + i)}.
-              </span>
-              {opt}
-            </button>
-          );
-        })}
-      </div>
-
-      {answered && (
-        <div className="border-l-4 bd-accent bg-accent-bg p-4 mb-6">
-          <div className="font-bold tx-text mb-1">{correct ? "Richtig!" : "Falsch."}</div>
-          <div className="tx-body text-sm">{q.explanation}</div>
+        <div className="space-y-3 mb-6">
+          {q.options.map((opt, i) => {
+            const isCorrect = i === q.correct;
+            const isPicked = i === picked;
+            let cls =
+              "w-full text-left p-4 border-2 bd-default bg-surface tx-text font-serif text-lg transition-colors";
+            if (answered) {
+              if (isCorrect) cls += " state-correct";
+              else if (isPicked) cls += " state-wrong";
+              else cls += " opacity-40";
+            }
+            return (
+              <button
+                type="button"
+                key={opt}
+                disabled={answered}
+                onClick={() => {
+                  setPicked(i);
+                  setAnswers((prev) => [...prev, i]);
+                  if (i === q.correct) {
+                    setScore((s) => s + 1);
+                    haptics.correct();
+                  } else {
+                    haptics.wrong();
+                  }
+                }}
+                className={cls}
+              >
+                <span className="font-mono text-sm tx-muted mr-3">
+                  {String.fromCharCode(65 + i)}.
+                </span>
+                {opt}
+              </button>
+            );
+          })}
         </div>
-      )}
 
-      {answered && (
-        <button
-          type="button"
-          onClick={() => {
-            setIdx((i) => i + 1);
-            setPicked(null);
-            haptics.tap();
-          }}
-          className="w-full bg-btn tx-btn py-3 font-bold border-2 bd-btn"
-        >
-          {idx + 1 < activeQuestions.length ? "Next question →" : "See results →"}
-        </button>
-      )}
-    </div>
+        {answered && (
+          <div className="border-l-4 bd-accent bg-accent-bg p-4 mb-6">
+            <div className="font-bold tx-text mb-1">{correct ? "Richtig!" : "Falsch."}</div>
+            <div className="tx-body text-sm">{q.explanation}</div>
+          </div>
+        )}
+
+        {answered && (
+          <button
+            type="button"
+            onClick={() => {
+              setIdx((i) => i + 1);
+              setPicked(null);
+              haptics.tap();
+            }}
+            className="w-full bg-btn tx-btn py-3 font-bold border-2 bd-btn"
+          >
+            {idx + 1 < activeQuestions.length ? "Next question →" : "See results →"}
+          </button>
+        )}
+      </div>
+    </>
   );
 }
 

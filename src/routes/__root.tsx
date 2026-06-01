@@ -1,4 +1,3 @@
-import { Header } from "@/components/Header";
 import { TabBar } from "@/components/TabBar";
 import { useApp } from "@/store/useApp";
 import { Outlet, createRootRoute } from "@tanstack/react-router";
@@ -23,7 +22,6 @@ function RootLayout() {
 
   return (
     <div className="min-h-screen bg-app dot-pattern flex flex-col">
-      <Header />
       <main className="flex-1 pb-16">
         <Outlet />
       </main>
