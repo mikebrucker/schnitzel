@@ -222,11 +222,11 @@ function QuizInner({ lesson, mode }: { lesson: Lesson; mode: QuizMode }) {
         }}
       />
       <div className="max-w-4xl mx-auto px-4 py-4">
-        {mode === "wrong" && isReattempt && (
+        {mode === "wrong" && isReattempt ? (
           <div className="mb-4 px-3 py-2 border-2 bd-default bg-surface text-xs font-mono tx-muted text-center">
             Correcting wrong answers
           </div>
-        )}
+        ) : null}
         <div className="flex items-center justify-end gap-3 mb-8">
           <div className="text-xs font-mono tx-accent" title="Progress auto-saved">
             ● saved
@@ -273,14 +273,14 @@ function QuizInner({ lesson, mode }: { lesson: Lesson; mode: QuizMode }) {
           })}
         </div>
 
-        {answered && (
+        {answered ? (
           <div className="border-l-4 bd-accent bg-accent-bg p-4 mb-6">
             <div className="font-bold tx-text mb-1">{correct ? "Richtig!" : "Falsch."}</div>
             <div className="tx-body text-sm">{q.explanation}</div>
           </div>
-        )}
+        ) : null}
 
-        {answered && (
+        {answered ? (
           <button
             type="button"
             onClick={() => {
@@ -292,7 +292,7 @@ function QuizInner({ lesson, mode }: { lesson: Lesson; mode: QuizMode }) {
           >
             {idx + 1 < activeQuestions.length ? "Next question →" : "See results →"}
           </button>
-        )}
+        ) : null}
       </div>
     </>
   );

@@ -31,7 +31,7 @@ export function Card({
   className = "",
   children,
 }: CardProps) {
-  const base = `text-left ${VARIANT_CLASSES[variant]} ${PADDING_CLASSES[padding]}`;
+  const base = `text-left rounded-2xl ${VARIANT_CLASSES[variant]} ${PADDING_CLASSES[padding]}`;
   const interactive = onClick
     ? "transition-all hover:translate-x-[-2px] hover:translate-y-[-2px] cursor-pointer"
     : "";

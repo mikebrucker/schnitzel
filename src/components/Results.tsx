@@ -63,12 +63,12 @@ export function Results({
                     {q.options[picked]} {isCorrect ? "✓" : "✗"}
                   </span>
                 </div>
-                {!isCorrect && (
+                {!isCorrect ? (
                   <div className="text-sm mb-1">
                     <span className="font-mono tx-muted">Correct: </span>
                     <span className="tx-accent">{q.options[q.correct]}</span>
                   </div>
-                )}
+                ) : null}
                 <div className="text-m tx-body mt-2 pt-2 border-t bd-default">{q.explanation}</div>
               </div>
             );

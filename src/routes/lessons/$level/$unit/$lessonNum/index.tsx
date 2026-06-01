@@ -97,7 +97,7 @@ function LessonRoute() {
                 <div className="font-serif text-lg font-bold tx-text">{v.de}</div>
                 <div>
                   <div className="tx-body">{v.en}</div>
-                  {v.note && <div className="text-xs tx-accent mt-1">💡 {v.note}</div>}
+                  {v.note ? <div className="text-xs tx-accent mt-1">💡 {v.note}</div> : null}
                 </div>
               </div>
             ))}
@@ -123,7 +123,7 @@ function LessonRoute() {
           </div>
         </section>
 
-        {quizState !== "none" && (
+        {quizState !== "none" ? (
           <div className="border-2 bd-default bg-surface p-4 mb-4">
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs font-mono uppercase tracking-wider tx-muted">Quiz</span>
@@ -139,7 +139,7 @@ function LessonRoute() {
               ) : null}
             </div>
             <div className="w-full h-1.5 bg-surface-solid">
-              {quizState === "done" && savedScore && (
+              {quizState === "done" && savedScore ? (
                 <div
                   className="h-full"
                   style={{
@@ -147,8 +147,8 @@ function LessonRoute() {
                     backgroundColor: "var(--accent-border)",
                   }}
                 />
-              )}
-              {quizState === "progress" && inProgressCount && (
+              ) : null}
+              {quizState === "progress" && inProgressCount ? (
                 <div
                   className="h-full opacity-40"
                   style={{
@@ -156,10 +156,10 @@ function LessonRoute() {
                     backgroundColor: "var(--accent-border)",
                   }}
                 />
-              )}
+              ) : null}
             </div>
           </div>
-        )}
+        ) : null}
 
         {quizState === "done" ? (
           <div className="space-y-3">

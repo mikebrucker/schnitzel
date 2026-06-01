@@ -21,13 +21,13 @@ export function HeroCard({
 }: HeroCardProps) {
   return (
     <Card variant="accent" padding={size} className="w-full" onClick={onClick}>
-      {eyebrow && <Card.Title size={size}>{eyebrow}</Card.Title>}
+      {eyebrow ? <Card.Title size={size}>{eyebrow}</Card.Title> : null}
       <Card.Caption size="sm" className="tracking-wider mb-3 mt-0.5">
         {breadcrumb}
       </Card.Caption>
       <Card.Title size={size}>{title}</Card.Title>
       <Card.Subtitle className="mb-4">{subtitle}</Card.Subtitle>
-      {chip && <Card.Chip style={{ backgroundColor: chip.bgColor }}>{chip.label}</Card.Chip>}
+      {chip ? <Card.Chip style={{ backgroundColor: chip.bgColor }}>{chip.label}</Card.Chip> : null}
     </Card>
   );
 }

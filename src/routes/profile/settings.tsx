@@ -136,7 +136,7 @@ function SettingsRoute() {
                       ) : (
                         <span className="font-mono text-xs tx-muted">not started</span>
                       )}
-                      {showReset && (
+                      {showReset ? (
                         <button
                           type="button"
                           onClick={() => resetLesson(lesson.id)}
@@ -144,17 +144,17 @@ function SettingsRoute() {
                         >
                           Reset
                         </button>
-                      )}
+                      ) : null}
                     </div>
                   </div>
                   <div className="w-full h-1 bg-surface-solid mt-2">
-                    {p?.finished && pct !== null && (
+                    {p?.finished && pct !== null ? (
                       <div
                         className="h-full"
                         style={{ width: `${pct}%`, backgroundColor: "var(--accent-border)" }}
                       />
-                    )}
-                    {p && !p.finished && (
+                    ) : null}
+                    {p && !p.finished ? (
                       <div
                         className="h-full opacity-40"
                         style={{
@@ -162,7 +162,7 @@ function SettingsRoute() {
                           backgroundColor: "var(--accent-border)",
                         }}
                       />
-                    )}
+                    ) : null}
                   </div>
                 </div>
               );

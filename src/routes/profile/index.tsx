@@ -91,7 +91,26 @@ function ProfileRoute() {
 
   return (
     <>
-      <Header title="Profil" subtitle="Mein Profil" />
+      <Header
+        title="Profil"
+        subtitle="Mein Profil"
+        secondaryAction={{
+          label: "Settings",
+          icon: "⚙",
+          onClick: () => {
+            haptics.tap();
+            navigate({ to: "/profile/settings" });
+          },
+        }}
+        primaryAction={{
+          label: "Settings",
+          icon: "⚙",
+          onClick: () => {
+            haptics.tap();
+            navigate({ to: "/profile/settings" });
+          },
+        }}
+      />
       <div className="max-w-4xl mx-auto px-4 py-4">
         <div className="flex items-center gap-5 mb-8">
           <div className="w-20 h-20 flex items-center justify-center font-black text-4xl rounded-sm bg-btn tx-btn">
@@ -243,13 +262,13 @@ function ProfileRoute() {
                     )}
                   </div>
                   <div className="w-full h-1 bg-surface-solid mt-2">
-                    {s?.finished && pct !== null && (
+                    {s?.finished && pct !== null ? (
                       <div
                         className="h-full"
                         style={{ width: `${pct}%`, backgroundColor: "var(--accent-border)" }}
                       />
-                    )}
-                    {s && !s.finished && (
+                    ) : null}
+                    {s && !s.finished ? (
                       <div
                         className="h-full opacity-40"
                         style={{
@@ -257,7 +276,7 @@ function ProfileRoute() {
                           backgroundColor: "var(--accent-border)",
                         }}
                       />
-                    )}
+                    ) : null}
                   </div>
                 </div>
               );
@@ -300,7 +319,7 @@ function StatTile({
       <div className={`font-serif text-3xl font-black ${accent ? "tx-accent" : "tx-text"}`}>
         {value}
       </div>
-      {sub && <div className="text-xs font-mono tx-muted mt-1">{sub}</div>}
+      {sub ? <div className="text-xs font-mono tx-muted mt-1">{sub}</div> : null}
     </div>
   );
 }

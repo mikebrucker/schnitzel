@@ -14,40 +14,48 @@ interface HeaderProps {
 }
 
 export function Header({ title, subtitle, secondaryAction, primaryAction }: HeaderProps) {
-  const hasButtons = secondaryAction !== undefined || primaryAction !== undefined;
+  const hasActions = secondaryAction !== undefined || primaryAction !== undefined;
 
   return (
     <header className="border-b-4 bd-default bg-header">
-      <div className="max-w-4xl mx-auto px-4 flex items-center gap-2 min-h-20">
-        {hasButtons ? (
-          <button
-            type="button"
-            onClick={secondaryAction?.onClick}
-            className="flex items-center gap-1 text-sm font-mono tx-muted min-w-[5rem] shrink-0 disabled:opacity-0"
-            disabled={!secondaryAction}
-          >
-            {secondaryAction?.icon}
-            {secondaryAction?.label}
-          </button>
+      <div
+        className={`max-w-4xl mx-auto px-4 min-h-20 items-center ${hasActions ? "grid grid-cols-[5rem_1fr_5rem]" : "flex"}`}
+      >
+        {hasActions ? (
+          <div>
+            {secondaryAction ? (
+              <button
+                type="button"
+                onClick={secondaryAction.onClick}
+                className="flex items-center gap-1 text-sm font-mono tx-muted"
+              >
+                {secondaryAction.icon}
+                {secondaryAction.label}
+              </button>
+            ) : null}
+          </div>
         ) : null}
 
-        <div className={`flex-1 ${hasButtons ? "text-center" : ""}`}>
+        <div className={hasActions ? "text-center" : ""}>
           <div className="font-serif text-xl font-black tracking-tight tx-text leading-tight">
             {title}
           </div>
-          {subtitle && <div className="text-xs font-mono tx-muted">{subtitle}</div>}
+          {subtitle ? <div className="text-xs font-mono tx-muted">{subtitle}</div> : null}
         </div>
 
-        {hasButtons ? (
-          <button
-            type="button"
-            onClick={primaryAction?.onClick}
-            className="flex items-center gap-1 text-sm font-mono tx-accent min-w-[5rem] justify-end shrink-0 disabled:opacity-0"
-            disabled={!primaryAction}
-          >
-            {primaryAction?.label}
-            {primaryAction?.icon}
-          </button>
+        {hasActions ? (
+          <div className="flex justify-end">
+            {primaryAction ? (
+              <button
+                type="button"
+                onClick={primaryAction.onClick}
+                className="flex items-center gap-1 text-sm font-mono tx-accent"
+              >
+                {primaryAction.label}
+                {primaryAction.icon}
+              </button>
+            ) : null}
+          </div>
         ) : null}
       </div>
     </header>

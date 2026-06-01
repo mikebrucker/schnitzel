@@ -117,7 +117,7 @@ function UnitIndexRoute() {
                 <Card.Subtitle>{lesson.titleDe}</Card.Subtitle>
                 <Card.Row align="center" className="mt-3">
                   <Card.Caption>{lesson.vocab.length} vocab words</Card.Caption>
-                  {summary?.finished && <Card.Caption>{pct}%</Card.Caption>}
+                  {summary?.finished ? <Card.Caption>{pct}%</Card.Caption> : null}
                 </Card.Row>
               </Card>
             );
