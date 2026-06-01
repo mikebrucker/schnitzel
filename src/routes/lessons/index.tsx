@@ -1,4 +1,6 @@
 import { Header } from "@/components/Header";
+import { HeroCard } from "@/components/card/HeroCard";
+import { SummaryCard } from "@/components/card/SummaryCard";
 import { CURRICULUM, lessonToPath } from "@/lib/curriculum";
 import { haptics } from "@/lib/haptics";
 import { loadQuizProgress } from "@/lib/quizStorage";
@@ -58,8 +60,11 @@ function LessonsIndexRoute() {
           <div className="text-xs font-mono uppercase tracking-[0.3em] tx-muted mb-2">
             {allDone ? "Alles fertig" : "Weiter"}
           </div>
-          <button
-            type="button"
+          <HeroCard
+            eyebrow={nextLesson.level}
+            breadcrumb={`Unit ${nextLesson.unit} · Lesson ${nextLesson.lessonNum}`}
+            title={nextLesson.title}
+            subtitle={nextLesson.titleDe}
             onClick={() => {
               haptics.tap();
               navigate({
@@ -67,31 +72,18 @@ function LessonsIndexRoute() {
                 params: lessonToPath(nextLesson),
               });
             }}
-            className="w-full text-left p-6 border-2 bd-accent bg-accent-bg transition-all hover:translate-x-[-2px] hover:translate-y-[-2px]"
-          >
-            <div>
-              <div className="font-serif text-3xl font-black tx-text">{nextLesson.level}</div>
-              <div className="text-sm font-mono tracking-wider tx-muted mb-3 mt-0.5">
-                Unit {nextLesson.unit} · Lesson {nextLesson.lessonNum}
-              </div>
-            </div>
-            <div className="font-serif text-3xl font-black tx-text mb-1">{nextLesson.title}</div>
-            <div className="tx-muted mb-4">{nextLesson.titleDe}</div>
-            {nextSummary?.finished && (
-              <div
-                className="inline-block font-mono text-sm px-2 py-0.5"
-                style={{
-                  backgroundColor: scoreCardBg(
-                    Math.round((nextSummary.score / nextSummary.total) * 100),
-                    theme === "dark",
-                  ),
-                }}
-              >
-                {nextSummary.score}/{nextSummary.total} ·{" "}
-                {Math.round((nextSummary.score / nextSummary.total) * 100)}%
-              </div>
-            )}
-          </button>
+            chip={
+              nextSummary?.finished
+                ? {
+                    label: `${nextSummary.score}/${nextSummary.total} · ${Math.round((nextSummary.score / nextSummary.total) * 100)}%`,
+                    bgColor: scoreCardBg(
+                      Math.round((nextSummary.score / nextSummary.total) * 100),
+                      theme === "dark",
+                    ),
+                  }
+                : undefined
+            }
+          />
         </div>
 
         <div className="text-xs font-mono uppercase tracking-[0.3em] tx-muted mb-3">Levels</div>
@@ -102,42 +94,19 @@ function LessonsIndexRoute() {
             const doneCount = lessons.filter((l) => completed.has(l.id)).length;
             const allLevelDone = doneCount === lessons.length;
             return (
-              <button
-                type="button"
+              <SummaryCard
                 key={level}
+                title={level}
+                description={LEVEL_DESC[level] ?? ""}
+                badge={`${doneCount}/${lessons.length}`}
+                badgeAccent={allLevelDone}
+                meta={`${units.length} ${units.length === 1 ? "unit" : "units"} · ${lessons.length} ${lessons.length === 1 ? "lesson" : "lessons"}`}
+                progress={{ value: doneCount, max: lessons.length }}
                 onClick={() => {
                   haptics.tap();
                   navigate({ to: "/lessons/$level", params: { level: level.toLowerCase() } });
                 }}
-                className="text-left p-5 border-2 bd-default bg-surface transition-all hover:translate-x-[-2px] hover:translate-y-[-2px]"
-              >
-                <div className="flex items-start justify-between mb-3">
-                  <div>
-                    <div className="font-serif text-3xl font-black tx-text">{level}</div>
-                    <div className="text-xs font-mono tx-muted mt-0.5">
-                      {LEVEL_DESC[level] ?? ""}
-                    </div>
-                  </div>
-                  <div
-                    className={`font-mono text-sm font-bold ${allLevelDone ? "tx-accent" : "tx-muted"}`}
-                  >
-                    {doneCount}/{lessons.length}
-                  </div>
-                </div>
-                <div className="text-xs font-mono tx-muted">
-                  {units.length} {units.length === 1 ? "unit" : "units"} · {lessons.length}{" "}
-                  {lessons.length === 1 ? "lesson" : "lessons"}
-                </div>
-                <div className="mt-3 w-full h-1 bg-surface-solid">
-                  <div
-                    className="h-full"
-                    style={{
-                      width: `${Math.round((doneCount / lessons.length) * 100)}%`,
-                      backgroundColor: "var(--accent-border)",
-                    }}
-                  />
-                </div>
-              </button>
+              />
             );
           })}
         </div>
