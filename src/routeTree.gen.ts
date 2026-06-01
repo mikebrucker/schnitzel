@@ -15,11 +15,11 @@ import { Route as HobbiesRouteImport } from './routes/hobbies'
 import { Route as DictionaryRouteImport } from './routes/dictionary'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProfileIndexRouteImport } from './routes/profile/index'
-import { Route as LessonsIndexRouteImport } from './routes/lessons.index'
+import { Route as LessonsIndexRouteImport } from './routes/lessons/index'
 import { Route as ProfileSettingsRouteImport } from './routes/profile/settings'
-import { Route as LessonsIdRouteImport } from './routes/lessons.$id'
-import { Route as LessonsIdIndexRouteImport } from './routes/lessons.$id.index'
-import { Route as LessonsIdQuizRouteImport } from './routes/lessons.$id.quiz'
+import { Route as LessonsIdRouteImport } from './routes/lessons/$id'
+import { Route as LessonsIdIndexRouteImport } from './routes/lessons/$id/index'
+import { Route as LessonsIdQuizRouteImport } from './routes/lessons/$id/quiz'
 
 const ProfileRoute = ProfileRouteImport.update({
   id: '/profile',
