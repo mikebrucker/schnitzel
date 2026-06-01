@@ -163,28 +163,6 @@ function LessonsIndexRoute() {
           );
         })}
       </div>
-
-      <div className="border-2 bd-accent bg-accent-bg p-6">
-        <div className="text-xs font-mono uppercase tracking-[0.3em] tx-accent mb-2">
-          Bonus Modul
-        </div>
-        <div className="flex items-center justify-between gap-4 flex-wrap">
-          <div>
-            <div className="font-serif text-2xl font-bold tx-text mb-1">Tirolerisch Dictionary</div>
-            <div className="tx-body text-sm">The words your textbook won't teach you.</div>
-          </div>
-          <button
-            type="button"
-            onClick={() => {
-              haptics.tap();
-              navigate({ to: "/dictionary" });
-            }}
-            className="bg-btn tx-btn px-5 py-2 font-bold border-2 bd-btn hover:opacity-80 transition-opacity"
-          >
-            Open →
-          </button>
-        </div>
-      </div>
     </div>
   );
 }

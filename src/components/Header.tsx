@@ -6,7 +6,7 @@ export function Header() {
 
   return (
     <header className="border-b-4 bd-default bg-header">
-      <div className="max-w-4xl mx-auto px-6 py-5">
+      <div className="max-w-4xl mx-auto px-4 py-5">
         <button
           type="button"
           onClick={() => {
