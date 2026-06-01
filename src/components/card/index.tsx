@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import type { CSSProperties, ReactNode } from "react";
 
 type CardVariant = "accent" | "default";
@@ -145,8 +146,53 @@ interface ChipProps {
 
 Card.Chip = function CardChip({ children, style, className = "" }: ChipProps) {
   return (
-    <div className={`inline-block font-mono text-sm px-2 py-0.5 ${className}`.trim()} style={style}>
+    <div
+      className={`inline-block rounded-2xl font-mono text-sm px-3 py-1 ${className}`.trim()}
+      style={style}
+    >
       {children}
+    </div>
+  );
+};
+
+interface ProgressPillProps {
+  children: ReactNode;
+  value: number;
+  max: number;
+  fillColor: string;
+  length?: string | number;
+  height?: string | number;
+  className?: string;
+}
+
+Card.ProgressPill = function CardProgressPill({
+  children,
+  value,
+  max,
+  fillColor,
+  length,
+  height,
+  className = "",
+}: ProgressPillProps) {
+  const pct = max > 0 ? Math.round((value / max) * 100) : 0;
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  return (
+    <div
+      className={`relative inline-block overflow-hidden rounded-full font-mono text-sm px-3 py-1 bg-surface-solid ${className}`.trim()}
+      style={{ width: length, height }}
+    >
+      <div
+        className="absolute inset-y-0 left-0"
+        style={{
+          width: mounted ? `${pct}%` : "0%",
+          backgroundColor: fillColor,
+          transition: "width 700ms ease-out",
+        }}
+      />
+      <span className="relative z-10 w-full block text-center">{children}</span>
     </div>
   );
 };
@@ -159,11 +205,19 @@ interface ProgressProps {
 
 Card.Progress = function CardProgress({ value, max, className = "" }: ProgressProps) {
   const pct = max > 0 ? Math.round((value / max) * 100) : 0;
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   return (
     <div className={`mt-3 w-full h-1 bg-surface-solid ${className}`.trim()}>
       <div
         className="h-full"
-        style={{ width: `${pct}%`, backgroundColor: "var(--accent-border)" }}
+        style={{
+          width: mounted ? `${pct}%` : "0%",
+          backgroundColor: "var(--accent-border)",
+          transition: "width 700ms ease-out",
+        }}
       />
     </div>
   );

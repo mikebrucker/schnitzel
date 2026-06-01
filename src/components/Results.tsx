@@ -29,10 +29,10 @@ export function Results({
 }: Props) {
   const [reviewing, setReviewing] = useState(false);
 
-  // Mark complete on canonical attempts only (re-attempts don't count toward completion).
+  // Mark complete only on a perfect canonical attempt — re-attempts and sub-100% don't unlock the next lesson.
   // biome-ignore lint/correctness/useExhaustiveDependencies: intentional mount-only effect
   useEffect(() => {
-    if (!isReattempt) onMarkDone();
+    if (!isReattempt && pct === 100) onMarkDone();
   }, []);
 
   if (reviewing) {

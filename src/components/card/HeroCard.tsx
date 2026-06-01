@@ -7,7 +7,14 @@ interface HeroCardProps {
   subtitle: string;
   size?: "md" | "lg";
   onClick: () => void;
-  chip?: { label: string; bgColor: string };
+  progressPill?: {
+    label: string;
+    value: number;
+    max: number;
+    fillColor: string;
+    length?: string | number;
+    height?: string | number;
+  };
 }
 
 export function HeroCard({
@@ -17,7 +24,7 @@ export function HeroCard({
   subtitle,
   size = "lg",
   onClick,
-  chip,
+  progressPill,
 }: HeroCardProps) {
   return (
     <Card variant="accent" padding={size} className="w-full" onClick={onClick}>
@@ -27,7 +34,17 @@ export function HeroCard({
       </Card.Caption>
       <Card.Title size={size}>{title}</Card.Title>
       <Card.Subtitle className="mb-4">{subtitle}</Card.Subtitle>
-      {chip ? <Card.Chip style={{ backgroundColor: chip.bgColor }}>{chip.label}</Card.Chip> : null}
+      {progressPill ? (
+        <Card.ProgressPill
+          value={progressPill.value}
+          max={progressPill.max}
+          fillColor={progressPill.fillColor}
+          length={progressPill.length}
+          height={progressPill.height}
+        >
+          {progressPill.label}
+        </Card.ProgressPill>
+      ) : null}
     </Card>
   );
 }

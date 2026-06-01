@@ -1,6 +1,7 @@
 import { Header } from "@/components/Header";
 import { HeroCard } from "@/components/card/HeroCard";
 import { SummaryCard } from "@/components/card/SummaryCard";
+import quizzes from "@/data/quizzes.json";
 import { CURRICULUM, lessonToPath } from "@/lib/curriculum";
 import { haptics } from "@/lib/haptics";
 import { loadQuizProgress } from "@/lib/quizStorage";
@@ -72,17 +73,21 @@ function LessonsIndexRoute() {
                 params: lessonToPath(nextLesson),
               });
             }}
-            chip={
-              nextSummary?.finished
-                ? {
-                    label: `${nextSummary.score}/${nextSummary.total} · ${Math.round((nextSummary.score / nextSummary.total) * 100)}%`,
-                    bgColor: scoreCardBg(
-                      Math.round((nextSummary.score / nextSummary.total) * 100),
-                      theme === "dark",
-                    ),
-                  }
-                : undefined
-            }
+            progressPill={(() => {
+              const score = nextSummary?.score ?? 0;
+              const total =
+                nextSummary?.total ??
+                (quizzes as Record<string, Array<unknown>>)[String(nextLesson.id)]?.length ??
+                0;
+              const pct = total > 0 ? Math.round((score / total) * 100) : 0;
+              return {
+                label: `${score}/${total} · ${pct}%`,
+                fillColor: scoreCardBg(pct, theme === "dark"),
+                value: score,
+                max: total,
+                length: "100%",
+              };
+            })()}
           />
         </div>
 
