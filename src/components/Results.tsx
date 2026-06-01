@@ -37,7 +37,7 @@ export function Results({
 
   if (reviewing) {
     return (
-      <div className="max-w-4xl mx-auto px-6 py-10">
+      <div className="max-w-4xl mx-auto px-4 py-4">
         <button
           type="button"
           onClick={() => setReviewing(false)}

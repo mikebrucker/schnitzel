@@ -28,7 +28,7 @@ function RootLayout() {
         <Outlet />
       </main>
       <TabBar />
-      <TanStackRouterDevtools position="bottom-right" />
+      <TanStackRouterDevtools position="top-right" />
     </div>
   );
 }

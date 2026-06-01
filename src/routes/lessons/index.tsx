@@ -126,7 +126,7 @@ function LessonsIndexRoute() {
   );
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-10">
+    <div className="max-w-4xl mx-auto px-4 py-4">
       <div className="mb-10 space-y-12">
         {levels.map((level) => {
           const lessons = CURRICULUM.filter((l) => l.level === level);
