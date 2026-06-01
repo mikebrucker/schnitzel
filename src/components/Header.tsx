@@ -19,7 +19,7 @@ export function Header({ title, subtitle, secondaryAction, primaryAction }: Head
   return (
     <header className="border-b-4 bd-default bg-header">
       <div
-        className={`max-w-4xl mx-auto px-4 min-h-20 items-center ${hasActions ? "grid grid-cols-[5rem_1fr_5rem]" : "flex"}`}
+        className={`max-w-4xl mx-auto px-4 min-h-20 items-center ${hasActions ? "grid grid-cols-[auto_1fr_auto]" : "flex"}`}
       >
         {hasActions ? (
           <div>
@@ -27,7 +27,7 @@ export function Header({ title, subtitle, secondaryAction, primaryAction }: Head
               <button
                 type="button"
                 onClick={secondaryAction.onClick}
-                className="flex items-center gap-2 text-sm font-mono tx-muted pr-2 py-1"
+                className="flex items-center gap-2 text-sm font-mono tx-muted pr-2 py-1 whitespace-nowrap"
               >
                 {secondaryAction.icon}
                 {secondaryAction.label}
@@ -49,7 +49,7 @@ export function Header({ title, subtitle, secondaryAction, primaryAction }: Head
               <button
                 type="button"
                 onClick={primaryAction.onClick}
-                className="flex items-center gap-2 text-sm font-mono tx-accent pl-2 py-1"
+                className="flex items-center gap-2 text-sm font-mono tx-accent pl-2 py-1 whitespace-nowrap"
               >
                 {primaryAction.label}
                 {primaryAction.icon}
