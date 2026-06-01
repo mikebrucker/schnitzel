@@ -27,7 +27,7 @@ export function Header({ title, subtitle, secondaryAction, primaryAction }: Head
               <button
                 type="button"
                 onClick={secondaryAction.onClick}
-                className="flex items-center gap-1 text-sm font-mono tx-muted"
+                className="flex items-center gap-2 text-sm font-mono tx-muted pr-2 py-1"
               >
                 {secondaryAction.icon}
                 {secondaryAction.label}
@@ -49,7 +49,7 @@ export function Header({ title, subtitle, secondaryAction, primaryAction }: Head
               <button
                 type="button"
                 onClick={primaryAction.onClick}
-                className="flex items-center gap-1 text-sm font-mono tx-accent"
+                className="flex items-center gap-2 text-sm font-mono tx-accent pl-2 py-1"
               >
                 {primaryAction.label}
                 {primaryAction.icon}

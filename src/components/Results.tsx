@@ -1,3 +1,4 @@
+import { CheckIcon, ChevronLeftIcon, ChevronRightIcon, XIcon } from "@/components/icons";
 import { haptics } from "@/lib/haptics";
 import type { QuizQuestion } from "@/lib/types";
 import { useEffect, useState } from "react";
@@ -43,7 +44,7 @@ export function Results({
           onClick={() => setReviewing(false)}
           className="text-sm font-mono mb-6 tx-muted"
         >
-          ← Back to results
+          <ChevronLeftIcon size={14} className="inline-block" /> Back to results
         </button>
         <div className="text-xs font-mono uppercase tracking-[0.3em] tx-muted mb-2">
           Antworten überprüfen
@@ -60,7 +61,12 @@ export function Results({
                 <div className="text-sm mb-1">
                   <span className="font-mono tx-muted">You: </span>
                   <span className={isCorrect ? "tx-accent" : "tx-wrong"}>
-                    {q.options[picked]} {isCorrect ? "✓" : "✗"}
+                    {q.options[picked]}{" "}
+                    {isCorrect ? (
+                      <CheckIcon size={14} className="inline-block" />
+                    ) : (
+                      <XIcon size={14} className="inline-block" />
+                    )}
                   </span>
                 </div>
                 {!isCorrect ? (
@@ -135,7 +141,9 @@ export function Results({
             onClick={onComplete}
             className="flex-1 border-2 bd-btn bg-btn tx-btn px-4 py-3 font-bold text-sm"
           >
-            Home →
+            <span className="flex items-center justify-center gap-2">
+              Home <ChevronRightIcon size={16} />
+            </span>
           </button>
         </div>
       </div>

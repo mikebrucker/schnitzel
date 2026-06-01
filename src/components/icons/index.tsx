@@ -1,5 +1,11 @@
 export { BookIcon } from "./BookIcon";
 export { BubbleIcon } from "./BubbleIcon";
+export { CheckIcon } from "./CheckIcon";
+export { EditIcon } from "./EditIcon";
+export { RetryIcon } from "./RetryIcon";
+export { SettingsIcon } from "./SettingsIcon";
+export { TipIcon } from "./TipIcon";
+export { XIcon } from "./XIcon";
 export { ChevronDownIcon } from "./ChevronDownIcon";
 export { ChevronLeftIcon } from "./ChevronLeftIcon";
 export { ChevronRightIcon } from "./ChevronRightIcon";

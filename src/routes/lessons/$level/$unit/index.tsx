@@ -1,7 +1,7 @@
 import { Header } from "@/components/Header";
 import { Card } from "@/components/card";
 import { HeroCard } from "@/components/card/HeroCard";
-import { ChevronLeftIcon } from "@/components/icons";
+import { ChevronLeftIcon, ChevronRightIcon } from "@/components/icons";
 import { CURRICULUM, lessonToPath } from "@/lib/curriculum";
 import { haptics } from "@/lib/haptics";
 import { loadQuizProgress } from "@/lib/quizStorage";
@@ -109,7 +109,8 @@ function UnitIndexRoute() {
                     </Card.Badge>
                   ) : summary ? (
                     <Card.Caption>
-                      {summary.answered}/{summary.total} →
+                      {summary.answered}/{summary.total}{" "}
+                      <ChevronRightIcon size={12} className="inline-block" />
                     </Card.Caption>
                   ) : null}
                 </Card.Row>

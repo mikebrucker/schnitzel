@@ -1,4 +1,5 @@
 import { Header } from "@/components/Header";
+import { ChevronRightIcon, EditIcon, SettingsIcon } from "@/components/icons";
 import { CURRICULUM } from "@/lib/curriculum";
 import { haptics } from "@/lib/haptics";
 import { loadQuizProgress } from "@/lib/quizStorage";
@@ -96,15 +97,7 @@ function ProfileRoute() {
         subtitle="Mein Profil"
         secondaryAction={{
           label: "Settings",
-          icon: "⚙",
-          onClick: () => {
-            haptics.tap();
-            navigate({ to: "/profile/settings" });
-          },
-        }}
-        primaryAction={{
-          label: "Settings",
-          icon: "⚙",
+          icon: <SettingsIcon size={16} />,
           onClick: () => {
             haptics.tap();
             navigate({ to: "/profile/settings" });
@@ -195,9 +188,10 @@ function ProfileRoute() {
                 setEditing(true);
                 haptics.tap();
               }}
-              className="border-2 bd-default bg-surface tx-text px-5 py-2 font-bold"
+              className="flex items-center gap-2 border-2 bd-default bg-surface tx-text px-5 py-2 font-bold"
             >
-              ✎ Edit profile
+              <EditIcon size={18} />
+              <span>Edit profile</span>
             </button>
           )}
         </div>
@@ -255,7 +249,8 @@ function ProfileRoute() {
                       </div>
                     ) : s ? (
                       <div className="font-mono text-xs tx-muted shrink-0 ml-3">
-                        {s.answered}/{s.total} →
+                        {s.answered}/{s.total}{" "}
+                        <ChevronRightIcon size={12} className="inline-block" />
                       </div>
                     ) : (
                       <div className="font-mono text-xs tx-muted shrink-0 ml-3">not started</div>
@@ -293,8 +288,11 @@ function ProfileRoute() {
             }}
             className="w-full flex items-center justify-between border-2 bd-default bg-surface tx-text px-5 py-4 font-bold"
           >
-            <span>⚙ Settings</span>
-            <span className="tx-muted">→</span>
+            <span className="flex items-center gap-2">
+              <SettingsIcon size={18} />
+              <span>Settings</span>
+            </span>
+            <ChevronRightIcon size={16} className="tx-muted" />
           </button>
         </section>
       </div>

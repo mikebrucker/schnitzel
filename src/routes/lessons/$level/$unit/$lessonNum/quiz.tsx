@@ -1,6 +1,6 @@
 import { Header } from "@/components/Header";
 import { Results } from "@/components/Results";
-import { ChevronLeftIcon } from "@/components/icons";
+import { ChevronLeftIcon, ChevronRightIcon } from "@/components/icons";
 import { getQuiz, lessonToPath } from "@/lib/curriculum";
 import { haptics } from "@/lib/haptics";
 import { loadQuizProgress, saveQuizProgress } from "@/lib/quizStorage";
@@ -290,7 +290,10 @@ function QuizInner({ lesson, mode }: { lesson: Lesson; mode: QuizMode }) {
             }}
             className="w-full bg-btn tx-btn py-3 font-bold border-2 bd-btn"
           >
-            {idx + 1 < activeQuestions.length ? "Next question →" : "See results →"}
+            <span className="flex items-center justify-center gap-2">
+              {idx + 1 < activeQuestions.length ? "Next question" : "See results"}{" "}
+              <ChevronRightIcon size={18} />
+            </span>
           </button>
         ) : null}
       </div>

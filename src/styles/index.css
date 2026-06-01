@@ -180,3 +180,54 @@ body {
 .group:hover .spin-on-hover {
   animation: spin-full 0.75s ease-in-out;
 }
+
+@keyframes bubble-up {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0.45;
+  }
+
+  80% {
+    opacity: 0.35;
+  }
+
+  100% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+}
+
+@keyframes bubble-down {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0.45;
+  }
+
+  80% {
+    opacity: 0.35;
+  }
+
+  100% {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+}
+
+.liquid-bubble {
+  position: absolute;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.35);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  opacity: calc(0.15 + var(--shake, 0) * 0.6);
+  scale: calc(1 + var(--shake, 0) * 0.3);
+  pointer-events: none;
+}

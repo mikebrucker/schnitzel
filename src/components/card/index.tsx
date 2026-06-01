@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties, ReactNode } from "react";
 
 type CardVariant = "accent" | "default";
@@ -32,9 +32,9 @@ export function Card({
   className = "",
   children,
 }: CardProps) {
-  const base = `text-left rounded-2xl ${VARIANT_CLASSES[variant]} ${PADDING_CLASSES[padding]}`;
+  const base = `text-left rounded-xl ${VARIANT_CLASSES[variant]} ${PADDING_CLASSES[padding]}`;
   const interactive = onClick
-    ? "transition-all hover:translate-x-[-2px] hover:translate-y-[-2px] cursor-pointer"
+    ? "transition-all hover:translate-x-[-2px] hover:translate-y-[-2px] active:translate-x-[2px] active:translate-y-[2px] cursor-pointer"
     : "";
   const combined = `${base} ${interactive} ${className}`.trim();
 
@@ -147,7 +147,7 @@ interface ChipProps {
 Card.Chip = function CardChip({ children, style, className = "" }: ChipProps) {
   return (
     <div
-      className={`inline-block rounded-2xl font-mono text-sm px-3 py-1 ${className}`.trim()}
+      className={`inline-block rounded-full font-mono text-sm px-3 py-1 ${className}`.trim()}
       style={style}
     >
       {children}
@@ -162,6 +162,8 @@ interface ProgressPillProps {
   fillColor: string;
   length?: string | number;
   height?: string | number;
+  bubbles?: number;
+  shakeFactor?: number;
   className?: string;
 }
 
@@ -172,6 +174,8 @@ Card.ProgressPill = function CardProgressPill({
   fillColor,
   length,
   height,
+  bubbles,
+  shakeFactor = 0,
   className = "",
 }: ProgressPillProps) {
   const pct = max > 0 ? Math.round((value / max) * 100) : 0;
@@ -179,19 +183,106 @@ Card.ProgressPill = function CardProgressPill({
   useEffect(() => {
     setMounted(true);
   }, []);
+  const count = Math.min(bubbles ?? 0, 128);
+  const bubbleConfigs = useMemo(
+    () =>
+      Array.from({ length: count }, () => {
+        const size = 4 + Math.random() * 5;
+        const left = `${(1 + Math.random() * 99).toFixed(1)}%`;
+        const bottom = `${(10 + Math.random() * 80).toFixed(1)}%`;
+        const duration = `${(5.0 + Math.random() * 4.0).toFixed(1)}s`;
+        const delay = `${(Math.random() * 3.0).toFixed(2)}s`;
+        const anim = Math.random() > 0.5 ? "bubble-up" : "bubble-down";
+        const key = Math.random().toString(36).slice(2, 8);
+        const freqX = 1.5 + Math.random() * 3.5;
+        const freqY = 1.5 + Math.random() * 3.5;
+        const phaseX = Math.random() * Math.PI * 2;
+        const phaseY = Math.random() * Math.PI * 2;
+        const ampX = 2 + Math.random() * 5;
+        const ampY = 1 + Math.random() * 4;
+        return {
+          key,
+          size,
+          left,
+          bottom,
+          duration,
+          delay,
+          anim,
+          freqX,
+          freqY,
+          phaseX,
+          phaseY,
+          ampX,
+          ampY,
+        };
+      }),
+    [count],
+  );
+
+  const bubbleRefs = useRef<Array<HTMLDivElement | null>>([]);
+  const shakeRef = useRef(shakeFactor);
+  useEffect(() => {
+    shakeRef.current = shakeFactor;
+  }, [shakeFactor]);
+
+  // biome-ignore lint/correctness/useExhaustiveDependencies: bubbleConfigs is stable from useMemo
+  useEffect(() => {
+    if (count === 0) return;
+    const start = performance.now();
+    let raf: number;
+    const tick = () => {
+      const sf = shakeRef.current;
+      if (sf > 0.005) {
+        const t = (performance.now() - start) / 1000;
+        bubbleConfigs.forEach((b, i) => {
+          const el = bubbleRefs.current[i];
+          if (!el) return;
+          const x = Math.sin(t * b.freqX + b.phaseX) * sf * b.ampX;
+          const y = Math.cos(t * b.freqY + b.phaseY) * sf * b.ampY;
+          el.style.translate = `${x.toFixed(2)}px ${y.toFixed(2)}px`;
+        });
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [count]);
+
   return (
     <div
       className={`relative inline-block overflow-hidden rounded-full font-mono text-sm px-3 py-1 bg-surface-solid ${className}`.trim()}
       style={{ width: length, height }}
     >
       <div
-        className="absolute inset-y-0 left-0"
-        style={{
-          width: mounted ? `${pct}%` : "0%",
-          backgroundColor: fillColor,
-          transition: "width 700ms ease-out",
-        }}
-      />
+        className="absolute inset-y-0 left-0 overflow-hidden"
+        style={
+          {
+            width: mounted ? `${pct}%` : "0%",
+            backgroundColor: fillColor,
+            transition: "width 700ms ease-out",
+            "--shake": shakeFactor,
+          } as React.CSSProperties
+        }
+      >
+        {bubbleConfigs.map((b, i) => (
+          <div
+            key={b.key}
+            ref={(el) => {
+              bubbleRefs.current[i] = el;
+            }}
+            className="liquid-bubble"
+            style={{
+              width: b.size,
+              height: b.size,
+              left: b.left,
+              bottom: b.bottom,
+              animationName: b.anim,
+              animationDuration: b.duration,
+              animationDelay: b.delay,
+            }}
+          />
+        ))}
+      </div>
       <span className="relative z-10 w-full block text-center">{children}</span>
     </div>
   );

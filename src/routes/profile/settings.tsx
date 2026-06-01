@@ -1,5 +1,5 @@
 import { Header } from "@/components/Header";
-import { ChevronLeftIcon } from "@/components/icons";
+import { ChevronLeftIcon, ChevronRightIcon } from "@/components/icons";
 import { CURRICULUM } from "@/lib/curriculum";
 import { haptics } from "@/lib/haptics";
 import { clearQuizProgress, loadQuizProgress } from "@/lib/quizStorage";
@@ -131,7 +131,8 @@ function SettingsRoute() {
                         </span>
                       ) : p ? (
                         <span className="font-mono text-xs tx-muted">
-                          {p.answered}/{p.total} →
+                          {p.answered}/{p.total}{" "}
+                          <ChevronRightIcon size={12} className="inline-block" />
                         </span>
                       ) : (
                         <span className="font-mono text-xs tx-muted">not started</span>

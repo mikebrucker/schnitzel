@@ -1,5 +1,5 @@
 import { Header } from "@/components/Header";
-import { ChevronLeftIcon } from "@/components/icons";
+import { ChevronLeftIcon, ChevronRightIcon, RetryIcon, TipIcon, XIcon } from "@/components/icons";
 import { lessonToPath } from "@/lib/curriculum";
 import { haptics } from "@/lib/haptics";
 import { loadQuizProgress } from "@/lib/quizStorage";
@@ -97,7 +97,12 @@ function LessonRoute() {
                 <div className="font-serif text-lg font-bold tx-text">{v.de}</div>
                 <div>
                   <div className="tx-body">{v.en}</div>
-                  {v.note ? <div className="text-xs tx-accent mt-1">💡 {v.note}</div> : null}
+                  {v.note ? (
+                    <div className="flex items-center gap-1 text-xs tx-accent mt-1">
+                      <TipIcon size={12} />
+                      {v.note}
+                    </div>
+                  ) : null}
                 </div>
               </div>
             ))}
@@ -168,7 +173,9 @@ function LessonRoute() {
               onClick={() => startQuiz("view")}
               className="w-full bg-btn tx-btn py-4 font-serif text-xl font-bold border-2 bd-btn"
             >
-              View Results →
+              <span className="flex items-center justify-center gap-2">
+                View Results <ChevronRightIcon size={18} />
+              </span>
             </button>
             <div className="grid grid-cols-2 gap-3">
               <button
@@ -176,7 +183,9 @@ function LessonRoute() {
                 onClick={() => startQuiz("retake")}
                 className="border-2 bd-default bg-surface tx-text py-3 font-bold"
               >
-                ↻ Retake quiz
+                <span className="flex items-center justify-center gap-2">
+                  <RetryIcon size={16} /> Retake quiz
+                </span>
               </button>
               <button
                 type="button"
@@ -184,7 +193,9 @@ function LessonRoute() {
                 disabled={!savedScore || savedScore.score === savedScore.total}
                 className="border-2 bd-default bg-surface tx-text py-3 font-bold disabled:opacity-40 disabled:cursor-not-allowed"
               >
-                ✗ Retry wrong only
+                <span className="flex items-center justify-center gap-2">
+                  <XIcon size={16} /> Retry wrong only
+                </span>
               </button>
             </div>
           </div>
@@ -194,7 +205,10 @@ function LessonRoute() {
             onClick={() => startQuiz("normal")}
             className="w-full bg-btn tx-btn py-4 font-serif text-xl font-bold border-2 bd-btn"
           >
-            {quizState === "progress" ? "Resume Quiz →" : "Take Quiz →"}
+            <span className="flex items-center justify-center gap-2">
+              {quizState === "progress" ? "Resume Quiz" : "Take Quiz"}{" "}
+              <ChevronRightIcon size={18} />
+            </span>
           </button>
         )}
       </div>
