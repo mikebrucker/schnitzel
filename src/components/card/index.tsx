@@ -68,9 +68,10 @@ Card.Label = function CardLabel({ children, className = "" }: LabelProps) {
   );
 };
 
-type TitleSize = "sm" | "md" | "lg";
+type TitleSize = "xs" | "sm" | "md" | "lg";
 
 const TITLE_SIZE_CLASSES: Record<TitleSize, string> = {
+  xs: "text-base",
   sm: "text-xl",
   md: "text-2xl",
   lg: "text-3xl",
@@ -92,13 +93,25 @@ Card.Title = function CardTitle({ children, size = "md", className = "" }: Title
   );
 };
 
+type SubtitleSize = "xs" | "sm" | "md" | "lg";
+
+const SUBTITLE_SIZE_CLASSES: Record<SubtitleSize, string> = {
+  xs: "text-xs",
+  sm: "text-sm",
+  md: "text-base",
+  lg: "text-lg",
+};
+
 interface SubtitleProps {
   children: ReactNode;
+  size?: SubtitleSize;
   className?: string;
 }
 
-Card.Subtitle = function CardSubtitle({ children, className = "" }: SubtitleProps) {
-  return <div className={`tx-muted text-sm ${className}`.trim()}>{children}</div>;
+Card.Subtitle = function CardSubtitle({ children, size = "sm", className = "" }: SubtitleProps) {
+  return (
+    <div className={`tx-muted ${SUBTITLE_SIZE_CLASSES[size]} ${className}`.trim()}>{children}</div>
+  );
 };
 
 interface RowProps {

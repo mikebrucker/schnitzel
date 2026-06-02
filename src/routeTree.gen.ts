@@ -17,6 +17,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProfileIndexRouteImport } from './routes/profile/index'
 import { Route as LessonsIndexRouteImport } from './routes/lessons/index'
 import { Route as ProfileSettingsRouteImport } from './routes/profile/settings'
+import { Route as ProfileProgressRouteImport } from './routes/profile/progress'
 import { Route as LessonsLevelRouteImport } from './routes/lessons/$level'
 import { Route as LessonsLevelIndexRouteImport } from './routes/lessons/$level/index'
 import { Route as LessonsLevelUnitRouteImport } from './routes/lessons/$level/$unit'
@@ -65,6 +66,11 @@ const ProfileSettingsRoute = ProfileSettingsRouteImport.update({
   path: '/settings',
   getParentRoute: () => ProfileRoute,
 } as any)
+const ProfileProgressRoute = ProfileProgressRouteImport.update({
+  id: '/progress',
+  path: '/progress',
+  getParentRoute: () => ProfileRoute,
+} as any)
 const LessonsLevelRoute = LessonsLevelRouteImport.update({
   id: '/lessons/$level',
   path: '/lessons/$level',
@@ -111,6 +117,7 @@ export interface FileRoutesByFullPath {
   '/phrasebook': typeof PhrasebookRoute
   '/profile': typeof ProfileRouteWithChildren
   '/lessons/$level': typeof LessonsLevelRouteWithChildren
+  '/profile/progress': typeof ProfileProgressRoute
   '/profile/settings': typeof ProfileSettingsRoute
   '/lessons/': typeof LessonsIndexRoute
   '/profile/': typeof ProfileIndexRoute
@@ -126,6 +133,7 @@ export interface FileRoutesByTo {
   '/dictionary': typeof DictionaryRoute
   '/hobbies': typeof HobbiesRoute
   '/phrasebook': typeof PhrasebookRoute
+  '/profile/progress': typeof ProfileProgressRoute
   '/profile/settings': typeof ProfileSettingsRoute
   '/lessons': typeof LessonsIndexRoute
   '/profile': typeof ProfileIndexRoute
@@ -142,6 +150,7 @@ export interface FileRoutesById {
   '/phrasebook': typeof PhrasebookRoute
   '/profile': typeof ProfileRouteWithChildren
   '/lessons/$level': typeof LessonsLevelRouteWithChildren
+  '/profile/progress': typeof ProfileProgressRoute
   '/profile/settings': typeof ProfileSettingsRoute
   '/lessons/': typeof LessonsIndexRoute
   '/profile/': typeof ProfileIndexRoute
@@ -161,6 +170,7 @@ export interface FileRouteTypes {
     | '/phrasebook'
     | '/profile'
     | '/lessons/$level'
+    | '/profile/progress'
     | '/profile/settings'
     | '/lessons/'
     | '/profile/'
@@ -176,6 +186,7 @@ export interface FileRouteTypes {
     | '/dictionary'
     | '/hobbies'
     | '/phrasebook'
+    | '/profile/progress'
     | '/profile/settings'
     | '/lessons'
     | '/profile'
@@ -191,6 +202,7 @@ export interface FileRouteTypes {
     | '/phrasebook'
     | '/profile'
     | '/lessons/$level'
+    | '/profile/progress'
     | '/profile/settings'
     | '/lessons/'
     | '/profile/'
@@ -270,6 +282,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProfileSettingsRouteImport
       parentRoute: typeof ProfileRoute
     }
+    '/profile/progress': {
+      id: '/profile/progress'
+      path: '/progress'
+      fullPath: '/profile/progress'
+      preLoaderRoute: typeof ProfileProgressRouteImport
+      parentRoute: typeof ProfileRoute
+    }
     '/lessons/$level': {
       id: '/lessons/$level'
       path: '/lessons/$level'
@@ -323,11 +342,13 @@ declare module '@tanstack/react-router' {
 }
 
 interface ProfileRouteChildren {
+  ProfileProgressRoute: typeof ProfileProgressRoute
   ProfileSettingsRoute: typeof ProfileSettingsRoute
   ProfileIndexRoute: typeof ProfileIndexRoute
 }
 
 const ProfileRouteChildren: ProfileRouteChildren = {
+  ProfileProgressRoute: ProfileProgressRoute,
   ProfileSettingsRoute: ProfileSettingsRoute,
   ProfileIndexRoute: ProfileIndexRoute,
 }
