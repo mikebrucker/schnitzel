@@ -1,5 +1,6 @@
 import { Button } from "@/components/Button";
 import { Header } from "@/components/Header";
+import { Alert } from "@/components/alert/Alert";
 import { ProgressCard } from "@/components/card/ProgressCard";
 import { ChevronLeftIcon, RetryIcon, XIcon } from "@/components/icons";
 import { CURRICULUM } from "@/lib/curriculum";
@@ -36,6 +37,17 @@ function ProgressRoute() {
   const [lessonStats, setLessonStats] = useState<Array<LessonEntry>>([]);
   const [resetMode, setResetMode] = useState(false);
   const [reloadKey, setReloadKey] = useState(0);
+  const [pendingReset, setPendingReset] = useState<{
+    title: string;
+    subtitle: string;
+    action: () => Promise<void>;
+  } | null>(null);
+
+  useEffect(() => {
+    if (resetMode && lessonStats.length > 0 && lessonStats.every((s) => s === null)) {
+      setResetMode(false);
+    }
+  }, [lessonStats, resetMode]);
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: completed & reloadKey trigger re-load intentionally
   useEffect(() => {
@@ -65,15 +77,19 @@ function ProgressRoute() {
     };
   }, [completed, reloadKey]);
 
-  const handleResetLesson = async (id: number) => {
+  const execResetLesson = async (id: number) => {
     unmark(id);
     await clearQuizProgress(id);
     setReloadKey((k) => k + 1);
     haptics.tap();
   };
 
-  const handleResetLevel = async (entries: Array<{ lesson: Lesson; idx: number }>) => {
-    await Promise.all(entries.map(({ lesson }) => handleResetLesson(lesson.id)));
+  const execResetLevel = async (entries: Array<{ lesson: Lesson; idx: number }>) => {
+    await Promise.all(entries.map(({ lesson }) => execResetLesson(lesson.id)));
+  };
+
+  const confirmReset = (title: string, subtitle: string, action: () => Promise<void>) => {
+    setPendingReset({ title, subtitle, action });
   };
 
   return (
@@ -89,15 +105,19 @@ function ProgressRoute() {
             navigate({ to: "/profile" });
           },
         }}
-        primaryAction={{
-          label: resetMode ? "Done" : "Reset",
-          icon: resetMode ? XIcon : RetryIcon,
-          variant: resetMode ? "accent" : "danger",
-          onClick: () => {
-            setResetMode((r) => !r);
-            haptics.tap();
-          },
-        }}
+        primaryAction={
+          resetMode || lessonStats.some((s) => s != null)
+            ? {
+                label: resetMode ? "Done" : "Reset",
+                icon: resetMode ? XIcon : RetryIcon,
+                variant: resetMode ? "accent" : "danger",
+                onClick: () => {
+                  setResetMode((r) => !r);
+                  haptics.tap();
+                },
+              }
+            : undefined
+        }
       />
       <div className="max-w-4xl mx-auto px-4 py-4 space-y-6">
         {LEVEL_GROUPS.map((group) => (
@@ -106,14 +126,20 @@ function ProgressRoute() {
               <h2 className="font-serif text-2xl font-bold tx-text">
                 Level {group.level.toLocaleUpperCase()}
               </h2>
-              {resetMode ? (
+              {resetMode && group.entries.some(({ idx }) => lessonStats[idx] != null) ? (
                 <Button
                   label="Reset level"
                   variant="danger"
                   fill="outline"
                   size="sm"
                   icon={<RetryIcon />}
-                  onClick={() => handleResetLevel(group.entries)}
+                  onClick={() =>
+                    confirmReset(
+                      `Reset Level ${group.level.toUpperCase()}`,
+                      `Level ${group.level.toUpperCase()} zurücksetzen`,
+                      () => execResetLevel(group.entries),
+                    )
+                  }
                 />
               ) : null}
             </div>
@@ -125,7 +151,14 @@ function ProgressRoute() {
                   stat={lessonStats[idx] ?? null}
                   theme={theme}
                   onReset={
-                    resetMode && lessonStats[idx] ? () => handleResetLesson(lesson.id) : undefined
+                    resetMode && lessonStats[idx]
+                      ? () =>
+                          confirmReset(
+                            `Reset Lesson ${idx + 1}`,
+                            `Lektion ${idx + 1} zurücksetzen`,
+                            () => execResetLesson(lesson.id),
+                          )
+                      : undefined
                   }
                 />
               ))}
@@ -133,6 +166,28 @@ function ProgressRoute() {
           </section>
         ))}
       </div>
+      {pendingReset ? (
+        <Alert
+          title={pendingReset.title}
+          subtitle={pendingReset.subtitle}
+          onDismiss={() => setPendingReset(null)}
+          actions={[
+            {
+              label: "Cancel",
+              variant: "default",
+              onClick: () => setPendingReset(null),
+            },
+            {
+              label: "Reset",
+              variant: "danger",
+              onClick: async () => {
+                await pendingReset.action();
+                setPendingReset(null);
+              },
+            },
+          ]}
+        />
+      ) : null}
     </>
   );
 }
