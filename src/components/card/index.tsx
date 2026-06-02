@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { forwardRef, useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties, ReactNode } from "react";
 
 type CardVariant = "accent" | "default";
@@ -155,6 +155,35 @@ Card.Chip = function CardChip({ children, style, className = "" }: ChipProps) {
   );
 };
 
+interface BubbleProps {
+  size: number;
+  left: string;
+  bottom: string;
+  anim: string;
+  duration: string;
+  delay: string;
+}
+
+const CardProgressPillBubble = forwardRef<HTMLDivElement, BubbleProps>(
+  function CardProgressPillBubble({ size, left, bottom, anim, duration, delay }, ref) {
+    return (
+      <div
+        ref={ref}
+        className="liquid-bubble"
+        style={{
+          width: size,
+          height: size,
+          left,
+          bottom,
+          animationName: anim,
+          animationDuration: duration,
+          animationDelay: delay,
+        }}
+      />
+    );
+  },
+);
+
 interface ProgressPillProps {
   children: ReactNode;
   value: number;
@@ -167,7 +196,7 @@ interface ProgressPillProps {
   className?: string;
 }
 
-Card.ProgressPill = function CardProgressPill({
+function CardProgressPill({
   children,
   value,
   max,
@@ -183,11 +212,12 @@ Card.ProgressPill = function CardProgressPill({
   useEffect(() => {
     setMounted(true);
   }, []);
-  const count = Math.min(bubbles ?? 0, 128);
+  const baseCount = Math.min(bubbles ?? 0, 128);
+  const maxCount = Math.min(baseCount * 2, 128);
   const bubbleConfigs = useMemo(
     () =>
-      Array.from({ length: count }, () => {
-        const size = 4 + Math.random() * 5;
+      Array.from({ length: maxCount }, () => {
+        const size = 2 + Math.random() * 12;
         const left = `${(1 + Math.random() * 99).toFixed(1)}%`;
         const bottom = `${(10 + Math.random() * 80).toFixed(1)}%`;
         const duration = `${(5.0 + Math.random() * 4.0).toFixed(1)}s`;
@@ -216,37 +246,107 @@ Card.ProgressPill = function CardProgressPill({
           ampY,
         };
       }),
-    [count],
+    [maxCount],
   );
 
   const bubbleRefs = useRef<Array<HTMLDivElement | null>>([]);
   const shakeRef = useRef(shakeFactor);
+  const activeCountRef = useRef(baseCount);
+  const tRef = useRef(0);
+  const popStateRef = useRef<
+    Array<{
+      nextPopAt: number;
+      popStart: number | null;
+      left: number;
+      bottom: number;
+      active: boolean;
+    }>
+  >([]);
+
   useEffect(() => {
     shakeRef.current = shakeFactor;
-  }, [shakeFactor]);
+    const next = baseCount + Math.round(shakeFactor * baseCount);
+    const prev = activeCountRef.current;
+    activeCountRef.current = next;
+    for (let i = prev; i < next && i < popStateRef.current.length; i++) {
+      const state = popStateRef.current[i];
+      if (state && !state.active) {
+        state.active = true;
+        state.left = 1 + Math.random() * 98;
+        state.bottom = 10 + Math.random() * 80;
+        state.nextPopAt = tRef.current + Math.random() * 0.5;
+        state.popStart = null;
+      }
+    }
+    for (let i = next; i < prev && i < popStateRef.current.length; i++) {
+      const state = popStateRef.current[i];
+      if (state) state.active = false;
+    }
+  }, [shakeFactor, baseCount]);
+
+  useEffect(() => {
+    popStateRef.current = Array.from({ length: maxCount }, (_, i) => ({
+      nextPopAt: 0.5 + Math.random() * 6,
+      popStart: null,
+      left: Number.parseFloat(bubbleConfigs[i].left),
+      bottom: Number.parseFloat(bubbleConfigs[i].bottom),
+      active: i < baseCount,
+    }));
+    activeCountRef.current = baseCount;
+  }, [maxCount, baseCount, bubbleConfigs]);
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: bubbleConfigs is stable from useMemo
   useEffect(() => {
-    if (count === 0) return;
+    if (maxCount === 0) return;
+    const POP_DURATION = 0.25;
     const start = performance.now();
     let raf: number;
     const tick = () => {
       const sf = shakeRef.current;
-      if (sf > 0.005) {
-        const t = (performance.now() - start) / 1000;
-        bubbleConfigs.forEach((b, i) => {
-          const el = bubbleRefs.current[i];
-          if (!el) return;
-          const x = Math.sin(t * b.freqX + b.phaseX) * sf * b.ampX;
-          const y = Math.cos(t * b.freqY + b.phaseY) * sf * b.ampY;
-          el.style.translate = `${x.toFixed(2)}px ${y.toFixed(2)}px`;
-        });
-      }
+      const t = (performance.now() - start) / 1000;
+      tRef.current = t;
+      bubbleConfigs.forEach((b, i) => {
+        const el = bubbleRefs.current[i];
+        const state = popStateRef.current[i];
+        if (!el || !state) return;
+        if (!state.active) {
+          el.style.opacity = "0";
+          el.style.scale = "0";
+          return;
+        }
+        const driftAmp = 0.35 + sf * 4;
+        const x = Math.sin(t * b.freqX * 0.35 + b.phaseX) * b.ampX * driftAmp;
+        const y = Math.cos(t * b.freqY * 0.35 + b.phaseY) * b.ampY * driftAmp;
+        el.style.left = `${state.left.toFixed(1)}%`;
+        el.style.bottom = `${state.bottom.toFixed(1)}%`;
+        el.style.translate = `${x.toFixed(2)}px ${y.toFixed(2)}px`;
+        if (state.popStart !== null) {
+          const popT = t - state.popStart;
+          if (popT < POP_DURATION) {
+            el.style.scale = (1 + (popT / POP_DURATION) * 0.6).toFixed(3);
+            el.style.opacity = (1 - popT / POP_DURATION).toFixed(3);
+          } else {
+            el.style.opacity = "";
+            el.style.scale = "1";
+            state.left = 1 + Math.random() * 98;
+            state.bottom = 10 + Math.random() * 80;
+            state.popStart = null;
+            const minDelay = 0.3 + Math.random() * 0.7;
+            const maxDelay = 5 + Math.random() * 8;
+            state.nextPopAt = t + minDelay + maxDelay * (1 - sf);
+          }
+        } else {
+          el.style.scale = (1 + Math.sin(t * b.freqX * 0.35 + b.phaseY) * sf * 0.5).toFixed(3);
+          if (t >= state.nextPopAt) {
+            state.popStart = t;
+          }
+        }
+      });
       raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [count]);
+  }, [maxCount]);
 
   return (
     <div
@@ -265,28 +365,26 @@ Card.ProgressPill = function CardProgressPill({
         }
       >
         {bubbleConfigs.map((b, i) => (
-          <div
+          <CardProgressPillBubble
             key={b.key}
             ref={(el) => {
               bubbleRefs.current[i] = el;
             }}
-            className="liquid-bubble"
-            style={{
-              width: b.size,
-              height: b.size,
-              left: b.left,
-              bottom: b.bottom,
-              animationName: b.anim,
-              animationDuration: b.duration,
-              animationDelay: b.delay,
-            }}
+            size={b.size}
+            left={b.left}
+            bottom={b.bottom}
+            anim={b.anim}
+            duration={b.duration}
+            delay={b.delay}
           />
         ))}
       </div>
       <span className="relative z-10 w-full block text-center">{children}</span>
     </div>
   );
-};
+}
+
+Card.ProgressPill = Object.assign(CardProgressPill, { Bubble: CardProgressPillBubble });
 
 interface ProgressProps {
   value: number;

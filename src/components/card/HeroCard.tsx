@@ -31,12 +31,19 @@ export function HeroCard({
   const [shakeFactor, setShakeFactor] = useState(0);
   const shakeRef = useRef(0);
   const rafRef = useRef<number | null>(null);
-  const lastMouseRef = useRef<{ x: number; y: number; t: number } | null>(null);
+  const buildRafRef = useRef<number | null>(null);
+  const lastMouseRef = useRef<{ x: number; y: number; t: number; vx: number; vy: number } | null>(
+    null,
+  );
 
   const startDecay = () => {
     if (rafRef.current !== null) return;
+    let lastTick = performance.now();
     const tick = () => {
-      shakeRef.current *= 0.88;
+      const now = performance.now();
+      const dt = (now - lastTick) / (1000 / 60);
+      lastTick = now;
+      shakeRef.current *= 0.994 ** dt;
       if (shakeRef.current < 0.005) {
         shakeRef.current = 0;
         setShakeFactor(0);
@@ -66,22 +73,47 @@ export function HeroCard({
   const handleMouseMove = (e: React.MouseEvent) => {
     const now = Date.now();
     const prev = lastMouseRef.current;
-    if (prev) {
-      const dx = e.clientX - prev.x;
-      const dy = e.clientY - prev.y;
-      const dt = Math.max(now - prev.t, 1);
-      const v = Math.sqrt(dx * dx + dy * dy) / dt;
-      shakeRef.current = Math.min(1, shakeRef.current + v * 0.08);
+    const dt = Math.max(now - (prev?.t ?? now), 1);
+    const dx = e.clientX - (prev?.x ?? e.clientX);
+    const dy = e.clientY - (prev?.y ?? e.clientY);
+    const vx = dx / dt;
+    const vy = dy / dt;
+    const speed = Math.sqrt(vx * vx + vy * vy);
+    if (prev && speed > 0) {
+      const prevSpeed = Math.sqrt(prev.vx * prev.vx + prev.vy * prev.vy);
+      const dot = prevSpeed > 0 ? (vx * prev.vx + vy * prev.vy) / (speed * prevSpeed) : 0;
+      const boost = 1 + Math.max(0, -dot) * 2.5;
+      shakeRef.current += speed * 0.15 * boost * (1 - shakeRef.current);
       setShakeFactor(shakeRef.current);
       startDecay();
     }
-    lastMouseRef.current = { x: e.clientX, y: e.clientY, t: now };
+    lastMouseRef.current = { x: e.clientX, y: e.clientY, t: now, vx, vy };
   };
 
   const handleMouseEnter = () => {
-    shakeRef.current = Math.max(shakeRef.current, 0.3);
+    shakeRef.current += 0.2 * (1 - shakeRef.current);
     setShakeFactor(shakeRef.current);
     startDecay();
+  };
+
+  const handleMouseDown = () => {
+    if (buildRafRef.current !== null) cancelAnimationFrame(buildRafRef.current);
+    const startVal = shakeRef.current;
+    const buildStart = performance.now();
+    const buildDuration = 180;
+    const buildTick = () => {
+      const progress = Math.min((performance.now() - buildStart) / buildDuration, 1);
+      const eased = 1 - (1 - progress) ** 2;
+      shakeRef.current = startVal + (1 - startVal) * eased;
+      setShakeFactor(shakeRef.current);
+      if (progress < 1) {
+        buildRafRef.current = requestAnimationFrame(buildTick);
+      } else {
+        buildRafRef.current = null;
+        startDecay();
+      }
+    };
+    buildRafRef.current = requestAnimationFrame(buildTick);
   };
 
   const handleMouseLeave = () => {
@@ -92,6 +124,7 @@ export function HeroCard({
     <div
       onMouseMove={progressPill?.bubbles ? handleMouseMove : undefined}
       onMouseEnter={progressPill?.bubbles ? handleMouseEnter : undefined}
+      onMouseDown={progressPill?.bubbles ? handleMouseDown : undefined}
       onMouseLeave={progressPill?.bubbles ? handleMouseLeave : undefined}
     >
       <Card variant="accent" padding={size} className="w-full" onClick={onClick}>

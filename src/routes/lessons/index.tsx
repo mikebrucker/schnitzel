@@ -86,7 +86,7 @@ function LessonsIndexRoute() {
                 value: score,
                 max: total,
                 length: "100%",
-                bubbles: 16,
+                bubbles: Math.round(pct * 0.5),
               };
             })()}
           />
