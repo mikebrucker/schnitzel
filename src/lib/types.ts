@@ -31,6 +31,8 @@ export type DictionaryEntry = {
   lessonIds: Array<number>;
   hobbyIds?: Array<string>;
   loanword?: boolean;
+  conjugationId?: string;
+  irregular?: boolean;
 };
 
 export type PhrasebookEntry = {
@@ -153,6 +155,31 @@ export type Profile = {
   name: string;
   location: string;
   level: LanguageProficiencyLevel;
+};
+
+export type ConjugationTense = {
+  ich: string;
+  du: string;
+  er_sie_es: string;
+  wir: string;
+  ihr: string;
+  sie_Sie: string;
+};
+
+export type ConjugationEntry = {
+  id: string;
+  infinitive: string;
+  english: string;
+  auxiliary: "haben" | "sein";
+  irregular: boolean;
+  tenses: {
+    present: ConjugationTense;
+    past: ConjugationTense;
+    perfect: {
+      participle: string;
+      example: string;
+    };
+  };
 };
 
 export type QuizMode = "normal" | "view" | "retake" | "wrong";

@@ -1,0 +1,408 @@
+[
+  {
+    "id": "c001",
+    "infinitive": "sein",
+    "english": "to be",
+    "auxiliary": "sein",
+    "irregular": true,
+    "tenses": {
+      "present": {
+        "ich": "bin",
+        "du": "bist",
+        "er_sie_es": "ist",
+        "wir": "sind",
+        "ihr": "seid",
+        "sie_Sie": "sind"
+      },
+      "past": {
+        "ich": "war",
+        "du": "warst",
+        "er_sie_es": "war",
+        "wir": "waren",
+        "ihr": "wart",
+        "sie_Sie": "waren"
+      },
+      "perfect": {
+        "participle": "gewesen",
+        "example": "Ich bin in Innsbruck gewesen."
+      }
+    }
+  },
+  {
+    "id": "c002",
+    "infinitive": "haben",
+    "english": "to have",
+    "auxiliary": "haben",
+    "irregular": true,
+    "tenses": {
+      "present": {
+        "ich": "habe",
+        "du": "hast",
+        "er_sie_es": "hat",
+        "wir": "haben",
+        "ihr": "habt",
+        "sie_Sie": "haben"
+      },
+      "past": {
+        "ich": "hatte",
+        "du": "hattest",
+        "er_sie_es": "hatte",
+        "wir": "hatten",
+        "ihr": "hattet",
+        "sie_Sie": "hatten"
+      },
+      "perfect": {
+        "participle": "gehabt",
+        "example": "Ich habe Hunger gehabt."
+      }
+    }
+  },
+  {
+    "id": "c003",
+    "infinitive": "werden",
+    "english": "to become / will (future auxiliary)",
+    "auxiliary": "sein",
+    "irregular": true,
+    "tenses": {
+      "present": {
+        "ich": "werde",
+        "du": "wirst",
+        "er_sie_es": "wird",
+        "wir": "werden",
+        "ihr": "werdet",
+        "sie_Sie": "werden"
+      },
+      "past": {
+        "ich": "wurde",
+        "du": "wurdest",
+        "er_sie_es": "wurde",
+        "wir": "wurden",
+        "ihr": "wurdet",
+        "sie_Sie": "wurden"
+      },
+      "perfect": {
+        "participle": "geworden",
+        "example": "Ich bin müde geworden."
+      }
+    }
+  },
+  {
+    "id": "c004",
+    "infinitive": "gehen",
+    "english": "to go",
+    "auxiliary": "sein",
+    "irregular": true,
+    "tenses": {
+      "present": {
+        "ich": "gehe",
+        "du": "gehst",
+        "er_sie_es": "geht",
+        "wir": "gehen",
+        "ihr": "geht",
+        "sie_Sie": "gehen"
+      },
+      "past": {
+        "ich": "ging",
+        "du": "gingst",
+        "er_sie_es": "ging",
+        "wir": "gingen",
+        "ihr": "gingt",
+        "sie_Sie": "gingen"
+      },
+      "perfect": {
+        "participle": "gegangen",
+        "example": "Ich bin nach Hause gegangen."
+      }
+    }
+  },
+  {
+    "id": "c005",
+    "infinitive": "kommen",
+    "english": "to come",
+    "auxiliary": "sein",
+    "irregular": true,
+    "tenses": {
+      "present": {
+        "ich": "komme",
+        "du": "kommst",
+        "er_sie_es": "kommt",
+        "wir": "kommen",
+        "ihr": "kommt",
+        "sie_Sie": "kommen"
+      },
+      "past": {
+        "ich": "kam",
+        "du": "kamst",
+        "er_sie_es": "kam",
+        "wir": "kamen",
+        "ihr": "kamt",
+        "sie_Sie": "kamen"
+      },
+      "perfect": {
+        "participle": "gekommen",
+        "example": "Ich bin nach Innsbruck gekommen."
+      }
+    }
+  },
+  {
+    "id": "c006",
+    "infinitive": "machen",
+    "english": "to do / to make",
+    "auxiliary": "haben",
+    "irregular": false,
+    "tenses": {
+      "present": {
+        "ich": "mache",
+        "du": "machst",
+        "er_sie_es": "macht",
+        "wir": "machen",
+        "ihr": "macht",
+        "sie_Sie": "machen"
+      },
+      "past": {
+        "ich": "machte",
+        "du": "machtest",
+        "er_sie_es": "machte",
+        "wir": "machten",
+        "ihr": "machtet",
+        "sie_Sie": "machten"
+      },
+      "perfect": {
+        "participle": "gemacht",
+        "example": "Ich habe das gemacht."
+      }
+    }
+  },
+  {
+    "id": "c007",
+    "infinitive": "sprechen",
+    "english": "to speak",
+    "auxiliary": "haben",
+    "irregular": true,
+    "tenses": {
+      "present": {
+        "ich": "spreche",
+        "du": "sprichst",
+        "er_sie_es": "spricht",
+        "wir": "sprechen",
+        "ihr": "sprecht",
+        "sie_Sie": "sprechen"
+      },
+      "past": {
+        "ich": "sprach",
+        "du": "sprachst",
+        "er_sie_es": "sprach",
+        "wir": "sprachen",
+        "ihr": "spracht",
+        "sie_Sie": "sprachen"
+      },
+      "perfect": {
+        "participle": "gesprochen",
+        "example": "Ich habe Deutsch gesprochen."
+      }
+    }
+  },
+  {
+    "id": "c008",
+    "infinitive": "heißen",
+    "english": "to be called / to be named",
+    "auxiliary": "haben",
+    "irregular": true,
+    "tenses": {
+      "present": {
+        "ich": "heiße",
+        "du": "heißt",
+        "er_sie_es": "heißt",
+        "wir": "heißen",
+        "ihr": "heißt",
+        "sie_Sie": "heißen"
+      },
+      "past": {
+        "ich": "hieß",
+        "du": "hießt",
+        "er_sie_es": "hieß",
+        "wir": "hießen",
+        "ihr": "hießt",
+        "sie_Sie": "hießen"
+      },
+      "perfect": {
+        "participle": "geheißen",
+        "example": "Ich habe Bruck geheißen."
+      }
+    }
+  },
+  {
+    "id": "c009",
+    "infinitive": "wohnen",
+    "english": "to live / to reside",
+    "auxiliary": "haben",
+    "irregular": false,
+    "tenses": {
+      "present": {
+        "ich": "wohne",
+        "du": "wohnst",
+        "er_sie_es": "wohnt",
+        "wir": "wohnen",
+        "ihr": "wohnt",
+        "sie_Sie": "wohnen"
+      },
+      "past": {
+        "ich": "wohnte",
+        "du": "wohntest",
+        "er_sie_es": "wohnte",
+        "wir": "wohnten",
+        "ihr": "wohntet",
+        "sie_Sie": "wohnten"
+      },
+      "perfect": {
+        "participle": "gewohnt",
+        "example": "Ich habe in Innsbruck gewohnt."
+      }
+    }
+  },
+  {
+    "id": "c010",
+    "infinitive": "können",
+    "english": "can / to be able to",
+    "auxiliary": "haben",
+    "irregular": true,
+    "tenses": {
+      "present": {
+        "ich": "kann",
+        "du": "kannst",
+        "er_sie_es": "kann",
+        "wir": "können",
+        "ihr": "könnt",
+        "sie_Sie": "können"
+      },
+      "past": {
+        "ich": "konnte",
+        "du": "konntest",
+        "er_sie_es": "konnte",
+        "wir": "konnten",
+        "ihr": "konntet",
+        "sie_Sie": "konnten"
+      },
+      "perfect": {
+        "participle": "gekonnt",
+        "example": "Ich habe das gekonnt."
+      }
+    }
+  },
+  {
+    "id": "c011",
+    "infinitive": "müssen",
+    "english": "must / to have to",
+    "auxiliary": "haben",
+    "irregular": true,
+    "tenses": {
+      "present": {
+        "ich": "muss",
+        "du": "musst",
+        "er_sie_es": "muss",
+        "wir": "müssen",
+        "ihr": "müsst",
+        "sie_Sie": "müssen"
+      },
+      "past": {
+        "ich": "musste",
+        "du": "musstest",
+        "er_sie_es": "musste",
+        "wir": "mussten",
+        "ihr": "musstet",
+        "sie_Sie": "mussten"
+      },
+      "perfect": {
+        "participle": "gemusst",
+        "example": "Ich habe das gemusst."
+      }
+    }
+  },
+  {
+    "id": "c012",
+    "infinitive": "kaufen",
+    "english": "to buy",
+    "auxiliary": "haben",
+    "irregular": false,
+    "tenses": {
+      "present": {
+        "ich": "kaufe",
+        "du": "kaufst",
+        "er_sie_es": "kauft",
+        "wir": "kaufen",
+        "ihr": "kauft",
+        "sie_Sie": "kaufen"
+      },
+      "past": {
+        "ich": "kaufte",
+        "du": "kauftest",
+        "er_sie_es": "kaufte",
+        "wir": "kauften",
+        "ihr": "kauftet",
+        "sie_Sie": "kauften"
+      },
+      "perfect": {
+        "participle": "gekauft",
+        "example": "Ich habe das Brot gekauft."
+      }
+    }
+  },
+  {
+    "id": "c013",
+    "infinitive": "einchecken",
+    "english": "to check in",
+    "auxiliary": "haben",
+    "irregular": false,
+    "tenses": {
+      "present": {
+        "ich": "checke ein",
+        "du": "checkst ein",
+        "er_sie_es": "checkt ein",
+        "wir": "checken ein",
+        "ihr": "checkt ein",
+        "sie_Sie": "checken ein"
+      },
+      "past": {
+        "ich": "checkte ein",
+        "du": "checktest ein",
+        "er_sie_es": "checkte ein",
+        "wir": "checkten ein",
+        "ihr": "checktet ein",
+        "sie_Sie": "checkten ein"
+      },
+      "perfect": {
+        "participle": "eingecheckt",
+        "example": "Ich habe im Hotel eingecheckt."
+      }
+    }
+  },
+  {
+    "id": "c014",
+    "infinitive": "auschecken",
+    "english": "to check out",
+    "auxiliary": "haben",
+    "irregular": false,
+    "tenses": {
+      "present": {
+        "ich": "checke aus",
+        "du": "checkst aus",
+        "er_sie_es": "checkt aus",
+        "wir": "checken aus",
+        "ihr": "checkt aus",
+        "sie_Sie": "checken aus"
+      },
+      "past": {
+        "ich": "checkte aus",
+        "du": "checktest aus",
+        "er_sie_es": "checkte aus",
+        "wir": "checkten aus",
+        "ihr": "checktet aus",
+        "sie_Sie": "checkten aus"
+      },
+      "perfect": {
+        "participle": "ausgecheckt",
+        "example": "Ich habe um 11 Uhr ausgecheckt."
+      }
+    }
+  }
+]

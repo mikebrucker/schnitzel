@@ -1,3 +1,4 @@
+import conjugationsRaw from "@/data/conjugations.json";
 import dictionaryRaw from "@/data/dictionary.json";
 import hobbiesRaw from "@/data/hobbies.json";
 import lessonsRaw from "@/data/lessons.json";
@@ -5,6 +6,7 @@ import phrasebookRaw from "@/data/phrasebook.json";
 import quizzesRaw from "@/data/quizzes.json";
 import tyroleanRaw from "@/data/tirolean.json";
 import type {
+  ConjugationEntry,
   DictionaryEntry,
   Hobby,
   Lesson,
@@ -14,6 +16,8 @@ import type {
 } from "@/lib/types";
 
 export const CURRICULUM: Array<Lesson> = lessonsRaw as Array<Lesson>;
+
+export const CONJUGATIONS: Array<ConjugationEntry> = conjugationsRaw as Array<ConjugationEntry>;
 
 type QuizRecord = Record<string, { lessonId: number; questions: Array<QuizQuestion> }>;
 export const QUIZZES: QuizRecord = quizzesRaw as QuizRecord;
@@ -50,6 +54,10 @@ export function getLesson(id: number): Lesson | undefined {
 
 export function getWord(id: string): DictionaryEntry | undefined {
   return DICTIONARY.find((w) => w.id === id);
+}
+
+export function getConjugation(id: string): ConjugationEntry | undefined {
+  return CONJUGATIONS.find((c) => c.id === id);
 }
 
 export function lessonToPath(lesson: Lesson): { level: string; unit: string; lessonNum: string } {
