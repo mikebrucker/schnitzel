@@ -1,7 +1,7 @@
 import { Chip } from "@/components/Chip";
 import { Header } from "@/components/Header";
 import { Card } from "@/components/card";
-import { ChevronRightIcon } from "@/components/icons";
+import { ChevronDownIcon, ChevronRightIcon } from "@/components/icons";
 import { DICTIONARY, getConjugation } from "@/lib/curriculum";
 import type { ConjugationEntry, LanguageProficiencyLevel } from "@/lib/types";
 import { createFileRoute } from "@tanstack/react-router";
@@ -129,8 +129,8 @@ function DictionaryRoute() {
                           </span>
                         </div>
                       </div>
-                      <ChevronRightIcon
-                        className={`tx-muted shrink-0 mt-1 transition-transform ${conjOpen ? "rotate-90" : ""}`}
+                      <ChevronDownIcon
+                        className={`tx-muted shrink-0 mt-1 transition-transform ${conjOpen ? "rotate-180" : ""}`}
                       />
                     </button>
                   ) : (
