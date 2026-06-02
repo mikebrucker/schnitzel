@@ -197,8 +197,8 @@ const CardProgressPillBubble = forwardRef<HTMLDivElement, BubbleProps>(
   },
 );
 
-interface ProgressPillProps {
-  children: ReactNode;
+export interface ProgressPillProps {
+  label: string;
   value: number;
   max: number;
   fillColor: string;
@@ -210,7 +210,7 @@ interface ProgressPillProps {
 }
 
 function CardProgressPill({
-  children,
+  label,
   value,
   max,
   fillColor,
@@ -363,7 +363,7 @@ function CardProgressPill({
 
   return (
     <div
-      className={`relative inline-block overflow-hidden rounded-full font-mono text-sm px-3 py-1 bg-surface-solid ${className}`.trim()}
+      className={`relative inline-block overflow-hidden rounded-full font-mono text-sm  bg-surface-solid ${className}`.trim()}
       style={{ width: length, height }}
     >
       <div
@@ -392,7 +392,7 @@ function CardProgressPill({
           />
         ))}
       </div>
-      <span className="relative z-10 w-full block text-center">{children}</span>
+      <span className="relative z-10 w-full block text-center">{label}</span>
     </div>
   );
 }

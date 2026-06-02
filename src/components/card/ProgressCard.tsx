@@ -1,4 +1,6 @@
+import { Button } from "@/components/Button";
 import { Card } from "@/components/card";
+import { RetryIcon } from "@/components/icons";
 import { scoreCardBg } from "@/lib/scoreColors";
 import type { Lesson, LessonStat, Theme } from "@/lib/types";
 
@@ -6,9 +8,10 @@ interface ProgressCardProps {
   lesson: Lesson;
   stat: LessonStat | null;
   theme: Theme;
+  onReset?: () => void;
 }
 
-export function ProgressCard({ lesson, stat, theme }: ProgressCardProps) {
+export function ProgressCard({ lesson, stat, theme, onReset }: ProgressCardProps) {
   const pct = stat ? Math.round(((stat.score ?? stat?.answered) / stat.total) * 100) : null;
   const dark = theme === "dark";
 
@@ -26,7 +29,18 @@ export function ProgressCard({ lesson, stat, theme }: ProgressCardProps) {
             Lesson {lesson.lessonNum}: {lesson.title}
           </Card.Subtitle>
         </div>
-        {!stat ? <div className="font-mono text-xs tx-muted shrink-0 ml-3">not started</div> : null}
+        <div className="flex items-center gap-2 shrink-0 ml-3">
+          {!stat ? <div className="font-mono text-xs tx-muted">not started</div> : null}
+          {onReset ? (
+            <Button
+              label="Reset"
+              variant="danger"
+              size="sm"
+              icon={<RetryIcon size={20} />}
+              onClick={onReset}
+            />
+          ) : null}
+        </div>
       </Card.Row>
       {stat ? (
         <Card.ProgressPill
@@ -34,11 +48,9 @@ export function ProgressCard({ lesson, stat, theme }: ProgressCardProps) {
           max={stat.total}
           fillColor={pct !== null ? scoreCardBg(pct, dark) : "var(--muted)"}
           length="100%"
-          height={28}
-          className="mt-2"
-        >
-          {stat.score}/{stat.total} · {pct}%
-        </Card.ProgressPill>
+          label={`${stat.score}/${stat.total} · ${pct}%`}
+          className="mt-2 px-3 bd-default border-2"
+        />
       ) : null}
     </Card>
   );

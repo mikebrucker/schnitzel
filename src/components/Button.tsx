@@ -1,10 +1,11 @@
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  label: string;
   variant?: "default" | "primary" | "danger";
   size?: "sm" | "md";
   icon?: ReactNode;
-  iconEnd?: ReactNode;
+  iconSide?: "left" | "right";
 }
 
 const VARIANTS = {
@@ -19,11 +20,11 @@ const SIZES = {
 };
 
 export function Button({
+  label,
   variant = "primary",
   size = "md",
   icon,
-  iconEnd,
-  children,
+  iconSide = "right",
   className = "",
   ...props
 }: ButtonProps) {
@@ -33,9 +34,9 @@ export function Button({
       className={`border-2 rounded-xl font-bold flex items-center justify-center gap-2 ${VARIANTS[variant]} ${SIZES[size]} ${className}`}
       {...props}
     >
-      {icon ? icon : null}
-      {children}
-      {iconEnd ? iconEnd : null}
+      {icon && iconSide === "left" ? icon : null}
+      <span>{label}</span>
+      {icon && iconSide === "right" ? icon : null}
     </button>
   );
 }

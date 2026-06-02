@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Card } from "./index";
+import { Card, type ProgressPillProps } from "./index";
 
 interface HeroCardProps {
   eyebrow?: string;
@@ -8,15 +8,7 @@ interface HeroCardProps {
   subtitle: string;
   size?: "md" | "lg";
   onClick: () => void;
-  progressPill?: {
-    label: string;
-    value: number;
-    max: number;
-    fillColor: string;
-    length?: string | number;
-    height?: string | number;
-    bubbles?: number;
-  };
+  progressPill?: ProgressPillProps;
 }
 
 export function HeroCard({
@@ -143,10 +135,9 @@ export function HeroCard({
             height={progressPill.height}
             bubbles={progressPill.bubbles}
             shakeFactor={shakeFactor}
-            className="py-2 border-2 bd-default"
-          >
-            {progressPill.label}
-          </Card.ProgressPill>
+            label={progressPill.label}
+            className="px-3 border-2 bd-default"
+          />
         ) : null}
       </Card>
     </div>

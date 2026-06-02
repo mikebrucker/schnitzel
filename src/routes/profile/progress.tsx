@@ -1,9 +1,10 @@
+import { Button } from "@/components/Button";
 import { Header } from "@/components/Header";
 import { ProgressCard } from "@/components/card/ProgressCard";
-import { ChevronLeftIcon } from "@/components/icons";
+import { ChevronLeftIcon, RetryIcon, XIcon } from "@/components/icons";
 import { CURRICULUM } from "@/lib/curriculum";
 import { haptics } from "@/lib/haptics";
-import { loadQuizProgress } from "@/lib/quizStorage";
+import { clearQuizProgress, loadQuizProgress } from "@/lib/quizStorage";
 import type { Lesson, LessonStat } from "@/lib/types";
 import { useApp } from "@/store/useApp";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
@@ -30,10 +31,13 @@ function ProgressRoute() {
   const navigate = useNavigate();
   const completed = useApp((s) => s.completed);
   const theme = useApp((s) => s.theme);
+  const unmark = useApp((s) => s.unmarkLessonComplete);
 
   const [lessonStats, setLessonStats] = useState<Array<LessonEntry>>([]);
+  const [resetMode, setResetMode] = useState(false);
+  const [reloadKey, setReloadKey] = useState(0);
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: completed triggers re-load when lesson state changes
+  // biome-ignore lint/correctness/useExhaustiveDependencies: completed & reloadKey trigger re-load intentionally
   useEffect(() => {
     let cancelled = false;
     const load = async () => {
@@ -59,7 +63,18 @@ function ProgressRoute() {
     return () => {
       cancelled = true;
     };
-  }, [completed]);
+  }, [completed, reloadKey]);
+
+  const handleResetLesson = async (id: number) => {
+    unmark(id);
+    await clearQuizProgress(id);
+    setReloadKey((k) => k + 1);
+    haptics.tap();
+  };
+
+  const handleResetLevel = async (entries: Array<{ lesson: Lesson; idx: number }>) => {
+    await Promise.all(entries.map(({ lesson }) => handleResetLesson(lesson.id)));
+  };
 
   return (
     <>
@@ -74,13 +89,33 @@ function ProgressRoute() {
             navigate({ to: "/profile" });
           },
         }}
+        primaryAction={{
+          label: resetMode ? "Done" : "Reset",
+          icon: resetMode ? <XIcon size={16} /> : <RetryIcon size={16} />,
+          color: resetMode ? "default" : "danger",
+          onClick: () => {
+            setResetMode((r) => !r);
+            haptics.tap();
+          },
+        }}
       />
       <div className="max-w-4xl mx-auto px-4 py-4 space-y-6">
         {LEVEL_GROUPS.map((group) => (
           <section key={group.level}>
-            <h2 className="font-bold border-b bd-default tx-muted text-xl tracking-widest mb-4 pb-1">
-              Level {group.level.toLocaleUpperCase()}
-            </h2>
+            <div className="flex items-center justify-between border-b bd-default mb-4 pb-1">
+              <h2 className="font-bold tx-muted text-xl tracking-widest">
+                Level {group.level.toLocaleUpperCase()}
+              </h2>
+              {resetMode ? (
+                <Button
+                  label="Reset level"
+                  variant="danger"
+                  size="sm"
+                  icon={<RetryIcon size={20} />}
+                  onClick={() => handleResetLevel(group.entries)}
+                />
+              ) : null}
+            </div>
             <div className="space-y-2">
               {group.entries.map(({ lesson, idx }) => (
                 <ProgressCard
@@ -88,6 +123,9 @@ function ProgressRoute() {
                   lesson={lesson}
                   stat={lessonStats[idx] ?? null}
                   theme={theme}
+                  onReset={
+                    resetMode && lessonStats[idx] ? () => handleResetLesson(lesson.id) : undefined
+                  }
                 />
               ))}
             </div>

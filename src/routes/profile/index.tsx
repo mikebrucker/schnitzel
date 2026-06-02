@@ -154,24 +154,22 @@ function ProfileRoute() {
           <div>
             {editing ? (
               <Button
+                label="Done"
                 variant="danger"
                 size="sm"
                 icon={<XIcon size={16} />}
                 onClick={() => setEditing(false)}
-              >
-                Done
-              </Button>
+              />
             ) : (
               <Button
+                label="Edit profile"
                 size="sm"
                 icon={<EditIcon size={18} />}
                 onClick={() => {
                   setEditing(true);
                   haptics.tap();
                 }}
-              >
-                Edit profile
-              </Button>
+              />
             )}
           </div>
         </section>

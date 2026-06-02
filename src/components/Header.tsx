@@ -4,6 +4,7 @@ interface HeaderAction {
   label: string;
   icon: ReactNode;
   onClick: () => void;
+  color?: "default" | "danger";
 }
 
 interface HeaderProps {
@@ -49,7 +50,7 @@ export function Header({ title, subtitle, secondaryAction, primaryAction }: Head
               <button
                 type="button"
                 onClick={primaryAction.onClick}
-                className="flex items-center gap-2 text-sm font-mono tx-accent pl-2 py-1 whitespace-nowrap"
+                className={`flex items-center gap-2 text-sm font-mono pl-2 py-1 whitespace-nowrap ${primaryAction.color === "danger" ? "tx-wrong" : "tx-accent"}`}
               >
                 {primaryAction.label}
                 {primaryAction.icon}
