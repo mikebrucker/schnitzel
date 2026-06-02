@@ -1,3 +1,4 @@
+import { Button } from "@/components/Button";
 import { Header } from "@/components/Header";
 import { ChevronLeftIcon, ChevronRightIcon, RetryIcon, TipIcon, XIcon } from "@/components/icons";
 import { lessonToPath } from "@/lib/curriculum";
@@ -99,7 +100,7 @@ function LessonRoute() {
                   <div className="tx-body">{v.en}</div>
                   {v.note ? (
                     <div className="flex items-center gap-1 text-xs tx-accent mt-1">
-                      <TipIcon />
+                      <TipIcon size={16} />
                       {v.note}
                     </div>
                   ) : null}
@@ -168,47 +169,43 @@ function LessonRoute() {
 
         {quizState === "done" ? (
           <div className="space-y-3">
-            <button
-              type="button"
+            <Button
+              label="View Results"
+              variant="primary"
+              icon={<ChevronRightIcon />}
               onClick={() => startQuiz("view")}
-              className="w-full bg-btn tx-btn py-4 font-serif text-xl font-bold border-2 bd-btn"
-            >
-              <span className="flex items-center justify-center gap-2">
-                View Results <ChevronRightIcon />
-              </span>
-            </button>
+              className="rounded-none w-full py-4 font-serif text-xl"
+            />
             <div className="grid grid-cols-2 gap-3">
-              <button
-                type="button"
+              <Button
+                label="Retake quiz"
+                variant="default"
+                fill="filled"
+                icon={<RetryIcon />}
+                iconSide="left"
                 onClick={() => startQuiz("retake")}
-                className="border-2 bd-default bg-surface tx-text py-3 font-bold"
-              >
-                <span className="flex items-center justify-center gap-2">
-                  <RetryIcon /> Retake quiz
-                </span>
-              </button>
-              <button
-                type="button"
-                onClick={() => startQuiz("wrong")}
+                className="rounded-none"
+              />
+              <Button
+                label="Retry wrong only"
+                variant="default"
+                fill="filled"
+                icon={<XIcon />}
+                iconSide="left"
                 disabled={!savedScore || savedScore.score === savedScore.total}
-                className="border-2 bd-default bg-surface tx-text py-3 font-bold disabled:opacity-40 disabled:cursor-not-allowed"
-              >
-                <span className="flex items-center justify-center gap-2">
-                  <XIcon /> Retry wrong only
-                </span>
-              </button>
+                onClick={() => startQuiz("wrong")}
+                className="rounded-none disabled:opacity-40 disabled:cursor-not-allowed"
+              />
             </div>
           </div>
         ) : (
-          <button
-            type="button"
+          <Button
+            label={quizState === "progress" ? "Resume Quiz" : "Take Quiz"}
+            variant="primary"
+            icon={<ChevronRightIcon />}
             onClick={() => startQuiz("normal")}
-            className="w-full bg-btn tx-btn py-4 font-serif text-xl font-bold border-2 bd-btn"
-          >
-            <span className="flex items-center justify-center gap-2">
-              {quizState === "progress" ? "Resume Quiz" : "Take Quiz"} <ChevronRightIcon />
-            </span>
-          </button>
+            className="rounded-none w-full py-4 font-serif text-xl"
+          />
         )}
       </div>
     </>
