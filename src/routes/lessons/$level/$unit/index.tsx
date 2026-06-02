@@ -135,7 +135,11 @@ function UnitIndexRoute() {
                   {summary?.finished ? <Card.Caption>{pct}%</Card.Caption> : null}
                 </Card.Row>
                 {summary ? (
-                  <Card.Progress value={summary?.score ?? 0} max={summary?.total ?? 10} />
+                  <Card.Progress
+                    value={summary?.score ?? 0}
+                    max={summary?.total ?? 10}
+                    className="mt-3"
+                  />
                 ) : null}
               </Card>
             );

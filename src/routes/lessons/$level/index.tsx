@@ -127,7 +127,7 @@ function LevelIndexRoute() {
                   </Card.Caption>
                 </Card.Row>
                 <Card.Subtitle>{unitLessons.map((l) => l.title).join(" · ")}</Card.Subtitle>
-                <Card.Progress value={unitDone} max={unitSummaries.length} />
+                <Card.Progress value={unitDone} max={unitSummaries.length} className="mt-3" />
               </Card>
             );
           })}

@@ -31,7 +31,7 @@ export function SummaryCard({
         <Card.Badge accent={badgeAccent}>{badge}</Card.Badge>
       </Card.Row>
       <Card.Caption>{meta}</Card.Caption>
-      <Card.Progress value={progress.value} max={progress.max} />
+      <Card.Progress value={progress.value} max={progress.max} className="mt-3" />
     </Card>
   );
 }

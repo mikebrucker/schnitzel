@@ -1,5 +1,11 @@
 import { CheckIcon, ChevronLeftIcon, ChevronRightIcon, XIcon } from "@/components/icons";
 import { haptics } from "@/lib/haptics";
+import {
+  getCorrectDisplay,
+  getPrompt,
+  getUserAnswerDisplay,
+  isAnswerCorrect,
+} from "@/lib/quizLogic";
 import type { QuizQuestion } from "@/lib/types";
 import { useEffect, useState } from "react";
 
@@ -8,7 +14,7 @@ type Props = {
   total: number;
   pct: number;
   questions: Array<QuizQuestion>;
-  answers: Array<number>;
+  answers: Array<number | string>;
   isReattempt: boolean;
   onBack: () => void;
   onComplete: () => void;
@@ -53,15 +59,15 @@ export function Results({
         <div className="space-y-4">
           {questions.map((q, i) => {
             const picked = answers[i];
-            const isCorrect = picked === q.correct;
+            const isCorrect = isAnswerCorrect(q, picked);
             return (
-              <div key={q.question} className="border-2 bd-default bg-surface p-4">
+              <div key={q.id} className="border-2 bd-default bg-surface p-4">
                 <div className="text-xs font-mono tx-muted mb-2">Question {i + 1}</div>
-                <div className="font-serif font-bold tx-text mb-3">{q.question}</div>
+                <div className="font-serif font-bold tx-text mb-3">{getPrompt(q)}</div>
                 <div className="text-sm mb-1">
                   <span className="font-mono tx-muted">You: </span>
                   <span className={isCorrect ? "tx-accent" : "tx-wrong"}>
-                    {q.options[picked]}{" "}
+                    {getUserAnswerDisplay(q, picked)}{" "}
                     {isCorrect ? (
                       <CheckIcon className="inline-block" />
                     ) : (
@@ -72,7 +78,7 @@ export function Results({
                 {!isCorrect ? (
                   <div className="text-sm mb-1">
                     <span className="font-mono tx-muted">Correct: </span>
-                    <span className="tx-accent">{q.options[q.correct]}</span>
+                    <span className="tx-accent">{getCorrectDisplay(q)}</span>
                   </div>
                 ) : null}
                 <div className="text-m tx-body mt-2 pt-2 border-t bd-default">{q.explanation}</div>

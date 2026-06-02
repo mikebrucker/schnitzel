@@ -20,3 +20,11 @@ export async function saveQuizProgress(lessonId: number, state: SavedQuizState):
 export async function clearQuizProgress(lessonId: number): Promise<void> {
   await storage.remove(key(lessonId));
 }
+
+export async function loadHobbyQuizProgress(quizId: string): Promise<SavedQuizState | null> {
+  return await storage.getJSON<SavedQuizState>(`quiz-progress:${quizId}`);
+}
+
+export async function saveHobbyQuizProgress(quizId: string, state: SavedQuizState): Promise<void> {
+  await storage.setJSON(`quiz-progress:${quizId}`, state);
+}

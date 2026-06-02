@@ -56,6 +56,26 @@
         "options": ["Tschüss", "Servus", "Guten Morgen", "Auf Wiedersehen"],
         "correct": 3,
         "explanation": "'Auf Wiedersehen' literally means 'until seeing again' — the formal goodbye."
+      },
+      {
+        "id": "q001-6",
+        "type": "fill-blank",
+        "difficulty": 2,
+        "vocabId": "v008",
+        "prompt": "Ich ___ Bruck.",
+        "answer": "heiße",
+        "acceptable": ["heisse"],
+        "explanation": "heißen (to be called) conjugates to 'heiße' in 1st person singular."
+      },
+      {
+        "id": "q001-7",
+        "type": "translate",
+        "difficulty": 3,
+        "direction": "en-de",
+        "prompt": "Good morning",
+        "answer": "Guten Morgen",
+        "acceptable": ["guten morgen"],
+        "explanation": "Guten Morgen — standard morning greeting. 'Guten' is accusative of 'gut'."
       }
     ]
   },
@@ -171,6 +191,26 @@
         "options": ["coffee", "water", "cheese", "cake"],
         "correct": 2,
         "explanation": "Der Käse = cheese. Masculine article. (Kaffee = coffee, also masc.)"
+      },
+      {
+        "id": "q003-6",
+        "type": "fill-blank",
+        "difficulty": 2,
+        "vocabId": "v025",
+        "prompt": "Ich ___ ein Bier, bitte.",
+        "answer": "möchte",
+        "acceptable": ["mochte"],
+        "explanation": "möchten is the polite 'would like'. Softer and more common than 'ich will'."
+      },
+      {
+        "id": "q003-7",
+        "type": "translate",
+        "difficulty": 3,
+        "direction": "de-en",
+        "prompt": "Zahlen, bitte",
+        "answer": "Pay, please",
+        "acceptable": ["the bill please", "bill please", "pay please", "check please"],
+        "explanation": "Zahlen = to pay. The Austrian way to ask for the bill — you'll hear it everywhere."
       }
     ]
   },
@@ -401,6 +441,220 @@
         "options": ["to check in", "to check out", "to pay the bill", "to book a room"],
         "correct": 1,
         "explanation": "'Aus-' = out, 'ein-' = in. Einchecken = check in, auschecken = check out."
+      }
+    ]
+  },
+  "q100": {
+    "lessonId": null,
+    "subdomainId": "h001-s1",
+    "questions": [
+      {
+        "id": "q100-1",
+        "type": "single-choice",
+        "difficulty": 1,
+        "vocabId": "v078",
+        "question": "What does 'die Parade' mean?",
+        "options": ["A scored goal", "A save", "A penalty", "A face-off"],
+        "correct": 1,
+        "explanation": "Parade = save. When the Torhüter stops the Puck — das ist eine Parade."
+      },
+      {
+        "id": "q100-2",
+        "type": "single-choice",
+        "difficulty": 1,
+        "vocabId": "v076",
+        "question": "How do you say 'goaltender' in German?",
+        "options": ["der Schläger", "der Torhüter", "die Maske", "das Drittel"],
+        "correct": 1,
+        "explanation": "Torhüter = goal guardian. Also Tormann in Austrian usage."
+      },
+      {
+        "id": "q100-3",
+        "type": "single-choice",
+        "difficulty": 2,
+        "vocabId": "v079",
+        "question": "'Das Gegentor' means…",
+        "options": ["A power play", "A shutout", "A goal conceded", "Overtime"],
+        "correct": 2,
+        "explanation": "Gegen = against. Das Gegentor is the goal scored against you."
+      },
+      {
+        "id": "q100-4",
+        "type": "single-choice",
+        "difficulty": 2,
+        "vocabId": "v080",
+        "question": "Which word is a loanword from English?",
+        "options": ["die Parade", "das Tor", "das Shutout", "das Gegentor"],
+        "correct": 2,
+        "explanation": "Shutout is borrowed directly from English. Parade, Tor and Gegentor are native German."
+      },
+      {
+        "id": "q100-5",
+        "type": "single-choice",
+        "difficulty": 3,
+        "vocabId": "v077",
+        "question": "Translate: 'Kein Gegentor heute — das war ein Shutout!'",
+        "options": [
+          "One goal today — that was a power play!",
+          "No goals conceded today — that was a shutout!",
+          "Good game today — that was exciting!",
+          "Three goals today — great game!"
+        ],
+        "correct": 1,
+        "explanation": "Kein = no/none. Gegentor = goal conceded. Heute = today. Kein Gegentor = shutout."
+      }
+    ]
+  },
+  "q101": {
+    "lessonId": null,
+    "subdomainId": "h001-s2",
+    "questions": [
+      {
+        "id": "q101-1",
+        "type": "single-choice",
+        "difficulty": 1,
+        "vocabId": "v081",
+        "question": "What is 'die Fanghand'?",
+        "options": ["The blocker hand", "The skate", "The glove (catching) hand", "The leg pads"],
+        "correct": 2,
+        "explanation": "Fangen = to catch. Die Fanghand is the hand with the catching glove."
+      },
+      {
+        "id": "q101-2",
+        "type": "single-choice",
+        "difficulty": 1,
+        "vocabId": "v084",
+        "question": "'Die Beinschienen' are…",
+        "options": ["The goalie mask", "Leg pads", "Shoulder pads", "Ice skates"],
+        "correct": 1,
+        "explanation": "Bein = leg, Schienen = shields/guards. Leg pads protect the goalie's legs."
+      },
+      {
+        "id": "q101-3",
+        "type": "single-choice",
+        "difficulty": 2,
+        "vocabId": "v083",
+        "question": "What is 'der Torwartstock'?",
+        "options": ["The penalty box", "The rink surface", "A power play", "The goalie stick"],
+        "correct": 3,
+        "explanation": "Torwart = goalkeeper, Stock = stick. The goalie stick has a wider blade than a player stick."
+      },
+      {
+        "id": "q101-4",
+        "type": "single-choice",
+        "difficulty": 2,
+        "vocabId": "v082",
+        "question": "'Die Stockhand' is the…",
+        "options": ["Catching hand", "Kicking hand", "Blocker hand", "Free hand"],
+        "correct": 2,
+        "explanation": "Stock = stick. Die Stockhand holds the stick and has the blocker attached."
+      },
+      {
+        "id": "q101-5",
+        "type": "single-choice",
+        "difficulty": 3,
+        "vocabId": "v085",
+        "question": "What is 'die Maske' in hockey?",
+        "options": ["The jersey", "The goalie mask", "The helmet visor", "The chest protector"],
+        "correct": 1,
+        "explanation": "Die Maske is the goalie's face mask — one of the most iconic pieces of equipment."
+      }
+    ]
+  },
+  "q102": {
+    "lessonId": null,
+    "subdomainId": "h001-s3",
+    "questions": [
+      {
+        "id": "q102-1",
+        "type": "single-choice",
+        "difficulty": 1,
+        "vocabId": "v088",
+        "question": "'Das Bully' is a…",
+        "options": ["A goal", "A face-off", "A power play", "A penalty"],
+        "correct": 1,
+        "explanation": "Das Bully is the face-off. The game restarts with a Bully at center ice or after a stoppage."
+      },
+      {
+        "id": "q102-2",
+        "type": "single-choice",
+        "difficulty": 1,
+        "vocabId": "v090",
+        "question": "'Die Strafbank' means…",
+        "options": ["The ice surface", "The goal", "The penalty box", "The boards"],
+        "correct": 2,
+        "explanation": "Strafe = punishment, Bank = bench. The penalty box — where you sit after a foul."
+      },
+      {
+        "id": "q102-3",
+        "type": "single-choice",
+        "difficulty": 2,
+        "vocabId": "v092",
+        "question": "How many 'Drittel' are in a hockey game?",
+        "options": ["2", "3", "4", "1"],
+        "correct": 1,
+        "explanation": "Hockey has 3 Drittel (periods). Football has 2 Halbzeiten — but hockey goes in thirds."
+      },
+      {
+        "id": "q102-4",
+        "type": "single-choice",
+        "difficulty": 2,
+        "vocabId": "v093",
+        "question": "'Die Verlängerung' means…",
+        "options": ["A power play", "A penalty", "A face-off", "Overtime"],
+        "correct": 3,
+        "explanation": "Verlängerung literally means 'extension'. When the game goes to OT — Verlängerung!"
+      },
+      {
+        "id": "q102-5",
+        "type": "single-choice",
+        "difficulty": 3,
+        "vocabId": "v091",
+        "question": "'Das Powerplay' is…",
+        "options": [
+          "A scored goal",
+          "Playing with a man advantage",
+          "A type of face-off",
+          "Overtime"
+        ],
+        "correct": 1,
+        "explanation": "Powerplay is borrowed from English. When the other team has a player in the Strafbank, you have a Powerplay."
+      }
+    ]
+  },
+  "q103": {
+    "lessonId": null,
+    "subdomainId": "h001-s4",
+    "questions": [
+      {
+        "id": "q103-1",
+        "type": "single-choice",
+        "difficulty": 1,
+        "vocabId": "v097",
+        "question": "What are 'die Inlineskates'?",
+        "options": ["Ice skates", "Inline / roller skates", "Goalie leg pads", "Hockey sticks"],
+        "correct": 1,
+        "explanation": "Inlineskates are the wheels you use in summer hockey — also called Rollerblades."
+      },
+      {
+        "id": "q103-2",
+        "type": "single-choice",
+        "difficulty": 1,
+        "vocabId": "v098",
+        "question": "'Die Eishalle' is…",
+        "options": ["An ice cream shop", "The ice rink building", "A team name", "A penalty"],
+        "correct": 1,
+        "explanation": "Eis = ice, Halle = hall/arena. Die Eishalle is the building where you play ice hockey."
+      },
+      {
+        "id": "q103-3",
+        "type": "single-choice",
+        "difficulty": 2,
+        "vocabId": "v099",
+        "question": "'Die Mannschaft' means…",
+        "options": ["The referee", "The arena", "The team", "The coach"],
+        "correct": 2,
+        "explanation": "Die Mannschaft = the team. Also the nickname for the German national football team."
       }
     ]
   }

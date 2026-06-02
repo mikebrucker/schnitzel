@@ -29,6 +29,43 @@ export type DictionaryEntry = {
   exampleSentence: { de: string; en: string } | null;
   audio: string | null;
   lessonIds: Array<number>;
+  hobbyIds?: Array<string>;
+  loanword?: boolean;
+};
+
+export type PhrasebookEntry = {
+  id: string;
+  category: string;
+  de: string;
+  en: string;
+  literal: string | null;
+  ipa: string | null;
+  formality: "formal" | "neutral" | "casual";
+  tags: Array<string>;
+  audio: string | null;
+  hobbyIds: Array<string>;
+};
+
+export type HobbySubdomain = {
+  id: string;
+  slug: string;
+  name: string;
+  nameDe: string;
+  focus: "primary" | "secondary";
+  vocabIds: Array<string>;
+  phraseIds: Array<string>;
+  quizId: string;
+};
+
+export type Hobby = {
+  id: string;
+  slug: string;
+  name: string;
+  nameDe: string;
+  icon: string;
+  level: LanguageProficiencyLevel;
+  blurb: string;
+  subdomains: Array<HobbySubdomain>;
 };
 
 export type GrammarPoint = {
@@ -69,7 +106,30 @@ export type SingleChoiceQuestion = {
   explanation: string;
 };
 
-export type QuizQuestion = SingleChoiceQuestion;
+export type FillBlankQuestion = {
+  id: string;
+  type: "fill-blank";
+  difficulty: number;
+  vocabId?: string;
+  prompt: string;
+  answer: string;
+  acceptable: Array<string>;
+  explanation: string;
+};
+
+export type TranslateQuestion = {
+  id: string;
+  type: "translate";
+  difficulty: number;
+  vocabId?: string;
+  direction: "en-de" | "de-en";
+  prompt: string;
+  answer: string;
+  acceptable: Array<string>;
+  explanation: string;
+};
+
+export type QuizQuestion = SingleChoiceQuestion | FillBlankQuestion | TranslateQuestion;
 
 export type TyroleanEntry = {
   id: string;
@@ -85,8 +145,8 @@ export type TyroleanEntry = {
 export type QuizProgress = {
   idx: number;
   score: number;
-  answers: Array<number>;
-  picked: number | null;
+  answers: Array<number | string>;
+  picked: number | string | null;
 };
 
 export type Profile = {

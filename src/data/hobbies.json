@@ -1,0 +1,65 @@
+[
+  {
+    "id": "h001",
+    "slug": "hockey",
+    "name": "Ice & Roller Hockey",
+    "nameDe": "Eishockey & Inlinehockey",
+    "icon": "🏒",
+    "level": "A2",
+    "blurb": "Learn German through the rink — for a 15-year goalie.",
+    "subdomains": [
+      {
+        "id": "h001-s1",
+        "slug": "goaltending",
+        "name": "Goaltending",
+        "nameDe": "Torhüterspiel",
+        "focus": "primary",
+        "vocabIds": ["v076", "v077", "v078", "v079", "v080"],
+        "phraseIds": ["p001", "p002", "p003", "p008"],
+        "quizId": "q100"
+      },
+      {
+        "id": "h001-s2",
+        "slug": "equipment",
+        "name": "Equipment",
+        "nameDe": "Ausrüstung",
+        "focus": "secondary",
+        "vocabIds": ["v081", "v082", "v083", "v084", "v085"],
+        "phraseIds": [],
+        "quizId": "q101"
+      },
+      {
+        "id": "h001-s3",
+        "slug": "rink-and-play",
+        "name": "Rink & Gameplay",
+        "nameDe": "Eisfläche & Spiel",
+        "focus": "secondary",
+        "vocabIds": [
+          "v086",
+          "v087",
+          "v088",
+          "v089",
+          "v090",
+          "v091",
+          "v092",
+          "v093",
+          "v094",
+          "v095",
+          "v096"
+        ],
+        "phraseIds": ["p004", "p005", "p006", "p007", "p010"],
+        "quizId": "q102"
+      },
+      {
+        "id": "h001-s4",
+        "slug": "roller-hockey",
+        "name": "Roller Hockey",
+        "nameDe": "Inlinehockey",
+        "focus": "secondary",
+        "vocabIds": ["v097", "v098", "v099"],
+        "phraseIds": ["p009"],
+        "quizId": "q103"
+      }
+    ]
+  }
+]

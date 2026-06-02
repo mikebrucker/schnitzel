@@ -1,0 +1,122 @@
+[
+  {
+    "id": "p001",
+    "category": "hockey",
+    "de": "Ich bin Torhüter.",
+    "en": "I am a goalie.",
+    "literal": null,
+    "ipa": null,
+    "formality": "neutral",
+    "tags": ["hockey", "goaltending", "introduction"],
+    "audio": null,
+    "hobbyIds": ["h001"]
+  },
+  {
+    "id": "p002",
+    "category": "hockey",
+    "de": "Ich stehe seit 15 Jahren im Tor.",
+    "en": "I've been a goalie for 15 years.",
+    "literal": "I stand since 15 years in goal.",
+    "ipa": null,
+    "formality": "neutral",
+    "tags": ["hockey", "goaltending", "introduction"],
+    "audio": null,
+    "hobbyIds": ["h001"]
+  },
+  {
+    "id": "p003",
+    "category": "hockey",
+    "de": "Schöne Parade!",
+    "en": "Nice save!",
+    "literal": null,
+    "ipa": null,
+    "formality": "casual",
+    "tags": ["hockey", "goaltending", "compliment"],
+    "audio": null,
+    "hobbyIds": ["h001"]
+  },
+  {
+    "id": "p004",
+    "category": "hockey",
+    "de": "Wo ist die Eishalle?",
+    "en": "Where is the ice rink?",
+    "literal": null,
+    "ipa": null,
+    "formality": "neutral",
+    "tags": ["hockey", "rink", "directions"],
+    "audio": null,
+    "hobbyIds": ["h001"]
+  },
+  {
+    "id": "p005",
+    "category": "hockey",
+    "de": "Habt ihr eine Hobbymannschaft?",
+    "en": "Do you have a beer-league / hobby team?",
+    "literal": "Do you have a hobby team?",
+    "ipa": null,
+    "formality": "casual",
+    "tags": ["hockey", "social", "team"],
+    "audio": null,
+    "hobbyIds": ["h001"]
+  },
+  {
+    "id": "p006",
+    "category": "hockey",
+    "de": "Wann ist das nächste Training?",
+    "en": "When is the next practice?",
+    "literal": null,
+    "ipa": null,
+    "formality": "neutral",
+    "tags": ["hockey", "training", "schedule"],
+    "audio": null,
+    "hobbyIds": ["h001"]
+  },
+  {
+    "id": "p007",
+    "category": "hockey",
+    "de": "Das Drittel ist vorbei.",
+    "en": "The period is over.",
+    "literal": null,
+    "ipa": null,
+    "formality": "neutral",
+    "tags": ["hockey", "gameplay"],
+    "audio": null,
+    "hobbyIds": ["h001"]
+  },
+  {
+    "id": "p008",
+    "category": "hockey",
+    "de": "Das war ein Shutout — zu Null!",
+    "en": "That was a shutout — clean sheet!",
+    "literal": "That was a shutout — to zero!",
+    "ipa": null,
+    "formality": "casual",
+    "tags": ["hockey", "goaltending", "celebration"],
+    "audio": null,
+    "hobbyIds": ["h001"]
+  },
+  {
+    "id": "p009",
+    "category": "hockey",
+    "de": "Ich spiele Inline-Hockey im Sommer.",
+    "en": "I play inline hockey in the summer.",
+    "literal": null,
+    "ipa": null,
+    "formality": "neutral",
+    "tags": ["hockey", "roller-hockey", "introduction"],
+    "audio": null,
+    "hobbyIds": ["h001"]
+  },
+  {
+    "id": "p010",
+    "category": "hockey",
+    "de": "Wir haben gewonnen!",
+    "en": "We won!",
+    "literal": null,
+    "ipa": null,
+    "formality": "casual",
+    "tags": ["hockey", "celebration"],
+    "audio": null,
+    "hobbyIds": ["h001"]
+  }
+]

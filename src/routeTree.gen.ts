@@ -16,11 +16,15 @@ import { Route as DictionaryRouteImport } from './routes/dictionary'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProfileIndexRouteImport } from './routes/profile/index'
 import { Route as LessonsIndexRouteImport } from './routes/lessons/index'
+import { Route as HobbiesIndexRouteImport } from './routes/hobbies/index'
 import { Route as ProfileSettingsRouteImport } from './routes/profile/settings'
 import { Route as ProfileProgressRouteImport } from './routes/profile/progress'
 import { Route as LessonsLevelRouteImport } from './routes/lessons/$level'
+import { Route as HobbiesHobbySlugRouteImport } from './routes/hobbies/$hobbySlug'
 import { Route as LessonsLevelIndexRouteImport } from './routes/lessons/$level/index'
+import { Route as HobbiesHobbySlugIndexRouteImport } from './routes/hobbies/$hobbySlug/index'
 import { Route as LessonsLevelUnitRouteImport } from './routes/lessons/$level/$unit'
+import { Route as HobbiesHobbySlugQuizRouteImport } from './routes/hobbies/$hobbySlug/quiz'
 import { Route as LessonsLevelUnitIndexRouteImport } from './routes/lessons/$level/$unit/index'
 import { Route as LessonsLevelUnitLessonNumRouteImport } from './routes/lessons/$level/$unit/$lessonNum'
 import { Route as LessonsLevelUnitLessonNumIndexRouteImport } from './routes/lessons/$level/$unit/$lessonNum/index'
@@ -61,6 +65,11 @@ const LessonsIndexRoute = LessonsIndexRouteImport.update({
   path: '/lessons/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HobbiesIndexRoute = HobbiesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => HobbiesRoute,
+} as any)
 const ProfileSettingsRoute = ProfileSettingsRouteImport.update({
   id: '/settings',
   path: '/settings',
@@ -76,15 +85,30 @@ const LessonsLevelRoute = LessonsLevelRouteImport.update({
   path: '/lessons/$level',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HobbiesHobbySlugRoute = HobbiesHobbySlugRouteImport.update({
+  id: '/$hobbySlug',
+  path: '/$hobbySlug',
+  getParentRoute: () => HobbiesRoute,
+} as any)
 const LessonsLevelIndexRoute = LessonsLevelIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => LessonsLevelRoute,
 } as any)
+const HobbiesHobbySlugIndexRoute = HobbiesHobbySlugIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => HobbiesHobbySlugRoute,
+} as any)
 const LessonsLevelUnitRoute = LessonsLevelUnitRouteImport.update({
   id: '/$unit',
   path: '/$unit',
   getParentRoute: () => LessonsLevelRoute,
+} as any)
+const HobbiesHobbySlugQuizRoute = HobbiesHobbySlugQuizRouteImport.update({
+  id: '/quiz',
+  path: '/quiz',
+  getParentRoute: () => HobbiesHobbySlugRoute,
 } as any)
 const LessonsLevelUnitIndexRoute = LessonsLevelUnitIndexRouteImport.update({
   id: '/',
@@ -113,15 +137,19 @@ const LessonsLevelUnitLessonNumQuizRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/dictionary': typeof DictionaryRoute
-  '/hobbies': typeof HobbiesRoute
+  '/hobbies': typeof HobbiesRouteWithChildren
   '/phrasebook': typeof PhrasebookRoute
   '/profile': typeof ProfileRouteWithChildren
+  '/hobbies/$hobbySlug': typeof HobbiesHobbySlugRouteWithChildren
   '/lessons/$level': typeof LessonsLevelRouteWithChildren
   '/profile/progress': typeof ProfileProgressRoute
   '/profile/settings': typeof ProfileSettingsRoute
+  '/hobbies/': typeof HobbiesIndexRoute
   '/lessons/': typeof LessonsIndexRoute
   '/profile/': typeof ProfileIndexRoute
+  '/hobbies/$hobbySlug/quiz': typeof HobbiesHobbySlugQuizRoute
   '/lessons/$level/$unit': typeof LessonsLevelUnitRouteWithChildren
+  '/hobbies/$hobbySlug/': typeof HobbiesHobbySlugIndexRoute
   '/lessons/$level/': typeof LessonsLevelIndexRoute
   '/lessons/$level/$unit/$lessonNum': typeof LessonsLevelUnitLessonNumRouteWithChildren
   '/lessons/$level/$unit/': typeof LessonsLevelUnitIndexRoute
@@ -131,12 +159,14 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/dictionary': typeof DictionaryRoute
-  '/hobbies': typeof HobbiesRoute
   '/phrasebook': typeof PhrasebookRoute
   '/profile/progress': typeof ProfileProgressRoute
   '/profile/settings': typeof ProfileSettingsRoute
+  '/hobbies': typeof HobbiesIndexRoute
   '/lessons': typeof LessonsIndexRoute
   '/profile': typeof ProfileIndexRoute
+  '/hobbies/$hobbySlug/quiz': typeof HobbiesHobbySlugQuizRoute
+  '/hobbies/$hobbySlug': typeof HobbiesHobbySlugIndexRoute
   '/lessons/$level': typeof LessonsLevelIndexRoute
   '/lessons/$level/$unit': typeof LessonsLevelUnitIndexRoute
   '/lessons/$level/$unit/$lessonNum/quiz': typeof LessonsLevelUnitLessonNumQuizRoute
@@ -146,15 +176,19 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/dictionary': typeof DictionaryRoute
-  '/hobbies': typeof HobbiesRoute
+  '/hobbies': typeof HobbiesRouteWithChildren
   '/phrasebook': typeof PhrasebookRoute
   '/profile': typeof ProfileRouteWithChildren
+  '/hobbies/$hobbySlug': typeof HobbiesHobbySlugRouteWithChildren
   '/lessons/$level': typeof LessonsLevelRouteWithChildren
   '/profile/progress': typeof ProfileProgressRoute
   '/profile/settings': typeof ProfileSettingsRoute
+  '/hobbies/': typeof HobbiesIndexRoute
   '/lessons/': typeof LessonsIndexRoute
   '/profile/': typeof ProfileIndexRoute
+  '/hobbies/$hobbySlug/quiz': typeof HobbiesHobbySlugQuizRoute
   '/lessons/$level/$unit': typeof LessonsLevelUnitRouteWithChildren
+  '/hobbies/$hobbySlug/': typeof HobbiesHobbySlugIndexRoute
   '/lessons/$level/': typeof LessonsLevelIndexRoute
   '/lessons/$level/$unit/$lessonNum': typeof LessonsLevelUnitLessonNumRouteWithChildren
   '/lessons/$level/$unit/': typeof LessonsLevelUnitIndexRoute
@@ -169,12 +203,16 @@ export interface FileRouteTypes {
     | '/hobbies'
     | '/phrasebook'
     | '/profile'
+    | '/hobbies/$hobbySlug'
     | '/lessons/$level'
     | '/profile/progress'
     | '/profile/settings'
+    | '/hobbies/'
     | '/lessons/'
     | '/profile/'
+    | '/hobbies/$hobbySlug/quiz'
     | '/lessons/$level/$unit'
+    | '/hobbies/$hobbySlug/'
     | '/lessons/$level/'
     | '/lessons/$level/$unit/$lessonNum'
     | '/lessons/$level/$unit/'
@@ -184,12 +222,14 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/dictionary'
-    | '/hobbies'
     | '/phrasebook'
     | '/profile/progress'
     | '/profile/settings'
+    | '/hobbies'
     | '/lessons'
     | '/profile'
+    | '/hobbies/$hobbySlug/quiz'
+    | '/hobbies/$hobbySlug'
     | '/lessons/$level'
     | '/lessons/$level/$unit'
     | '/lessons/$level/$unit/$lessonNum/quiz'
@@ -201,12 +241,16 @@ export interface FileRouteTypes {
     | '/hobbies'
     | '/phrasebook'
     | '/profile'
+    | '/hobbies/$hobbySlug'
     | '/lessons/$level'
     | '/profile/progress'
     | '/profile/settings'
+    | '/hobbies/'
     | '/lessons/'
     | '/profile/'
+    | '/hobbies/$hobbySlug/quiz'
     | '/lessons/$level/$unit'
+    | '/hobbies/$hobbySlug/'
     | '/lessons/$level/'
     | '/lessons/$level/$unit/$lessonNum'
     | '/lessons/$level/$unit/'
@@ -217,7 +261,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DictionaryRoute: typeof DictionaryRoute
-  HobbiesRoute: typeof HobbiesRoute
+  HobbiesRoute: typeof HobbiesRouteWithChildren
   PhrasebookRoute: typeof PhrasebookRoute
   ProfileRoute: typeof ProfileRouteWithChildren
   LessonsLevelRoute: typeof LessonsLevelRouteWithChildren
@@ -275,6 +319,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LessonsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/hobbies/': {
+      id: '/hobbies/'
+      path: '/'
+      fullPath: '/hobbies/'
+      preLoaderRoute: typeof HobbiesIndexRouteImport
+      parentRoute: typeof HobbiesRoute
+    }
     '/profile/settings': {
       id: '/profile/settings'
       path: '/settings'
@@ -296,6 +347,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LessonsLevelRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/hobbies/$hobbySlug': {
+      id: '/hobbies/$hobbySlug'
+      path: '/$hobbySlug'
+      fullPath: '/hobbies/$hobbySlug'
+      preLoaderRoute: typeof HobbiesHobbySlugRouteImport
+      parentRoute: typeof HobbiesRoute
+    }
     '/lessons/$level/': {
       id: '/lessons/$level/'
       path: '/'
@@ -303,12 +361,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LessonsLevelIndexRouteImport
       parentRoute: typeof LessonsLevelRoute
     }
+    '/hobbies/$hobbySlug/': {
+      id: '/hobbies/$hobbySlug/'
+      path: '/'
+      fullPath: '/hobbies/$hobbySlug/'
+      preLoaderRoute: typeof HobbiesHobbySlugIndexRouteImport
+      parentRoute: typeof HobbiesHobbySlugRoute
+    }
     '/lessons/$level/$unit': {
       id: '/lessons/$level/$unit'
       path: '/$unit'
       fullPath: '/lessons/$level/$unit'
       preLoaderRoute: typeof LessonsLevelUnitRouteImport
       parentRoute: typeof LessonsLevelRoute
+    }
+    '/hobbies/$hobbySlug/quiz': {
+      id: '/hobbies/$hobbySlug/quiz'
+      path: '/quiz'
+      fullPath: '/hobbies/$hobbySlug/quiz'
+      preLoaderRoute: typeof HobbiesHobbySlugQuizRouteImport
+      parentRoute: typeof HobbiesHobbySlugRoute
     }
     '/lessons/$level/$unit/': {
       id: '/lessons/$level/$unit/'
@@ -340,6 +412,32 @@ declare module '@tanstack/react-router' {
     }
   }
 }
+
+interface HobbiesHobbySlugRouteChildren {
+  HobbiesHobbySlugQuizRoute: typeof HobbiesHobbySlugQuizRoute
+  HobbiesHobbySlugIndexRoute: typeof HobbiesHobbySlugIndexRoute
+}
+
+const HobbiesHobbySlugRouteChildren: HobbiesHobbySlugRouteChildren = {
+  HobbiesHobbySlugQuizRoute: HobbiesHobbySlugQuizRoute,
+  HobbiesHobbySlugIndexRoute: HobbiesHobbySlugIndexRoute,
+}
+
+const HobbiesHobbySlugRouteWithChildren =
+  HobbiesHobbySlugRoute._addFileChildren(HobbiesHobbySlugRouteChildren)
+
+interface HobbiesRouteChildren {
+  HobbiesHobbySlugRoute: typeof HobbiesHobbySlugRouteWithChildren
+  HobbiesIndexRoute: typeof HobbiesIndexRoute
+}
+
+const HobbiesRouteChildren: HobbiesRouteChildren = {
+  HobbiesHobbySlugRoute: HobbiesHobbySlugRouteWithChildren,
+  HobbiesIndexRoute: HobbiesIndexRoute,
+}
+
+const HobbiesRouteWithChildren =
+  HobbiesRoute._addFileChildren(HobbiesRouteChildren)
 
 interface ProfileRouteChildren {
   ProfileProgressRoute: typeof ProfileProgressRoute
@@ -402,7 +500,7 @@ const LessonsLevelRouteWithChildren = LessonsLevelRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DictionaryRoute: DictionaryRoute,
-  HobbiesRoute: HobbiesRoute,
+  HobbiesRoute: HobbiesRouteWithChildren,
   PhrasebookRoute: PhrasebookRoute,
   ProfileRoute: ProfileRouteWithChildren,
   LessonsLevelRoute: LessonsLevelRouteWithChildren,

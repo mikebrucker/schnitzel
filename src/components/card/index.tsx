@@ -402,25 +402,44 @@ Card.ProgressPill = Object.assign(CardProgressPill, { Bubble: CardProgressPillBu
 interface ProgressProps {
   value: number;
   max: number;
+  height?: number;
+  label?: string;
   className?: string;
 }
 
-Card.Progress = function CardProgress({ value, max, className = "" }: ProgressProps) {
+Card.Progress = function CardProgress({
+  value,
+  label,
+  max,
+  height = 1,
+  className = "",
+}: ProgressProps) {
   const pct = max > 0 ? Math.round((value / max) * 100) : 0;
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
     setMounted(true);
   }, []);
   return (
-    <div className={`mt-3 w-full h-1 bg-surface-solid ${className}`.trim()}>
+    <div
+      className={`relative w-full overflow-hidden rounded-sm bg-surface-solid ${className}`.trim()}
+      style={{ height: `${height * 0.25}rem` }}
+    >
       <div
-        className="h-full"
+        className="absolute inset-y-0 left-0"
         style={{
           width: mounted ? `${pct}%` : "0%",
           backgroundColor: "var(--accent-border)",
           transition: "width 700ms ease-out",
         }}
       />
+      {label ? (
+        <span
+          className="absolute inset-0 flex items-center justify-center font-mono font-bold tx-text"
+          style={{ fontSize: `${height * 0.33}rem`, lineHeight: 1 }}
+        >
+          {label}
+        </span>
+      ) : null}
     </div>
   );
 };

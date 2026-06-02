@@ -1,8 +1,17 @@
 import dictionaryRaw from "@/data/dictionary.json";
+import hobbiesRaw from "@/data/hobbies.json";
 import lessonsRaw from "@/data/lessons.json";
+import phrasebookRaw from "@/data/phrasebook.json";
 import quizzesRaw from "@/data/quizzes.json";
 import tyroleanRaw from "@/data/tirolean.json";
-import type { DictionaryEntry, Lesson, QuizQuestion, TyroleanEntry } from "@/lib/types";
+import type {
+  DictionaryEntry,
+  Hobby,
+  Lesson,
+  PhrasebookEntry,
+  QuizQuestion,
+  TyroleanEntry,
+} from "@/lib/types";
 
 export const CURRICULUM: Array<Lesson> = lessonsRaw as Array<Lesson>;
 
@@ -12,6 +21,22 @@ export const QUIZZES: QuizRecord = quizzesRaw as QuizRecord;
 export const DICTIONARY: Array<DictionaryEntry> = dictionaryRaw as Array<DictionaryEntry>;
 
 export const TYROLEAN: Array<TyroleanEntry> = tyroleanRaw as Array<TyroleanEntry>;
+
+export const HOBBIES: Array<Hobby> = hobbiesRaw as Array<Hobby>;
+
+export const PHRASEBOOK: Array<PhrasebookEntry> = phrasebookRaw as Array<PhrasebookEntry>;
+
+export function getHobby(slug: string): Hobby | undefined {
+  return HOBBIES.find((h) => h.slug === slug);
+}
+
+export function getHobbyQuiz(quizId: string): Array<QuizQuestion> {
+  return (QUIZZES[quizId]?.questions ?? []) as Array<QuizQuestion>;
+}
+
+export function getPhrase(id: string): PhrasebookEntry | undefined {
+  return PHRASEBOOK.find((p) => p.id === id);
+}
 
 export function getQuiz(lessonId: number): Array<QuizQuestion> {
   const lesson = getLesson(lessonId);

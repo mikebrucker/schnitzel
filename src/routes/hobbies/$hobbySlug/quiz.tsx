@@ -1,35 +1,44 @@
 import { Header } from "@/components/Header";
 import { Results } from "@/components/Results";
 import { ChevronLeftIcon, ChevronRightIcon } from "@/components/icons";
-import { getQuiz, lessonToPath } from "@/lib/curriculum";
+import { getHobbyQuiz } from "@/lib/curriculum";
 import { haptics } from "@/lib/haptics";
 import { getPrompt, isAnswerCorrect } from "@/lib/quizLogic";
-import type { Lesson, QuizMode, QuizQuestion } from "@/lib/types";
-import { loadQuizProgress, saveQuizProgress } from "@/storage/quizStorage";
-import { useApp } from "@/store/useApp";
+import type { QuizMode, QuizQuestion } from "@/lib/types";
+import { loadHobbyQuizProgress, saveHobbyQuizProgress } from "@/storage/quizStorage";
 import { createFileRoute, useLoaderData, useNavigate } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 
 function validateQuizMode(m: unknown): QuizMode {
-  return m === "view" || m === "retake" || m === "wrong" || m === "normal" ? m : "normal";
+  return m === "view" || m === "retake" || m === "normal" ? m : "normal";
 }
 
-function QuizRoute() {
-  const { lesson } = useLoaderData({ from: "/lessons/$level/$unit/$lessonNum" });
-  const { mode } = Route.useSearch();
-  return <QuizInner key={`${lesson.id}-${mode}`} lesson={lesson} mode={mode} />;
+function HobbyQuizRoute() {
+  const { hobby } = useLoaderData({ from: "/hobbies/$hobbySlug" });
+  const { quizId, name, mode } = Route.useSearch();
+  return (
+    <HobbyQuizInner
+      key={`${quizId}-${mode}`}
+      hobbySlug={hobby.slug}
+      quizId={quizId}
+      name={name}
+      mode={mode}
+    />
+  );
 }
 
-function QuizInner({ lesson, mode }: { lesson: Lesson; mode: QuizMode }) {
+function HobbyQuizInner({
+  hobbySlug,
+  quizId,
+  name,
+  mode,
+}: {
+  hobbySlug: string;
+  quizId: string;
+  name: string;
+  mode: QuizMode;
+}) {
   const navigate = useNavigate();
-  const setActiveLesson = useApp((s) => s.setActiveLesson);
-  const setQuizMode = useApp((s) => s.setQuizMode);
-  const markLessonComplete = useApp((s) => s.markLessonComplete);
-
-  useEffect(() => {
-    setActiveLesson(lesson);
-    setQuizMode(mode);
-  }, [lesson, mode, setActiveLesson, setQuizMode]);
 
   const [questions, setQuestions] = useState<Array<QuizQuestion> | null>(null);
   const [activeQuestions, setActiveQuestions] = useState<Array<QuizQuestion> | null>(null);
@@ -41,38 +50,16 @@ function QuizInner({ lesson, mode }: { lesson: Lesson; mode: QuizMode }) {
   const [isReattempt, setIsReattempt] = useState(false);
   const [textInput, setTextInput] = useState("");
 
-  const [wrongIndices, setWrongIndices] = useState<Array<number>>([]);
-  const [canonicalAnswers, setCanonicalAnswers] = useState<Array<number | string>>([]);
-  const [mergedAndSaved, setMergedAndSaved] = useState(false);
-
-  const path = lessonToPath(lesson);
-
-  const handleBackRef = useRef<() => void>(() => {});
-  handleBackRef.current = () => {
-    if (mode === "wrong" && wrongIndices.length > 0 && questions && !mergedAndSaved) {
-      const merged = [...canonicalAnswers];
-      answers.forEach((ans, i) => {
-        merged[wrongIndices[i]] = ans;
-      });
-      const newScore = merged.filter(
-        (ans, i) => questions[i] !== undefined && isAnswerCorrect(questions[i], ans),
-      ).length;
-      void saveQuizProgress(lesson.id, {
-        questions,
-        idx: questions.length,
-        score: newScore,
-        answers: merged,
-        picked: null,
-      });
-    }
+  const goBackRef = useRef<() => void>(() => {});
+  goBackRef.current = () => {
     haptics.tap();
-    navigate({ to: "/lessons/$level/$unit/$lessonNum", params: path });
+    navigate({ to: "/hobbies/$hobbySlug", params: { hobbySlug } });
   };
 
   useEffect(() => {
     const handler = (e: Event) => {
       e.preventDefault();
-      handleBackRef.current();
+      goBackRef.current();
     };
     window.addEventListener("appBackButton", handler);
     return () => window.removeEventListener("appBackButton", handler);
@@ -81,53 +68,33 @@ function QuizInner({ lesson, mode }: { lesson: Lesson; mode: QuizMode }) {
   useEffect(() => {
     let cancelled = false;
     const load = async () => {
-      const saved = await loadQuizProgress(lesson.id);
+      const saved = await loadHobbyQuizProgress(quizId);
       if (cancelled) return;
 
-      const baseQuestions = saved?.questions ?? getQuiz(lesson.id);
-      setQuestions(baseQuestions);
+      const base = saved?.questions ?? getHobbyQuiz(quizId);
+      setQuestions(base);
 
       if (saved && mode === "retake") {
-        setActiveQuestions(baseQuestions);
+        setActiveQuestions(base);
         setIdx(0);
         setScore(0);
         setAnswers([]);
         setPicked(null);
         setIsReattempt(true);
-      } else if (saved && mode === "wrong") {
-        const indices = baseQuestions
-          .map((_, i) => i)
-          .filter(
-            (i) =>
-              saved.answers[i] !== undefined &&
-              !isAnswerCorrect(baseQuestions[i], saved.answers[i]),
-          );
-
-        setCanonicalAnswers(saved.answers);
-        setWrongIndices(indices);
-
-        if (indices.length === 0) {
-          setActiveQuestions(baseQuestions);
-          setIdx(saved.idx);
-          setScore(saved.score);
-          setAnswers(saved.answers);
-          setPicked(saved.picked);
-        } else {
-          setActiveQuestions(indices.map((i) => baseQuestions[i]));
-          setIdx(0);
-          setScore(0);
-          setAnswers([]);
-          setPicked(null);
-          setIsReattempt(true);
-        }
-      } else if (saved) {
-        setActiveQuestions(baseQuestions);
+      } else if (saved && mode !== "normal") {
+        setActiveQuestions(base);
+        setIdx(saved.idx);
+        setScore(saved.score);
+        setAnswers(saved.answers);
+        setPicked(saved.picked);
+      } else if (saved && mode === "normal") {
+        setActiveQuestions(base);
         setIdx(saved.idx);
         setScore(saved.score);
         setAnswers(saved.answers);
         setPicked(saved.picked);
       } else {
-        setActiveQuestions(baseQuestions);
+        setActiveQuestions(base);
       }
 
       setHydrated(true);
@@ -136,47 +103,12 @@ function QuizInner({ lesson, mode }: { lesson: Lesson; mode: QuizMode }) {
     return () => {
       cancelled = true;
     };
-  }, [lesson.id, mode]);
-
-  useEffect(() => {
-    if (!hydrated || !questions) return;
-    if (mode === "wrong") return;
-    saveQuizProgress(lesson.id, { questions, idx, score, answers, picked });
-  }, [hydrated, questions, idx, score, answers, picked, mode, lesson.id]);
+  }, [quizId, mode]);
 
   useEffect(() => {
     if (!hydrated || !questions || !activeQuestions) return;
-    if (mode !== "wrong" || !isReattempt || mergedAndSaved) return;
-    if (wrongIndices.length === 0 || idx < activeQuestions.length) return;
-
-    const merged = [...canonicalAnswers];
-    answers.forEach((ans, i) => {
-      merged[wrongIndices[i]] = ans;
-    });
-    const newScore = merged.filter(
-      (ans, i) => questions[i] !== undefined && isAnswerCorrect(questions[i], ans),
-    ).length;
-    void saveQuizProgress(lesson.id, {
-      questions,
-      idx: questions.length,
-      score: newScore,
-      answers: merged,
-      picked: null,
-    });
-    setMergedAndSaved(true);
-  }, [
-    hydrated,
-    questions,
-    activeQuestions,
-    mode,
-    isReattempt,
-    mergedAndSaved,
-    wrongIndices,
-    idx,
-    canonicalAnswers,
-    answers,
-    lesson.id,
-  ]);
+    void saveHobbyQuizProgress(quizId, { questions, idx, score, answers, picked });
+  }, [hydrated, questions, activeQuestions, idx, score, answers, picked, quizId]);
 
   if (!questions || !activeQuestions) {
     return (
@@ -193,7 +125,6 @@ function QuizInner({ lesson, mode }: { lesson: Lesson; mode: QuizMode }) {
     setScore(0);
     setAnswers([]);
     setIsReattempt(true);
-    setMergedAndSaved(false);
   };
 
   if (idx >= activeQuestions.length) {
@@ -206,9 +137,9 @@ function QuizInner({ lesson, mode }: { lesson: Lesson; mode: QuizMode }) {
         questions={activeQuestions}
         answers={answers}
         isReattempt={isReattempt}
-        onBack={() => navigate({ to: "/lessons/$level/$unit/$lessonNum", params: path })}
-        onComplete={() => navigate({ to: "/" })}
-        onMarkDone={() => markLessonComplete(lesson.id)}
+        onBack={() => goBackRef.current()}
+        onComplete={() => goBackRef.current()}
+        onMarkDone={() => {}}
         onRetake={handleRetake}
       />
     );
@@ -235,23 +166,16 @@ function QuizInner({ lesson, mode }: { lesson: Lesson; mode: QuizMode }) {
     <>
       <Header
         title={`Frage ${idx + 1} / ${activeQuestions.length}`}
-        subtitle={`${lesson.level} · Unit ${lesson.unit}`}
+        subtitle={name}
         secondaryAction={{
-          label: "Lektion",
+          label: "Hobby",
           icon: ChevronLeftIcon,
-          onClick: () => handleBackRef.current(),
+          onClick: () => goBackRef.current(),
         }}
       />
       <div className="max-w-4xl mx-auto px-4 py-4">
-        {mode === "wrong" && isReattempt ? (
-          <div className="mb-4 px-3 py-2 border-2 bd-default bg-surface text-xs font-mono tx-muted text-center">
-            Correcting wrong answers
-          </div>
-        ) : null}
         <div className="flex items-center justify-end gap-3 mb-8">
-          <div className="text-xs font-mono tx-accent" title="Progress auto-saved">
-            ● saved
-          </div>
+          <div className="text-xs font-mono tx-accent">● saved</div>
           <div className="text-xs font-mono tx-muted">Score: {score}</div>
         </div>
 
@@ -365,9 +289,13 @@ function QuizInner({ lesson, mode }: { lesson: Lesson; mode: QuizMode }) {
   );
 }
 
-export const Route = createFileRoute("/lessons/$level/$unit/$lessonNum/quiz")({
-  validateSearch: (search: Record<string, unknown>): { mode: QuizMode } => ({
+export const Route = createFileRoute("/hobbies/$hobbySlug/quiz")({
+  validateSearch: (
+    search: Record<string, unknown>,
+  ): { quizId: string; name: string; mode: QuizMode } => ({
+    quizId: String(search.quizId ?? ""),
+    name: String(search.name ?? "Quiz"),
     mode: validateQuizMode(search.mode),
   }),
-  component: QuizRoute,
+  component: HobbyQuizRoute,
 });
