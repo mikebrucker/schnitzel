@@ -39,7 +39,7 @@ export function TabBar() {
   };
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-header border-t-2 bd-default z-50">
+    <nav className="fixed bottom-0 left-0 right-0 bg-header border-t-2 bd-default z-50" style={{ paddingBottom: 'var(--safe-bottom)' }}>
       <div className="max-w-4xl mx-auto flex md:px-4">
         {orderedTabs.map((tab) => {
           const active = tab.root === current;

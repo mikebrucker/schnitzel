@@ -1,5 +1,6 @@
 import { TabBar } from "@/components/TabBar";
 import { useApp } from "@/store/useApp";
+import { SplashScreen } from "@capacitor/splash-screen";
 import { Outlet, createRootRoute } from "@tanstack/react-router";
 import { Suspense, lazy, useEffect } from "react";
 
@@ -18,6 +19,12 @@ function RootLayout() {
   useEffect(() => {
     hydrate();
   }, [hydrate]);
+
+  useEffect(() => {
+    if (hydrated) {
+      SplashScreen.hide({ fadeOutDuration: 200 }).catch(() => {});
+    }
+  }, [hydrated]);
 
   if (!hydrated) {
     return (
