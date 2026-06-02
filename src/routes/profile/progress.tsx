@@ -1,15 +1,30 @@
 import { Header } from "@/components/Header";
-import { ChevronLeftIcon, ChevronRightIcon } from "@/components/icons";
+import { ProgressCard } from "@/components/card/ProgressCard";
+import { ChevronLeftIcon } from "@/components/icons";
 import { CURRICULUM } from "@/lib/curriculum";
 import { haptics } from "@/lib/haptics";
 import { loadQuizProgress } from "@/lib/quizStorage";
-import { scoreCardBg, scoreTextClass } from "@/lib/scoreColors";
-import type { LessonStat } from "@/lib/types";
+import type { Lesson, LessonStat } from "@/lib/types";
 import { useApp } from "@/store/useApp";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
 type LessonEntry = (LessonStat & { id: number; title: string }) | null;
+
+type LevelGroup = {
+  level: string;
+  entries: Array<{ lesson: Lesson; idx: number }>;
+};
+
+const LEVEL_GROUPS: Array<LevelGroup> = CURRICULUM.reduce<Array<LevelGroup>>((acc, lesson, i) => {
+  const last = acc[acc.length - 1];
+  if (last && last.level === lesson.level) {
+    last.entries.push({ lesson, idx: i });
+  } else {
+    acc.push({ level: lesson.level, entries: [{ lesson, idx: i }] });
+  }
+  return acc;
+}, []);
 
 function ProgressRoute() {
   const navigate = useNavigate();
@@ -60,66 +75,24 @@ function ProgressRoute() {
           },
         }}
       />
-      <div className="max-w-4xl mx-auto px-4 py-4">
-        <section>
-          <div className="space-y-2">
-            {CURRICULUM.map((lesson, i) => {
-              const s = lessonStats[i];
-              const pct = s?.finished ? Math.round((s.score / s.total) * 100) : null;
-              return (
-                <div
+      <div className="max-w-4xl mx-auto px-4 py-4 space-y-6">
+        {LEVEL_GROUPS.map((group) => (
+          <section key={group.level}>
+            <h2 className="font-bold border-b bd-default tx-muted text-xl tracking-widest mb-4 pb-1">
+              Level {group.level.toLocaleUpperCase()}
+            </h2>
+            <div className="space-y-2">
+              {group.entries.map(({ lesson, idx }) => (
+                <ProgressCard
                   key={lesson.id}
-                  className="border-2 bd-default px-4 py-3"
-                  style={
-                    s?.finished && pct !== null
-                      ? { backgroundColor: scoreCardBg(pct, theme === "dark") }
-                      : { backgroundColor: "var(--surface)" }
-                  }
-                >
-                  <div className="flex items-center justify-between mb-1">
-                    <div>
-                      <span className="font-mono font-bold tx-text text-sm uppercase tracking-wider">
-                        {lesson.level} · U{lesson.unit} · L{lesson.lessonNum}
-                      </span>
-                      <span className="font-serif text-xs tx-muted ml-2">{lesson.title}</span>
-                    </div>
-                    {s?.finished ? (
-                      <div
-                        className={`font-mono font-bold text-sm shrink-0 ml-3 ${scoreTextClass(pct)}`}
-                      >
-                        {s.score}/{s.total} · {pct}%
-                      </div>
-                    ) : s ? (
-                      <div className="font-mono text-xs tx-muted shrink-0 ml-3">
-                        {s.answered}/{s.total}{" "}
-                        <ChevronRightIcon size={12} className="inline-block" />
-                      </div>
-                    ) : (
-                      <div className="font-mono text-xs tx-muted shrink-0 ml-3">not started</div>
-                    )}
-                  </div>
-                  <div className="w-full h-1 bg-surface-solid mt-2">
-                    {s?.finished && pct !== null ? (
-                      <div
-                        className="h-full"
-                        style={{ width: `${pct}%`, backgroundColor: "var(--accent-border)" }}
-                      />
-                    ) : null}
-                    {s && !s.finished ? (
-                      <div
-                        className="h-full opacity-40"
-                        style={{
-                          width: `${Math.round((s.answered / s.total) * 100)}%`,
-                          backgroundColor: "var(--accent-border)",
-                        }}
-                      />
-                    ) : null}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </section>
+                  lesson={lesson}
+                  stat={lessonStats[idx] ?? null}
+                  theme={theme}
+                />
+              ))}
+            </div>
+          </section>
+        ))}
       </div>
     </>
   );
