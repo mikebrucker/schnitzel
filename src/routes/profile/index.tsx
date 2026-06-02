@@ -1,13 +1,14 @@
 import { Button } from "@/components/Button";
 import { Header } from "@/components/Header";
 import { Input } from "@/components/Input";
-import { NavCard } from "@/components/NavCard";
 import { Select } from "@/components/Select";
+import { NavCard } from "@/components/card/NavCard";
 import { StatCard } from "@/components/card/StatCard";
 import { BarChartIcon, EditIcon, SettingsIcon, XIcon } from "@/components/icons";
 import { CURRICULUM } from "@/lib/curriculum";
 import { haptics } from "@/lib/haptics";
 import { loadQuizProgress } from "@/lib/quizStorage";
+import type { LanguageProficiencyLevel } from "@/lib/types";
 import { useApp } from "@/store/useApp";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
@@ -67,6 +68,15 @@ function ProfileRoute() {
   const accuracy =
     stats.totalQuestions > 0 ? Math.round((stats.totalCorrect / stats.totalQuestions) * 100) : 0;
 
+  const languageProficiencyLevels: Record<LanguageProficiencyLevel, string> = {
+    A1: "A1 - Beginner",
+    A2: "A2 - Elementary",
+    B1: "B1 - Intermediate",
+    B2: "B2 - Upper intermediate",
+    C1: "C1 - Advanced",
+    C2: "C2 - Fluent",
+  };
+
   return (
     <>
       <Header
@@ -112,20 +122,34 @@ function ProfileRoute() {
             </div>
           </div>
 
-          <Select
-            label="German Level"
-            value={profile.level}
-            onChange={(value) => setProfile({ ...profile, level: value })}
-            className="font-serif"
-            options={{
-              A1: "A1 - Beginner",
-              A2: "A2 - Elementary",
-              B1: "B1 - Intermediate",
-              B2: "B2 - Upper intermediate",
-              C1: "C1 - Advanced",
-              C2: "C2 - Fluent",
-            }}
-          />
+          {editing ? (
+            <Select
+              label="German Level"
+              value={profile.level}
+              onChange={(value) => setProfile({ ...profile, level: value })}
+              className="font-serif"
+              options={languageProficiencyLevels}
+            />
+          ) : (
+            <div className="flex flex-col gap-1">
+              <span className="text-xs font-mono uppercase tracking-wider tx-muted">
+                German Level
+              </span>
+              <div className="text-sm tx-text">
+                {profile.level} —{" "}
+                {
+                  {
+                    A1: "Beginner",
+                    A2: "Elementary",
+                    B1: "Intermediate",
+                    B2: "Upper intermediate",
+                    C1: "Advanced",
+                    C2: "Fluent",
+                  }[profile.level]
+                }
+              </div>
+            </div>
+          )}
 
           <div>
             {editing ? (

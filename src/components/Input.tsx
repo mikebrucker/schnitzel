@@ -6,7 +6,7 @@ interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "value"
   onChange?: (value: string) => void;
 }
 
-const FIELD_BASE = "w-full bg-surface border-2 bd-default tx-text px-3 py-2";
+const FIELD_BASE = "w-full bg-surface border-2 bd-default tx-text px-3 py-2 rounded-lg";
 
 export function Input({
   label,
