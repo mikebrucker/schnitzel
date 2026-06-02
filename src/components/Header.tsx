@@ -19,10 +19,10 @@ export function Header({ title, subtitle, secondaryAction, primaryAction }: Head
   return (
     <header className="border-b-4 bd-default bg-header">
       <div
-        className={`max-w-4xl mx-auto px-4 min-h-20 items-center ${hasActions ? "grid grid-cols-[auto_1fr_auto]" : "flex"}`}
+        className={`max-w-4xl mx-auto px-4 min-h-20 items-center ${hasActions ? "grid grid-cols-[1fr_auto_1fr]" : "flex"}`}
       >
         {hasActions ? (
-          <div>
+          <div className="flex justify-start">
             {secondaryAction ? (
               <button
                 type="button"

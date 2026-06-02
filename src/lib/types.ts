@@ -1,5 +1,11 @@
 export type Theme = "dark" | "light";
 
+const LANGUAGE_PROFICIENCY_LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"] as const;
+export type LanguageProficiencyLevel = (typeof LANGUAGE_PROFICIENCY_LEVELS)[number];
+export function isLanguageProficiencyLevel(s: string): s is LanguageProficiencyLevel {
+  return (LANGUAGE_PROFICIENCY_LEVELS as ReadonlyArray<string>).includes(s);
+}
+
 export type VocabItem = {
   de: string;
   en: string;
@@ -8,7 +14,7 @@ export type VocabItem = {
 
 export type Lesson = {
   id: number;
-  level: string;
+  level: LanguageProficiencyLevel;
   unit: number;
   lessonNum: number;
   title: string;
@@ -41,7 +47,7 @@ export type QuizProgress = {
 export type Profile = {
   name: string;
   location: string;
-  level: string;
+  level: LanguageProficiencyLevel;
 };
 
 export type QuizMode = "normal" | "view" | "retake" | "wrong";

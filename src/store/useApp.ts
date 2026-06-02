@@ -39,7 +39,7 @@ type AppState = {
 const DEFAULT_PROFILE: Profile = {
   name: "Bruck",
   location: "Tirol, Austria",
-  level: "A1 — Beginner",
+  level: "A1",
 };
 
 const DEFAULT_TAB_PATHS: Record<TabRoot, string> = {

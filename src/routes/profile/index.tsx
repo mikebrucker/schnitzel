@@ -1,7 +1,10 @@
+import { Button } from "@/components/Button";
 import { Header } from "@/components/Header";
+import { Input } from "@/components/Input";
 import { NavCard } from "@/components/NavCard";
+import { Select } from "@/components/Select";
 import { StatCard } from "@/components/card/StatCard";
-import { EditIcon, SettingsIcon } from "@/components/icons";
+import { BarChartIcon, EditIcon, SettingsIcon, XIcon } from "@/components/icons";
 import { CURRICULUM } from "@/lib/curriculum";
 import { haptics } from "@/lib/haptics";
 import { loadQuizProgress } from "@/lib/quizStorage";
@@ -23,9 +26,6 @@ function ProfileRoute() {
   const completed = useApp((s) => s.completed);
 
   const [editing, setEditing] = useState(false);
-  const [name, setName] = useState(profile.name);
-  const [location, setLocation] = useState(profile.location);
-  const [level, setLevel] = useState(profile.level);
   const [stats, setStats] = useState<Stats>({
     totalQuestions: 0,
     totalCorrect: 0,
@@ -67,16 +67,10 @@ function ProfileRoute() {
   const accuracy =
     stats.totalQuestions > 0 ? Math.round((stats.totalCorrect / stats.totalQuestions) * 100) : 0;
 
-  const save = () => {
-    setProfile({ name, location, level });
-    setEditing(false);
-    haptics.tap();
-  };
-
   return (
     <>
       <Header
-        title="Profil"
+        title="Profile"
         subtitle="Mein Profil"
         secondaryAction={{
           label: "Settings",
@@ -95,11 +89,10 @@ function ProfileRoute() {
             </div>
             <div className="flex-1 min-w-0">
               {editing ? (
-                <input
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="font-serif text-2xl font-black tx-text bg-surface border-2 bd-default px-2 py-1 w-full"
+                <Input
+                  defaultValue={profile.name}
+                  onChange={(value) => setProfile({ ...profile, name: value })}
+                  className="font-serif text-2xl font-black"
                 />
               ) : (
                 <div className="font-serif text-2xl font-black tx-text truncate">
@@ -107,12 +100,11 @@ function ProfileRoute() {
                 </div>
               )}
               {editing ? (
-                <input
-                  type="text"
-                  value={location}
-                  onChange={(e) => setLocation(e.target.value)}
+                <Input
+                  defaultValue={profile.location}
+                  onChange={(value) => setProfile({ ...profile, location: value })}
                   placeholder="Location"
-                  className="text-sm tx-muted bg-surface border-2 bd-default px-2 py-1 w-full mt-1"
+                  className="text-sm mt-1"
                 />
               ) : (
                 <div className="text-sm tx-muted mt-1">📍 {profile.location}</div>
@@ -120,65 +112,42 @@ function ProfileRoute() {
             </div>
           </div>
 
-          <div>
-            <div className="text-xs font-mono uppercase tracking-wider tx-muted mb-2">
-              German Level
-            </div>
-            {editing ? (
-              <select
-                value={level}
-                onChange={(e) => setLevel(e.target.value)}
-                className="w-full bg-surface border-2 bd-default tx-text px-3 py-2 font-serif"
-              >
-                <option>A1 — Beginner</option>
-                <option>A2 — Elementary</option>
-                <option>B1 — Intermediate</option>
-                <option>B2 — Upper intermediate</option>
-                <option>C1 — Advanced</option>
-                <option>C2 — Fluent</option>
-              </select>
-            ) : (
-              <div className="border-2 bd-default bg-surface px-4 py-3 font-serif tx-text">
-                {profile.level}
-              </div>
-            )}
-          </div>
+          <Select
+            label="German Level"
+            value={profile.level}
+            onChange={(value) => setProfile({ ...profile, level: value })}
+            className="font-serif"
+            options={{
+              A1: "A1 - Beginner",
+              A2: "A2 - Elementary",
+              B1: "B1 - Intermediate",
+              B2: "B2 - Upper intermediate",
+              C1: "C1 - Advanced",
+              C2: "C2 - Fluent",
+            }}
+          />
 
           <div>
             {editing ? (
-              <div className="flex gap-2">
-                <button
-                  type="button"
-                  onClick={save}
-                  className="flex-1 border-2 bd-btn bg-btn tx-btn py-2 font-bold"
-                >
-                  Save
-                </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setEditing(false);
-                    setName(profile.name);
-                    setLocation(profile.location);
-                    setLevel(profile.level);
-                  }}
-                  className="flex-1 border-2 bd-default bg-surface tx-text py-2 font-bold"
-                >
-                  Cancel
-                </button>
-              </div>
+              <Button
+                variant="danger"
+                size="sm"
+                icon={<XIcon size={16} />}
+                onClick={() => setEditing(false)}
+              >
+                Done
+              </Button>
             ) : (
-              <button
-                type="button"
+              <Button
+                size="sm"
+                icon={<EditIcon size={18} />}
                 onClick={() => {
                   setEditing(true);
                   haptics.tap();
                 }}
-                className="flex items-center gap-2 border-2 bd-default bg-surface tx-text px-5 py-2 font-bold"
               >
-                <EditIcon size={18} />
-                <span>Edit profile</span>
-              </button>
+                Edit profile
+              </Button>
             )}
           </div>
         </section>
@@ -207,6 +176,7 @@ function ProfileRoute() {
           <NavCard
             title="Progress"
             subtitle="Fortschritt"
+            icon={<BarChartIcon size={32} />}
             onClick={() => {
               haptics.tap();
               navigate({ to: "/profile/progress" });

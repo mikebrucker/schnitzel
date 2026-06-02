@@ -6,11 +6,12 @@ import { CURRICULUM, lessonToPath } from "@/lib/curriculum";
 import { haptics } from "@/lib/haptics";
 import { loadQuizProgress } from "@/lib/quizStorage";
 import { scoreCardBg } from "@/lib/scoreColors";
+import type { LanguageProficiencyLevel } from "@/lib/types";
 import { useApp } from "@/store/useApp";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
-const LEVEL_DESC: Record<string, string> = {
+const LEVEL_DESC: Partial<Record<LanguageProficiencyLevel, string>> = {
   A1: "Beginner",
   A2: "Elementary",
   B1: "Intermediate",
