@@ -1,5 +1,5 @@
 import { Button } from "@/components/Button";
-import { GenderChip } from "@/components/GenderChip";
+import { Chip } from "@/components/Chip";
 import { Header } from "@/components/Header";
 import { ChevronLeftIcon, ChevronRightIcon, RetryIcon, TipIcon, XIcon } from "@/components/icons";
 import { getWord, lessonToPath } from "@/lib/curriculum";
@@ -102,7 +102,7 @@ function LessonRoute() {
               >
                 <div className="flex items-center gap-2 flex-wrap">
                   <span className="font-serif text-lg font-bold tx-text">{w.de}</span>
-                  {w.gender !== null ? <GenderChip gender={w.gender} /> : null}
+                  {w.gender !== null ? <Chip label={w.gender} /> : null}
                 </div>
                 <div>
                   <div className="tx-body">{w.en}</div>

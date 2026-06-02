@@ -1,4 +1,4 @@
-import { GenderChip } from "@/components/GenderChip";
+import { Chip } from "@/components/Chip";
 import { Header } from "@/components/Header";
 import { DICTIONARY } from "@/lib/curriculum";
 import type { LanguageProficiencyLevel } from "@/lib/types";
@@ -63,7 +63,7 @@ function DictionaryRoute() {
               <div key={w.id} className="p-4 grid grid-cols-[1fr_1fr] gap-4 items-start">
                 <div className="flex items-center gap-2 flex-wrap">
                   <span className="font-serif text-lg font-bold tx-text">{w.de}</span>
-                  {w.gender !== null ? <GenderChip gender={w.gender} /> : null}
+                  {w.gender !== null ? <Chip label={w.gender} /> : null}
                 </div>
                 <div>
                   <div className="tx-body">{w.en}</div>
