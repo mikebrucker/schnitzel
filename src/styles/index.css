@@ -25,6 +25,7 @@
   --score-low: #f97316;
   --score-mid: #eab308;
   --score-high: #84cc16;
+  --shadow-card: rgba(0, 0, 0, 0.9);
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
   --safe-left: env(safe-area-inset-left, 0px);
@@ -46,6 +47,7 @@
   --btn-bg: #1c1917;
   --btn-text: #f4ead5;
   --dot: rgba(28, 25, 23, 0.08);
+  --shadow-card: rgba(0, 0, 0, 0.35);
   --correct-bg: #d1fae5;
   --correct-border: #065f46;
   --wrong-bg: #fee2e2;
@@ -155,6 +157,27 @@ body {
 .bd-btn {
   border-color: var(--btn-bg);
 }
+
+.shadow-card-sm {
+  box-shadow: 1px 1px 2px 0 var(--shadow-card), 2px 2px 4px 0 var(--shadow-card);
+}
+
+.shadow-card-md {
+  box-shadow: 2px 2px 4px 0 var(--shadow-card), 4px 6px 12px 0 var(--shadow-card);
+}
+
+.shadow-card-lg {
+  box-shadow: 4px 4px 8px 0 var(--shadow-card), 8px 12px 24px 0 var(--shadow-card);
+}
+
+.shadow-card-xl {
+  box-shadow: 6px 6px 12px 0 var(--shadow-card), 12px 20px 40px 0 var(--shadow-card);
+}
+
+.hover\:shadow-card-sm:hover { box-shadow: 3px 3px 2px 0 var(--shadow-card), 4px 4px 4px 0 var(--shadow-card); }
+.hover\:shadow-card-md:hover { box-shadow: 4px 4px 4px 0 var(--shadow-card), 6px 8px 12px 0 var(--shadow-card); }
+.hover\:shadow-card-lg:hover { box-shadow: 6px 6px 8px 0 var(--shadow-card), 10px 14px 24px 0 var(--shadow-card); }
+.hover\:shadow-card-xl:hover { box-shadow: 8px 8px 12px 0 var(--shadow-card), 14px 22px 40px 0 var(--shadow-card); }
 
 .state-correct {
   background-color: var(--correct-bg) !important;

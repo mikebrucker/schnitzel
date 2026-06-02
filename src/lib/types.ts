@@ -1,9 +1,17 @@
 export type Theme = "dark" | "light";
 
-const LANGUAGE_PROFICIENCY_LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"] as const;
-export type LanguageProficiencyLevel = (typeof LANGUAGE_PROFICIENCY_LEVELS)[number];
+const LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"] as const;
+export const languageProficiencyLevels: Record<LanguageProficiencyLevel, string> = {
+  A1: "Beginner",
+  A2: "Elementary",
+  B1: "Intermediate",
+  B2: "Upper intermediate",
+  C1: "Advanced",
+  C2: "Fluent",
+};
+export type LanguageProficiencyLevel = (typeof LEVELS)[number];
 export function isLanguageProficiencyLevel(s: string): s is LanguageProficiencyLevel {
-  return (LANGUAGE_PROFICIENCY_LEVELS as ReadonlyArray<string>).includes(s);
+  return (LEVELS as ReadonlyArray<string>).includes(s);
 }
 
 export type VocabItem = {

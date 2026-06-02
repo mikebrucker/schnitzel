@@ -2,20 +2,15 @@ import { Header } from "@/components/Header";
 import { Card } from "@/components/card";
 import { HeroCard } from "@/components/card/HeroCard";
 import { ChevronLeftIcon } from "@/components/icons";
+import quizzes from "@/data/quizzes.json";
 import { CURRICULUM, lessonToPath } from "@/lib/curriculum";
 import { haptics } from "@/lib/haptics";
-import type { LanguageProficiencyLevel } from "@/lib/types";
+import { scoreFillColor } from "@/lib/scoreColors";
+import { languageProficiencyLevels } from "@/lib/types";
 import { loadQuizProgress } from "@/storage/quizStorage";
 import { useApp } from "@/store/useApp";
 import { createFileRoute, useLoaderData, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-
-const LEVEL_DESC: Partial<Record<LanguageProficiencyLevel, string>> = {
-  A1: "Beginner",
-  A2: "Elementary",
-  B1: "Intermediate",
-  B2: "Upper Intermediate",
-};
 
 type QuizSummary = { score: number; total: number; finished: boolean };
 
@@ -23,6 +18,7 @@ function LevelIndexRoute() {
   const { level } = useLoaderData({ from: "/lessons/$level" });
   const navigate = useNavigate();
   const completed = useApp((s) => s.completed);
+  const theme = useApp((s) => s.theme);
 
   const lessons = CURRICULUM.filter((l) => l.level === level);
   const units = [...new Set(lessons.map((l) => l.unit))];
@@ -30,6 +26,7 @@ function LevelIndexRoute() {
   const nextLesson = lessons.find((l) => !completed.has(l.id));
 
   const [quizSummaries, setQuizSummaries] = useState<Map<number, QuizSummary>>(new Map());
+  const nextSummary = nextLesson ? quizSummaries.get(nextLesson.id) : undefined;
 
   useEffect(() => {
     const levelLessons = CURRICULUM.filter((l) => l.level === level);
@@ -56,7 +53,7 @@ function LevelIndexRoute() {
     <>
       <Header
         title={level}
-        subtitle={`${LEVEL_DESC[level] ?? level} · ${doneCount}/${lessons.length}`}
+        subtitle={`${languageProficiencyLevels[level] ?? level}`}
         secondaryAction={{
           label: "Lektionen",
           icon: ChevronLeftIcon,
@@ -71,7 +68,7 @@ function LevelIndexRoute() {
           <div className="mb-8">
             <div className="text-xs font-mono uppercase tracking-[0.3em] tx-muted mb-2">Weiter</div>
             <HeroCard
-              size="md"
+              eyebrow={nextLesson.level}
               breadcrumb={`Unit ${nextLesson.unit} · Lesson ${nextLesson.lessonNum}`}
               title={nextLesson.title}
               subtitle={nextLesson.titleDe}
@@ -82,6 +79,22 @@ function LevelIndexRoute() {
                   params: lessonToPath(nextLesson),
                 });
               }}
+              progressPill={(() => {
+                const score = nextSummary?.score ?? 0;
+                const total =
+                  nextSummary?.total ??
+                  (quizzes as Record<string, Array<unknown>>)[String(nextLesson.id)]?.length ??
+                  0;
+                const pct = total > 0 ? Math.round((score / total) * 100) : 0;
+                return {
+                  label: `${score}/${total} · ${pct}%`,
+                  fillColor: scoreFillColor(pct, theme === "dark"),
+                  value: score,
+                  max: total,
+                  length: "100%",
+                  bubbles: Math.round(pct * 0.25),
+                };
+              })()}
             />
           </div>
         ) : (
@@ -118,6 +131,7 @@ function LevelIndexRoute() {
                   </Card.Caption>
                 </Card.Row>
                 <Card.Subtitle>{unitLessons.map((l) => l.title).join(" · ")}</Card.Subtitle>
+                <Card.Progress value={unitDone} max={unitSummaries.length} />
               </Card>
             );
           })}

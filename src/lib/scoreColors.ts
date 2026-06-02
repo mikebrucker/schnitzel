@@ -1,5 +1,10 @@
 export function scoreCardBg(pct: number, dark: boolean): string {
   const hue = Math.round(pct * 1.2);
+  return dark ? `hsl(${hue}, 25%, 16%)` : `hsl(${hue}, 30%, 90%)`;
+}
+
+export function scoreFillColor(pct: number, dark: boolean): string {
+  const hue = Math.round(pct * 1.2);
   return dark ? `hsl(${hue}, 65%, 28%)` : `hsl(${hue}, 60%, 68%)`;
 }
 

@@ -4,19 +4,12 @@ import { SummaryCard } from "@/components/card/SummaryCard";
 import quizzes from "@/data/quizzes.json";
 import { CURRICULUM, lessonToPath } from "@/lib/curriculum";
 import { haptics } from "@/lib/haptics";
-import { scoreCardBg } from "@/lib/scoreColors";
-import type { LanguageProficiencyLevel } from "@/lib/types";
+import { scoreFillColor } from "@/lib/scoreColors";
+import { languageProficiencyLevels } from "@/lib/types";
 import { loadQuizProgress } from "@/storage/quizStorage";
 import { useApp } from "@/store/useApp";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-
-const LEVEL_DESC: Partial<Record<LanguageProficiencyLevel, string>> = {
-  A1: "Beginner",
-  A2: "Elementary",
-  B1: "Intermediate",
-  B2: "Upper Intermediate",
-};
 
 type QuizSummary = { score: number; total: number; finished: boolean };
 
@@ -83,11 +76,11 @@ function LessonsIndexRoute() {
               const pct = total > 0 ? Math.round((score / total) * 100) : 0;
               return {
                 label: `${score}/${total} · ${pct}%`,
-                fillColor: scoreCardBg(pct, theme === "dark"),
+                fillColor: scoreFillColor(pct, theme === "dark"),
                 value: score,
                 max: total,
                 length: "100%",
-                bubbles: Math.round(pct * 0.5),
+                bubbles: Math.round(pct * 0.25),
               };
             })()}
           />
@@ -104,7 +97,7 @@ function LessonsIndexRoute() {
               <SummaryCard
                 key={level}
                 title={level}
-                description={LEVEL_DESC[level] ?? ""}
+                description={languageProficiencyLevels[level] ?? ""}
                 badge={`${doneCount}/${lessons.length}`}
                 badgeAccent={allLevelDone}
                 meta={`${units.length} ${units.length === 1 ? "unit" : "units"} · ${lessons.length} ${lessons.length === 1 ? "lesson" : "lessons"}`}

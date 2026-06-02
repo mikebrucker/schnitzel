@@ -2,10 +2,11 @@ import { Header } from "@/components/Header";
 import { Card } from "@/components/card";
 import { HeroCard } from "@/components/card/HeroCard";
 import { ChevronLeftIcon, ChevronRightIcon } from "@/components/icons";
+import quizzes from "@/data/quizzes.json";
 import { CURRICULUM, lessonToPath } from "@/lib/curriculum";
 import { haptics } from "@/lib/haptics";
-import { scoreCardBg } from "@/lib/scoreColors";
-import type { Lesson } from "@/lib/types";
+import { scoreCardBg, scoreFillColor } from "@/lib/scoreColors";
+import { type Lesson, languageProficiencyLevels } from "@/lib/types";
 import { loadQuizProgress } from "@/storage/quizStorage";
 import { useApp } from "@/store/useApp";
 import { createFileRoute, useLoaderData, useNavigate } from "@tanstack/react-router";
@@ -24,6 +25,7 @@ function UnitIndexRoute() {
   const nextLesson = lessons.find((l) => !completed.has(l.id));
 
   const [quizSummaries, setQuizSummaries] = useState<Map<number, QuizSummary>>(new Map());
+  const nextSummary = nextLesson ? quizSummaries.get(nextLesson.id) : undefined;
 
   useEffect(() => {
     const unitLessons = CURRICULUM.filter((l) => l.level === level && l.unit === unit);
@@ -56,7 +58,7 @@ function UnitIndexRoute() {
     <>
       <Header
         title={`Unit ${unit}`}
-        subtitle={`${level} · ${doneCount}/${lessons.length}`}
+        subtitle={`${level} ${languageProficiencyLevels[level] ?? ""}`}
         secondaryAction={{
           label: level,
           icon: ChevronLeftIcon,
@@ -71,11 +73,27 @@ function UnitIndexRoute() {
           <div className="mb-8">
             <div className="text-xs font-mono uppercase tracking-[0.3em] tx-muted mb-2">Weiter</div>
             <HeroCard
-              size="md"
-              breadcrumb={`Lesson ${nextLesson.lessonNum}`}
+              eyebrow={nextLesson.level}
+              breadcrumb={`Unit ${nextLesson.unit} · Lesson ${nextLesson.lessonNum}`}
               title={nextLesson.title}
               subtitle={nextLesson.titleDe}
               onClick={() => openLesson(nextLesson)}
+              progressPill={(() => {
+                const score = nextSummary?.score ?? 0;
+                const total =
+                  nextSummary?.total ??
+                  (quizzes as Record<string, Array<unknown>>)[String(nextLesson.id)]?.length ??
+                  0;
+                const pct = total > 0 ? Math.round((score / total) * 100) : 0;
+                return {
+                  label: `${score}/${total} · ${pct}%`,
+                  fillColor: scoreFillColor(pct, theme === "dark"),
+                  value: score,
+                  max: total,
+                  length: "100%",
+                  bubbles: Math.round(pct * 0.25),
+                };
+              })()}
             />
           </div>
         ) : (
@@ -120,6 +138,9 @@ function UnitIndexRoute() {
                   <Card.Caption>{lesson.vocab.length} vocab words</Card.Caption>
                   {summary?.finished ? <Card.Caption>{pct}%</Card.Caption> : null}
                 </Card.Row>
+                {summary ? (
+                  <Card.Progress value={summary?.score ?? 0} max={summary?.total ?? 10} />
+                ) : null}
               </Card>
             );
           })}

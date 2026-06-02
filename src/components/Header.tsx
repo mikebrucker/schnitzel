@@ -20,7 +20,10 @@ export function Header({ title, subtitle, secondaryAction, primaryAction }: Head
   const hasActions = secondaryAction !== undefined || primaryAction !== undefined;
 
   return (
-    <header className="sticky z-50 border-b-4 bd-default bg-header" style={{ top: 'var(--safe-top)' }}>
+    <header
+      className="sticky z-50 border-b-4 bd-default bg-header"
+      style={{ top: "var(--safe-top)" }}
+    >
       <div
         className={`max-w-4xl mx-auto px-4 min-h-20 items-center ${hasActions ? "grid grid-cols-[1fr_auto_1fr]" : "flex"}`}
       >

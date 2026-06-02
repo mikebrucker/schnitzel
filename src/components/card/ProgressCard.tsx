@@ -1,7 +1,7 @@
 import { Button } from "@/components/Button";
 import { Card } from "@/components/card";
 import { RetryIcon } from "@/components/icons";
-import { scoreCardBg } from "@/lib/scoreColors";
+import { scoreCardBg, scoreFillColor } from "@/lib/scoreColors";
 import type { Lesson, LessonStat, Theme } from "@/lib/types";
 
 interface ProgressCardProps {
@@ -46,7 +46,7 @@ export function ProgressCard({ lesson, stat, theme, onReset }: ProgressCardProps
         <Card.ProgressPill
           value={stat.finished ? stat.score : stat.answered}
           max={stat.total}
-          fillColor={pct !== null ? scoreCardBg(pct, dark) : "var(--muted)"}
+          fillColor={pct !== null ? scoreFillColor(pct, dark) : "var(--muted)"}
           length="100%"
           label={`${stat.score}/${stat.total} · ${pct}%`}
           className="mt-2 px-3 bd-default border-2"

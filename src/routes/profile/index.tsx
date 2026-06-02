@@ -7,7 +7,7 @@ import { StatCard } from "@/components/card/StatCard";
 import { BarChartIcon, EditIcon, SettingsIcon, XIcon } from "@/components/icons";
 import { CURRICULUM } from "@/lib/curriculum";
 import { haptics } from "@/lib/haptics";
-import type { LanguageProficiencyLevel } from "@/lib/types";
+import { type LanguageProficiencyLevel, languageProficiencyLevels } from "@/lib/types";
 import { loadQuizProgress } from "@/storage/quizStorage";
 import { useApp } from "@/store/useApp";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
@@ -68,15 +68,6 @@ function ProfileRoute() {
   const accuracy =
     stats.totalQuestions > 0 ? Math.round((stats.totalCorrect / stats.totalQuestions) * 100) : 0;
 
-  const languageProficiencyLevels: Record<LanguageProficiencyLevel, string> = {
-    A1: "A1 - Beginner",
-    A2: "A2 - Elementary",
-    B1: "B1 - Intermediate",
-    B2: "B2 - Upper intermediate",
-    C1: "C1 - Advanced",
-    C2: "C2 - Fluent",
-  };
-
   return (
     <>
       <Header
@@ -128,14 +119,20 @@ function ProfileRoute() {
               value={profile.level}
               onChange={(value) => setProfile({ ...profile, level: value })}
               className="font-serif"
-              options={languageProficiencyLevels}
+              options={
+                Object.fromEntries(
+                  Object.entries(languageProficiencyLevels).map(([k, v]) => [k, `${k} - ${v}`]),
+                ) as Record<string, string>
+              }
             />
           ) : (
             <div className="flex flex-col gap-1">
               <span className="text-xs font-mono uppercase tracking-wider tx-muted">
                 German Level
               </span>
-              <div className="text-sm tx-text">{languageProficiencyLevels[profile.level]}</div>
+              <div className="text-sm tx-text">
+                {profile.level} - {languageProficiencyLevels[profile.level]}
+              </div>
             </div>
           )}
 

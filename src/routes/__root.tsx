@@ -9,7 +9,7 @@ const TanStackRouterDevtools = import.meta.env.PROD
   : lazy(() =>
       import("@tanstack/react-router-devtools").then((m) => ({
         default: m.TanStackRouterDevtools,
-      }))
+      })),
     );
 
 function RootLayout() {

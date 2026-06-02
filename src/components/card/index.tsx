@@ -32,9 +32,9 @@ export function Card({
   className = "",
   children,
 }: CardProps) {
-  const base = `text-left rounded-xl ${VARIANT_CLASSES[variant]} ${PADDING_CLASSES[padding]}`;
+  const base = `text-left rounded-xl shadow-card-md ${VARIANT_CLASSES[variant]} ${PADDING_CLASSES[padding]}`;
   const interactive = onClick
-    ? "transition-all hover:translate-x-[-2px] hover:translate-y-[-2px] active:translate-x-[2px] active:translate-y-[2px] cursor-pointer"
+    ? "transition-all hover:translate-x-[-2px] hover:translate-y-[-2px] active:translate-x-[2px] active:translate-y-[2px] cursor-pointer hover:shadow-card-md"
     : "";
   const combined = `${base} ${interactive} ${className}`.trim();
 
