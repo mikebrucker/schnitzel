@@ -12,6 +12,7 @@ export { XIcon } from "./XIcon";
 export { ChevronDownIcon } from "./ChevronDownIcon";
 export { ChevronLeftIcon } from "./ChevronLeftIcon";
 export { ChevronRightIcon } from "./ChevronRightIcon";
+export { ChevronUpIcon } from "./ChevronUpIcon";
 export { PersonIcon } from "./PersonIcon";
 export { SearchIcon } from "./SearchIcon";
 export { StarIcon } from "./StarIcon";

@@ -1,15 +1,18 @@
-import { ChevronDownIcon } from "@/components/icons";
+import { ChevronDownIcon, ChevronUpIcon } from "@/components/icons";
 import { useState } from "react";
+import type { ReactNode } from "react";
 
 export type AccordionItem = {
   title: string;
   subtitle?: string;
-  content: React.ReactNode;
+  titleChips?: ReactNode;
+  rightSlot?: ReactNode;
+  content: ReactNode;
 };
 
 type BaseProps = {
   items: Array<AccordionItem>;
-  compact?: boolean;
+  round?: boolean;
 };
 
 type SingleProps = BaseProps & {
@@ -29,7 +32,7 @@ type MultiProps = BaseProps & {
 type Props = SingleProps | MultiProps;
 
 export function Accordion(props: Props) {
-  const { items, compact } = props;
+  const { items, round } = props;
 
   const [internalSingle, setInternalSingle] = useState<number | null>(
     !props.multi ? (props.defaultOpenIndex ?? null) : null,
@@ -62,33 +65,31 @@ export function Accordion(props: Props) {
   };
 
   return (
-    <div>
+    <div className="space-y-3">
       {items.map((item, i) => {
         const open = isOpen(i);
         return (
-          <div key={item.title}>
+          <div
+            key={item.title}
+            className={`border-2 bd-default bg-surface${round ? " rounded-lg" : ""}`}
+          >
             <button
               type="button"
               onClick={() => toggle(i)}
-              className="w-full flex items-center justify-between pr-4 py-4 text-left tx-text hover:opacity-80 transition-opacity"
+              className="w-full p-4 flex items-center gap-3 text-left"
             >
-              <div className="flex-1 flex items-center gap-4 justify-between mr-4">
-                <span
-                  className={
-                    compact
-                      ? "font-serif font-bold tx-text"
-                      : "font-serif text-2xl font-bold tx-text"
-                  }
-                >
-                  {item.title}
-                </span>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="font-serif font-bold tx-text">{item.title}</span>
+                  {item.titleChips ? item.titleChips : null}
+                </div>
                 {item.subtitle ? (
-                  <span className="text-xs font-mono tx-muted">{item.subtitle}</span>
+                  <div className="text-xs font-mono tx-muted mt-0.5">{item.subtitle}</div>
                 ) : null}
               </div>
+              {item.rightSlot ? item.rightSlot : null}
               <ChevronDownIcon
-                className="tx-muted shrink-0 transition-transform duration-300"
-                style={{ transform: open ? "rotate(180deg)" : "rotate(0deg)" }}
+                className={`tx-muted shrink-0 transition-transform ${open ? "rotate-180" : ""}`}
               />
             </button>
             <div
@@ -96,7 +97,7 @@ export function Accordion(props: Props) {
               style={{ gridTemplateRows: open ? "1fr" : "0fr" }}
             >
               <div className="overflow-hidden">
-                <div className="pt-1 tx-body text-sm leading-relaxed">{item.content}</div>
+                <div className="border-t-2 bd-default">{item.content}</div>
               </div>
             </div>
           </div>
