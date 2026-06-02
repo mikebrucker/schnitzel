@@ -1,357 +1,276 @@
 [
   {
     "id": 1,
+    "slug": "greetings",
     "level": "A1",
     "unit": 1,
     "lessonNum": 1,
+    "order": 1,
     "title": "Greetings & Introductions",
     "titleDe": "Begrüßungen",
-    "vocab": [
+    "estimatedMinutes": 12,
+    "prerequisites": [],
+    "objectives": [
+      "Greet people formally and informally",
+      "Introduce yourself by name",
+      "Use Austrian-specific greetings like Servus and Grüß Gott"
+    ],
+    "vocabIds": ["v001", "v002", "v003", "v004", "v005", "v006", "v007", "v008", "v009", "v010"],
+    "grammar": [
       {
-        "de": "Hallo",
-        "en": "Hello"
-      },
-      {
-        "de": "Guten Morgen",
-        "en": "Good morning"
-      },
-      {
-        "de": "Guten Tag",
-        "en": "Good day",
-        "note": "Most common daytime greeting"
-      },
-      {
-        "de": "Guten Abend",
-        "en": "Good evening"
-      },
-      {
-        "de": "Auf Wiedersehen",
-        "en": "Goodbye (formal)"
-      },
-      {
-        "de": "Tschüss",
-        "en": "Bye (casual)"
-      },
-      {
-        "de": "Wie heißt du?",
-        "en": "What is your name? (informal)"
-      },
-      {
-        "de": "Ich heiße…",
-        "en": "My name is…"
-      },
-      {
-        "de": "Servus",
-        "en": "Hi/bye",
-        "note": "Austrian — use this in Tirol!"
-      },
-      {
-        "de": "Grüß Gott",
-        "en": "Hello",
-        "note": "Formal Austrian greeting"
+        "id": "g1-1",
+        "point": "Formal vs informal 'you'",
+        "explanation": "German has formal (Sie) and informal (du) 'you'. In Tirol, locals are very friendly and often jump to 'du' fast — but use 'Sie' first with strangers, older people, and in shops.",
+        "examples": [
+          { "de": "Wie heißen Sie?", "en": "What is your name? (formal)" },
+          { "de": "Wie heißt du?", "en": "What is your name? (informal)" }
+        ]
       }
     ],
-    "grammar": "German has formal (Sie) and informal (du) 'you'. In Tirol, locals are very friendly and often jump to 'du' fast — but use 'Sie' first with strangers, older people, and in shops.",
-    "example": {
-      "de": "Grüß Gott! Ich heiße Bruck.",
-      "en": "Hello! My name is Bruck."
-    }
+    "examples": [{ "de": "Grüß Gott! Ich heiße Bruck.", "en": "Hello! My name is Bruck." }],
+    "culturalNote": "In Tirol locals shift to 'du' fast, but use 'Sie' first in shops and with strangers. Grüß Gott and Servus are more Austrian than German.",
+    "quizId": "q001",
+    "audio": null
   },
   {
     "id": 2,
+    "slug": "numbers",
     "level": "A1",
     "unit": 1,
     "lessonNum": 2,
+    "order": 2,
     "title": "Numbers 1–20",
     "titleDe": "Zahlen",
-    "vocab": [
+    "estimatedMinutes": 10,
+    "prerequisites": [],
+    "objectives": [
+      "Count from 1 to 20 in German",
+      "Understand the reversed structure of compound numbers (21–99)"
+    ],
+    "vocabIds": [
+      "v011",
+      "v012",
+      "v013",
+      "v014",
+      "v015",
+      "v016",
+      "v017",
+      "v018",
+      "v019",
+      "v020",
+      "v021",
+      "v022",
+      "v023"
+    ],
+    "grammar": [
       {
-        "de": "eins",
-        "en": "1"
-      },
-      {
-        "de": "zwei",
-        "en": "2"
-      },
-      {
-        "de": "drei",
-        "en": "3"
-      },
-      {
-        "de": "vier",
-        "en": "4"
-      },
-      {
-        "de": "fünf",
-        "en": "5"
-      },
-      {
-        "de": "sechs",
-        "en": "6"
-      },
-      {
-        "de": "sieben",
-        "en": "7"
-      },
-      {
-        "de": "acht",
-        "en": "8"
-      },
-      {
-        "de": "neun",
-        "en": "9"
-      },
-      {
-        "de": "zehn",
-        "en": "10"
-      },
-      {
-        "de": "elf",
-        "en": "11"
-      },
-      {
-        "de": "zwölf",
-        "en": "12"
-      },
-      {
-        "de": "zwanzig",
-        "en": "20"
+        "id": "g2-1",
+        "point": "Reversed compound numbers (21–99)",
+        "explanation": "Numbers 21–99 are 'backwards' in German: 21 = einundzwanzig = 'one and twenty'. Same in Tyrolean dialect, just sounds different.",
+        "examples": [
+          { "de": "einundzwanzig", "en": "21 (one-and-twenty)" },
+          { "de": "dreiunddreißig", "en": "33 (three-and-thirty)" }
+        ]
       }
     ],
-    "grammar": "Numbers 21–99 are 'backwards' in German: 21 = einundzwanzig = 'one and twenty'. Same in Tyrolean dialect, just sounds different.",
-    "example": {
-      "de": "Ich bin dreißig Jahre alt.",
-      "en": "I am thirty years old."
-    }
+    "examples": [{ "de": "Ich bin dreißig Jahre alt.", "en": "I am thirty years old." }],
+    "culturalNote": null,
+    "quizId": "q002",
+    "audio": null
   },
   {
     "id": 3,
+    "slug": "food-drink",
     "level": "A1",
     "unit": 2,
     "lessonNum": 1,
+    "order": 3,
     "title": "Ordering Food & Drink",
     "titleDe": "Essen & Trinken bestellen",
-    "vocab": [
+    "estimatedMinutes": 12,
+    "prerequisites": [1],
+    "objectives": [
+      "Order food and drinks at a café or restaurant",
+      "Ask for the bill in the Austrian way",
+      "Know the genders of common food nouns"
+    ],
+    "vocabIds": ["v024", "v025", "v026", "v027", "v028", "v029", "v030", "v031", "v032", "v033"],
+    "grammar": [
       {
-        "de": "Ich möchte…",
-        "en": "I would like…"
-      },
-      {
-        "de": "ein Bier",
-        "en": "a beer"
-      },
-      {
-        "de": "ein Glas Wasser",
-        "en": "a glass of water"
-      },
-      {
-        "de": "der Kaffee",
-        "en": "coffee"
-      },
-      {
-        "de": "das Brot",
-        "en": "bread"
-      },
-      {
-        "de": "der Käse",
-        "en": "cheese"
-      },
-      {
-        "de": "die Rechnung, bitte",
-        "en": "The bill, please"
-      },
-      {
-        "de": "Zahlen, bitte",
-        "en": "Pay, please",
-        "note": "Austrian way to ask for bill"
-      },
-      {
-        "de": "Prost!",
-        "en": "Cheers!"
-      },
-      {
-        "de": "Mahlzeit!",
-        "en": "Enjoy your meal / hello at lunch",
-        "note": "Heard everywhere in Austria"
+        "id": "g3-1",
+        "point": "Noun genders (der, die, das)",
+        "explanation": "German nouns have three genders: der (masc), die (fem), das (neut). You MUST learn the article with the noun. There is no shortcut.",
+        "examples": [
+          { "de": "der Kaffee", "en": "coffee (masculine)" },
+          { "de": "das Brot", "en": "bread (neuter)" }
+        ]
       }
     ],
-    "grammar": "German nouns have three genders: der (masc), die (fem), das (neut). You MUST learn the article with the noun. There is no shortcut.",
-    "example": {
-      "de": "Ich möchte ein Bier und die Rechnung, bitte.",
-      "en": "I would like a beer and the bill, please."
-    }
+    "examples": [
+      {
+        "de": "Ich möchte ein Bier und die Rechnung, bitte.",
+        "en": "I would like a beer and the bill, please."
+      }
+    ],
+    "culturalNote": "Zahlen, bitte is the Austrian way to ask for the bill — you'll hear it everywhere. Mahlzeit is used as a greeting around lunchtime, not just at the table.",
+    "quizId": "q003",
+    "audio": null
   },
   {
     "id": 4,
+    "slug": "days-time-weather",
     "level": "A1",
     "unit": 2,
     "lessonNum": 2,
+    "order": 4,
     "title": "Days, Time, Weather",
     "titleDe": "Tage, Zeit, Wetter",
-    "vocab": [
+    "estimatedMinutes": 12,
+    "prerequisites": [2],
+    "objectives": [
+      "Name the days of the week",
+      "Tell the time using 'halb' correctly",
+      "Describe basic weather conditions"
+    ],
+    "vocabIds": [
+      "v034",
+      "v035",
+      "v036",
+      "v037",
+      "v038",
+      "v039",
+      "v040",
+      "v041",
+      "v042",
+      "v043",
+      "v044",
+      "v045"
+    ],
+    "grammar": [
       {
-        "de": "Montag",
-        "en": "Monday"
-      },
-      {
-        "de": "Dienstag",
-        "en": "Tuesday"
-      },
-      {
-        "de": "Mittwoch",
-        "en": "Wednesday"
-      },
-      {
-        "de": "Donnerstag",
-        "en": "Thursday"
-      },
-      {
-        "de": "Freitag",
-        "en": "Friday"
-      },
-      {
-        "de": "Samstag",
-        "en": "Saturday",
-        "note": "In Austria. (Sonnabend in north Germany)"
-      },
-      {
-        "de": "Sonntag",
-        "en": "Sunday"
-      },
-      {
-        "de": "heute",
-        "en": "today"
-      },
-      {
-        "de": "morgen",
-        "en": "tomorrow"
-      },
-      {
-        "de": "Es schneit",
-        "en": "It is snowing"
-      },
-      {
-        "de": "Es ist kalt",
-        "en": "It is cold"
-      },
-      {
-        "de": "die Sonne",
-        "en": "the sun"
+        "id": "g4-1",
+        "point": "Telling time: 'halb' (half past)",
+        "explanation": "To say time: 'Es ist drei Uhr' = It is three o'clock. 'Halb drei' = 2:30 (literally 'half three' — meaning halfway TO three). This trips up English speakers.",
+        "examples": [
+          { "de": "Es ist drei Uhr.", "en": "It is three o'clock." },
+          { "de": "Halb drei.", "en": "2:30 (half way to three)" }
+        ]
       }
     ],
-    "grammar": "To say time: 'Es ist drei Uhr' = It is three o'clock. 'Halb drei' = 2:30 (literally 'half three' — meaning halfway TO three). This trips up English speakers.",
-    "example": {
-      "de": "Heute ist Montag und es schneit.",
-      "en": "Today is Monday and it is snowing."
-    }
+    "examples": [
+      { "de": "Heute ist Montag und es schneit.", "en": "Today is Monday and it is snowing." }
+    ],
+    "culturalNote": "Austrians say Samstag, not Sonnabend (common in northern Germany). Snow vocab is essential — Tirol gets a lot of it.",
+    "quizId": "q004",
+    "audio": null
   },
   {
     "id": 5,
+    "slug": "getting-around",
     "level": "A1",
     "unit": 3,
     "lessonNum": 1,
+    "order": 5,
     "title": "Getting Around Tirol",
     "titleDe": "Unterwegs in Tirol",
-    "vocab": [
+    "estimatedMinutes": 12,
+    "prerequisites": [1, 2],
+    "objectives": [
+      "Ask where things are using 'Wo ist…?'",
+      "Name key transport options in Tirol",
+      "Give and understand basic directions"
+    ],
+    "vocabIds": ["v046", "v047", "v048", "v049", "v050", "v051", "v052", "v053", "v054", "v055"],
+    "grammar": [
       {
-        "de": "der Bahnhof",
-        "en": "train station"
-      },
-      {
-        "de": "die Straßenbahn",
-        "en": "tram"
-      },
-      {
-        "de": "der Bus",
-        "en": "bus"
-      },
-      {
-        "de": "das Auto",
-        "en": "car"
-      },
-      {
-        "de": "links / rechts",
-        "en": "left / right"
-      },
-      {
-        "de": "geradeaus",
-        "en": "straight ahead"
-      },
-      {
-        "de": "Wo ist…?",
-        "en": "Where is…?"
-      },
-      {
-        "de": "die Bergbahn",
-        "en": "mountain cable car"
-      },
-      {
-        "de": "die Piste",
-        "en": "ski slope"
-      },
-      {
-        "de": "die Hütte",
-        "en": "mountain hut"
+        "id": "g5-1",
+        "point": "W-question words",
+        "explanation": "Question words: Wer (who), Was (what), Wo (where), Wann (when), Warum (why), Wie (how). All start with W. Easy to remember.",
+        "examples": [
+          { "de": "Wo ist der Bahnhof?", "en": "Where is the train station?" },
+          { "de": "Wann fährt der Bus?", "en": "When does the bus leave?" }
+        ]
       }
     ],
-    "grammar": "Question words: Wer (who), Was (what), Wo (where), Wann (when), Warum (why), Wie (how). All start with W. Easy to remember.",
-    "example": {
-      "de": "Wo ist die Bergbahn, bitte?",
-      "en": "Where is the cable car, please?"
-    }
+    "examples": [{ "de": "Wo ist die Bergbahn, bitte?", "en": "Where is the cable car, please?" }],
+    "culturalNote": "The Bergbahn (mountain cable car) is a key part of getting around Tirol year-round — skiing in winter, hiking in summer. Die Hütte is not just a hut, it's a mountain restaurant on the slopes.",
+    "quizId": "q005",
+    "audio": null
   },
   {
     "id": 6,
+    "slug": "shopping",
     "level": "A2",
     "unit": 1,
     "lessonNum": 1,
+    "order": 1,
     "title": "Shopping & Prices",
     "titleDe": "Einkaufen & Preise",
-    "vocab": [
-      { "de": "Wie viel kostet das?", "en": "How much does that cost?" },
-      { "de": "zu teuer", "en": "too expensive" },
-      { "de": "günstig", "en": "cheap / good value" },
-      { "de": "die Kasse", "en": "checkout / till" },
-      { "de": "das Wechselgeld", "en": "change (money)" },
-      { "de": "kaufen", "en": "to buy" },
-      { "de": "der Markt", "en": "market", "note": "Innsbruck's Markthalle is worth a visit" },
-      { "de": "der Preis", "en": "price" },
-      { "de": "billiger?", "en": "cheaper?" },
-      { "de": "Ich nehme das.", "en": "I'll take it." }
+    "estimatedMinutes": 13,
+    "prerequisites": [3],
+    "objectives": [
+      "Ask how much something costs",
+      "Express that something is too expensive",
+      "Understand the accusative case for masculine nouns"
     ],
-    "grammar": "The accusative case: when something is the object of a verb, masculine 'der' changes to 'den'. Die and das stay the same. Example: 'Ich kaufe den Apfel' (masc.) but 'Ich kaufe die Birne' (fem.) and 'Ich kaufe das Brot' (neut.).",
-    "example": {
-      "de": "Wie viel kostet das? — Zu teuer. Haben Sie etwas Günstigeres?",
-      "en": "How much does that cost? — Too expensive. Do you have something cheaper?"
-    }
+    "vocabIds": ["v056", "v057", "v058", "v059", "v060", "v061", "v062", "v063", "v064", "v065"],
+    "grammar": [
+      {
+        "id": "g6-1",
+        "point": "Accusative case: der → den",
+        "explanation": "The accusative case: when something is the object of a verb, masculine 'der' changes to 'den'. Die and das stay the same. Example: 'Ich kaufe den Apfel' (masc.) but 'Ich kaufe die Birne' (fem.) and 'Ich kaufe das Brot' (neut.).",
+        "examples": [
+          { "de": "Ich kaufe den Apfel.", "en": "I buy the apple. (masc. → den)" },
+          { "de": "Ich kaufe die Birne.", "en": "I buy the pear. (fem. stays die)" }
+        ]
+      }
+    ],
+    "examples": [
+      {
+        "de": "Wie viel kostet das? — Zu teuer. Haben Sie etwas Günstigeres?",
+        "en": "How much does that cost? — Too expensive. Do you have something cheaper?"
+      }
+    ],
+    "culturalNote": "Innsbruck's Markthalle is a great place to practice shopping German. Markets run on cash — have coins ready.",
+    "quizId": "q006",
+    "audio": null
   },
   {
     "id": 7,
+    "slug": "at-the-hotel",
     "level": "A2",
     "unit": 1,
     "lessonNum": 2,
+    "order": 2,
     "title": "At the Hotel",
     "titleDe": "Im Hotel",
-    "vocab": [
-      { "de": "das Zimmer", "en": "room" },
-      { "de": "das Einzelzimmer", "en": "single room" },
-      { "de": "das Doppelzimmer", "en": "double room" },
-      { "de": "der Schlüssel", "en": "key" },
-      { "de": "einchecken", "en": "to check in" },
-      { "de": "auschecken", "en": "to check out" },
-      {
-        "de": "das Frühstück",
-        "en": "breakfast",
-        "note": "Almost always included in Austrian hotels"
-      },
-      { "de": "die Nacht", "en": "night" },
-      { "de": "Haben Sie…?", "en": "Do you have…?" },
-      { "de": "Können Sie mir helfen?", "en": "Can you help me?" }
+    "estimatedMinutes": 13,
+    "prerequisites": [6],
+    "objectives": [
+      "Check in and check out at a hotel",
+      "Request room types and ask what's available",
+      "Use modal verbs (können, müssen) correctly"
     ],
-    "grammar": "Modal verbs: können (can), müssen (must), wollen (want), dürfen (may). They always pair with an infinitive at the end of the sentence. 'Ich kann Deutsch sprechen.' — I can speak German.",
-    "example": {
-      "de": "Ich möchte ein Doppelzimmer für zwei Nächte, bitte.",
-      "en": "I would like a double room for two nights, please."
-    }
+    "vocabIds": ["v066", "v067", "v068", "v069", "v070", "v071", "v072", "v073", "v074", "v075"],
+    "grammar": [
+      {
+        "id": "g7-1",
+        "point": "Modal verbs + infinitive at the end",
+        "explanation": "Modal verbs: können (can), müssen (must), wollen (want), dürfen (may). They always pair with an infinitive at the end of the sentence. 'Ich kann Deutsch sprechen.' — I can speak German.",
+        "examples": [
+          { "de": "Ich kann Deutsch sprechen.", "en": "I can speak German." },
+          { "de": "Können Sie mir helfen?", "en": "Can you help me?" }
+        ]
+      }
+    ],
+    "examples": [
+      {
+        "de": "Ich möchte ein Doppelzimmer für zwei Nächte, bitte.",
+        "en": "I would like a double room for two nights, please."
+      }
+    ],
+    "culturalNote": "Austrian hotels almost always include breakfast (Frühstück). If it's not mentioned, ask: 'Ist das Frühstück inklusive?'",
+    "quizId": "q007",
+    "audio": null
   }
 ]

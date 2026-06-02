@@ -1,9 +1,10 @@
 import { Button } from "@/components/Button";
+import { GenderChip } from "@/components/GenderChip";
 import { Header } from "@/components/Header";
 import { ChevronLeftIcon, ChevronRightIcon, RetryIcon, TipIcon, XIcon } from "@/components/icons";
-import { lessonToPath } from "@/lib/curriculum";
+import { getWord, lessonToPath } from "@/lib/curriculum";
 import { haptics } from "@/lib/haptics";
-import type { QuizMode } from "@/lib/types";
+import type { DictionaryEntry, QuizMode } from "@/lib/types";
 import { loadQuizProgress } from "@/storage/quizStorage";
 import { useApp } from "@/store/useApp";
 import { createFileRoute, useLoaderData, useNavigate } from "@tanstack/react-router";
@@ -73,6 +74,10 @@ function LessonRoute() {
     });
   };
 
+  const vocab = lesson.vocabIds
+    .map((id) => getWord(id))
+    .filter((w): w is DictionaryEntry => w !== undefined);
+
   return (
     <>
       <Header
@@ -90,18 +95,21 @@ function LessonRoute() {
             Vokabular
           </h2>
           <div className="border-2 bd-default bg-surface divide-y-2">
-            {lesson.vocab.map((v) => (
+            {vocab.map((w) => (
               <div
-                key={v.de}
+                key={w.id}
                 className="p-4 grid grid-cols-[1fr_1fr] gap-4 items-start border-b last:border-0 bd-default"
               >
-                <div className="font-serif text-lg font-bold tx-text">{v.de}</div>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="font-serif text-lg font-bold tx-text">{w.de}</span>
+                  {w.gender !== null ? <GenderChip gender={w.gender} /> : null}
+                </div>
                 <div>
-                  <div className="tx-body">{v.en}</div>
-                  {v.note ? (
+                  <div className="tx-body">{w.en}</div>
+                  {w.note !== null ? (
                     <div className="flex items-center gap-1 text-xs tx-accent mt-1">
                       <TipIcon size={16} />
-                      {v.note}
+                      {w.note}
                     </div>
                   ) : null}
                 </div>
@@ -114,8 +122,23 @@ function LessonRoute() {
           <h2 className="font-serif text-2xl font-bold tx-text mb-4 border-b-2 bd-default pb-1">
             Grammatik
           </h2>
-          <div className="border-l-4 bd-accent bg-accent-bg p-5 tx-body leading-relaxed">
-            {lesson.grammar}
+          <div className="space-y-4">
+            {lesson.grammar.map((g) => (
+              <div key={g.id} className="border-l-4 bd-accent bg-accent-bg p-5">
+                <div className="font-bold tx-text mb-1">{g.point}</div>
+                <div className="tx-body leading-relaxed mb-3">{g.explanation}</div>
+                {g.examples.length > 0 ? (
+                  <div className="space-y-1">
+                    {g.examples.map((ex) => (
+                      <div key={ex.de} className="text-sm">
+                        <span className="font-serif tx-text">{ex.de}</span>
+                        <span className="tx-muted"> — {ex.en}</span>
+                      </div>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
+            ))}
           </div>
         </section>
 
@@ -124,8 +147,8 @@ function LessonRoute() {
             Beispiel
           </h2>
           <div className="border-2 bd-default p-5 bg-surface-solid">
-            <div className="font-serif text-xl tx-text mb-2">"{lesson.example.de}"</div>
-            <div className="tx-muted">{lesson.example.en}</div>
+            <div className="font-serif text-xl tx-text mb-2">"{lesson.examples[0]?.de}"</div>
+            <div className="tx-muted">{lesson.examples[0]?.en}</div>
           </div>
         </section>
 

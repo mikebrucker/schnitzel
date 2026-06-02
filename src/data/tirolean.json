@@ -1,14 +1,122 @@
 [
-  { "tirol": "Griaß di", "standard": "Grüß dich / Hallo", "en": "Hi (informal)" },
-  { "tirol": "Pfiat di", "standard": "Auf Wiedersehen", "en": "Bye" },
-  { "tirol": "Hawi-dere", "standard": "Hallo / Servus", "en": "Casual hi" },
-  { "tirol": "I mog di", "standard": "Ich mag dich", "en": "I like you" },
-  { "tirol": "Wos mochsch?", "standard": "Was machst du?", "en": "What are you doing?" },
-  { "tirol": "Passt scho", "standard": "Passt schon / Ist okay", "en": "It's fine / no worries" },
-  { "tirol": "Bissl", "standard": "Ein bisschen", "en": "A little bit" },
-  { "tirol": "Heid", "standard": "Heute", "en": "Today" },
-  { "tirol": "Oide / Oida", "standard": "Alter", "en": "Dude / man (filler word)" },
-  { "tirol": "Leiwand", "standard": "Toll / Super", "en": "Awesome" },
-  { "tirol": "Schmankerl", "standard": "Leckerei", "en": "Tasty treat / specialty" },
-  { "tirol": "Marend", "standard": "Brotzeit", "en": "Afternoon snack (very Tyrolean)" }
+  {
+    "id": "t001",
+    "tirol": "Griaß di",
+    "standard": "Grüß dich / Hallo",
+    "en": "Hi (informal)",
+    "category": "greetings",
+    "region": "Tirol",
+    "usage": "everyday",
+    "note": null
+  },
+  {
+    "id": "t002",
+    "tirol": "Pfiat di",
+    "standard": "Auf Wiedersehen",
+    "en": "Bye",
+    "category": "greetings",
+    "region": "Tirol",
+    "usage": "everyday",
+    "note": null
+  },
+  {
+    "id": "t003",
+    "tirol": "Hawi-dere",
+    "standard": "Hallo / Servus",
+    "en": "Casual hi",
+    "category": "greetings",
+    "region": "Tirol",
+    "usage": "everyday",
+    "note": null
+  },
+  {
+    "id": "t004",
+    "tirol": "I mog di",
+    "standard": "Ich mag dich",
+    "en": "I like you",
+    "category": "expressions",
+    "region": "Tirol",
+    "usage": "everyday",
+    "note": null
+  },
+  {
+    "id": "t005",
+    "tirol": "Wos mochsch?",
+    "standard": "Was machst du?",
+    "en": "What are you doing?",
+    "category": "smalltalk",
+    "region": "Tirol",
+    "usage": "everyday",
+    "note": null
+  },
+  {
+    "id": "t006",
+    "tirol": "Passt scho",
+    "standard": "Passt schon / Ist okay",
+    "en": "It's fine / no worries",
+    "category": "expressions",
+    "region": "Tirol",
+    "usage": "everyday",
+    "note": null
+  },
+  {
+    "id": "t007",
+    "tirol": "Bissl",
+    "standard": "Ein bisschen",
+    "en": "A little bit",
+    "category": "expressions",
+    "region": "Tirol",
+    "usage": "everyday",
+    "note": null
+  },
+  {
+    "id": "t008",
+    "tirol": "Heid",
+    "standard": "Heute",
+    "en": "Today",
+    "category": "expressions",
+    "region": "Tirol",
+    "usage": "everyday",
+    "note": null
+  },
+  {
+    "id": "t009",
+    "tirol": "Oide / Oida",
+    "standard": "Alter",
+    "en": "Dude / man (filler word)",
+    "category": "expressions",
+    "region": "Tirol",
+    "usage": "everyday",
+    "note": null
+  },
+  {
+    "id": "t010",
+    "tirol": "Leiwand",
+    "standard": "Toll / Super",
+    "en": "Awesome",
+    "category": "expressions",
+    "region": "Tirol",
+    "usage": "everyday",
+    "note": null
+  },
+  {
+    "id": "t011",
+    "tirol": "Schmankerl",
+    "standard": "Leckerei",
+    "en": "Tasty treat / specialty",
+    "category": "food",
+    "region": "Tirol",
+    "usage": "everyday",
+    "note": null
+  },
+  {
+    "id": "t012",
+    "tirol": "Marend",
+    "standard": "Brotzeit",
+    "en": "Afternoon snack (very Tyrolean)",
+    "category": "food",
+    "region": "Tirol",
+    "usage": "everyday",
+    "note": "A mid-afternoon snack, typically bread, cheese, and cold cuts"
+  }
 ]

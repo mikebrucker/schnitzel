@@ -14,35 +14,72 @@ export function isLanguageProficiencyLevel(s: string): s is LanguageProficiencyL
   return (LEVELS as ReadonlyArray<string>).includes(s);
 }
 
-export type VocabItem = {
+export type DictionaryEntry = {
+  id: string;
   de: string;
+  lemma: string;
   en: string;
-  note?: string;
+  partOfSpeech: string;
+  gender: "der" | "die" | "das" | null;
+  plural: string | null;
+  ipa: string | null;
+  level: LanguageProficiencyLevel;
+  tags: Array<string>;
+  note: string | null;
+  exampleSentence: { de: string; en: string } | null;
+  audio: string | null;
+  lessonIds: Array<number>;
+};
+
+export type GrammarPoint = {
+  id: string;
+  point: string;
+  explanation: string;
+  examples: Array<{ de: string; en: string }>;
 };
 
 export type Lesson = {
   id: number;
+  slug: string;
   level: LanguageProficiencyLevel;
   unit: number;
   lessonNum: number;
+  order: number;
   title: string;
   titleDe: string;
-  vocab: Array<VocabItem>;
-  grammar: string;
-  example: { de: string; en: string };
+  estimatedMinutes: number;
+  prerequisites: Array<number>;
+  objectives: Array<string>;
+  vocabIds: Array<string>;
+  grammar: Array<GrammarPoint>;
+  examples: Array<{ de: string; en: string }>;
+  culturalNote: string | null;
+  quizId: string;
+  audio: string | null;
 };
 
-export type QuizQuestion = {
+export type SingleChoiceQuestion = {
+  id: string;
+  type: "single-choice";
+  difficulty: number;
+  vocabId?: string;
   question: string;
   options: Array<string>;
   correct: number;
   explanation: string;
 };
 
+export type QuizQuestion = SingleChoiceQuestion;
+
 export type TyroleanEntry = {
+  id: string;
   tirol: string;
   standard: string;
   en: string;
+  category: string;
+  region: string;
+  usage: string;
+  note: string | null;
 };
 
 export type QuizProgress = {

@@ -1,281 +1,407 @@
 {
-  "1": [
-    {
-      "question": "How would a local in Tirol most naturally greet you on the street?",
-      "options": ["Hallo", "Guten Tag", "Servus", "Auf Wiedersehen"],
-      "correct": 2,
-      "explanation": "'Servus' is the everyday Austrian greeting — works for both hello and goodbye."
-    },
-    {
-      "question": "Which greeting is most formal and typical when entering an Austrian shop?",
-      "options": ["Tschüss", "Grüß Gott", "Wie heißt du?", "Hallo"],
-      "correct": 1,
-      "explanation": "'Grüß Gott' is the standard formal greeting in Austria and southern Germany — use it in shops and with strangers."
-    },
-    {
-      "question": "Translate: 'My name is Bruck.'",
-      "options": [
-        "Wie heißt du, Bruck?",
-        "Ich heiße Bruck.",
-        "Bruck ist Servus.",
-        "Guten Tag, Bruck."
-      ],
-      "correct": 1,
-      "explanation": "'Ich heiße…' literally means 'I am called…' and is the standard way to introduce yourself."
-    },
-    {
-      "question": "When should you use 'Sie' instead of 'du'?",
-      "options": [
-        "With close friends only",
-        "With strangers, older people, and in shops",
-        "Only when speaking to children",
-        "Never — Austrians always use 'du'"
-      ],
-      "correct": 1,
-      "explanation": "Sie is formal — for strangers, elders, professional contexts. Tyroleans often shift to du quickly though."
-    },
-    {
-      "question": "Which of these means 'Goodbye' formally?",
-      "options": ["Tschüss", "Servus", "Guten Morgen", "Auf Wiedersehen"],
-      "correct": 3,
-      "explanation": "'Auf Wiedersehen' literally means 'until seeing again' — the formal goodbye."
-    }
-  ],
-  "2": [
-    {
-      "question": "What number is 'sieben'?",
-      "options": ["6", "7", "8", "9"],
-      "correct": 1,
-      "explanation": "Sieben = 7. Easy to mix up with 'sechs' (6) — listen for the 'b' sound."
-    },
-    {
-      "question": "How would you say '21' in German?",
-      "options": ["zwanzigundeins", "zwanzig-eins", "einundzwanzig", "eins zwanzig"],
-      "correct": 2,
-      "explanation": "Numbers 21–99 are spoken 'ones-and-tens': einundzwanzig = one-and-twenty."
-    },
-    {
-      "question": "What is 'zwölf'?",
-      "options": ["10", "11", "12", "20"],
-      "correct": 2,
-      "explanation": "Zwölf = 12. The German word for a dozen has its own unique form."
-    },
-    {
-      "question": "Translate: 'I am thirty years old.'",
-      "options": [
-        "Ich habe dreißig Jahre.",
-        "Ich bin dreißig Jahre alt.",
-        "Mir ist dreißig Jahre.",
-        "Dreißig Jahre ich bin."
-      ],
-      "correct": 1,
-      "explanation": "German uses 'sein' (to be) for age, not 'haben' (to have) like French or Spanish."
-    },
-    {
-      "question": "Which is the correct order: 'four', 'one', 'ten'?",
-      "options": ["vier, eins, zehn", "fünf, eins, zehn", "vier, ein, zehn", "vier, eins, elf"],
-      "correct": 0,
-      "explanation": "Vier = 4, eins = 1, zehn = 10. 'Ein' (without -s) is used as an article ('a/an'), not the number."
-    }
-  ],
-  "3": [
-    {
-      "question": "How do you ask for the bill in an Austrian restaurant?",
-      "options": ["Bitte das Geld!", "Zahlen, bitte", "Ich gehe jetzt", "Wo ist das Bier?"],
-      "correct": 1,
-      "explanation": "'Zahlen, bitte' is the typical Austrian way — literally 'Pay, please'. 'Die Rechnung, bitte' also works."
-    },
-    {
-      "question": "What is the gender of 'Brot' (bread)?",
-      "options": ["der (masc)", "die (fem)", "das (neut)", "no gender"],
-      "correct": 2,
-      "explanation": "Das Brot — neuter. German has three noun genders and you must memorise the article with each noun."
-    },
-    {
-      "question": "Translate: 'I would like a beer.'",
-      "options": [
-        "Ich will ein Bier.",
-        "Ich möchte ein Bier.",
-        "Geben Sie mir ein Bier.",
-        "Ein Bier, danke."
-      ],
-      "correct": 1,
-      "explanation": "'Ich möchte' is the polite way — softer than 'ich will' (I want), which sounds demanding."
-    },
-    {
-      "question": "When do Austrians typically say 'Mahlzeit'?",
-      "options": [
-        "Only at dinner parties",
-        "Around lunchtime, as a greeting or before eating",
-        "After dessert",
-        "When entering a bakery"
-      ],
-      "correct": 1,
-      "explanation": "'Mahlzeit' is heard all day around lunch — used as a greeting, a 'bon appétit', or even just a hello at midday."
-    },
-    {
-      "question": "What does 'der Käse' mean?",
-      "options": ["coffee", "water", "cheese", "cake"],
-      "correct": 2,
-      "explanation": "Der Käse = cheese. Masculine article. (Kaffee = coffee, also masc.)"
-    }
-  ],
-  "4": [
-    {
-      "question": "What day comes after 'Mittwoch'?",
-      "options": ["Dienstag", "Donnerstag", "Freitag", "Samstag"],
-      "correct": 1,
-      "explanation": "Mittwoch (Wednesday) is followed by Donnerstag (Thursday). All Tag = day."
-    },
-    {
-      "question": "What does 'halb drei' mean?",
-      "options": ["2:30", "3:00", "3:30", "Half a three"],
-      "correct": 0,
-      "explanation": "Tricky! 'Half three' in German means 'halfway TO three' = 2:30. Opposite of British English."
-    },
-    {
-      "question": "How do you say 'It is snowing' in German?",
-      "options": ["Es ist Schnee", "Schnee fällt", "Es schneit", "Der Schnee kommt"],
-      "correct": 2,
-      "explanation": "'Es schneit' is the standard weather verb construction — like 'es regnet' (it's raining)."
-    },
-    {
-      "question": "In Austria, what do they call Saturday?",
-      "options": ["Sonnabend", "Samstag", "Sabbattag", "Wochenende"],
-      "correct": 1,
-      "explanation": "Austrians and southern Germans say 'Samstag'. Northern Germans sometimes say 'Sonnabend'."
-    },
-    {
-      "question": "Translate: 'tomorrow'",
-      "options": ["heute", "morgen", "gestern", "jetzt"],
-      "correct": 1,
-      "explanation": "Morgen = tomorrow (and also 'morning'). Heute = today, gestern = yesterday."
-    }
-  ],
-  "5": [
-    {
-      "question": "You need to find the cable car. How do you ask?",
-      "options": [
-        "Wo ist die Bergbahn?",
-        "Was ist die Bergbahn?",
-        "Wer ist die Bergbahn?",
-        "Wann ist die Bergbahn?"
-      ],
-      "correct": 0,
-      "explanation": "Wo = where. All German question words start with W: Wer, Was, Wo, Wann, Warum, Wie."
-    },
-    {
-      "question": "What does 'die Hütte' mean in a Tirol context?",
-      "options": [
-        "A hat",
-        "A hotel reception",
-        "A mountain hut (restaurant/bar on the slopes)",
-        "A small village"
-      ],
-      "correct": 2,
-      "explanation": "A Hütte is a mountain hut — usually a rustic restaurant on a ski slope or hiking trail. Essential Tirol vocab."
-    },
-    {
-      "question": "Translate: 'Go straight ahead, then left.'",
-      "options": [
-        "Geradeaus, dann rechts.",
-        "Links, dann geradeaus.",
-        "Geradeaus, dann links.",
-        "Rechts und geradeaus."
-      ],
-      "correct": 2,
-      "explanation": "Geradeaus = straight ahead, links = left, rechts = right. Order matters!"
-    },
-    {
-      "question": "Which question word means 'why'?",
-      "options": ["Wer", "Wann", "Warum", "Wie"],
-      "correct": 2,
-      "explanation": "Warum = why. Wer = who, Wann = when, Wie = how. All start with W."
-    },
-    {
-      "question": "What is 'die Piste'?",
-      "options": ["A pastry", "A ski slope", "A cable car", "A train platform"],
-      "correct": 1,
-      "explanation": "Die Piste = ski slope. Essential vocab for winter in Tirol."
-    }
-  ],
-  "6": [
-    {
-      "question": "How do you ask 'How much does that cost?'",
-      "options": ["Was ist das?", "Wie viel kostet das?", "Wo kaufe ich das?", "Haben Sie das?"],
-      "correct": 1,
-      "explanation": "'Wie viel kostet das?' is the standard way to ask a price. 'Wie viel' = how much, 'kosten' = to cost."
-    },
-    {
-      "question": "What does 'zu teuer' mean?",
-      "options": ["very cheap", "a good deal", "too expensive", "on sale"],
-      "correct": 2,
-      "explanation": "'Zu' = too (as in excessively), 'teuer' = expensive. Useful for markets and tourist shops."
-    },
-    {
-      "question": "In the accusative case, 'der Apfel' becomes…",
-      "options": ["der Apfel", "die Apfel", "das Apfel", "den Apfel"],
-      "correct": 3,
-      "explanation": "Masculine 'der' changes to 'den' in the accusative (object) case. Die and das stay unchanged."
-    },
-    {
-      "question": "Where do you pay in a German/Austrian shop?",
-      "options": ["die Tür", "die Kasse", "der Markt", "das Regal"],
-      "correct": 1,
-      "explanation": "'Die Kasse' is the checkout or till. You'll hear 'Zur Kasse, bitte' — to the checkout, please."
-    },
-    {
-      "question": "How do you say 'I'll take it'?",
-      "options": ["Ich kaufe nichts.", "Ich nehme das.", "Das ist günstig.", "Ich zahle später."],
-      "correct": 1,
-      "explanation": "'Ich nehme das' literally means 'I take that' — the natural way to say you're buying something."
-    }
-  ],
-  "7": [
-    {
-      "question": "How do you ask for a double room?",
-      "options": [
-        "Ich möchte ein Einzelzimmer.",
-        "Haben Sie ein Doppelzimmer?",
-        "Wo ist das Zimmer?",
-        "Ich brauche den Schlüssel."
-      ],
-      "correct": 1,
-      "explanation": "'Doppelzimmer' = double room, 'Einzelzimmer' = single room. 'Haben Sie…?' = do you have…?"
-    },
-    {
-      "question": "What is 'das Frühstück'?",
-      "options": ["dinner", "lunch", "breakfast", "a snack"],
-      "correct": 2,
-      "explanation": "'Früh' = early — breakfast. Austrian hotels almost always include it."
-    },
-    {
-      "question": "Translate: 'Can you help me?'",
-      "options": [
-        "Wollen Sie mir helfen?",
-        "Müssen Sie mir helfen?",
-        "Können Sie mir helfen?",
-        "Dürfen Sie mir helfen?"
-      ],
-      "correct": 2,
-      "explanation": "'Können' = can/able to — the polite modal for requests. 'Mir helfen' = help me (dative)."
-    },
-    {
-      "question": "Where does the infinitive go with a modal verb?",
-      "options": [
-        "Right after the modal",
-        "At the start of the sentence",
-        "At the end of the sentence",
-        "It can go anywhere"
-      ],
-      "correct": 2,
-      "explanation": "Modal verbs send the infinitive to the end: 'Ich kann Deutsch sprechen.' The modal takes second position, infinitive goes last."
-    },
-    {
-      "question": "What does 'auschecken' mean?",
-      "options": ["to check in", "to check out", "to pay the bill", "to book a room"],
-      "correct": 1,
-      "explanation": "'Aus-' = out, 'ein-' = in. Einchecken = check in, auschecken = check out."
-    }
-  ]
+  "q001": {
+    "lessonId": 1,
+    "questions": [
+      {
+        "id": "q001-1",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "How would a local in Tirol most naturally greet you on the street?",
+        "options": ["Hallo", "Guten Tag", "Servus", "Auf Wiedersehen"],
+        "correct": 2,
+        "explanation": "'Servus' is the everyday Austrian greeting — works for both hello and goodbye."
+      },
+      {
+        "id": "q001-2",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "Which greeting is most formal and typical when entering an Austrian shop?",
+        "options": ["Tschüss", "Grüß Gott", "Wie heißt du?", "Hallo"],
+        "correct": 1,
+        "explanation": "'Grüß Gott' is the standard formal greeting in Austria and southern Germany — use it in shops and with strangers."
+      },
+      {
+        "id": "q001-3",
+        "type": "single-choice",
+        "difficulty": 2,
+        "question": "Translate: 'My name is Bruck.'",
+        "options": [
+          "Wie heißt du, Bruck?",
+          "Ich heiße Bruck.",
+          "Bruck ist Servus.",
+          "Guten Tag, Bruck."
+        ],
+        "correct": 1,
+        "explanation": "'Ich heiße…' literally means 'I am called…' and is the standard way to introduce yourself."
+      },
+      {
+        "id": "q001-4",
+        "type": "single-choice",
+        "difficulty": 2,
+        "question": "When should you use 'Sie' instead of 'du'?",
+        "options": [
+          "With close friends only",
+          "With strangers, older people, and in shops",
+          "Only when speaking to children",
+          "Never — Austrians always use 'du'"
+        ],
+        "correct": 1,
+        "explanation": "Sie is formal — for strangers, elders, professional contexts. Tyroleans often shift to du quickly though."
+      },
+      {
+        "id": "q001-5",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "Which of these means 'Goodbye' formally?",
+        "options": ["Tschüss", "Servus", "Guten Morgen", "Auf Wiedersehen"],
+        "correct": 3,
+        "explanation": "'Auf Wiedersehen' literally means 'until seeing again' — the formal goodbye."
+      }
+    ]
+  },
+  "q002": {
+    "lessonId": 2,
+    "questions": [
+      {
+        "id": "q002-1",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What number is 'sieben'?",
+        "options": ["6", "7", "8", "9"],
+        "correct": 1,
+        "explanation": "Sieben = 7. Easy to mix up with 'sechs' (6) — listen for the 'b' sound."
+      },
+      {
+        "id": "q002-2",
+        "type": "single-choice",
+        "difficulty": 2,
+        "question": "How would you say '21' in German?",
+        "options": ["zwanzigundeins", "zwanzig-eins", "einundzwanzig", "eins zwanzig"],
+        "correct": 2,
+        "explanation": "Numbers 21–99 are spoken 'ones-and-tens': einundzwanzig = one-and-twenty."
+      },
+      {
+        "id": "q002-3",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What is 'zwölf'?",
+        "options": ["10", "11", "12", "20"],
+        "correct": 2,
+        "explanation": "Zwölf = 12. The German word for a dozen has its own unique form."
+      },
+      {
+        "id": "q002-4",
+        "type": "single-choice",
+        "difficulty": 2,
+        "question": "Translate: 'I am thirty years old.'",
+        "options": [
+          "Ich habe dreißig Jahre.",
+          "Ich bin dreißig Jahre alt.",
+          "Mir ist dreißig Jahre.",
+          "Dreißig Jahre ich bin."
+        ],
+        "correct": 1,
+        "explanation": "German uses 'sein' (to be) for age, not 'haben' (to have) like French or Spanish."
+      },
+      {
+        "id": "q002-5",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "Which is the correct order: 'four', 'one', 'ten'?",
+        "options": ["vier, eins, zehn", "fünf, eins, zehn", "vier, ein, zehn", "vier, eins, elf"],
+        "correct": 0,
+        "explanation": "Vier = 4, eins = 1, zehn = 10. 'Ein' (without -s) is used as an article ('a/an'), not the number."
+      }
+    ]
+  },
+  "q003": {
+    "lessonId": 3,
+    "questions": [
+      {
+        "id": "q003-1",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "How do you ask for the bill in an Austrian restaurant?",
+        "options": ["Bitte das Geld!", "Zahlen, bitte", "Ich gehe jetzt", "Wo ist das Bier?"],
+        "correct": 1,
+        "explanation": "'Zahlen, bitte' is the typical Austrian way — literally 'Pay, please'. 'Die Rechnung, bitte' also works."
+      },
+      {
+        "id": "q003-2",
+        "type": "single-choice",
+        "difficulty": 2,
+        "question": "What is the gender of 'Brot' (bread)?",
+        "options": ["der (masc)", "die (fem)", "das (neut)", "no gender"],
+        "correct": 2,
+        "explanation": "Das Brot — neuter. German has three noun genders and you must memorise the article with each noun."
+      },
+      {
+        "id": "q003-3",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "Translate: 'I would like a beer.'",
+        "options": [
+          "Ich will ein Bier.",
+          "Ich möchte ein Bier.",
+          "Geben Sie mir ein Bier.",
+          "Ein Bier, danke."
+        ],
+        "correct": 1,
+        "explanation": "'Ich möchte' is the polite way — softer than 'ich will' (I want), which sounds demanding."
+      },
+      {
+        "id": "q003-4",
+        "type": "single-choice",
+        "difficulty": 2,
+        "question": "When do Austrians typically say 'Mahlzeit'?",
+        "options": [
+          "Only at dinner parties",
+          "Around lunchtime, as a greeting or before eating",
+          "After dessert",
+          "When entering a bakery"
+        ],
+        "correct": 1,
+        "explanation": "'Mahlzeit' is heard all day around lunch — used as a greeting, a 'bon appétit', or even just a hello at midday."
+      },
+      {
+        "id": "q003-5",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What does 'der Käse' mean?",
+        "options": ["coffee", "water", "cheese", "cake"],
+        "correct": 2,
+        "explanation": "Der Käse = cheese. Masculine article. (Kaffee = coffee, also masc.)"
+      }
+    ]
+  },
+  "q004": {
+    "lessonId": 4,
+    "questions": [
+      {
+        "id": "q004-1",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What day comes after 'Mittwoch'?",
+        "options": ["Dienstag", "Donnerstag", "Freitag", "Samstag"],
+        "correct": 1,
+        "explanation": "Mittwoch (Wednesday) is followed by Donnerstag (Thursday). All Tag = day."
+      },
+      {
+        "id": "q004-2",
+        "type": "single-choice",
+        "difficulty": 2,
+        "question": "What does 'halb drei' mean?",
+        "options": ["2:30", "3:00", "3:30", "Half a three"],
+        "correct": 0,
+        "explanation": "Tricky! 'Half three' in German means 'halfway TO three' = 2:30. Opposite of British English."
+      },
+      {
+        "id": "q004-3",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "How do you say 'It is snowing' in German?",
+        "options": ["Es ist Schnee", "Schnee fällt", "Es schneit", "Der Schnee kommt"],
+        "correct": 2,
+        "explanation": "'Es schneit' is the standard weather verb construction — like 'es regnet' (it's raining)."
+      },
+      {
+        "id": "q004-4",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "In Austria, what do they call Saturday?",
+        "options": ["Sonnabend", "Samstag", "Sabbattag", "Wochenende"],
+        "correct": 1,
+        "explanation": "Austrians and southern Germans say 'Samstag'. Northern Germans sometimes say 'Sonnabend'."
+      },
+      {
+        "id": "q004-5",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "Translate: 'tomorrow'",
+        "options": ["heute", "morgen", "gestern", "jetzt"],
+        "correct": 1,
+        "explanation": "Morgen = tomorrow (and also 'morning'). Heute = today, gestern = yesterday."
+      }
+    ]
+  },
+  "q005": {
+    "lessonId": 5,
+    "questions": [
+      {
+        "id": "q005-1",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "You need to find the cable car. How do you ask?",
+        "options": [
+          "Wo ist die Bergbahn?",
+          "Was ist die Bergbahn?",
+          "Wer ist die Bergbahn?",
+          "Wann ist die Bergbahn?"
+        ],
+        "correct": 0,
+        "explanation": "Wo = where. All German question words start with W: Wer, Was, Wo, Wann, Warum, Wie."
+      },
+      {
+        "id": "q005-2",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What does 'die Hütte' mean in a Tirol context?",
+        "options": [
+          "A hat",
+          "A hotel reception",
+          "A mountain hut (restaurant/bar on the slopes)",
+          "A small village"
+        ],
+        "correct": 2,
+        "explanation": "A Hütte is a mountain hut — usually a rustic restaurant on a ski slope or hiking trail. Essential Tirol vocab."
+      },
+      {
+        "id": "q005-3",
+        "type": "single-choice",
+        "difficulty": 2,
+        "question": "Translate: 'Go straight ahead, then left.'",
+        "options": [
+          "Geradeaus, dann rechts.",
+          "Links, dann geradeaus.",
+          "Geradeaus, dann links.",
+          "Rechts und geradeaus."
+        ],
+        "correct": 2,
+        "explanation": "Geradeaus = straight ahead, links = left, rechts = right. Order matters!"
+      },
+      {
+        "id": "q005-4",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "Which question word means 'why'?",
+        "options": ["Wer", "Wann", "Warum", "Wie"],
+        "correct": 2,
+        "explanation": "Warum = why. Wer = who, Wann = when, Wie = how. All start with W."
+      },
+      {
+        "id": "q005-5",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What is 'die Piste'?",
+        "options": ["A pastry", "A ski slope", "A cable car", "A train platform"],
+        "correct": 1,
+        "explanation": "Die Piste = ski slope. Essential vocab for winter in Tirol."
+      }
+    ]
+  },
+  "q006": {
+    "lessonId": 6,
+    "questions": [
+      {
+        "id": "q006-1",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "How do you ask 'How much does that cost?'",
+        "options": ["Was ist das?", "Wie viel kostet das?", "Wo kaufe ich das?", "Haben Sie das?"],
+        "correct": 1,
+        "explanation": "'Wie viel kostet das?' is the standard way to ask a price. 'Wie viel' = how much, 'kosten' = to cost."
+      },
+      {
+        "id": "q006-2",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What does 'zu teuer' mean?",
+        "options": ["very cheap", "a good deal", "too expensive", "on sale"],
+        "correct": 2,
+        "explanation": "'Zu' = too (as in excessively), 'teuer' = expensive. Useful for markets and tourist shops."
+      },
+      {
+        "id": "q006-3",
+        "type": "single-choice",
+        "difficulty": 2,
+        "question": "In the accusative case, 'der Apfel' becomes…",
+        "options": ["der Apfel", "die Apfel", "das Apfel", "den Apfel"],
+        "correct": 3,
+        "explanation": "Masculine 'der' changes to 'den' in the accusative (object) case. Die and das stay unchanged."
+      },
+      {
+        "id": "q006-4",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "Where do you pay in a German/Austrian shop?",
+        "options": ["die Tür", "die Kasse", "der Markt", "das Regal"],
+        "correct": 1,
+        "explanation": "'Die Kasse' is the checkout or till. You'll hear 'Zur Kasse, bitte' — to the checkout, please."
+      },
+      {
+        "id": "q006-5",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "How do you say 'I'll take it'?",
+        "options": ["Ich kaufe nichts.", "Ich nehme das.", "Das ist günstig.", "Ich zahle später."],
+        "correct": 1,
+        "explanation": "'Ich nehme das' literally means 'I take that' — the natural way to say you're buying something."
+      }
+    ]
+  },
+  "q007": {
+    "lessonId": 7,
+    "questions": [
+      {
+        "id": "q007-1",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "How do you ask for a double room?",
+        "options": [
+          "Ich möchte ein Einzelzimmer.",
+          "Haben Sie ein Doppelzimmer?",
+          "Wo ist das Zimmer?",
+          "Ich brauche den Schlüssel."
+        ],
+        "correct": 1,
+        "explanation": "'Doppelzimmer' = double room, 'Einzelzimmer' = single room. 'Haben Sie…?' = do you have…?"
+      },
+      {
+        "id": "q007-2",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What is 'das Frühstück'?",
+        "options": ["dinner", "lunch", "breakfast", "a snack"],
+        "correct": 2,
+        "explanation": "'Früh' = early — breakfast. Austrian hotels almost always include it."
+      },
+      {
+        "id": "q007-3",
+        "type": "single-choice",
+        "difficulty": 2,
+        "question": "Translate: 'Can you help me?'",
+        "options": [
+          "Wollen Sie mir helfen?",
+          "Müssen Sie mir helfen?",
+          "Können Sie mir helfen?",
+          "Dürfen Sie mir helfen?"
+        ],
+        "correct": 2,
+        "explanation": "'Können' = can/able to — the polite modal for requests. 'Mir helfen' = help me (dative)."
+      },
+      {
+        "id": "q007-4",
+        "type": "single-choice",
+        "difficulty": 2,
+        "question": "Where does the infinitive go with a modal verb?",
+        "options": [
+          "Right after the modal",
+          "At the start of the sentence",
+          "At the end of the sentence",
+          "It can go anywhere"
+        ],
+        "correct": 2,
+        "explanation": "Modal verbs send the infinitive to the end: 'Ich kann Deutsch sprechen.' The modal takes second position, infinitive goes last."
+      },
+      {
+        "id": "q007-5",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What does 'auschecken' mean?",
+        "options": ["to check in", "to check out", "to pay the bill", "to book a room"],
+        "correct": 1,
+        "explanation": "'Aus-' = out, 'ein-' = in. Einchecken = check in, auschecken = check out."
+      }
+    ]
+  }
 }

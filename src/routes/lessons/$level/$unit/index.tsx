@@ -2,8 +2,7 @@ import { Header } from "@/components/Header";
 import { Card } from "@/components/card";
 import { HeroCard } from "@/components/card/HeroCard";
 import { ChevronLeftIcon, ChevronRightIcon } from "@/components/icons";
-import quizzes from "@/data/quizzes.json";
-import { CURRICULUM, lessonToPath } from "@/lib/curriculum";
+import { CURRICULUM, getQuiz, lessonToPath } from "@/lib/curriculum";
 import { haptics } from "@/lib/haptics";
 import { scoreCardBg, scoreFillColor } from "@/lib/scoreColors";
 import { type Lesson, languageProficiencyLevels } from "@/lib/types";
@@ -80,10 +79,7 @@ function UnitIndexRoute() {
               onClick={() => openLesson(nextLesson)}
               progressPill={(() => {
                 const score = nextSummary?.score ?? 0;
-                const total =
-                  nextSummary?.total ??
-                  (quizzes as Record<string, Array<unknown>>)[String(nextLesson.id)]?.length ??
-                  0;
+                const total = nextSummary?.total ?? getQuiz(nextLesson.id).length;
                 const pct = total > 0 ? Math.round((score / total) * 100) : 0;
                 return {
                   label: `${score}/${total} · ${pct}%`,
@@ -135,7 +131,7 @@ function UnitIndexRoute() {
                 <Card.Title size="sm">{lesson.title}</Card.Title>
                 <Card.Subtitle>{lesson.titleDe}</Card.Subtitle>
                 <Card.Row align="center" className="mt-3">
-                  <Card.Caption>{lesson.vocab.length} vocab words</Card.Caption>
+                  <Card.Caption>{lesson.vocabIds.length} vocab words</Card.Caption>
                   {summary?.finished ? <Card.Caption>{pct}%</Card.Caption> : null}
                 </Card.Row>
                 {summary ? (

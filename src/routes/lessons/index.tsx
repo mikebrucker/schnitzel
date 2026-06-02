@@ -1,8 +1,7 @@
 import { Header } from "@/components/Header";
 import { HeroCard } from "@/components/card/HeroCard";
 import { SummaryCard } from "@/components/card/SummaryCard";
-import quizzes from "@/data/quizzes.json";
-import { CURRICULUM, lessonToPath } from "@/lib/curriculum";
+import { CURRICULUM, getQuiz, lessonToPath } from "@/lib/curriculum";
 import { haptics } from "@/lib/haptics";
 import { scoreFillColor } from "@/lib/scoreColors";
 import { languageProficiencyLevels } from "@/lib/types";
@@ -69,10 +68,7 @@ function LessonsIndexRoute() {
             }}
             progressPill={(() => {
               const score = nextSummary?.score ?? 0;
-              const total =
-                nextSummary?.total ??
-                (quizzes as Record<string, Array<unknown>>)[String(nextLesson.id)]?.length ??
-                0;
+              const total = nextSummary?.total ?? getQuiz(nextLesson.id).length;
               const pct = total > 0 ? Math.round((score / total) * 100) : 0;
               return {
                 label: `${score}/${total} · ${pct}%`,

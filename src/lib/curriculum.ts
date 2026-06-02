@@ -1,23 +1,30 @@
+import dictionaryRaw from "@/data/dictionary.json";
 import lessonsRaw from "@/data/lessons.json";
 import quizzesRaw from "@/data/quizzes.json";
 import tyroleanRaw from "@/data/tirolean.json";
-import type { Lesson, QuizQuestion, TyroleanEntry } from "@/lib/types";
+import type { DictionaryEntry, Lesson, QuizQuestion, TyroleanEntry } from "@/lib/types";
 
 export const CURRICULUM: Array<Lesson> = lessonsRaw as Array<Lesson>;
 
-export const QUIZZES: Record<string, Array<QuizQuestion>> = quizzesRaw as Record<
-  string,
-  Array<QuizQuestion>
->;
+type QuizRecord = Record<string, { lessonId: number; questions: Array<QuizQuestion> }>;
+export const QUIZZES: QuizRecord = quizzesRaw as QuizRecord;
+
+export const DICTIONARY: Array<DictionaryEntry> = dictionaryRaw as Array<DictionaryEntry>;
 
 export const TYROLEAN: Array<TyroleanEntry> = tyroleanRaw as Array<TyroleanEntry>;
 
 export function getQuiz(lessonId: number): Array<QuizQuestion> {
-  return QUIZZES[String(lessonId)] ?? [];
+  const lesson = getLesson(lessonId);
+  if (!lesson) return [];
+  return QUIZZES[lesson.quizId]?.questions ?? [];
 }
 
 export function getLesson(id: number): Lesson | undefined {
   return CURRICULUM.find((l) => l.id === id);
+}
+
+export function getWord(id: string): DictionaryEntry | undefined {
+  return DICTIONARY.find((w) => w.id === id);
 }
 
 export function lessonToPath(lesson: Lesson): { level: string; unit: string; lessonNum: string } {
