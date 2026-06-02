@@ -1,5 +1,5 @@
-import { storage } from "@/lib/storage";
 import type { QuizProgress, QuizQuestion } from "@/lib/types";
+import { storage } from "@/storage/storage";
 
 type SavedQuizState = QuizProgress & {
   questions: Array<QuizQuestion>;

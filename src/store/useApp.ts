@@ -1,6 +1,6 @@
 import { applyStatusBarTheme } from "@/lib/statusBar";
-import { storage } from "@/lib/storage";
 import type { Lesson, Profile, QuizMode, Theme } from "@/lib/types";
+import { storage } from "@/storage/storage";
 import { create } from "zustand";
 
 const TAB_ROOTS = ["/lessons", "/dictionary", "/phrasebook", "/hobbies", "/profile"] as const;
