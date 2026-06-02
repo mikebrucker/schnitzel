@@ -6,6 +6,13 @@ import { create } from "zustand";
 const TAB_ROOTS = ["/lessons", "/dictionary", "/phrasebook", "/hobbies", "/profile"] as const;
 type TabRoot = (typeof TAB_ROOTS)[number];
 
+function parseTabOrder(raw: Array<string> | null): Array<TabRoot> {
+  if (!raw) return [...TAB_ROOTS];
+  const valid = raw.filter((r): r is TabRoot => (TAB_ROOTS as ReadonlyArray<string>).includes(r));
+  const missing = TAB_ROOTS.filter((r) => !valid.includes(r));
+  return [...valid, ...missing];
+}
+
 type AppState = {
   // URL-mirrored state (set by route components)
   activeLesson: Lesson | null;
@@ -17,6 +24,7 @@ type AppState = {
   // Persisted state
   theme: Theme;
   defaultTab: string;
+  tabOrder: Array<TabRoot>;
   completed: Set<number>;
   profile: Profile;
 
@@ -29,6 +37,7 @@ type AppState = {
   setTabPath: (root: TabRoot, path: string) => void;
   setTheme: (theme: Theme) => void;
   setDefaultTab: (tab: string) => void;
+  setTabOrder: (order: Array<TabRoot>) => void;
   markLessonComplete: (id: number) => void;
   unmarkLessonComplete: (id: number) => void;
   setProfile: (profile: Profile) => void;
@@ -59,6 +68,7 @@ export const useApp = create<AppState>((set, get) => ({
   tabPaths: { ...DEFAULT_TAB_PATHS },
   theme: "dark",
   defaultTab: "/lessons",
+  tabOrder: [...TAB_ROOTS],
   completed: new Set<number>(),
   profile: DEFAULT_PROFILE,
   hydrated: false,
@@ -70,6 +80,11 @@ export const useApp = create<AppState>((set, get) => ({
   setDefaultTab: (tab) => {
     set({ defaultTab: tab });
     storage.set("default-tab", tab);
+  },
+
+  setTabOrder: (order) => {
+    set({ tabOrder: order });
+    storage.setJSON("tab-order", order);
   },
 
   setTheme: (theme) => {
@@ -108,11 +123,12 @@ export const useApp = create<AppState>((set, get) => ({
   },
 
   hydrate: async () => {
-    const [themeRaw, completedRaw, profileRaw, defaultTabRaw] = await Promise.all([
+    const [themeRaw, completedRaw, profileRaw, defaultTabRaw, tabOrderRaw] = await Promise.all([
       storage.get("theme"),
       storage.getJSON<Array<number>>("completed-lessons"),
       storage.getJSON<Profile>("profile"),
       storage.get("default-tab"),
+      storage.getJSON<Array<string>>("tab-order"),
     ]);
 
     const theme: Theme = themeRaw === "light" || themeRaw === "dark" ? themeRaw : "dark";
@@ -120,6 +136,7 @@ export const useApp = create<AppState>((set, get) => ({
     set({
       theme,
       defaultTab: defaultTabRaw ?? "/lessons",
+      tabOrder: parseTabOrder(tabOrderRaw),
       completed: new Set(completedRaw ?? []),
       profile: profileRaw ?? DEFAULT_PROFILE,
       hydrated: true,

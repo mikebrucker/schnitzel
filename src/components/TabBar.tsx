@@ -1,23 +1,10 @@
-import { BookIcon, BubbleIcon, PersonIcon, SearchIcon, StarIcon } from "@/components/icons";
 import { haptics } from "@/lib/haptics";
+import { TABS } from "@/lib/tabs";
+import type { TabDef } from "@/lib/tabs";
 import { TAB_ROOTS, useApp } from "@/store/useApp";
 import type { TabRoot } from "@/store/useApp";
 import { useRouter, useRouterState } from "@tanstack/react-router";
 import { useEffect } from "react";
-
-type TabDef = {
-  root: TabRoot;
-  label: string;
-  Icon: React.ComponentType;
-};
-
-const TABS: Array<TabDef> = [
-  { root: "/lessons", label: "Lessons", Icon: BookIcon },
-  { root: "/dictionary", label: "Dictionary", Icon: SearchIcon },
-  { root: "/phrasebook", label: "Phrasebook", Icon: BubbleIcon },
-  { root: "/hobbies", label: "Hobbies", Icon: StarIcon },
-  { root: "/profile", label: "Profile", Icon: PersonIcon },
-];
 
 function activeRoot(pathname: string): TabRoot {
   return (TAB_ROOTS.find((r) => pathname.startsWith(r)) as TabRoot | undefined) ?? "/lessons";
@@ -28,12 +15,17 @@ export function TabBar() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const tabPaths = useApp((s) => s.tabPaths);
   const setTabPath = useApp((s) => s.setTabPath);
+  const tabOrder = useApp((s) => s.tabOrder);
 
   const current = activeRoot(pathname);
 
   useEffect(() => {
     setTabPath(current, pathname);
   }, [pathname, current, setTabPath]);
+
+  const orderedTabs = tabOrder
+    .map((root) => TABS.find((t) => t.root === root))
+    .filter((t): t is TabDef => t !== undefined);
 
   const handlePress = (tab: TabDef) => {
     haptics.tap();
@@ -49,7 +41,7 @@ export function TabBar() {
   return (
     <nav className="fixed bottom-0 left-0 right-0 bg-header border-t-2 bd-default z-50">
       <div className="max-w-4xl mx-auto flex md:px-4">
-        {TABS.map((tab) => {
+        {orderedTabs.map((tab) => {
           const active = tab.root === current;
           return (
             <button
