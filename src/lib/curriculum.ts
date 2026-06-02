@@ -20,7 +20,7 @@ export const CURRICULUM: Array<Lesson> = lessonsRaw as Array<Lesson>;
 export const CONJUGATIONS: Array<ConjugationEntry> = conjugationsRaw as Array<ConjugationEntry>;
 
 type QuizRecord = Record<string, { lessonId: number; questions: Array<QuizQuestion> }>;
-export const QUIZZES: QuizRecord = quizzesRaw as QuizRecord;
+export const QUIZZES: QuizRecord = quizzesRaw as unknown as QuizRecord;
 
 export const DICTIONARY: Array<DictionaryEntry> = dictionaryRaw as Array<DictionaryEntry>;
 

@@ -1,7 +1,7 @@
 import { Chip } from "@/components/Chip";
 import { Header } from "@/components/Header";
 import { Card } from "@/components/card";
-import { ChevronDownIcon, ChevronRightIcon } from "@/components/icons";
+import { ChevronDownIcon } from "@/components/icons";
 import { DICTIONARY, getConjugation } from "@/lib/curriculum";
 import type { ConjugationEntry, LanguageProficiencyLevel } from "@/lib/types";
 import { createFileRoute } from "@tanstack/react-router";

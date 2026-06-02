@@ -20,7 +20,6 @@ function UnitIndexRoute() {
   const theme = useApp((s) => s.theme);
 
   const lessons = CURRICULUM.filter((l) => l.level === level && l.unit === unit);
-  const doneCount = lessons.filter((l) => completed.has(l.id)).length;
   const nextLesson = lessons.find((l) => !completed.has(l.id));
 
   const [quizSummaries, setQuizSummaries] = useState<Map<number, QuizSummary>>(new Map());

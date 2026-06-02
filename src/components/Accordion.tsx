@@ -1,4 +1,4 @@
-import { ChevronDownIcon, ChevronUpIcon } from "@/components/icons";
+import { ChevronDownIcon } from "@/components/icons";
 import { useState } from "react";
 import type { ReactNode } from "react";
 

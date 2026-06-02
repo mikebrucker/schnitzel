@@ -7,7 +7,7 @@ import { StatCard } from "@/components/card/StatCard";
 import { BarChartIcon, EditIcon, SettingsIcon, XIcon } from "@/components/icons";
 import { CURRICULUM } from "@/lib/curriculum";
 import { haptics } from "@/lib/haptics";
-import { type LanguageProficiencyLevel, languageProficiencyLevels } from "@/lib/types";
+import { languageProficiencyLevels } from "@/lib/types";
 import { loadQuizProgress } from "@/storage/quizStorage";
 import { useApp } from "@/store/useApp";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";

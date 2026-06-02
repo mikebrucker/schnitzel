@@ -21,7 +21,6 @@ function LevelIndexRoute() {
 
   const lessons = CURRICULUM.filter((l) => l.level === level);
   const units = [...new Set(lessons.map((l) => l.unit))];
-  const doneCount = lessons.filter((l) => completed.has(l.id)).length;
   const nextLesson = lessons.find((l) => !completed.has(l.id));
 
   const [quizSummaries, setQuizSummaries] = useState<Map<number, QuizSummary>>(new Map());
