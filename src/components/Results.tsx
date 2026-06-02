@@ -44,7 +44,7 @@ export function Results({
           onClick={() => setReviewing(false)}
           className="text-sm font-mono mb-6 tx-muted"
         >
-          <ChevronLeftIcon size={14} className="inline-block" /> Back to results
+          <ChevronLeftIcon className="inline-block" /> Back to results
         </button>
         <div className="text-xs font-mono uppercase tracking-[0.3em] tx-muted mb-2">
           Antworten überprüfen
@@ -63,9 +63,9 @@ export function Results({
                   <span className={isCorrect ? "tx-accent" : "tx-wrong"}>
                     {q.options[picked]}{" "}
                     {isCorrect ? (
-                      <CheckIcon size={14} className="inline-block" />
+                      <CheckIcon className="inline-block" />
                     ) : (
-                      <XIcon size={14} className="inline-block" />
+                      <XIcon className="inline-block" />
                     )}
                   </span>
                 </div>
@@ -142,7 +142,7 @@ export function Results({
             className="flex-1 border-2 bd-btn bg-btn tx-btn px-4 py-3 font-bold text-sm"
           >
             <span className="flex items-center justify-center gap-2">
-              Home <ChevronRightIcon size={16} />
+              Home <ChevronRightIcon />
             </span>
           </button>
         </div>

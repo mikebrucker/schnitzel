@@ -1,6 +1,6 @@
 import { type IconProps, base } from "./types";
 
-export function ChevronDownIcon({ size = 20, className, style }: IconProps) {
+export function ChevronDownIcon({ size, className, style }: IconProps) {
   return (
     <svg {...base(size, className, style)} aria-hidden="true">
       <polyline points="6 9 12 15 18 9" />

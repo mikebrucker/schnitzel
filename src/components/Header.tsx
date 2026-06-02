@@ -1,10 +1,12 @@
-import type { ReactNode } from "react";
+import type { IconProps } from "@/components/icons/types";
+import { BUTTON_VARIANTS, type ButtonVariant } from "@/lib/buttonVariants";
+import type { ComponentType } from "react";
 
 interface HeaderAction {
   label: string;
-  icon: ReactNode;
+  icon: ComponentType<IconProps>;
   onClick: () => void;
-  color?: "default" | "danger";
+  variant?: ButtonVariant;
 }
 
 interface HeaderProps {
@@ -28,9 +30,9 @@ export function Header({ title, subtitle, secondaryAction, primaryAction }: Head
               <button
                 type="button"
                 onClick={secondaryAction.onClick}
-                className="flex items-center gap-2 text-sm font-mono tx-muted pr-2 py-1 whitespace-nowrap"
+                className={`flex items-center gap-2 text-sm font-mono pr-2 py-1 whitespace-nowrap ${BUTTON_VARIANTS[secondaryAction.variant ?? "default"].ghost}`}
               >
-                {secondaryAction.icon}
+                <secondaryAction.icon size={20} />
                 {secondaryAction.label}
               </button>
             ) : null}
@@ -50,10 +52,10 @@ export function Header({ title, subtitle, secondaryAction, primaryAction }: Head
               <button
                 type="button"
                 onClick={primaryAction.onClick}
-                className={`flex items-center gap-2 text-sm font-mono pl-2 py-1 whitespace-nowrap ${primaryAction.color === "danger" ? "tx-wrong" : "tx-accent"}`}
+                className={`flex items-center gap-2 text-sm font-mono pl-2 py-1 whitespace-nowrap ${BUTTON_VARIANTS[primaryAction.variant ?? "accent"].ghost}`}
               >
                 {primaryAction.label}
-                {primaryAction.icon}
+                <primaryAction.icon size={20} />
               </button>
             ) : null}
           </div>

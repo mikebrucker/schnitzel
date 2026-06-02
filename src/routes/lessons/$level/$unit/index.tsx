@@ -59,7 +59,7 @@ function UnitIndexRoute() {
         subtitle={`${level} · ${doneCount}/${lessons.length}`}
         secondaryAction={{
           label: level,
-          icon: <ChevronLeftIcon size={16} />,
+          icon: ChevronLeftIcon,
           onClick: () => {
             haptics.tap();
             navigate({ to: "/lessons/$level", params: { level: level.toLowerCase() } });
@@ -110,7 +110,7 @@ function UnitIndexRoute() {
                   ) : summary ? (
                     <Card.Caption>
                       {summary.answered}/{summary.total}{" "}
-                      <ChevronRightIcon size={12} className="inline-block" />
+                      <ChevronRightIcon className="inline-block" />
                     </Card.Caption>
                   ) : null}
                 </Card.Row>

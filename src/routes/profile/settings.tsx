@@ -18,7 +18,7 @@ function SettingsRoute() {
         subtitle="Settings"
         secondaryAction={{
           label: "Profil",
-          icon: <ChevronLeftIcon size={16} />,
+          icon: ChevronLeftIcon,
           onClick: () => {
             haptics.tap();
             navigate({ to: "/profile" });

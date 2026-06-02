@@ -7,7 +7,7 @@ export interface IconProps {
   style?: CSSProperties;
 }
 
-export function base(size: number, className?: string, style?: CSSProperties, strokeWidth = 2) {
+export function base(size = 24, className?: string, style?: CSSProperties, strokeWidth = 2) {
   return {
     width: size,
     height: size,

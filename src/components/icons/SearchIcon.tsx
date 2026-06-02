@@ -1,6 +1,6 @@
 import { type IconProps, base } from "./types";
 
-export function SearchIcon({ size = 20, className, style }: IconProps) {
+export function SearchIcon({ size, className, style }: IconProps) {
   return (
     <svg {...base(size, className, style)} aria-hidden="true">
       <circle cx="11" cy="11" r="8" />

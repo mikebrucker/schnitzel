@@ -217,7 +217,7 @@ function QuizInner({ lesson, mode }: { lesson: Lesson; mode: QuizMode }) {
         subtitle={`${lesson.level} · Unit ${lesson.unit}`}
         secondaryAction={{
           label: "Lektion",
-          icon: <ChevronLeftIcon size={16} />,
+          icon: ChevronLeftIcon,
           onClick: () => handleBackRef.current(),
         }}
       />
@@ -292,7 +292,7 @@ function QuizInner({ lesson, mode }: { lesson: Lesson; mode: QuizMode }) {
           >
             <span className="flex items-center justify-center gap-2">
               {idx + 1 < activeQuestions.length ? "Next question" : "See results"}{" "}
-              <ChevronRightIcon size={18} />
+              <ChevronRightIcon />
             </span>
           </button>
         ) : null}

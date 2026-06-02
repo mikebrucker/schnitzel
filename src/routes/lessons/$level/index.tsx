@@ -59,7 +59,7 @@ function LevelIndexRoute() {
         subtitle={`${LEVEL_DESC[level] ?? level} · ${doneCount}/${lessons.length}`}
         secondaryAction={{
           label: "Lektionen",
-          icon: <ChevronLeftIcon size={16} />,
+          icon: ChevronLeftIcon,
           onClick: () => {
             haptics.tap();
             navigate({ to: "/lessons" });

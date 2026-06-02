@@ -1,6 +1,6 @@
 import { type IconProps, base } from "./types";
 
-export function RetryIcon({ size = 20, className, style }: IconProps) {
+export function RetryIcon({ size, className, style }: IconProps) {
   return (
     <svg {...base(size, className, style)} aria-hidden="true">
       <polyline points="1 4 1 10 7 10" />

@@ -21,7 +21,7 @@ export function NavCard({ title, subtitle, onClick, icon, className = "" }: NavC
             <Card.Subtitle size="xs">{subtitle}</Card.Subtitle>
           </div>
         </div>
-        <ChevronRightIcon size={16} className="tx-muted" />
+        <ChevronRightIcon className="tx-muted" />
       </Card.Row>
     </Card>
   );

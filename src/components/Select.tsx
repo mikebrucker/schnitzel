@@ -51,7 +51,7 @@ export function Select<K extends string>({
       >
         <span>{options[selected] ?? selected}</span>
         <span className={`tx-muted transition-transform duration-200 ${open ? "rotate-180" : ""}`}>
-          <ChevronDownIcon size={16} />
+          <ChevronDownIcon />
         </span>
       </button>
 

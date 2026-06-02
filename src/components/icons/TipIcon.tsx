@@ -1,6 +1,6 @@
 import { type IconProps, base } from "./types";
 
-export function TipIcon({ size = 20, className, style }: IconProps) {
+export function TipIcon({ size, className, style }: IconProps) {
   return (
     <svg {...base(size, className, style)} aria-hidden="true">
       <line x1="9" y1="18" x2="15" y2="18" />

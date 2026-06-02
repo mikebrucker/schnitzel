@@ -1,6 +1,6 @@
 import { type IconProps, base } from "./types";
 
-export function EditIcon({ size = 20, className, style }: IconProps) {
+export function EditIcon({ size, className, style }: IconProps) {
   return (
     <svg {...base(size, className, style)} aria-hidden="true">
       <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />

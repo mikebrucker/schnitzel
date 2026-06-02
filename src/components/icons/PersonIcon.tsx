@@ -1,6 +1,6 @@
 import { type IconProps, base } from "./types";
 
-export function PersonIcon({ size = 20, className, style }: IconProps) {
+export function PersonIcon({ size, className, style }: IconProps) {
   return (
     <svg {...base(size, className, style)} aria-hidden="true">
       <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />

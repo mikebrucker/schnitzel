@@ -79,7 +79,7 @@ function LessonRoute() {
         subtitle={lesson.titleDe}
         secondaryAction={{
           label: `Unit ${lesson.unit}`,
-          icon: <ChevronLeftIcon size={16} />,
+          icon: ChevronLeftIcon,
           onClick: goBack,
         }}
       />
@@ -99,7 +99,7 @@ function LessonRoute() {
                   <div className="tx-body">{v.en}</div>
                   {v.note ? (
                     <div className="flex items-center gap-1 text-xs tx-accent mt-1">
-                      <TipIcon size={12} />
+                      <TipIcon />
                       {v.note}
                     </div>
                   ) : null}
@@ -174,7 +174,7 @@ function LessonRoute() {
               className="w-full bg-btn tx-btn py-4 font-serif text-xl font-bold border-2 bd-btn"
             >
               <span className="flex items-center justify-center gap-2">
-                View Results <ChevronRightIcon size={18} />
+                View Results <ChevronRightIcon />
               </span>
             </button>
             <div className="grid grid-cols-2 gap-3">
@@ -184,7 +184,7 @@ function LessonRoute() {
                 className="border-2 bd-default bg-surface tx-text py-3 font-bold"
               >
                 <span className="flex items-center justify-center gap-2">
-                  <RetryIcon size={16} /> Retake quiz
+                  <RetryIcon /> Retake quiz
                 </span>
               </button>
               <button
@@ -194,7 +194,7 @@ function LessonRoute() {
                 className="border-2 bd-default bg-surface tx-text py-3 font-bold disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 <span className="flex items-center justify-center gap-2">
-                  <XIcon size={16} /> Retry wrong only
+                  <XIcon /> Retry wrong only
                 </span>
               </button>
             </div>
@@ -206,8 +206,7 @@ function LessonRoute() {
             className="w-full bg-btn tx-btn py-4 font-serif text-xl font-bold border-2 bd-btn"
           >
             <span className="flex items-center justify-center gap-2">
-              {quizState === "progress" ? "Resume Quiz" : "Take Quiz"}{" "}
-              <ChevronRightIcon size={18} />
+              {quizState === "progress" ? "Resume Quiz" : "Take Quiz"} <ChevronRightIcon />
             </span>
           </button>
         )}

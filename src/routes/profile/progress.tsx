@@ -83,7 +83,7 @@ function ProgressRoute() {
         subtitle="Per Lesson"
         secondaryAction={{
           label: "Profil",
-          icon: <ChevronLeftIcon size={16} />,
+          icon: ChevronLeftIcon,
           onClick: () => {
             haptics.tap();
             navigate({ to: "/profile" });
@@ -91,8 +91,8 @@ function ProgressRoute() {
         }}
         primaryAction={{
           label: resetMode ? "Done" : "Reset",
-          icon: resetMode ? <XIcon size={16} /> : <RetryIcon size={16} />,
-          color: resetMode ? "default" : "danger",
+          icon: resetMode ? XIcon : RetryIcon,
+          variant: resetMode ? "accent" : "danger",
           onClick: () => {
             setResetMode((r) => !r);
             haptics.tap();
@@ -111,7 +111,7 @@ function ProgressRoute() {
                   label="Reset level"
                   variant="danger"
                   size="sm"
-                  icon={<RetryIcon size={20} />}
+                  icon={<RetryIcon />}
                   onClick={() => handleResetLevel(group.entries)}
                 />
               ) : null}

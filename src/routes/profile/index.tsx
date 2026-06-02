@@ -84,7 +84,7 @@ function ProfileRoute() {
         subtitle="Mein Profil"
         secondaryAction={{
           label: "Settings",
-          icon: <SettingsIcon size={16} />,
+          icon: SettingsIcon,
           onClick: () => {
             haptics.tap();
             navigate({ to: "/profile/settings" });
@@ -157,14 +157,14 @@ function ProfileRoute() {
                 label="Done"
                 variant="danger"
                 size="sm"
-                icon={<XIcon size={16} />}
+                icon={<XIcon />}
                 onClick={() => setEditing(false)}
               />
             ) : (
               <Button
                 label="Edit profile"
                 size="sm"
-                icon={<EditIcon size={18} />}
+                icon={<EditIcon />}
                 onClick={() => {
                   setEditing(true);
                   haptics.tap();
@@ -198,7 +198,7 @@ function ProfileRoute() {
           <NavCard
             title="Progress"
             subtitle="Fortschritt"
-            icon={<BarChartIcon size={32} />}
+            icon={<BarChartIcon />}
             onClick={() => {
               haptics.tap();
               navigate({ to: "/profile/progress" });

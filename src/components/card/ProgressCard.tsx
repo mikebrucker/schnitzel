@@ -36,7 +36,7 @@ export function ProgressCard({ lesson, stat, theme, onReset }: ProgressCardProps
               label="Reset"
               variant="danger"
               size="sm"
-              icon={<RetryIcon size={20} />}
+              icon={<RetryIcon />}
               onClick={onReset}
             />
           ) : null}

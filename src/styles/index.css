@@ -87,6 +87,10 @@ body {
   color: var(--btn-text);
 }
 
+.tx-btn-bg {
+  color: var(--btn-bg);
+}
+
 .tx-muted {
   color: var(--muted);
 }

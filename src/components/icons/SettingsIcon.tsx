@@ -1,6 +1,6 @@
 import { type IconProps, base } from "./types";
 
-export function SettingsIcon({ size = 20, className, style }: IconProps) {
+export function SettingsIcon({ size, className, style }: IconProps) {
   return (
     <svg {...base(size, className, style)} aria-hidden="true">
       <circle cx="12" cy="12" r="3" />

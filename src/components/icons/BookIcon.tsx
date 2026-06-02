@@ -1,6 +1,6 @@
 import { type IconProps, base } from "./types";
 
-export function BookIcon({ size = 20, className, style }: IconProps) {
+export function BookIcon({ size, className, style }: IconProps) {
   return (
     <svg {...base(size, className, style)} aria-hidden="true">
       <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
