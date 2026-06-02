@@ -1,8 +1,15 @@
 import { TabBar } from "@/components/TabBar";
 import { useApp } from "@/store/useApp";
 import { Outlet, createRootRoute } from "@tanstack/react-router";
-import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
-import { useEffect } from "react";
+import { Suspense, lazy, useEffect } from "react";
+
+const TanStackRouterDevtools = import.meta.env.PROD
+  ? () => null
+  : lazy(() =>
+      import("@tanstack/react-router-devtools").then((m) => ({
+        default: m.TanStackRouterDevtools,
+      }))
+    );
 
 function RootLayout() {
   const hydrate = useApp((s) => s.hydrate);
@@ -26,7 +33,9 @@ function RootLayout() {
         <Outlet />
       </main>
       <TabBar />
-      <TanStackRouterDevtools position="top-right" />
+      <Suspense>
+        <TanStackRouterDevtools position="top-right" />
+      </Suspense>
     </div>
   );
 }
