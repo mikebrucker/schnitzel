@@ -27,7 +27,7 @@ function SettingsRoute() {
       />
       <div className="max-w-4xl mx-auto px-4 py-4">
         <section>
-          <h2 className="font-serif text-xl font-bold tx-text mb-4 pb-1 border-b-2 bd-default">
+          <h2 className="font-serif text-2xl font-bold tx-text mb-4 border-b-2 bd-default pb-1">
             Theme
           </h2>
           <div className="grid grid-cols-2 gap-3">

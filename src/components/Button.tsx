@@ -29,7 +29,7 @@ export function Button({
   return (
     <button
       type="button"
-      className={`${borderClass} rounded-xl font-bold flex items-center justify-center gap-2 ${BUTTON_VARIANTS[variant][fill]} ${SIZES[size]} ${className}`}
+      className={`${borderClass} rounded-lg font-bold flex items-center justify-center gap-2 ${BUTTON_VARIANTS[variant][fill]} ${SIZES[size]} ${className}`}
       {...props}
     >
       {icon && iconSide === "left" ? icon : null}

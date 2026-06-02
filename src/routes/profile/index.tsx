@@ -135,19 +135,7 @@ function ProfileRoute() {
               <span className="text-xs font-mono uppercase tracking-wider tx-muted">
                 German Level
               </span>
-              <div className="text-sm tx-text">
-                {profile.level} —{" "}
-                {
-                  {
-                    A1: "Beginner",
-                    A2: "Elementary",
-                    B1: "Intermediate",
-                    B2: "Upper intermediate",
-                    C1: "Advanced",
-                    C2: "Fluent",
-                  }[profile.level]
-                }
-              </div>
+              <div className="text-sm tx-text">{languageProficiencyLevels[profile.level]}</div>
             </div>
           )}
 
@@ -175,7 +163,7 @@ function ProfileRoute() {
         </section>
 
         <section>
-          <h2 className="font-serif text-xl font-bold tx-text mb-4 pb-1 border-b-2 bd-default">
+          <h2 className="font-serif text-2xl font-bold tx-text mb-4 border-b-2 bd-default pb-1">
             Statistiken
           </h2>
           <div className="grid grid-cols-2 gap-3 mb-3">

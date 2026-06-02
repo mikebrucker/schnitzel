@@ -102,14 +102,15 @@ function ProgressRoute() {
       <div className="max-w-4xl mx-auto px-4 py-4 space-y-6">
         {LEVEL_GROUPS.map((group) => (
           <section key={group.level}>
-            <div className="flex items-center justify-between border-b bd-default mb-4 pb-1">
-              <h2 className="font-bold tx-muted text-xl tracking-widest">
+            <div className="flex items-center justify-between mb-4 pb-1 border-b-2 bd-default">
+              <h2 className="font-serif text-2xl font-bold tx-text">
                 Level {group.level.toLocaleUpperCase()}
               </h2>
               {resetMode ? (
                 <Button
                   label="Reset level"
                   variant="danger"
+                  fill="outline"
                   size="sm"
                   icon={<RetryIcon />}
                   onClick={() => handleResetLevel(group.entries)}
