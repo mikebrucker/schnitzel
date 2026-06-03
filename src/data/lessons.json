@@ -84,7 +84,7 @@
     "level": "A1",
     "unit": 2,
     "lessonNum": 1,
-    "order": 3,
+    "order": 4,
     "title": "Ordering Food & Drink",
     "titleDe": "Essen & Trinken bestellen",
     "estimatedMinutes": 12,
@@ -122,7 +122,7 @@
     "level": "A1",
     "unit": 2,
     "lessonNum": 2,
-    "order": 4,
+    "order": 5,
     "title": "Days, Time, Weather",
     "titleDe": "Tage, Zeit, Wetter",
     "estimatedMinutes": 12,
@@ -170,7 +170,7 @@
     "level": "A1",
     "unit": 3,
     "lessonNum": 1,
-    "order": 5,
+    "order": 7,
     "title": "Getting Around Tirol",
     "titleDe": "Unterwegs in Tirol",
     "estimatedMinutes": 12,
@@ -271,6 +271,679 @@
     ],
     "culturalNote": "Austrian hotels almost always include breakfast (Frühstück). If it's not mentioned, ask: 'Ist das Frühstück inklusive?'",
     "quizId": "q007",
+    "audio": null
+  },
+  {
+    "id": 8,
+    "slug": "family",
+    "level": "A1",
+    "unit": 3,
+    "lessonNum": 2,
+    "order": 8,
+    "title": "Family & People",
+    "titleDe": "Familie & Menschen",
+    "estimatedMinutes": 12,
+    "prerequisites": [1],
+    "objectives": [
+      "Name core family members in German",
+      "Use mein/meine (my) correctly with masculine and feminine nouns",
+      "Ask and answer basic questions about your family"
+    ],
+    "vocabIds": ["v111", "v112", "v113", "v114", "v115", "v116", "v117", "v118", "v119", "v120"],
+    "grammar": [
+      {
+        "id": "g8-1",
+        "point": "Possessive pronoun: mein / meine",
+        "explanation": "Use 'mein' before masculine and neuter nouns, 'meine' before feminine nouns and all plurals. Mein Vater (masc.), mein Kind (neut.), but meine Mutter (fem.), meine Kinder (pl).",
+        "examples": [
+          { "de": "mein Vater", "en": "my father (masculine → mein)" },
+          { "de": "meine Mutter", "en": "my mother (feminine → meine)" }
+        ]
+      }
+    ],
+    "examples": [
+      {
+        "de": "Meine Familie wohnt in Tirol — mein Vater, meine Mutter und meine Schwester.",
+        "en": "My family lives in Tirol — my father, my mother and my sister."
+      }
+    ],
+    "culturalNote": "Austrian families are close-knit. 'Oma' and 'Opa' are the everyday words for grandmother and grandfather — nobody says 'Großmutter' in real conversation.",
+    "quizId": "q008",
+    "audio": null
+  },
+  {
+    "id": 9,
+    "slug": "colors-clothes",
+    "level": "A1",
+    "unit": 4,
+    "lessonNum": 1,
+    "order": 10,
+    "title": "Colors & Clothes",
+    "titleDe": "Farben & Kleidung",
+    "estimatedMinutes": 10,
+    "prerequisites": [1],
+    "objectives": [
+      "Name five core colors in German",
+      "Identify basic clothing items",
+      "Use 'tragen' to describe what someone is wearing"
+    ],
+    "vocabIds": ["v121", "v122", "v123", "v124", "v125", "v126", "v127", "v128", "v129", "v130"],
+    "grammar": [
+      {
+        "id": "g9-1",
+        "point": "Adjective after 'ist' vs before a noun",
+        "explanation": "After 'sein' (to be), adjectives take no ending: Die Jacke ist rot. Before a noun, they get an ending: eine rote Jacke. Start with the 'is' pattern — it's easier.",
+        "examples": [
+          { "de": "Die Jacke ist blau.", "en": "The jacket is blue. (no ending after ist)" },
+          {
+            "de": "Ich trage eine blaue Jacke.",
+            "en": "I am wearing a blue jacket. (-e ending before noun)"
+          }
+        ]
+      }
+    ],
+    "examples": [
+      {
+        "de": "Ich trage eine schwarze Jacke und eine blaue Hose.",
+        "en": "I am wearing a black jacket and blue trousers."
+      }
+    ],
+    "culturalNote": "The traditional Tracht (folk costume) in Tirol is black, white and red. Locals still wear Dirndl and Lederhosen at festivals — the real thing, not touristy.",
+    "quizId": "q009",
+    "audio": null
+  },
+  {
+    "id": 10,
+    "slug": "at-the-doctor",
+    "level": "A2",
+    "unit": 2,
+    "lessonNum": 1,
+    "order": 4,
+    "title": "At the Doctor & Pharmacy",
+    "titleDe": "Beim Arzt & in der Apotheke",
+    "estimatedMinutes": 13,
+    "prerequisites": [6],
+    "objectives": [
+      "Describe symptoms using body parts (head, stomach, arm, leg)",
+      "Say you are ill and ask for help",
+      "Find a pharmacy and ask for medication"
+    ],
+    "vocabIds": ["v131", "v132", "v133", "v134", "v135", "v136", "v137", "v138", "v139", "v140"],
+    "grammar": [
+      {
+        "id": "g10-1",
+        "point": "Dative with 'mir ist…' (I feel…)",
+        "explanation": "German uses the dative to express feelings. 'Mir ist schlecht' literally means 'to me it is bad'. You're not the subject — the feeling is. Same pattern: 'Mir ist kalt' (I feel cold), 'Mir ist warm' (I feel warm).",
+        "examples": [
+          { "de": "Mir ist schlecht.", "en": "I feel sick / nauseous." },
+          { "de": "Mir ist kalt.", "en": "I feel cold." }
+        ]
+      }
+    ],
+    "examples": [
+      {
+        "de": "Mir ist schlecht und ich habe Kopfschmerzen. Wo ist die nächste Apotheke?",
+        "en": "I feel sick and I have a headache. Where is the nearest pharmacy?"
+      }
+    ],
+    "culturalNote": "Austrian pharmacies (Apotheken) are strict — prescription meds need a Rezept. For basics like painkillers, just ask at the counter. Look for the green cross sign.",
+    "quizId": "q010",
+    "audio": null
+  },
+  {
+    "id": 11,
+    "slug": "about-yourself",
+    "level": "A2",
+    "unit": 2,
+    "lessonNum": 2,
+    "order": 5,
+    "title": "Talking About Yourself",
+    "titleDe": "Über sich selbst erzählen",
+    "estimatedMinutes": 13,
+    "prerequisites": [1, 6],
+    "objectives": [
+      "Say where you come from and what you do for work",
+      "Express how long you have been doing something using 'seit'",
+      "Talk about interests using 'gern'"
+    ],
+    "vocabIds": ["v141", "v142", "v143", "v144", "v145", "v146", "v147", "v148", "v149", "v150"],
+    "grammar": [
+      {
+        "id": "g11-1",
+        "point": "'Seit' + present tense = ongoing action",
+        "explanation": "Use 'seit' (since/for) with the present tense to describe something still ongoing. English uses past perfect — German doesn't. 'Ich wohne seit einem Jahr hier' = I have been living here for one year.",
+        "examples": [
+          {
+            "de": "Ich wohne seit zwei Jahren in Tirol.",
+            "en": "I have been living in Tirol for two years."
+          },
+          {
+            "de": "Ich lerne seit sechs Monaten Deutsch.",
+            "en": "I have been learning German for six months."
+          }
+        ]
+      }
+    ],
+    "examples": [
+      {
+        "de": "Ich komme aus Kanada und wohne seit einem Jahr in Tirol. Ich lerne gern Deutsch.",
+        "en": "I come from Canada and have been living in Tirol for one year. I like learning German."
+      }
+    ],
+    "culturalNote": "Austrians love asking where you come from. Saying you're learning German and living in Tirol goes down well. Locals appreciate the effort — you'll get respect for trying.",
+    "quizId": "q011",
+    "audio": null
+  },
+  {
+    "id": 12,
+    "slug": "asking-questions",
+    "level": "A1",
+    "unit": 1,
+    "lessonNum": 3,
+    "order": 3,
+    "title": "Asking Questions & Clarifying",
+    "titleDe": "Fragen stellen & nachfragen",
+    "estimatedMinutes": 10,
+    "prerequisites": [1],
+    "objectives": [
+      "Ask follow-up questions with Wie lange, Wie oft, Was für",
+      "Say you don't understand and ask for clarification",
+      "Politely ask someone to repeat or slow down"
+    ],
+    "vocabIds": ["v151", "v152", "v153", "v154", "v155", "v156", "v157", "v158", "v159", "v160"],
+    "grammar": [
+      {
+        "id": "g12-1",
+        "point": "Question words beyond the basics",
+        "explanation": "You already know Wer, Was, Wo, Wann, Warum, Wie. Now add: Wie lange (how long), Wie oft (how often), Was für (what kind of). These combine existing question words with common words.",
+        "examples": [
+          { "de": "Wie lange wohnst du hier?", "en": "How long have you been living here?" },
+          { "de": "Wie oft gehst du ins Training?", "en": "How often do you go to practice?" }
+        ]
+      }
+    ],
+    "examples": [
+      {
+        "de": "Wie bitte? Ich verstehe nicht — können Sie das wiederholen?",
+        "en": "Pardon? I don't understand — can you repeat that?"
+      }
+    ],
+    "culturalNote": "Austrians are patient with learners. 'Wie bitte?' is the polite way to ask someone to repeat — saying 'Was?' alone sounds rude.",
+    "quizId": "q012",
+    "audio": null
+  },
+  {
+    "id": 13,
+    "slug": "months-seasons",
+    "level": "A1",
+    "unit": 2,
+    "lessonNum": 3,
+    "order": 6,
+    "title": "Months & Seasons",
+    "titleDe": "Monate & Jahreszeiten",
+    "estimatedMinutes": 10,
+    "prerequisites": [4],
+    "objectives": [
+      "Name the four seasons in German",
+      "Know key months for Tirol (ski season, hiking season)",
+      "Use 'im' correctly with months and seasons"
+    ],
+    "vocabIds": ["v161", "v162", "v163", "v164", "v165", "v166", "v167", "v168", "v169", "v170"],
+    "grammar": [
+      {
+        "id": "g13-1",
+        "point": "'Im' + season/month",
+        "explanation": "To say 'in' a season or month, use 'im' (= in dem, dative): im Winter, im Sommer, im Januar. Never 'in der' or 'in das' for time periods.",
+        "examples": [
+          { "de": "Im Winter fahre ich Ski.", "en": "In winter I go skiing." },
+          { "de": "Im Juli ist es sehr warm.", "en": "In July it is very warm." }
+        ]
+      }
+    ],
+    "examples": [
+      {
+        "de": "Im Winter fahre ich Ski, im Sommer gehe ich wandern.",
+        "en": "In winter I ski, in summer I go hiking."
+      }
+    ],
+    "culturalNote": "Tirol has two peak seasons: winter (December–April, skiing) and summer (July–September, hiking). The shoulder seasons (May, November) are quieter — locals call this 'Zwischensaison'.",
+    "quizId": "q013",
+    "audio": null
+  },
+  {
+    "id": 14,
+    "slug": "my-home",
+    "level": "A1",
+    "unit": 3,
+    "lessonNum": 3,
+    "order": 9,
+    "title": "My Home",
+    "titleDe": "Mein Zuhause",
+    "estimatedMinutes": 12,
+    "prerequisites": [8],
+    "objectives": [
+      "Describe your home using basic rooms and features",
+      "Use 'Es gibt' to say what exists",
+      "Use location words: neben, gegenüber"
+    ],
+    "vocabIds": ["v171", "v172", "v173", "v174", "v175", "v176", "v177", "v178", "v179", "v180"],
+    "grammar": [
+      {
+        "id": "g14-1",
+        "point": "'Es gibt' + accusative",
+        "explanation": "'Es gibt' means 'there is/are'. It always takes the accusative case. Masculine 'ein' becomes 'einen': Es gibt einen Garten. But Es gibt eine Küche (fem) and Es gibt ein Badezimmer (neut) stay the same.",
+        "examples": [
+          { "de": "Es gibt einen Garten.", "en": "There is a garden. (masc. → einen)" },
+          { "de": "Es gibt eine Küche.", "en": "There is a kitchen. (fem. stays eine)" }
+        ]
+      }
+    ],
+    "examples": [
+      {
+        "de": "Ich wohne in einer ruhigen Wohnung. Es gibt eine Küche und ein Badezimmer.",
+        "en": "I live in a quiet apartment. There is a kitchen and a bathroom."
+      }
+    ],
+    "culturalNote": "Many expats in Tirol rent Wohnungen (apartments) rather than Häuser. Rent can be high in Innsbruck — be ready to describe what you need clearly.",
+    "quizId": "q014",
+    "audio": null
+  },
+  {
+    "id": 15,
+    "slug": "daily-routine",
+    "level": "A1",
+    "unit": 4,
+    "lessonNum": 2,
+    "order": 11,
+    "title": "Daily Routine",
+    "titleDe": "Der Tagesablauf",
+    "estimatedMinutes": 12,
+    "prerequisites": [1],
+    "objectives": [
+      "Describe your daily routine using common verbs",
+      "Use separable verbs: aufstehen",
+      "Talk about when you do things"
+    ],
+    "vocabIds": ["v181", "v182", "v183", "v184", "v185", "v186", "v187", "v188", "v189", "v190"],
+    "grammar": [
+      {
+        "id": "g15-1",
+        "point": "Separable verbs: aufstehen",
+        "explanation": "Some German verbs split: the prefix moves to the END of the sentence. 'Aufstehen' (to get up): Ich STEHE um 7 Uhr AUF. The 'auf' jumps to the end. This applies to many common verbs: aufstehen, anfangen, aufhören, einkaufen.",
+        "examples": [
+          { "de": "Ich stehe um sieben Uhr auf.", "en": "I get up at seven o'clock." },
+          { "de": "Ich höre um 18 Uhr auf.", "en": "I finish at six o'clock." }
+        ]
+      }
+    ],
+    "examples": [
+      {
+        "de": "Normalerweise stehe ich früh auf, frühstücke und gehe dann ins Training.",
+        "en": "Normally I get up early, have breakfast and then go to training."
+      }
+    ],
+    "culturalNote": "Austrian work days often start early — 7am is common in trades. 'Feierabend' (end of the work day) is a beloved institution, usually around 5pm.",
+    "quizId": "q015",
+    "audio": null
+  },
+  {
+    "id": 16,
+    "slug": "at-the-restaurant",
+    "level": "A2",
+    "unit": 1,
+    "lessonNum": 3,
+    "order": 3,
+    "title": "Deeper Restaurant German",
+    "titleDe": "Im Restaurant — fortgeschritten",
+    "estimatedMinutes": 13,
+    "prerequisites": [3],
+    "objectives": [
+      "Order elegantly using 'Ich hätte gern…'",
+      "Navigate a full menu: Vorspeise, Hauptspeise, Nachspeise",
+      "Handle dietary needs and ask about spice levels"
+    ],
+    "vocabIds": ["v191", "v192", "v193", "v194", "v195", "v196", "v197", "v198", "v199", "v200"],
+    "grammar": [
+      {
+        "id": "g16-1",
+        "point": "Konjunktiv II: 'Ich hätte gern…'",
+        "explanation": "'Ich hätte gern' is the Konjunktiv II of 'haben' — polite and elegant. More natural than 'ich möchte' in nicer restaurants. Hätte = would have. Gern = gladly.",
+        "examples": [
+          { "de": "Ich hätte gern das Tagesgericht.", "en": "I'd like the dish of the day." },
+          { "de": "Ich hätte gern die Rechnung.", "en": "I'd like the bill." }
+        ]
+      }
+    ],
+    "examples": [
+      {
+        "de": "Ich hätte gern die Vorspeise und danach das Tagesgericht — ohne Zwiebeln, bitte.",
+        "en": "I'd like the starter and then the dish of the day — without onions, please."
+      }
+    ],
+    "culturalNote": "Austrian restaurants often include a Tagesgericht (dish of the day) — usually the best value. Trinkgeld (tip) is not mandatory but rounding up 10% is expected.",
+    "quizId": "q016",
+    "audio": null
+  },
+  {
+    "id": 17,
+    "slug": "making-plans",
+    "level": "A2",
+    "unit": 2,
+    "lessonNum": 3,
+    "order": 6,
+    "title": "Making Plans",
+    "titleDe": "Pläne machen",
+    "estimatedMinutes": 12,
+    "prerequisites": [1, 6],
+    "objectives": [
+      "Suggest activities using 'Hast du Lust…?' and 'Wollen wir…?'",
+      "Accept or decline invitations naturally",
+      "Use 'vielleicht', 'auf jeden Fall', 'Schade!'"
+    ],
+    "vocabIds": ["v201", "v202", "v203", "v204", "v205", "v206", "v207", "v208", "v209", "v210"],
+    "grammar": [
+      {
+        "id": "g17-1",
+        "point": "'Hast du Lust' + zu + infinitive",
+        "explanation": "To invite someone, use 'Hast du Lust, X zu tun?' — Do you feel like doing X? The 'zu' + infinitive construction is essential at A2. Wollen wir…? (Shall we…?) works similarly but without 'zu'.",
+        "examples": [
+          {
+            "de": "Hast du Lust, ins Kino zu gehen?",
+            "en": "Do you feel like going to the cinema?"
+          },
+          { "de": "Wollen wir heute Ski fahren?", "en": "Shall we go skiing today?" }
+        ]
+      }
+    ],
+    "examples": [
+      {
+        "de": "Hast du Lust, heute Abend in die Hütte zu gehen? — Ich bin dabei! Wann passt es dir?",
+        "en": "Do you feel like going to the mountain hut tonight? — Count me in! When works for you?"
+      }
+    ],
+    "culturalNote": "Austrians tend to plan things fairly last-minute. 'Vielleicht' often means 'probably not'. 'Auf jeden Fall' means they're actually coming.",
+    "quizId": "q017",
+    "audio": null
+  },
+  {
+    "id": 18,
+    "slug": "past-tense",
+    "level": "A2",
+    "unit": 3,
+    "lessonNum": 1,
+    "order": 7,
+    "title": "Past Tense — Perfekt",
+    "titleDe": "Das Perfekt",
+    "estimatedMinutes": 15,
+    "prerequisites": [6, 7],
+    "objectives": [
+      "Form the Perfekt tense using haben + Partizip II",
+      "Know which verbs use 'sein' instead of 'haben'",
+      "Use gestern and letzte Woche in sentences"
+    ],
+    "vocabIds": ["v211", "v212", "v213", "v214", "v215", "v216", "v217", "v218", "v219", "v220"],
+    "grammar": [
+      {
+        "id": "g18-1",
+        "point": "Perfekt = haben/sein + Partizip II",
+        "explanation": "German speech mostly uses the Perfekt (not Präteritum) for the past. Formula: auxiliary verb (haben or sein) in position 2, Partizip II at the END. Most verbs use 'haben'. Motion and change-of-state verbs use 'sein': Ich BIN gegangen (not 'habe').",
+        "examples": [
+          { "de": "Ich habe Kaffee getrunken.", "en": "I drank coffee. (haben + participle)" },
+          { "de": "Ich bin ins Büro gegangen.", "en": "I went to the office. (sein + motion verb)" }
+        ]
+      }
+    ],
+    "examples": [
+      {
+        "de": "Gestern habe ich gut gespielt — kein Gegentor! Ich bin danach in die Hütte gegangen.",
+        "en": "Yesterday I played well — no goals conceded! Afterwards I went to the mountain hut."
+      }
+    ],
+    "culturalNote": "In spoken Austrian German, Präteritum (I went, I did) is almost never used except for sein/haben/modals. Always use Perfekt in conversation.",
+    "quizId": "q018",
+    "audio": null
+  },
+  {
+    "id": 19,
+    "slug": "working-life",
+    "level": "A2",
+    "unit": 3,
+    "lessonNum": 2,
+    "order": 8,
+    "title": "Working Life",
+    "titleDe": "Das Berufsleben",
+    "estimatedMinutes": 13,
+    "prerequisites": [11],
+    "objectives": [
+      "Talk about your workplace and colleagues",
+      "Use separable verbs anfangen and aufhören",
+      "Describe a work day using Perfekt"
+    ],
+    "vocabIds": ["v221", "v222", "v223", "v224", "v225", "v226", "v227", "v228", "v229", "v230"],
+    "grammar": [
+      {
+        "id": "g19-1",
+        "point": "More separable verbs: anfangen, aufhören",
+        "explanation": "Recall: separable verbs split when conjugated — prefix goes to end. Anfangen (to start): Die Besprechung FÄNGT um 9 AN. Aufhören (to stop): Ich HÖRE um 17 Uhr AUF. Note the irregular 'fängt' — irregular stem change from 'fangen'.",
+        "examples": [
+          { "de": "Die Besprechung fängt um neun an.", "en": "The meeting starts at nine." },
+          { "de": "Wann hörst du heute auf?", "en": "When do you finish today?" }
+        ]
+      }
+    ],
+    "examples": [
+      {
+        "de": "Ich fange um acht an, arbeite von Zuhause und höre um fünf auf. Endlich Feierabend!",
+        "en": "I start at eight, work from home and finish at five. Finally done for the day!"
+      }
+    ],
+    "culturalNote": "'Feierabend' is one of those untranslatable German words — it's the feeling of freedom when the work day ends. Austrians take it seriously.",
+    "quizId": "q019",
+    "audio": null
+  },
+  {
+    "id": 20,
+    "slug": "opinions",
+    "level": "B1",
+    "unit": 1,
+    "lessonNum": 1,
+    "order": 1,
+    "title": "Expressing Opinions",
+    "titleDe": "Meinungen ausdrücken",
+    "estimatedMinutes": 15,
+    "prerequisites": [11],
+    "objectives": [
+      "Use 'meiner Meinung nach' and 'ich finde, dass…'",
+      "Agree and disagree politely",
+      "Use discourse connectors: einerseits, andererseits, übrigens"
+    ],
+    "vocabIds": ["v231", "v232", "v233", "v234", "v235", "v236", "v237", "v238", "v239", "v240"],
+    "grammar": [
+      {
+        "id": "g20-1",
+        "point": "Dass-clauses: verb to the end",
+        "explanation": "When you say 'I think that…', the 'dass' sends the verb to the end of the clause. 'Ich finde, dass Tirol SCHÖN IST' — not 'ist schön'. The verb comes last after 'dass', 'weil', 'obwohl' and most subordinating conjunctions.",
+        "examples": [
+          {
+            "de": "Ich finde, dass Tirol wunderschön ist.",
+            "en": "I think that Tirol is beautiful."
+          },
+          { "de": "Ich glaube, dass das zu teuer ist.", "en": "I think that's too expensive." }
+        ]
+      }
+    ],
+    "examples": [
+      {
+        "de": "Meiner Meinung nach ist TypeScript besser als JavaScript — ich finde, dass das strenge Typsystem sehr hilfreich ist.",
+        "en": "In my opinion TypeScript is better than JavaScript — I think the strict type system is very helpful."
+      }
+    ],
+    "culturalNote": "Austrian debate culture tends to be indirect. Use softeners like 'Ich würde sagen…' or 'Ehrlich gesagt…' — blunt opinions can sound aggressive.",
+    "quizId": "q020",
+    "audio": null
+  },
+  {
+    "id": 21,
+    "slug": "conditionals",
+    "level": "B1",
+    "unit": 1,
+    "lessonNum": 2,
+    "order": 2,
+    "title": "Conditionals & Hypotheticals",
+    "titleDe": "Bedingungen & Konjunktiv II",
+    "estimatedMinutes": 15,
+    "prerequisites": [20],
+    "objectives": [
+      "Use wenn-clauses for real conditions",
+      "Use Konjunktiv II (würde, hätte) for hypotheticals",
+      "Connect sentences with obwohl, trotzdem, deshalb"
+    ],
+    "vocabIds": ["v241", "v242", "v243", "v244", "v245", "v246", "v247", "v248", "v249", "v250"],
+    "grammar": [
+      {
+        "id": "g21-1",
+        "point": "Konjunktiv II: würde + infinitive",
+        "explanation": "For wishes and hypotheticals, use 'würde' + infinitive at the end. 'Ich würde gern nach Wien fahren' = I would like to go to Vienna. For conditions: 'Wenn ich Zeit hätte, würde ich jeden Tag trainieren.' — hätte is Konjunktiv II of haben.",
+        "examples": [
+          {
+            "de": "Ich würde gern mehr Deutsch lernen.",
+            "en": "I would like to learn more German."
+          },
+          {
+            "de": "Wenn ich in Kanada wäre, würde ich Eishockey spielen.",
+            "en": "If I were in Canada, I would play ice hockey."
+          }
+        ]
+      }
+    ],
+    "examples": [
+      {
+        "de": "Wenn es morgen schneit, würde ich gern Ski fahren. Sonst gehe ich ins Training.",
+        "en": "If it snows tomorrow, I'd like to go skiing. Otherwise I'll go to practice."
+      }
+    ],
+    "culturalNote": "Konjunktiv II is used constantly in polite Austrian speech — 'Hätten Sie…?', 'Könnte ich…?' Mastering it will make you sound much more natural.",
+    "quizId": "q021",
+    "audio": null
+  },
+  {
+    "id": 22,
+    "slug": "dative-prepositions",
+    "level": "B1",
+    "unit": 1,
+    "lessonNum": 3,
+    "order": 3,
+    "title": "Dative Prepositions",
+    "titleDe": "Dativpräpositionen",
+    "estimatedMinutes": 15,
+    "prerequisites": [20],
+    "objectives": [
+      "Recognise and use the 8 core dative prepositions",
+      "Master the contractions zum, zur, vom, beim",
+      "Build fluent location and direction phrases"
+    ],
+    "vocabIds": ["v251", "v252", "v253", "v254", "v255", "v256", "v257", "v258", "v259", "v260"],
+    "grammar": [
+      {
+        "id": "g22-1",
+        "point": "Core dative prepositions + contractions",
+        "explanation": "These 8 prepositions ALWAYS take the dative: mit, bei, nach, von, seit, aus, zu, außer. Key contractions: zu + dem = zum, zu + der = zur, von + dem = vom, bei + dem = beim. Memorise these — they're everywhere.",
+        "examples": [
+          {
+            "de": "Ich gehe zum Bahnhof. (zu + dem = zum)",
+            "en": "I'm going to the train station."
+          },
+          { "de": "Ich komme vom Training. (von + dem = vom)", "en": "I'm coming from practice." }
+        ]
+      }
+    ],
+    "examples": [
+      {
+        "de": "Ich fahre mit dem Bus zum Bahnhof, dann mit dem Zug nach Innsbruck.",
+        "en": "I take the bus to the train station, then the train to Innsbruck."
+      }
+    ],
+    "culturalNote": "Getting your prepositions right will dramatically reduce the 'foreigner' feel. Locals notice when someone says 'zu dem Arzt' instead of 'zum Arzt'.",
+    "quizId": "q022",
+    "audio": null
+  },
+  {
+    "id": 23,
+    "slug": "passive-voice",
+    "level": "B1",
+    "unit": 2,
+    "lessonNum": 1,
+    "order": 4,
+    "title": "The Passive Voice",
+    "titleDe": "Das Passiv",
+    "estimatedMinutes": 15,
+    "prerequisites": [18, 20],
+    "objectives": [
+      "Form the passive with werden + Partizip II",
+      "Use 'man' as the active alternative",
+      "Describe what is allowed, forbidden, or required"
+    ],
+    "vocabIds": ["v261", "v262", "v263", "v264", "v265", "v266", "v267", "v268", "v269", "v270"],
+    "grammar": [
+      {
+        "id": "g23-1",
+        "point": "Passiv: werden + Partizip II",
+        "explanation": "To say something IS DONE (by someone/something), use: subject + werden + … + Partizip II. 'Das Bier wird kalt serviert' = The beer is served cold. Often replaced in speech by 'man': 'Man serviert das Bier kalt' — same meaning, more casual.",
+        "examples": [
+          { "de": "Das Programm wird täglich benutzt.", "en": "The program is used daily." },
+          { "de": "Man darf hier nicht parken.", "en": "You cannot park here." }
+        ]
+      }
+    ],
+    "examples": [
+      {
+        "de": "In Tirol wird viel Ski gefahren. Man sagt, dass der Schnee hier der beste ist.",
+        "en": "A lot of skiing is done in Tirol. They say the snow here is the best."
+      }
+    ],
+    "culturalNote": "German bureaucratic language loves the passive. Signs, rules, and official notices are almost always in the passive — 'Es wird gebeten…' (You are requested to…).",
+    "quizId": "q023",
+    "audio": null
+  },
+  {
+    "id": 24,
+    "slug": "complaints",
+    "level": "B1",
+    "unit": 2,
+    "lessonNum": 2,
+    "order": 5,
+    "title": "Making Complaints",
+    "titleDe": "Sich beschweren",
+    "estimatedMinutes": 13,
+    "prerequisites": [20, 21],
+    "objectives": [
+      "Complain politely using Konjunktiv II",
+      "Describe what's broken or not working",
+      "Request a solution or refund confidently"
+    ],
+    "vocabIds": ["v271", "v272", "v273", "v274", "v275", "v276", "v277", "v278", "v279", "v280"],
+    "grammar": [
+      {
+        "id": "g24-1",
+        "point": "Polite complaints with Konjunktiv II",
+        "explanation": "Direct complaints can sound aggressive. Soften with Konjunktiv II: 'Ich möchte mich beschweren' (I'd like to complain) or 'Ich hätte gerne eine Erstattung' (I'd like a refund). Adding 'bitte' always helps.",
+        "examples": [
+          { "de": "Ich hätte gerne eine Erstattung, bitte.", "en": "I'd like a refund, please." },
+          {
+            "de": "Das entspricht leider nicht meinen Erwartungen.",
+            "en": "Unfortunately that doesn't meet my expectations."
+          }
+        ]
+      }
+    ],
+    "examples": [
+      {
+        "de": "Entschuldigung, das Gerät ist kaputt. Können Sie das bitte reparieren oder mir eine Erstattung geben?",
+        "en": "Excuse me, the device is broken. Can you please fix it or give me a refund?"
+      }
+    ],
+    "culturalNote": "Austrians tend to complain less directly than Germans. A calm, polite complaint with 'Konjunktiv II' will get better results than a direct demand. Start with 'Entschuldigung…'",
+    "quizId": "q024",
     "audio": null
   }
 ]

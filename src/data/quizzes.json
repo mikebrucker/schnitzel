@@ -131,6 +131,26 @@
         "options": ["vier, eins, zehn", "fünf, eins, zehn", "vier, ein, zehn", "vier, eins, elf"],
         "correct": 0,
         "explanation": "Vier = 4, eins = 1, zehn = 10. 'Ein' (without -s) is used as an article ('a/an'), not the number."
+      },
+      {
+        "id": "q002-6",
+        "type": "fill-blank",
+        "difficulty": 2,
+        "vocabId": "v022",
+        "prompt": "Das kostet ___ Euro. (twelve)",
+        "answer": "zwölf",
+        "acceptable": ["zwoelf"],
+        "explanation": "Zwölf = 12. Doesn't follow the -zehn pattern — one of the irregular number names."
+      },
+      {
+        "id": "q002-7",
+        "type": "translate",
+        "difficulty": 3,
+        "direction": "en-de",
+        "prompt": "I am twenty years old.",
+        "answer": "Ich bin zwanzig Jahre alt.",
+        "acceptable": ["ich bin zwanzig jahre alt"],
+        "explanation": "German uses 'sein' (to be) for age: ich bin X Jahre alt. Not 'haben' like French or Spanish."
       }
     ]
   },
@@ -261,6 +281,30 @@
         "options": ["heute", "morgen", "gestern", "jetzt"],
         "correct": 1,
         "explanation": "Morgen = tomorrow (and also 'morning'). Heute = today, gestern = yesterday."
+      },
+      {
+        "id": "q004-6",
+        "type": "fill-blank",
+        "difficulty": 2,
+        "vocabId": "v036",
+        "prompt": "Heute ist ___. (Wednesday)",
+        "answer": "Mittwoch",
+        "acceptable": ["mittwoch"],
+        "explanation": "Mittwoch = Wednesday. Literally 'mid-week'. The only day not named after a Norse god."
+      },
+      {
+        "id": "q004-7",
+        "type": "translate",
+        "difficulty": 3,
+        "direction": "de-en",
+        "prompt": "Es ist kalt und es schneit.",
+        "answer": "It is cold and it is snowing.",
+        "acceptable": [
+          "it is cold and it snows",
+          "it's cold and it's snowing",
+          "it's cold and it snows"
+        ],
+        "explanation": "Es ist kalt = it is cold. Es schneit = it is snowing. Typical Tirol forecast."
       }
     ]
   },
@@ -326,6 +370,26 @@
         "options": ["A pastry", "A ski slope", "A cable car", "A train platform"],
         "correct": 1,
         "explanation": "Die Piste = ski slope. Essential vocab for winter in Tirol."
+      },
+      {
+        "id": "q005-6",
+        "type": "fill-blank",
+        "difficulty": 2,
+        "vocabId": "v051",
+        "prompt": "Gehen Sie ___! (straight ahead)",
+        "answer": "geradeaus",
+        "acceptable": [],
+        "explanation": "Geradeaus = straight ahead. Links = left, rechts = right."
+      },
+      {
+        "id": "q005-7",
+        "type": "translate",
+        "difficulty": 3,
+        "direction": "en-de",
+        "prompt": "Where is the train station?",
+        "answer": "Wo ist der Bahnhof?",
+        "acceptable": ["wo ist der bahnhof"],
+        "explanation": "Wo = where. Der Bahnhof = train station (masculine der)."
       }
     ]
   },
@@ -376,6 +440,26 @@
         "options": ["Ich kaufe nichts.", "Ich nehme das.", "Das ist günstig.", "Ich zahle später."],
         "correct": 1,
         "explanation": "'Ich nehme das' literally means 'I take that' — the natural way to say you're buying something."
+      },
+      {
+        "id": "q006-6",
+        "type": "fill-blank",
+        "difficulty": 2,
+        "vocabId": "v057",
+        "prompt": "Das ist zu ___! (expensive)",
+        "answer": "teuer",
+        "acceptable": [],
+        "explanation": "Zu teuer = too expensive. 'Zu' = too (excessively). Useful at any market."
+      },
+      {
+        "id": "q006-7",
+        "type": "translate",
+        "difficulty": 3,
+        "direction": "en-de",
+        "prompt": "How much does that cost?",
+        "answer": "Wie viel kostet das?",
+        "acceptable": ["wie viel kostet das", "wieviel kostet das"],
+        "explanation": "Wie viel = how much. Kosten = to cost. Das = that/it."
       }
     ]
   },
@@ -441,6 +525,26 @@
         "options": ["to check in", "to check out", "to pay the bill", "to book a room"],
         "correct": 1,
         "explanation": "'Aus-' = out, 'ein-' = in. Einchecken = check in, auschecken = check out."
+      },
+      {
+        "id": "q007-6",
+        "type": "fill-blank",
+        "difficulty": 2,
+        "vocabId": "v068",
+        "prompt": "Ich möchte ein ___ für zwei Nächte. (double room)",
+        "answer": "Doppelzimmer",
+        "acceptable": ["doppelzimmer"],
+        "explanation": "Das Doppelzimmer = double room. Einzelzimmer = single room."
+      },
+      {
+        "id": "q007-7",
+        "type": "translate",
+        "difficulty": 3,
+        "direction": "de-en",
+        "prompt": "Können Sie mir helfen?",
+        "answer": "Can you help me?",
+        "acceptable": ["can you help me", "could you help me"],
+        "explanation": "Können (can) + Sie (formal you) + mir (me, dative) + helfen (help). Modal verb sends the infinitive to the end."
       }
     ]
   },
@@ -655,6 +759,1584 @@
         "options": ["The referee", "The arena", "The team", "The coach"],
         "correct": 2,
         "explanation": "Die Mannschaft = the team. Also the nickname for the German national football team."
+      }
+    ]
+  },
+  "q012": {
+    "lessonId": 12,
+    "questions": [
+      {
+        "id": "q012-1",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "How do you ask 'How often do you train?'",
+        "options": [
+          "Wie lange trainierst du?",
+          "Wie oft trainierst du?",
+          "Was für Training?",
+          "Wann trainierst du?"
+        ],
+        "correct": 1,
+        "explanation": "Wie oft = how often. Wie lange = how long. Don't mix them up."
+      },
+      {
+        "id": "q012-2",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What does 'Wie bitte?' mean?",
+        "options": ["What time?", "Pardon? / Sorry?", "How please?", "What kind?"],
+        "correct": 1,
+        "explanation": "Wie bitte? = Pardon? / Sorry? — the polite way to ask for a repeat. Saying 'Was?' alone sounds rude."
+      },
+      {
+        "id": "q012-3",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "'Ich verstehe nicht' means…",
+        "options": ["I don't agree", "I don't understand", "I don't know", "I can't hear"],
+        "correct": 1,
+        "explanation": "Verstehen = to understand. Ich verstehe nicht = I don't understand. One of the most useful learner phrases."
+      },
+      {
+        "id": "q012-4",
+        "type": "single-choice",
+        "difficulty": 2,
+        "question": "How do you politely ask someone to repeat themselves?",
+        "options": [
+          "Was sagst du?",
+          "Noch einmal!",
+          "Können Sie das wiederholen?",
+          "Sprechen Sie!"
+        ],
+        "correct": 2,
+        "explanation": "Können Sie das wiederholen? = Can you repeat that? Polite and formal — perfect for strangers."
+      },
+      {
+        "id": "q012-5",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What does 'Was bedeutet das?' mean?",
+        "options": [
+          "What do you want?",
+          "What does that mean?",
+          "What is that called?",
+          "What kind is that?"
+        ],
+        "correct": 1,
+        "explanation": "Bedeuten = to mean. Was bedeutet das? = What does that mean? Priceless for language learners."
+      },
+      {
+        "id": "q012-6",
+        "type": "fill-blank",
+        "difficulty": 2,
+        "vocabId": "v159",
+        "prompt": "___ bedeutet das Wort? (What does...)",
+        "answer": "Was",
+        "acceptable": ["was"],
+        "explanation": "Was = what. Was bedeutet das? = What does that mean?"
+      },
+      {
+        "id": "q012-7",
+        "type": "translate",
+        "difficulty": 3,
+        "direction": "en-de",
+        "prompt": "Can you please speak more slowly?",
+        "answer": "Können Sie bitte langsamer sprechen?",
+        "acceptable": ["können sie bitte langsamer sprechen", "kannst du bitte langsamer sprechen"],
+        "explanation": "Langsamer = more slowly (comparative of langsam). Können Sie (formal) or Kannst du (informal)."
+      }
+    ]
+  },
+  "q013": {
+    "lessonId": 13,
+    "questions": [
+      {
+        "id": "q013-1",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What is 'der Winter'?",
+        "options": ["spring", "summer", "autumn", "winter"],
+        "correct": 3,
+        "explanation": "Der Winter = winter. The biggest season in Tirol — skiing, snow, Glühwein."
+      },
+      {
+        "id": "q013-2",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "Which month is 'der Dezember'?",
+        "options": ["October", "November", "December", "January"],
+        "correct": 2,
+        "explanation": "Dezember = December. Ski season begins in Tirol — first snow expected."
+      },
+      {
+        "id": "q013-3",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "How do you say 'in summer' in German?",
+        "options": ["in dem Sommer", "im Sommer", "in Sommer", "der Sommer"],
+        "correct": 1,
+        "explanation": "Im = in dem (dative). Always use 'im' with seasons and months: im Sommer, im Januar."
+      },
+      {
+        "id": "q013-4",
+        "type": "single-choice",
+        "difficulty": 2,
+        "question": "What comes after 'der Sommer' in the Austrian year?",
+        "options": ["Frühling", "Winter", "Herbst", "Januar"],
+        "correct": 2,
+        "explanation": "Frühling → Sommer → Herbst → Winter. Autumn follows summer."
+      },
+      {
+        "id": "q013-5",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "Which month is best for late-season skiing in Tirol?",
+        "options": ["Januar", "Juli", "April", "Oktober"],
+        "correct": 2,
+        "explanation": "April — high-altitude glaciers in Tirol often have the best snow in spring. Still skiing when it's 20°C in the valley."
+      },
+      {
+        "id": "q013-6",
+        "type": "fill-blank",
+        "difficulty": 2,
+        "vocabId": "v170",
+        "prompt": "___ Winter ist es sehr kalt in Tirol. (In the)",
+        "answer": "Im",
+        "acceptable": ["im"],
+        "explanation": "Im = in dem (dative). The only correct form before seasons and months."
+      },
+      {
+        "id": "q013-7",
+        "type": "translate",
+        "difficulty": 3,
+        "direction": "en-de",
+        "prompt": "I ski in winter and hike in summer.",
+        "answer": "Ich fahre im Winter Ski und wandere im Sommer.",
+        "acceptable": ["ich fahre im winter ski und wandere im sommer"],
+        "explanation": "Im Winter, im Sommer — dative. Ski fahren = to ski (separable phrase)."
+      }
+    ]
+  },
+  "q014": {
+    "lessonId": 14,
+    "questions": [
+      {
+        "id": "q014-1",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What is 'die Küche'?",
+        "options": ["bedroom", "bathroom", "kitchen", "garden"],
+        "correct": 2,
+        "explanation": "Die Küche = kitchen. Die Küche is feminine — also the word for 'cuisine' (German cuisine = die deutsche Küche)."
+      },
+      {
+        "id": "q014-2",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What does 'die Wohnung' mean?",
+        "options": ["house", "apartment / flat", "garden", "neighborhood"],
+        "correct": 1,
+        "explanation": "Die Wohnung = apartment/flat. Das Haus = house. Common distinction in Tirol where many live in apartments."
+      },
+      {
+        "id": "q014-3",
+        "type": "single-choice",
+        "difficulty": 2,
+        "question": "'Es gibt einen Garten' — why 'einen' and not 'ein'?",
+        "options": [
+          "Because Garten is feminine",
+          "Because 'es gibt' takes accusative — masc. ein → einen",
+          "Because Garten is plural",
+          "It's a mistake — 'ein' is correct"
+        ],
+        "correct": 1,
+        "explanation": "Es gibt takes the accusative. Masculine ein becomes einen in accusative. Das and die stay das/eine."
+      },
+      {
+        "id": "q014-4",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What does 'ruhig' mean?",
+        "options": ["loud", "expensive", "quiet / peaceful", "small"],
+        "correct": 2,
+        "explanation": "Ruhig = quiet/peaceful. 'Eine ruhige Wohnung' = a quiet apartment. Very desirable in Austrian cities."
+      },
+      {
+        "id": "q014-5",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "How do you say 'next to'?",
+        "options": ["gegenüber", "neben", "nach", "bei"],
+        "correct": 1,
+        "explanation": "Neben = next to / beside. Gegenüber = opposite / across from."
+      },
+      {
+        "id": "q014-6",
+        "type": "fill-blank",
+        "difficulty": 2,
+        "vocabId": "v176",
+        "prompt": "___ gibt es in meiner Wohnung eine Küche. (There is / There are)",
+        "answer": "Es",
+        "acceptable": ["es"],
+        "explanation": "Es gibt = there is/are. Always starts with 'Es'. Followed by accusative."
+      },
+      {
+        "id": "q014-7",
+        "type": "translate",
+        "difficulty": 3,
+        "direction": "de-en",
+        "prompt": "Meine Wohnung ist ruhig und hat einen Garten.",
+        "answer": "My apartment is quiet and has a garden.",
+        "acceptable": [
+          "my apartment is quiet and has a garden",
+          "my flat is quiet and has a garden"
+        ],
+        "explanation": "Ruhig = quiet. Hat einen Garten = has a garden (accusative masc.)."
+      }
+    ]
+  },
+  "q015": {
+    "lessonId": 15,
+    "questions": [
+      {
+        "id": "q015-1",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What does 'aufstehen' mean?",
+        "options": ["to sleep", "to eat", "to get up", "to go out"],
+        "correct": 2,
+        "explanation": "Aufstehen = to get up. Ich stehe auf — the 'auf' splits off and goes to the end."
+      },
+      {
+        "id": "q015-2",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "How do you say 'every day'?",
+        "options": ["jeden Morgen", "jeden Tag", "jede Nacht", "jede Woche"],
+        "correct": 1,
+        "explanation": "Jeden Tag = every day. Jeden is accusative masculine (Tag is masc.). Jeden Morgen = every morning."
+      },
+      {
+        "id": "q015-3",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What does 'frühstücken' mean?",
+        "options": ["to sleep in", "to go to work", "to have breakfast", "to wake up"],
+        "correct": 2,
+        "explanation": "Frühstücken = to have breakfast. Derived from Frühstück (breakfast). Ich frühstücke = I eat breakfast."
+      },
+      {
+        "id": "q015-4",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What is 'der Wecker'?",
+        "options": ["the clock", "the alarm clock", "the morning", "the schedule"],
+        "correct": 1,
+        "explanation": "Der Wecker = alarm clock. From wecken (to wake). 'Den Wecker stellen' = to set the alarm."
+      },
+      {
+        "id": "q015-5",
+        "type": "single-choice",
+        "difficulty": 2,
+        "question": "How do separable verbs work? Which is correct?",
+        "options": [
+          "Ich aufstehe um sieben.",
+          "Ich stehe auf um sieben.",
+          "Ich stehe um sieben auf.",
+          "Um sieben aufstehe ich."
+        ],
+        "correct": 2,
+        "explanation": "Separable verbs split: stem stays in position 2, prefix goes to the END. Ich stehe um sieben AUF."
+      },
+      {
+        "id": "q015-6",
+        "type": "fill-blank",
+        "difficulty": 2,
+        "vocabId": "v181",
+        "prompt": "Ich stehe jeden Tag um sieben Uhr ___. (up)",
+        "answer": "auf",
+        "acceptable": [],
+        "explanation": "Aufstehen splits: stehe (position 2) + auf (sentence end). Ich stehe um sieben auf."
+      },
+      {
+        "id": "q015-7",
+        "type": "translate",
+        "difficulty": 3,
+        "direction": "en-de",
+        "prompt": "I normally eat breakfast at eight o'clock.",
+        "answer": "Ich frühstücke normalerweise um acht Uhr.",
+        "acceptable": [
+          "ich frühstücke normalerweise um acht uhr",
+          "normalerweise frühstücke ich um acht uhr"
+        ],
+        "explanation": "Frühstücken = to have breakfast. Normalerweise = normally/usually. Um acht Uhr = at eight o'clock."
+      }
+    ]
+  },
+  "q016": {
+    "lessonId": 16,
+    "questions": [
+      {
+        "id": "q016-1",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What is 'die Speisekarte'?",
+        "options": ["the bill", "the menu", "the dish of the day", "the dessert"],
+        "correct": 1,
+        "explanation": "Die Speisekarte = the menu. Speise = food/dish, Karte = card/map."
+      },
+      {
+        "id": "q016-2",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "How do you politely order in a restaurant?",
+        "options": [
+          "Ich will das Essen.",
+          "Ich hätte gern das Tagesgericht.",
+          "Geben Sie mir die Speise.",
+          "Das Essen bitte."
+        ],
+        "correct": 1,
+        "explanation": "Ich hätte gern = I'd like (Konjunktiv II). More elegant than 'ich möchte'. Standard in Austrian restaurants."
+      },
+      {
+        "id": "q016-3",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What is 'das Trinkgeld'?",
+        "options": ["the water", "the drink menu", "the tip / gratuity", "the dessert menu"],
+        "correct": 2,
+        "explanation": "Das Trinkgeld = tip. Lit. 'drinking money'. In Austria: round up or add ~10%."
+      },
+      {
+        "id": "q016-4",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What does 'die Nachspeise' mean?",
+        "options": ["starter", "main course", "soup", "dessert"],
+        "correct": 3,
+        "explanation": "Die Nachspeise = dessert. Nach = after. More Austrian than 'Nachtisch'."
+      },
+      {
+        "id": "q016-5",
+        "type": "single-choice",
+        "difficulty": 2,
+        "question": "How do you ask if something is spicy?",
+        "options": ["Ist das heiß?", "Ist das scharf?", "Ist das süß?", "Ist das frisch?"],
+        "correct": 1,
+        "explanation": "Ist das scharf? = Is that spicy? Scharf also means sharp/keen in other contexts."
+      },
+      {
+        "id": "q016-6",
+        "type": "fill-blank",
+        "difficulty": 2,
+        "vocabId": "v191",
+        "prompt": "Ich ___ gern das Tagesgericht, bitte.",
+        "answer": "hätte",
+        "acceptable": [],
+        "explanation": "Ich hätte gern = I'd like (Konjunktiv II of haben). More polished than 'ich möchte'."
+      },
+      {
+        "id": "q016-7",
+        "type": "translate",
+        "difficulty": 3,
+        "direction": "de-en",
+        "prompt": "Einmal die Hauptspeise ohne Zwiebeln, bitte.",
+        "answer": "One main course without onions, please.",
+        "acceptable": [
+          "one main course without onions please",
+          "the main course without onions please"
+        ],
+        "explanation": "Einmal = one (portion of). Hauptspeise = main course. Ohne = without (+ accusative)."
+      }
+    ]
+  },
+  "q017": {
+    "lessonId": 17,
+    "questions": [
+      {
+        "id": "q017-1",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "How do you ask 'Do you feel like going to the cinema?'",
+        "options": [
+          "Willst du ins Kino gehen?",
+          "Hast du Lust, ins Kino zu gehen?",
+          "Gehst du ins Kino?",
+          "Magst du das Kino?"
+        ],
+        "correct": 1,
+        "explanation": "Hast du Lust + zu + infinitive = Do you feel like doing X? Natural and common in Austrian German."
+      },
+      {
+        "id": "q017-2",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What does 'Ich bin dabei!' mean?",
+        "options": ["I'm already there!", "I'm in! / Count me in!", "I'm busy.", "I'm on my way."],
+        "correct": 1,
+        "explanation": "Ich bin dabei = I'm in! / Count me in! Dabei = there/in on it. Very natural acceptance."
+      },
+      {
+        "id": "q017-3",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What does 'auf jeden Fall' mean?",
+        "options": ["maybe", "probably not", "definitely / absolutely", "next time"],
+        "correct": 2,
+        "explanation": "Auf jeden Fall = definitely / absolutely. When an Austrian says this, they're actually coming."
+      },
+      {
+        "id": "q017-4",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What does 'Schade!' mean?",
+        "options": ["Wonderful!", "What a shame! / Too bad!", "No problem!", "Next time!"],
+        "correct": 1,
+        "explanation": "Schade = what a shame / too bad. Use it when plans fall through or something disappointing happens."
+      },
+      {
+        "id": "q017-5",
+        "type": "single-choice",
+        "difficulty": 2,
+        "question": "How do you ask 'When works for you?'",
+        "options": [
+          "Wann bist du frei?",
+          "Wann passt es dir?",
+          "Wie oft kannst du?",
+          "Warum gehst du?"
+        ],
+        "correct": 1,
+        "explanation": "Wann passt es dir? = When works for you? Passen = to suit/fit. Mir = dative of ich."
+      },
+      {
+        "id": "q017-6",
+        "type": "fill-blank",
+        "difficulty": 2,
+        "vocabId": "v202",
+        "prompt": "___ wir heute Abend in die Hütte gehen? (Shall)",
+        "answer": "Wollen",
+        "acceptable": ["wollen"],
+        "explanation": "Wollen wir…? = Shall we…? The 'wir' after the verb signals a suggestion/invitation."
+      },
+      {
+        "id": "q017-7",
+        "type": "translate",
+        "difficulty": 3,
+        "direction": "en-de",
+        "prompt": "Are you up for skiing this weekend?",
+        "answer": "Hast du Lust, dieses Wochenende Ski zu fahren?",
+        "acceptable": ["hast du lust dieses wochenende ski zu fahren"],
+        "explanation": "Hast du Lust + zu + infinitive. Dieses Wochenende = this weekend. Ski fahren = to ski."
+      }
+    ]
+  },
+  "q018": {
+    "lessonId": 18,
+    "questions": [
+      {
+        "id": "q018-1",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "How do you say 'I played hockey yesterday'?",
+        "options": [
+          "Ich spielte gestern Hockey.",
+          "Ich habe gestern Hockey gespielt.",
+          "Ich war gestern Hockey spielen.",
+          "Gestern spielen ich Hockey."
+        ],
+        "correct": 1,
+        "explanation": "Perfekt = haben (position 2) + Partizip II (end). Gespielt = Partizip II of spielen."
+      },
+      {
+        "id": "q018-2",
+        "type": "single-choice",
+        "difficulty": 2,
+        "question": "Which auxiliary does 'gehen' use in Perfekt?",
+        "options": ["haben", "sein", "werden", "Both are correct"],
+        "correct": 1,
+        "explanation": "Motion and change-of-state verbs use 'sein': Ich BIN gegangen. Not 'habe'."
+      },
+      {
+        "id": "q018-3",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What is the Partizip II of 'essen'?",
+        "options": ["geessen", "gegessen", "geesst", "essiert"],
+        "correct": 1,
+        "explanation": "Gegessen — irregular Partizip II. essen → gegessen. Uses haben: Ich habe gegessen."
+      },
+      {
+        "id": "q018-4",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What does 'noch nicht' mean?",
+        "options": ["already", "not yet", "never", "no more"],
+        "correct": 1,
+        "explanation": "Noch nicht = not yet. Schon = already. Ich habe noch nicht gegessen = I haven't eaten yet."
+      },
+      {
+        "id": "q018-5",
+        "type": "single-choice",
+        "difficulty": 2,
+        "question": "Translate: 'I have already eaten.'",
+        "options": [
+          "Ich hatte schon gegessen.",
+          "Ich habe noch nicht gegessen.",
+          "Ich habe schon gegessen.",
+          "Ich bin schon gegessen."
+        ],
+        "correct": 2,
+        "explanation": "Schon = already. Habe + gegessen (haben auxiliary for essen). Nicht hatte — that's Plusquamperfekt."
+      },
+      {
+        "id": "q018-6",
+        "type": "fill-blank",
+        "difficulty": 2,
+        "vocabId": "v218",
+        "prompt": "Ich ___ gestern ins Kino gegangen. (went — with sein)",
+        "answer": "bin",
+        "acceptable": [],
+        "explanation": "Gehen is a motion verb — uses 'sein'. Ich BIN gegangen. Not 'habe'."
+      },
+      {
+        "id": "q018-7",
+        "type": "translate",
+        "difficulty": 3,
+        "direction": "de-en",
+        "prompt": "Ich habe letzte Woche viel gearbeitet.",
+        "answer": "I worked a lot last week.",
+        "acceptable": ["i worked a lot last week", "i have worked a lot last week"],
+        "explanation": "Letzte Woche = last week. Gearbeitet = Partizip II of arbeiten. Haben auxiliary."
+      }
+    ]
+  },
+  "q019": {
+    "lessonId": 19,
+    "questions": [
+      {
+        "id": "q019-1",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What is 'das Büro'?",
+        "options": ["the meeting", "the salary", "the office", "the colleague"],
+        "correct": 2,
+        "explanation": "Das Büro = the office. Loanword from French 'bureau'."
+      },
+      {
+        "id": "q019-2",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What does 'der Feierabend' mean?",
+        "options": ["a work holiday", "end of the work day", "a celebration evening", "overtime"],
+        "correct": 1,
+        "explanation": "Der Feierabend = end of the work day (and the feeling of freedom that comes with it). Untranslatable."
+      },
+      {
+        "id": "q019-3",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "How do you say 'I work from home'?",
+        "options": [
+          "Ich arbeite im Büro.",
+          "Ich arbeite von Zuhause.",
+          "Ich mache Homeoffice jetzt.",
+          "Ich bin zuhause bei der Arbeit."
+        ],
+        "correct": 1,
+        "explanation": "Ich arbeite von Zuhause = I work from home. Also common: Ich mache Homeoffice (loanword phrase)."
+      },
+      {
+        "id": "q019-4",
+        "type": "single-choice",
+        "difficulty": 2,
+        "question": "What does 'aufhören' mean?",
+        "options": ["to start", "to stop / to finish", "to listen", "to hurry up"],
+        "correct": 1,
+        "explanation": "Aufhören = to stop/finish. Separable: hört auf. Wann hörst du auf? = When do you finish?"
+      },
+      {
+        "id": "q019-5",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What is 'die Besprechung'?",
+        "options": ["the discussion", "the meeting", "the description", "the speech"],
+        "correct": 1,
+        "explanation": "Die Besprechung = meeting. From besprechen (to discuss). Common: 'Ich habe eine Besprechung'."
+      },
+      {
+        "id": "q019-6",
+        "type": "fill-blank",
+        "difficulty": 2,
+        "vocabId": "v224",
+        "prompt": "Die Besprechung ___ um neun Uhr an. (starts)",
+        "answer": "fängt",
+        "acceptable": [],
+        "explanation": "Anfangen (to start) is separable AND irregular: fängt an. Die Besprechung fängt um 9 an."
+      },
+      {
+        "id": "q019-7",
+        "type": "translate",
+        "difficulty": 3,
+        "direction": "en-de",
+        "prompt": "I have a meeting at three o'clock.",
+        "answer": "Ich habe eine Besprechung um drei Uhr.",
+        "acceptable": ["ich habe eine besprechung um drei uhr"],
+        "explanation": "Eine Besprechung = a meeting. Um drei Uhr = at three o'clock."
+      }
+    ]
+  },
+  "q020": {
+    "lessonId": 20,
+    "questions": [
+      {
+        "id": "q020-1",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "How do you say 'in my opinion'?",
+        "options": [
+          "Ich meine nach",
+          "Meiner Meinung nach",
+          "Nach meiner Meinung",
+          "In meine Meinung"
+        ],
+        "correct": 1,
+        "explanation": "Meiner Meinung nach — the 'nach' comes AFTER Meinung, not before. Postpositional."
+      },
+      {
+        "id": "q020-2",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What does 'Ich stimme zu' mean?",
+        "options": ["I disagree", "I agree", "I don't know", "I think so"],
+        "correct": 1,
+        "explanation": "Zustimmen = to agree. Ich stimme zu. Ich stimme nicht zu = I disagree."
+      },
+      {
+        "id": "q020-3",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "'Es kommt darauf an' means…",
+        "options": ["It depends", "It's coming here", "That's correct", "It arrives on time"],
+        "correct": 0,
+        "explanation": "Es kommt darauf an = It depends. Can extend: Es kommt darauf an, ob… (It depends on whether…)"
+      },
+      {
+        "id": "q020-4",
+        "type": "single-choice",
+        "difficulty": 2,
+        "question": "In the sentence 'Ich finde, dass Tirol schön ___', which word goes in the blank?",
+        "options": ["ist", "sein", "war", "wäre"],
+        "correct": 0,
+        "explanation": "Dass sends the verb to the END. 'Ich finde, dass Tirol schön IST.' Present tense verb at end."
+      },
+      {
+        "id": "q020-5",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What does 'Ehrlich gesagt…' mean?",
+        "options": ["Obviously…", "In theory…", "Honestly… / To be frank…", "Generally speaking…"],
+        "correct": 2,
+        "explanation": "Ehrlich gesagt = honestly / to be frank. Ehrlich = honest. Gesagt = said (past participle)."
+      },
+      {
+        "id": "q020-6",
+        "type": "fill-blank",
+        "difficulty": 2,
+        "vocabId": "v232",
+        "prompt": "Ich ___, dass das eine gute Idee ist. (I think / I find)",
+        "answer": "finde",
+        "acceptable": [],
+        "explanation": "Ich finde, dass… = I think/find that… The dass sends the verb to the end."
+      },
+      {
+        "id": "q020-7",
+        "type": "translate",
+        "difficulty": 3,
+        "direction": "en-de",
+        "prompt": "From my point of view, that is a great idea.",
+        "answer": "Aus meiner Sicht ist das eine tolle Idee.",
+        "acceptable": [
+          "aus meiner sicht ist das eine tolle idee",
+          "aus meiner sicht ist das eine gute idee"
+        ],
+        "explanation": "Aus meiner Sicht = from my point of view. Tolle/gute Idee = great/good idea."
+      }
+    ]
+  },
+  "q021": {
+    "lessonId": 21,
+    "questions": [
+      {
+        "id": "q021-1",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What does 'wenn' mean?",
+        "options": ["although", "if / when", "because", "therefore"],
+        "correct": 1,
+        "explanation": "Wenn = if / when. Sends the verb to the end of the clause: Wenn es schneit, fahre ich Ski."
+      },
+      {
+        "id": "q021-2",
+        "type": "single-choice",
+        "difficulty": 2,
+        "question": "What is the Konjunktiv II form used for hypotheticals?",
+        "options": [
+          "würde + Partizip II",
+          "würde + Infinitiv",
+          "hätte + Infinitiv",
+          "sein + Infinitiv"
+        ],
+        "correct": 1,
+        "explanation": "Würde + Infinitiv at end = Konjunktiv II for wishes/hypotheticals. Ich würde gern Ski fahren."
+      },
+      {
+        "id": "q021-3",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What does 'obwohl' mean?",
+        "options": ["because", "therefore", "although / even though", "if"],
+        "correct": 2,
+        "explanation": "Obwohl = although / even though. Subordinating conjunction — verb goes to end."
+      },
+      {
+        "id": "q021-4",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What does 'trotzdem' mean?",
+        "options": ["therefore", "nevertheless / still", "because of", "otherwise"],
+        "correct": 1,
+        "explanation": "Trotzdem = nevertheless / still / anyway. Often used after obwohl sentences."
+      },
+      {
+        "id": "q021-5",
+        "type": "single-choice",
+        "difficulty": 2,
+        "question": "How do you say 'I would like to go to Innsbruck'?",
+        "options": [
+          "Ich will nach Innsbruck gehen.",
+          "Ich möchte nach Innsbruck.",
+          "Ich würde gern nach Innsbruck fahren.",
+          "Ich gehe gern nach Innsbruck."
+        ],
+        "correct": 2,
+        "explanation": "Ich würde gern + infinitive = I would like to. More polished than 'ich möchte' at B1."
+      },
+      {
+        "id": "q021-6",
+        "type": "fill-blank",
+        "difficulty": 2,
+        "vocabId": "v247",
+        "prompt": "___ ich müde bin, trainiere ich weiter. (although)",
+        "answer": "Obwohl",
+        "acceptable": ["obwohl"],
+        "explanation": "Obwohl = although. Subordinating conjunction: verb goes to end of the obwohl-clause."
+      },
+      {
+        "id": "q021-7",
+        "type": "translate",
+        "difficulty": 3,
+        "direction": "de-en",
+        "prompt": "Wenn es schneit, fahre ich Ski.",
+        "answer": "If it snows, I go skiing.",
+        "acceptable": ["if it snows i go skiing", "when it snows i go skiing"],
+        "explanation": "Wenn = if/when. Schneit = snows. Ski fahren = to ski. Verb back to position 2 after the wenn-clause."
+      }
+    ]
+  },
+  "q022": {
+    "lessonId": 22,
+    "questions": [
+      {
+        "id": "q022-1",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "Which case do dative prepositions always take?",
+        "options": ["nominative", "accusative", "dative", "genitive"],
+        "correct": 2,
+        "explanation": "All 8 core dative prepositions ALWAYS take dative: mit, bei, nach, von, seit, aus, zu, außer."
+      },
+      {
+        "id": "q022-2",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "'Zu + dem' contracts to…",
+        "options": ["zudem", "zum", "zur", "zuden"],
+        "correct": 1,
+        "explanation": "Zu + dem = zum (masc/neut). Zu + der = zur (fem). Ich gehe zum Bahnhof, zur Apotheke."
+      },
+      {
+        "id": "q022-3",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "'Ich komme aus Kanada' — what does 'aus' mean here?",
+        "options": ["from", "out of", "with", "to"],
+        "correct": 0,
+        "explanation": "Aus = from (for origins/countries). Ich komme aus + country. Always dative."
+      },
+      {
+        "id": "q022-4",
+        "type": "single-choice",
+        "difficulty": 2,
+        "question": "'Ich gehe zum Arzt' means…",
+        "options": [
+          "I come from the doctor",
+          "I'm going to the doctor",
+          "I work for the doctor",
+          "I was at the doctor"
+        ],
+        "correct": 1,
+        "explanation": "Zum = zu + dem (dative masc). Gehen = going. Zum Arzt = to the doctor."
+      },
+      {
+        "id": "q022-5",
+        "type": "single-choice",
+        "difficulty": 2,
+        "question": "What does 'bei' mean in 'Ich bin bei meinen Eltern'?",
+        "options": ["near", "at (at their place)", "with (alongside)", "all of the above"],
+        "correct": 3,
+        "explanation": "Bei covers 'at', 'near', 'with/at someone's place'. Bei meinen Eltern = at my parents' place."
+      },
+      {
+        "id": "q022-6",
+        "type": "fill-blank",
+        "difficulty": 2,
+        "vocabId": "v255",
+        "prompt": "Ich komme ___ Innsbruck. (from)",
+        "answer": "aus",
+        "acceptable": [],
+        "explanation": "Aus = from (for places of origin). Always dative: aus + dative article."
+      },
+      {
+        "id": "q022-7",
+        "type": "translate",
+        "difficulty": 3,
+        "direction": "en-de",
+        "prompt": "I'm going to the ice rink with my friends.",
+        "answer": "Ich gehe mit meinen Freunden zur Eishalle.",
+        "acceptable": ["ich gehe mit meinen freunden zur eishalle"],
+        "explanation": "Mit meinen Freunden (dative plural). Zur = zu + der (dative fem). Eishalle is feminine."
+      }
+    ]
+  },
+  "q023": {
+    "lessonId": 23,
+    "questions": [
+      {
+        "id": "q023-1",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "How is the passive voice formed in German?",
+        "options": [
+          "sein + Infinitiv",
+          "werden + Partizip II",
+          "haben + Partizip II",
+          "sein + Partizip II"
+        ],
+        "correct": 1,
+        "explanation": "Passive = werden (conjugated, position 2) + Partizip II (end). Das Bier wird kalt serviert."
+      },
+      {
+        "id": "q023-2",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What does 'verboten' mean?",
+        "options": ["allowed", "required", "forbidden / prohibited", "recommended"],
+        "correct": 2,
+        "explanation": "Verboten = forbidden/prohibited. Erlaubt = allowed. Das Parken ist hier verboten."
+      },
+      {
+        "id": "q023-3",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "How does 'man' work in German?",
+        "options": [
+          "It means 'men' (plural)",
+          "It's the same as 'man' in English",
+          "It means 'one / you / they' (impersonal)",
+          "It only works in formal writing"
+        ],
+        "correct": 2,
+        "explanation": "Man = impersonal pronoun (one/you/they). Man darf hier nicht rauchen = You can't smoke here."
+      },
+      {
+        "id": "q023-4",
+        "type": "single-choice",
+        "difficulty": 2,
+        "question": "Translate: 'You cannot smoke here.'",
+        "options": [
+          "Du kannst hier nicht rauchen.",
+          "Man darf hier nicht rauchen.",
+          "Rauchen ist hier verboten worden.",
+          "Hier wird nicht geraucht."
+        ],
+        "correct": 1,
+        "explanation": "Man darf hier nicht rauchen — uses 'man' as the natural impersonal form. All options are possible, but this is most natural."
+      },
+      {
+        "id": "q023-5",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What does 'bekannt' mean?",
+        "options": ["forgotten", "new", "well-known / famous", "old"],
+        "correct": 2,
+        "explanation": "Bekannt = well-known / famous. Tirol ist für seine Berge bekannt."
+      },
+      {
+        "id": "q023-6",
+        "type": "fill-blank",
+        "difficulty": 2,
+        "vocabId": "v262",
+        "prompt": "Das ___ täglich benutzt. (is used — passive)",
+        "answer": "wird",
+        "acceptable": [],
+        "explanation": "Passive: werden (conjugated) + Partizip II at end. Das wird täglich benutzt."
+      },
+      {
+        "id": "q023-7",
+        "type": "translate",
+        "difficulty": 3,
+        "direction": "de-en",
+        "prompt": "Das ist nicht erlaubt.",
+        "answer": "That is not allowed.",
+        "acceptable": ["that is not allowed", "that isn't allowed", "that is not permitted"],
+        "explanation": "Erlaubt = allowed/permitted. Nicht erlaubt = not allowed."
+      }
+    ]
+  },
+  "q024": {
+    "lessonId": 24,
+    "questions": [
+      {
+        "id": "q024-1",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "How do you say 'I would like to make a complaint'?",
+        "options": [
+          "Ich will klagen.",
+          "Ich möchte mich beschweren.",
+          "Ich habe ein Problem.",
+          "Das ist nicht gut."
+        ],
+        "correct": 1,
+        "explanation": "Ich möchte mich beschweren = I'd like to complain. Sich beschweren is reflexive (mich = myself)."
+      },
+      {
+        "id": "q024-2",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What does 'kaputt' mean?",
+        "options": ["expensive", "broken / out of order", "too small", "missing"],
+        "correct": 1,
+        "explanation": "Kaputt = broken. Informal but universally understood. Formal: defekt."
+      },
+      {
+        "id": "q024-3",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What is 'die Lösung'?",
+        "options": ["the problem", "the refund", "the solution", "the complaint"],
+        "correct": 2,
+        "explanation": "Die Lösung = solution. Lösen = to solve. Das Problem = the problem."
+      },
+      {
+        "id": "q024-4",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What does 'unzufrieden' mean?",
+        "options": ["very satisfied", "surprised", "dissatisfied / unhappy", "angry"],
+        "correct": 2,
+        "explanation": "Unzufrieden = dissatisfied. Un- negates: zufrieden (satisfied) → unzufrieden."
+      },
+      {
+        "id": "q024-5",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "How do you say 'That doesn't work'?",
+        "options": [
+          "Das ist kaputt.",
+          "Das geht nicht.",
+          "Das funktioniert nicht.",
+          "Das stimmt nicht."
+        ],
+        "correct": 2,
+        "explanation": "Das funktioniert nicht = That doesn't work. Funktionieren = to function/work. Also acceptable: Das geht nicht."
+      },
+      {
+        "id": "q024-6",
+        "type": "fill-blank",
+        "difficulty": 2,
+        "vocabId": "v272",
+        "prompt": "Das ___ nicht. (doesn't work)",
+        "answer": "funktioniert",
+        "acceptable": [],
+        "explanation": "Funktionieren = to function/work. Das funktioniert nicht = that doesn't work."
+      },
+      {
+        "id": "q024-7",
+        "type": "translate",
+        "difficulty": 3,
+        "direction": "en-de",
+        "prompt": "I would like a refund, please.",
+        "answer": "Ich hätte gerne eine Erstattung, bitte.",
+        "acceptable": [
+          "ich hätte gerne eine erstattung bitte",
+          "ich hätte gern eine erstattung bitte"
+        ],
+        "explanation": "Ich hätte gerne (Konjunktiv II) = I'd like. Eine Erstattung = a refund."
+      }
+    ]
+  },
+  "q200": {
+    "lessonId": null,
+    "subdomainId": "h002-s1",
+    "questions": [
+      {
+        "id": "q200-1",
+        "type": "single-choice",
+        "difficulty": 1,
+        "vocabId": "v288",
+        "question": "What does 'der Fehler' mean in programming?",
+        "options": ["the value", "the variable", "error / bug", "the object"],
+        "correct": 2,
+        "explanation": "Der Fehler = error/bug. In everyday German it also means 'mistake'. Very versatile."
+      },
+      {
+        "id": "q200-2",
+        "type": "single-choice",
+        "difficulty": 1,
+        "vocabId": "v290",
+        "question": "How do you say 'to develop' in German?",
+        "options": ["programmieren", "kompilieren", "entwickeln", "debuggen"],
+        "correct": 2,
+        "explanation": "Entwickeln = to develop. Die Entwicklung = development. Der Entwickler = developer."
+      },
+      {
+        "id": "q200-3",
+        "type": "single-choice",
+        "difficulty": 1,
+        "vocabId": "v289",
+        "question": "What is 'das Framework'?",
+        "options": ["a type annotation", "a loop", "a framework", "a variable"],
+        "correct": 2,
+        "explanation": "Das Framework = framework — loanword. Vite, React, Angular are Frameworks."
+      },
+      {
+        "id": "q200-4",
+        "type": "single-choice",
+        "difficulty": 2,
+        "vocabId": "v283",
+        "question": "What is 'die Variable'?",
+        "options": ["the function", "the variable", "the object", "the class"],
+        "correct": 1,
+        "explanation": "Die Variable = variable. Feminine. Die Variable enthält einen Wert = the variable holds a value."
+      },
+      {
+        "id": "q200-5",
+        "type": "single-choice",
+        "difficulty": 2,
+        "vocabId": "v281",
+        "question": "Translate: 'Where is the error in the code?'",
+        "options": [
+          "Was ist der Code?",
+          "Wo ist der Fehler im Code?",
+          "Wann ist der Fehler?",
+          "Wie ist der Code-Fehler?"
+        ],
+        "correct": 1,
+        "explanation": "Wo ist der Fehler im Code? — Wo = where, der Fehler = the error, im Code = in the code."
+      }
+    ]
+  },
+  "q201": {
+    "lessonId": null,
+    "subdomainId": "h002-s2",
+    "questions": [
+      {
+        "id": "q201-1",
+        "type": "single-choice",
+        "difficulty": 1,
+        "vocabId": "v293",
+        "question": "What is the native German word for 'interface'?",
+        "options": ["das Array", "das Boolean", "die Schnittstelle", "der Typ"],
+        "correct": 2,
+        "explanation": "Die Schnittstelle = interface. Lit. 'cut-point'. Also used: das Interface (loanword)."
+      },
+      {
+        "id": "q201-2",
+        "type": "single-choice",
+        "difficulty": 1,
+        "vocabId": "v295",
+        "question": "What does 'die Zeichenkette' mean?",
+        "options": ["number", "boolean", "string (character chain)", "array"],
+        "correct": 2,
+        "explanation": "Die Zeichenkette = string. Lit. 'character chain'. Native German word — often just 'String' in practice."
+      },
+      {
+        "id": "q201-3",
+        "type": "single-choice",
+        "difficulty": 2,
+        "vocabId": "v294",
+        "question": "TypeScript is called 'streng typisiert' because…",
+        "options": [
+          "it is hard to learn",
+          "it enforces strict types at compile time",
+          "it only works with strict mode",
+          "it has stricter indentation rules"
+        ],
+        "correct": 1,
+        "explanation": "Streng typisiert = strictly typed. TypeScript catches type errors at compile time — unlike JS."
+      },
+      {
+        "id": "q201-4",
+        "type": "single-choice",
+        "difficulty": 1,
+        "vocabId": "v300",
+        "question": "What is 'der Typ-Fehler'?",
+        "options": ["a syntax error", "a type error", "a runtime error", "a logic error"],
+        "correct": 1,
+        "explanation": "Der Typ-Fehler = type error. What TypeScript catches that JavaScript doesn't."
+      },
+      {
+        "id": "q201-5",
+        "type": "single-choice",
+        "difficulty": 1,
+        "vocabId": "v297",
+        "question": "What is 'das Array'?",
+        "options": ["a function", "an array", "a loop", "a class"],
+        "correct": 1,
+        "explanation": "Das Array = array. Loanword — used directly in German tech contexts."
+      }
+    ]
+  },
+  "q202": {
+    "lessonId": null,
+    "subdomainId": "h002-s3",
+    "questions": [
+      {
+        "id": "q202-1",
+        "type": "single-choice",
+        "difficulty": 1,
+        "vocabId": "v304",
+        "question": "What does 'aufrufen' mean in programming?",
+        "options": ["to return a value", "to call / to invoke", "to compile", "to loop"],
+        "correct": 1,
+        "explanation": "Aufrufen = to call/invoke. Separable: ruft auf. Eine Funktion aufrufen = to call a function."
+      },
+      {
+        "id": "q202-2",
+        "type": "single-choice",
+        "difficulty": 1,
+        "vocabId": "v307",
+        "question": "What is 'die Schleife'?",
+        "options": ["the method", "the parameter", "the loop", "the promise"],
+        "correct": 2,
+        "explanation": "Die Schleife = loop. Also means a bow (ribbon) in everyday German — same visual metaphor as looping."
+      },
+      {
+        "id": "q202-3",
+        "type": "single-choice",
+        "difficulty": 1,
+        "vocabId": "v305",
+        "question": "What does 'asynchron' describe?",
+        "options": [
+          "code that runs synchronously",
+          "code that can execute without blocking",
+          "a type annotation",
+          "a compiled output"
+        ],
+        "correct": 1,
+        "explanation": "Asynchron = asynchronous. An async function returns a Promise and doesn't block execution."
+      },
+      {
+        "id": "q202-4",
+        "type": "single-choice",
+        "difficulty": 2,
+        "vocabId": "v303",
+        "question": "'Zurückgeben' in a function means…",
+        "options": ["to call", "to compile", "to return a value", "to import"],
+        "correct": 2,
+        "explanation": "Zurückgeben = to return. Separable: gibt zurück. Die Funktion gibt einen Wert zurück."
+      },
+      {
+        "id": "q202-5",
+        "type": "single-choice",
+        "difficulty": 1,
+        "vocabId": "v308",
+        "question": "What is 'kompilieren'?",
+        "options": ["to debug", "to test", "to compile", "to deploy"],
+        "correct": 2,
+        "explanation": "Kompilieren = to compile. TypeScript muss kompiliert werden = TypeScript must be compiled."
+      }
+    ]
+  },
+  "q203": {
+    "lessonId": null,
+    "subdomainId": "h002-s4",
+    "questions": [
+      {
+        "id": "q203-1",
+        "type": "single-choice",
+        "difficulty": 1,
+        "vocabId": "v311",
+        "question": "What does 'debuggen' mean?",
+        "options": ["to compile", "to test", "to debug", "to deploy"],
+        "correct": 2,
+        "explanation": "Debuggen = to debug. Loanword used as a German verb. Ich muss debuggen."
+      },
+      {
+        "id": "q203-2",
+        "type": "single-choice",
+        "difficulty": 1,
+        "vocabId": "v319",
+        "question": "What is 'die Abhängigkeit'?",
+        "options": ["the version", "the commit", "the dependency", "the log"],
+        "correct": 2,
+        "explanation": "Die Abhängigkeit = dependency. Also means 'addiction' in everyday German — same root: abhängig = dependent."
+      },
+      {
+        "id": "q203-3",
+        "type": "single-choice",
+        "difficulty": 1,
+        "vocabId": "v316",
+        "question": "What does 'bereitstellen' mean in a dev context?",
+        "options": ["to refactor", "to debug", "to deploy", "to test"],
+        "correct": 2,
+        "explanation": "Bereitstellen = to deploy. Lit. 'to make ready/available'. The standard German word for deploy."
+      },
+      {
+        "id": "q203-4",
+        "type": "single-choice",
+        "difficulty": 1,
+        "vocabId": "v315",
+        "question": "What is 'refaktorieren'?",
+        "options": ["to compile", "to debug", "to deploy", "to refactor"],
+        "correct": 3,
+        "explanation": "Refaktorieren = to refactor. Loanword from English. Ich muss den Code refaktorieren."
+      },
+      {
+        "id": "q203-5",
+        "type": "single-choice",
+        "difficulty": 2,
+        "vocabId": "v317",
+        "question": "What does 'die Versionskontrolle' mean?",
+        "options": ["version testing", "version control", "version history", "version upgrade"],
+        "correct": 1,
+        "explanation": "Die Versionskontrolle = version control. Git is the most well-known Versionskontrollsystem."
+      }
+    ]
+  },
+  "q008": {
+    "lessonId": 8,
+    "questions": [
+      {
+        "id": "q008-1",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What does 'die Mutter' mean?",
+        "options": ["father", "sister", "mother", "grandmother"],
+        "correct": 2,
+        "explanation": "Die Mutter = mother. Der Vater = father, die Schwester = sister — all worth knowing."
+      },
+      {
+        "id": "q008-2",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "How do you say 'my brother'?",
+        "options": ["meine Bruder", "mein Bruder", "der Bruder mein", "Bruder mein"],
+        "correct": 1,
+        "explanation": "Bruder is masculine — use 'mein' (not 'meine'). Mein Vater, mein Bruder, mein Sohn."
+      },
+      {
+        "id": "q008-3",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What is the plural of 'das Kind'?",
+        "options": ["die Kinds", "die Kinder", "die Kindern", "die Kinde"],
+        "correct": 1,
+        "explanation": "Die Kinder — irregular plural. Very common word, worth memorising."
+      },
+      {
+        "id": "q008-4",
+        "type": "single-choice",
+        "difficulty": 2,
+        "question": "Translate: 'My grandmother lives in Innsbruck.'",
+        "options": [
+          "Meine Großmutter wohnt in Innsbruck.",
+          "Mein Großmutter wohnt in Innsbruck.",
+          "Die Großmutter meine wohnt Innsbruck.",
+          "Großmutter meine in Innsbruck."
+        ],
+        "correct": 0,
+        "explanation": "Großmutter is feminine — use 'meine'. Mein Großvater, meine Großmutter."
+      },
+      {
+        "id": "q008-5",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What does 'verheiratet' mean?",
+        "options": ["divorced", "single", "married", "engaged"],
+        "correct": 2,
+        "explanation": "Verheiratet = married. Ledig = single. Geschieden = divorced."
+      },
+      {
+        "id": "q008-6",
+        "type": "fill-blank",
+        "difficulty": 2,
+        "vocabId": "v119",
+        "prompt": "___ Vater heißt Karl. (My, masculine)",
+        "answer": "Mein",
+        "acceptable": ["mein"],
+        "explanation": "Vater is masculine — use 'Mein'. Feminine nouns like Mutter take 'Meine'."
+      },
+      {
+        "id": "q008-7",
+        "type": "translate",
+        "difficulty": 3,
+        "direction": "en-de",
+        "prompt": "I have two sisters.",
+        "answer": "Ich habe zwei Schwestern.",
+        "acceptable": ["ich habe zwei schwestern"],
+        "explanation": "Zwei = two. Schwester → plural Schwestern. Ich habe = I have."
+      }
+    ]
+  },
+  "q009": {
+    "lessonId": 9,
+    "questions": [
+      {
+        "id": "q009-1",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What color is 'rot'?",
+        "options": ["blue", "red", "green", "white"],
+        "correct": 1,
+        "explanation": "Rot = red. Blau = blue, grün = green, weiß = white."
+      },
+      {
+        "id": "q009-2",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What does 'die Hose' mean?",
+        "options": ["shirt", "jacket", "trousers", "shoes"],
+        "correct": 2,
+        "explanation": "Die Hose = trousers / pants. Used for a single pair — German doesn't say 'Hosen' for one pair."
+      },
+      {
+        "id": "q009-3",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "'Schwarz und weiß' means…",
+        "options": ["red and blue", "black and white", "green and yellow", "blue and white"],
+        "correct": 1,
+        "explanation": "Schwarz = black, weiß = white. Also the Austrian flag: rot-weiß-rot (red-white-red)."
+      },
+      {
+        "id": "q009-4",
+        "type": "single-choice",
+        "difficulty": 2,
+        "question": "Translate: 'I am wearing a blue jacket.'",
+        "options": [
+          "Ich trage eine blaue Jacke.",
+          "Ich habe eine blaue Jacke.",
+          "Meine Jacke ist blau.",
+          "Ich will eine blaue Jacke."
+        ],
+        "correct": 0,
+        "explanation": "Tragen = to wear. Adjective before a noun gets -e ending: blaue Jacke."
+      },
+      {
+        "id": "q009-5",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What are 'die Schuhe'?",
+        "options": ["shirts", "jackets", "trousers", "shoes"],
+        "correct": 3,
+        "explanation": "Die Schuhe = shoes (plural). Singular: der Schuh."
+      },
+      {
+        "id": "q009-6",
+        "type": "fill-blank",
+        "difficulty": 2,
+        "vocabId": "v122",
+        "prompt": "Die Jacke ist ___. (blue)",
+        "answer": "blau",
+        "acceptable": [],
+        "explanation": "After 'ist', adjectives have no ending: Die Jacke ist blau. Before a noun: eine blaue Jacke."
+      },
+      {
+        "id": "q009-7",
+        "type": "translate",
+        "difficulty": 3,
+        "direction": "en-de",
+        "prompt": "My shirt is white.",
+        "answer": "Mein Hemd ist weiß.",
+        "acceptable": ["mein hemd ist weiß", "mein hemd ist weiss"],
+        "explanation": "Das Hemd is neuter — use 'mein'. After 'ist', weiß takes no ending."
+      }
+    ]
+  },
+  "q010": {
+    "lessonId": 10,
+    "questions": [
+      {
+        "id": "q010-1",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "You feel ill. What do you say?",
+        "options": [
+          "Ich bin verheiratet.",
+          "Ich bin krank.",
+          "Mir ist langweilig.",
+          "Das ist günstig."
+        ],
+        "correct": 1,
+        "explanation": "Ich bin krank = I am ill/sick. The most direct way to say you're not well."
+      },
+      {
+        "id": "q010-2",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "Where do you go to buy medicine in Austria?",
+        "options": ["der Arzt", "die Apotheke", "der Bahnhof", "die Hütte"],
+        "correct": 1,
+        "explanation": "Die Apotheke = pharmacy. Green cross sign outside. Der Arzt is the doctor — for a consultation, not over-the-counter."
+      },
+      {
+        "id": "q010-3",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What does 'Ich habe Schmerzen' mean?",
+        "options": ["I have pain", "I am a doctor", "I need medicine", "I have a headache"],
+        "correct": 0,
+        "explanation": "Die Schmerzen = pain (plural). Add body part: Ich habe Kopfschmerzen (headache)."
+      },
+      {
+        "id": "q010-4",
+        "type": "single-choice",
+        "difficulty": 2,
+        "question": "'Mir ist schlecht' means…",
+        "options": [
+          "I am well",
+          "I feel sick / nauseous",
+          "I am not a doctor",
+          "I need to go to the pharmacy"
+        ],
+        "correct": 1,
+        "explanation": "Dative construction: mir = to me. Literally 'to me it is bad'. Also: Mir ist kalt (I feel cold)."
+      },
+      {
+        "id": "q010-5",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What does 'der Kopf' mean?",
+        "options": ["stomach", "arm", "head", "leg"],
+        "correct": 2,
+        "explanation": "Der Kopf = head. Kopfschmerzen = headache. Essential — you'll need it."
+      },
+      {
+        "id": "q010-6",
+        "type": "fill-blank",
+        "difficulty": 2,
+        "vocabId": "v137",
+        "prompt": "Wo ist die ___? (pharmacy)",
+        "answer": "Apotheke",
+        "acceptable": ["apotheke"],
+        "explanation": "Die Apotheke — pharmacy. Open weekdays, often closed Sunday in Austria."
+      },
+      {
+        "id": "q010-7",
+        "type": "translate",
+        "difficulty": 3,
+        "direction": "de-en",
+        "prompt": "Ich bin krank und brauche einen Arzt.",
+        "answer": "I am ill and need a doctor.",
+        "acceptable": [
+          "i am sick and need a doctor",
+          "i am ill and need a doctor",
+          "i am sick and i need a doctor"
+        ],
+        "explanation": "Krank = ill/sick. Brauchen = to need. Einen Arzt = a doctor (masculine accusative)."
+      }
+    ]
+  },
+  "q011": {
+    "lessonId": 11,
+    "questions": [
+      {
+        "id": "q011-1",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What does 'Ich komme aus Tirol' mean?",
+        "options": ["I live in Tirol", "I come from Tirol", "I love Tirol", "I am visiting Tirol"],
+        "correct": 1,
+        "explanation": "Kommen aus = to come from. Standard way to say your origin."
+      },
+      {
+        "id": "q011-2",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "How do you say 'I work as a goalie'?",
+        "options": [
+          "Ich arbeite als Torhüter.",
+          "Ich bin Torhüter gern.",
+          "Ich lerne als Torhüter.",
+          "Mein Beruf ist Torhüter sein."
+        ],
+        "correct": 0,
+        "explanation": "Als = as. Ich arbeite als X = I work as X. No article before the profession."
+      },
+      {
+        "id": "q011-3",
+        "type": "single-choice",
+        "difficulty": 2,
+        "question": "What does 'seit' mean in 'Ich wohne seit einem Jahr in Tirol'?",
+        "options": ["before", "after", "for (a duration)", "because"],
+        "correct": 2,
+        "explanation": "Seit = since/for (ongoing). Key: use present tense in German where English uses past perfect."
+      },
+      {
+        "id": "q011-4",
+        "type": "single-choice",
+        "difficulty": 2,
+        "question": "'Ich lerne gern Deutsch' means…",
+        "options": [
+          "I don't like learning German",
+          "I am learning boring German",
+          "I like learning German",
+          "I need to learn German"
+        ],
+        "correct": 2,
+        "explanation": "Gern after a verb = you like doing it. Ich spiele gern Hockey = I like playing hockey."
+      },
+      {
+        "id": "q011-5",
+        "type": "single-choice",
+        "difficulty": 1,
+        "question": "What is 'interessant'?",
+        "options": ["boring", "expensive", "interesting", "happy"],
+        "correct": 2,
+        "explanation": "Interessant = interesting. Langweilig = boring. Both useful for reacting to things."
+      },
+      {
+        "id": "q011-6",
+        "type": "fill-blank",
+        "difficulty": 2,
+        "vocabId": "v144",
+        "prompt": "Ich ___ seit zwei Jahren in Tirol. (live)",
+        "answer": "wohne",
+        "acceptable": [],
+        "explanation": "Wohnen (to live) + seit + present tense = ongoing action. Not past tense — that's the trap."
+      },
+      {
+        "id": "q011-7",
+        "type": "translate",
+        "difficulty": 3,
+        "direction": "en-de",
+        "prompt": "I have been living in Tirol for one year.",
+        "answer": "Ich wohne seit einem Jahr in Tirol.",
+        "acceptable": ["ich wohne seit einem jahr in tirol"],
+        "explanation": "Seit + present tense = ongoing. Einem Jahr is dative: ein → einem after seit."
       }
     ]
   }

@@ -118,5 +118,135 @@
     "region": "Tirol",
     "usage": "everyday",
     "note": "A mid-afternoon snack, typically bread, cheese, and cold cuts"
+  },
+  {
+    "id": "t013",
+    "tirol": "Jessas! / Jessas na!",
+    "standard": "Mein Gott! / Um Gottes Willen!",
+    "en": "Oh my gosh! / Good grief!",
+    "category": "expressions",
+    "region": "Tirol",
+    "usage": "everyday",
+    "note": "Exclamation of surprise or dismay — very Tyrolean"
+  },
+  {
+    "id": "t014",
+    "tirol": "miad",
+    "standard": "müde",
+    "en": "tired",
+    "category": "expressions",
+    "region": "Tirol",
+    "usage": "everyday",
+    "note": null
+  },
+  {
+    "id": "t015",
+    "tirol": "schen",
+    "standard": "schön",
+    "en": "nice / beautiful",
+    "category": "expressions",
+    "region": "Tirol",
+    "usage": "everyday",
+    "note": null
+  },
+  {
+    "id": "t016",
+    "tirol": "Des is schiach.",
+    "standard": "Das ist hässlich.",
+    "en": "That's ugly.",
+    "category": "expressions",
+    "region": "Tirol",
+    "usage": "everyday",
+    "note": "'Schiach' = ugly/bad — opposite of schen"
+  },
+  {
+    "id": "t017",
+    "tirol": "Hob ka Oanung.",
+    "standard": "Habe keine Ahnung.",
+    "en": "I have no idea.",
+    "category": "expressions",
+    "region": "Tirol",
+    "usage": "everyday",
+    "note": null
+  },
+  {
+    "id": "t018",
+    "tirol": "Hoim geh",
+    "standard": "Nach Hause gehen",
+    "en": "To go home",
+    "category": "expressions",
+    "region": "Tirol",
+    "usage": "everyday",
+    "note": null
+  },
+  {
+    "id": "t019",
+    "tirol": "Gscheit",
+    "standard": "Ordentlich / klug / vernünftig",
+    "en": "Sensible / proper / clever",
+    "category": "expressions",
+    "region": "Tirol",
+    "usage": "everyday",
+    "note": "Can mean clever, proper, or even 'a lot': 'des hat gscheit wehgetan' = that really hurt"
+  },
+  {
+    "id": "t020",
+    "tirol": "Wia geht's?",
+    "standard": "Wie geht es dir?",
+    "en": "How are you?",
+    "category": "smalltalk",
+    "region": "Tirol",
+    "usage": "everyday",
+    "note": null
+  },
+  {
+    "id": "t021",
+    "tirol": "net",
+    "standard": "nicht",
+    "en": "not",
+    "category": "expressions",
+    "region": "Tirol",
+    "usage": "everyday",
+    "note": "Extremely common — you'll hear 'net' instead of 'nicht' constantly in Tirol"
+  },
+  {
+    "id": "t022",
+    "tirol": "hoit",
+    "standard": "halt / eben",
+    "en": "just / well (filler word)",
+    "category": "expressions",
+    "region": "Tirol",
+    "usage": "everyday",
+    "note": "One of the most common filler words. 'Des is hoit so.' = That's just how it is."
+  },
+  {
+    "id": "t023",
+    "tirol": "Jo mei",
+    "standard": "Ja nun / was soll man machen",
+    "en": "Well... / what can you do",
+    "category": "expressions",
+    "region": "Tirol",
+    "usage": "everyday",
+    "note": "Resigned acceptance. The Tyrolean equivalent of a shrug."
+  },
+  {
+    "id": "t024",
+    "tirol": "Do schau her!",
+    "standard": "Schau mal an! / Ach was!",
+    "en": "Well I never! / Would you look at that!",
+    "category": "expressions",
+    "region": "Tirol",
+    "usage": "everyday",
+    "note": null
+  },
+  {
+    "id": "t025",
+    "tirol": "An guatn!",
+    "standard": "Guten Appetit! / Mahlzeit!",
+    "en": "Enjoy your meal!",
+    "category": "food",
+    "region": "Tirol",
+    "usage": "everyday",
+    "note": "Short for 'an guaten Appetit' — you'll hear this at every Hütte"
   }
 ]

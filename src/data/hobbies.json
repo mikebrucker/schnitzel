@@ -61,5 +61,100 @@
         "quizId": "q103"
       }
     ]
+  },
+  {
+    "id": "h002",
+    "slug": "typescript",
+    "name": "TypeScript Programming",
+    "nameDe": "TypeScript-Programmierung",
+    "icon": "💻",
+    "level": "B1",
+    "blurb": "Learn German tech vocabulary for coding — TypeScript, debugging, and deployment.",
+    "subdomains": [
+      {
+        "id": "h002-s1",
+        "slug": "basic-concepts",
+        "name": "Basic Concepts",
+        "nameDe": "Grundkonzepte",
+        "focus": "primary",
+        "vocabIds": [
+          "v281",
+          "v282",
+          "v283",
+          "v284",
+          "v285",
+          "v286",
+          "v287",
+          "v288",
+          "v289",
+          "v290"
+        ],
+        "phraseIds": ["p011", "p012", "p019"],
+        "quizId": "q200"
+      },
+      {
+        "id": "h002-s2",
+        "slug": "types-interfaces",
+        "name": "Types & Interfaces",
+        "nameDe": "Typen & Schnittstellen",
+        "focus": "secondary",
+        "vocabIds": [
+          "v291",
+          "v292",
+          "v293",
+          "v294",
+          "v295",
+          "v296",
+          "v297",
+          "v298",
+          "v299",
+          "v300"
+        ],
+        "phraseIds": ["p015", "p020"],
+        "quizId": "q201"
+      },
+      {
+        "id": "h002-s3",
+        "slug": "functions-tools",
+        "name": "Functions & Tools",
+        "nameDe": "Funktionen & Werkzeuge",
+        "focus": "secondary",
+        "vocabIds": [
+          "v301",
+          "v302",
+          "v303",
+          "v304",
+          "v305",
+          "v306",
+          "v307",
+          "v308",
+          "v309",
+          "v310"
+        ],
+        "phraseIds": ["p014", "p016"],
+        "quizId": "q202"
+      },
+      {
+        "id": "h002-s4",
+        "slug": "debugging-deployment",
+        "name": "Debugging & Deployment",
+        "nameDe": "Debugging & Bereitstellung",
+        "focus": "secondary",
+        "vocabIds": [
+          "v311",
+          "v312",
+          "v313",
+          "v314",
+          "v315",
+          "v316",
+          "v317",
+          "v318",
+          "v319",
+          "v320"
+        ],
+        "phraseIds": ["p013", "p017", "p018"],
+        "quizId": "q203"
+      }
+    ]
   }
 ]
