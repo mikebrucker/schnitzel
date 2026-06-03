@@ -1,4 +1,6 @@
 export { BarChartIcon } from "./BarChartIcon";
+export { GridIcon } from "./GridIcon";
+export { ListIcon } from "./ListIcon";
 export { DotIcon } from "./DotIcon";
 export { GripIcon } from "./GripIcon";
 export { BookIcon } from "./BookIcon";
