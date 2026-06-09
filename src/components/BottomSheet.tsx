@@ -7,14 +7,18 @@ interface BottomSheetProps {
   children: ReactNode;
 }
 
+const MAX_UP = "20vh";
+
 export function BottomSheet({ open, onClose, children }: BottomSheetProps) {
   const [mounted, setMounted] = useState(false);
   const [visible, setVisible] = useState(false);
   const [dragY, setDragY] = useState(0);
   const dragStartY = useRef(0);
   const dragging = useRef(false);
+  const dragPending = useRef(false);
   const dragYRef = useRef(0);
   const onCloseRef = useRef(onClose);
+  const scrollRef = useRef<HTMLDivElement>(null);
   onCloseRef.current = onClose;
 
   useEffect(() => {
@@ -40,31 +44,43 @@ export function BottomSheet({ open, onClose, children }: BottomSheetProps) {
   }, [open]);
 
   useEffect(() => {
-    const onMove = (clientY: number) => {
-      if (!dragging.current) return;
+    const onMove = (clientY: number, e: TouchEvent | MouseEvent) => {
       const delta = clientY - dragStartY.current;
-      if (delta > 0) {
-        dragYRef.current = delta;
-        setDragY(delta);
+
+      if (dragPending.current) {
+        if (Math.abs(delta) < 5) return;
+        const scrollTop = scrollRef.current?.scrollTop ?? 0;
+        if (scrollTop < 5) dragging.current = true;
+        dragPending.current = false;
+        if (!dragging.current) return;
       }
-    };
-    const onEnd = () => {
+
       if (!dragging.current) return;
-      dragging.current = false;
-      if (dragYRef.current > 100) {
-        setDragY(0);
-        dragYRef.current = 0;
-        onCloseRef.current();
-      } else {
-        setDragY(0);
-        dragYRef.current = 0;
-      }
+      e.preventDefault();
+
+      const maxUp = window.innerHeight * 0.2;
+      const translated = delta >= 0 ? delta : Math.max(delta, -maxUp);
+      dragYRef.current = translated;
+      setDragY(translated);
     };
-    const onMouseMove = (e: MouseEvent) => onMove(e.clientY);
-    const onTouchMove = (e: TouchEvent) => onMove(e.touches[0].clientY);
+
+    const onEnd = () => {
+      if (!dragging.current && !dragPending.current) return;
+      dragging.current = false;
+      dragPending.current = false;
+      const dismissThreshold = window.innerHeight * 0.05;
+      if (dragYRef.current > dismissThreshold) {
+        onCloseRef.current();
+      }
+      dragYRef.current = 0;
+      setDragY(0);
+    };
+
+    const onMouseMove = (e: MouseEvent) => onMove(e.clientY, e);
+    const onTouchMove = (e: TouchEvent) => onMove(e.touches[0].clientY, e);
     document.addEventListener("mousemove", onMouseMove);
     document.addEventListener("mouseup", onEnd);
-    document.addEventListener("touchmove", onTouchMove);
+    document.addEventListener("touchmove", onTouchMove, { passive: false });
     document.addEventListener("touchend", onEnd);
     return () => {
       document.removeEventListener("mousemove", onMouseMove);
@@ -78,14 +94,21 @@ export function BottomSheet({ open, onClose, children }: BottomSheetProps) {
 
   const sheetTransform = !visible
     ? "translateY(100%)"
-    : dragY > 0
+    : dragY !== 0
       ? `translateY(${dragY}px)`
       : "translateY(0)";
-  const sheetTransition = dragY > 0 ? "none" : "transform 0.35s cubic-bezier(0.32, 0.72, 0, 1)";
+  const sheetTransition = dragY !== 0 ? "none" : "transform 0.35s cubic-bezier(0.32, 0.72, 0, 1)";
 
   const startDrag = (clientY: number) => {
     dragStartY.current = clientY;
+    dragging.current = false;
+    dragPending.current = true;
+  };
+
+  const startDragImmediate = (clientY: number) => {
+    dragStartY.current = clientY;
     dragging.current = true;
+    dragPending.current = false;
   };
 
   return (
@@ -102,17 +125,32 @@ export function BottomSheet({ open, onClose, children }: BottomSheetProps) {
         aria-label="Close"
       />
       <div
-        className="absolute bottom-0 left-0 right-0 z-10 max-w-4xl mx-auto bg-surface-solid rounded-t-2xl min-h-[65vh] max-h-[85vh] overflow-y-auto"
+        className="absolute bottom-0 left-0 right-0 max-w-4xl mx-auto bg-surface-solid"
+        style={{ height: MAX_UP, zIndex: 9 }}
+      />
+      <div
+        ref={scrollRef}
+        className="absolute bottom-0 left-0 right-0 z-10 max-w-4xl mx-auto bg-surface-solid rounded-t-2xl min-h-[65vh] max-h-[85vh] overflow-y-auto cursor-grab active:cursor-grabbing select-none"
         style={{
           paddingBottom: "var(--safe-bottom)",
           transform: sheetTransform,
           transition: sheetTransition,
+          willChange: "transform",
+          overscrollBehavior: "contain",
         }}
+        onMouseDown={(e) => startDrag(e.clientY)}
+        onTouchStart={(e) => startDrag(e.touches[0].clientY)}
       >
         <div
           className="flex justify-center pt-3 pb-2 sticky top-0 bg-surface-solid z-10 select-none cursor-grab active:cursor-grabbing"
-          onMouseDown={(e) => startDrag(e.clientY)}
-          onTouchStart={(e) => startDrag(e.touches[0].clientY)}
+          onMouseDown={(e) => {
+            e.stopPropagation();
+            startDragImmediate(e.clientY);
+          }}
+          onTouchStart={(e) => {
+            e.stopPropagation();
+            startDragImmediate(e.touches[0].clientY);
+          }}
         >
           <div className="w-10 h-1 rounded-full" style={{ background: "var(--border)" }} />
         </div>
