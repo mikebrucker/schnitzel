@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { CheckIcon, ChevronLeftIcon, ChevronRightIcon, XIcon } from "@/components/icons";
 import { haptics } from "@/lib/haptics";
 import {
@@ -7,7 +8,6 @@ import {
   isAnswerCorrect,
 } from "@/lib/quizLogic";
 import type { QuizQuestion } from "@/lib/types";
-import { useEffect, useState } from "react";
 
 type Props = {
   score: number;

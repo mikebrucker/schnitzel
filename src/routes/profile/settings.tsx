@@ -1,14 +1,14 @@
-import { Header } from "@/components/Header";
-import { ReorderList } from "@/components/ReorderList";
-import type { ReorderItem } from "@/components/ReorderList";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Card } from "@/components/card";
+import { Header } from "@/components/Header";
 import { ChevronLeftIcon } from "@/components/icons";
+import type { ReorderItem } from "@/components/ReorderList";
+import { ReorderList } from "@/components/ReorderList";
 import { haptics } from "@/lib/haptics";
 import { TABS } from "@/lib/tabs";
 import type { Theme } from "@/lib/types";
-import { useApp } from "@/store/useApp";
 import type { TabRoot } from "@/store/useApp";
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { useApp } from "@/store/useApp";
 
 function SettingsRoute() {
   const navigate = useNavigate();

@@ -1,7 +1,7 @@
-import { DotIcon, GripIcon } from "@/components/icons";
-import { haptics } from "@/lib/haptics";
 import type { ComponentType } from "react";
 import { useRef, useState } from "react";
+import { DotIcon, GripIcon } from "@/components/icons";
+import { haptics } from "@/lib/haptics";
 
 export type ReorderItem = {
   id: string;

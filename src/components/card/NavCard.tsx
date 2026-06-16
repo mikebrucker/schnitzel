@@ -1,6 +1,6 @@
+import type { ReactNode } from "react";
 import { Card } from "@/components/card";
 import { ChevronRightIcon } from "@/components/icons";
-import type { ReactNode } from "react";
 
 interface NavCardProps {
   title: string;

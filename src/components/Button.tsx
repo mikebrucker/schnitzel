@@ -1,5 +1,5 @@
-import { BUTTON_VARIANTS, type ButtonFill, type ButtonVariant } from "@/lib/buttonVariants";
 import type { ButtonHTMLAttributes, ReactNode } from "react";
+import { BUTTON_VARIANTS, type ButtonFill, type ButtonVariant } from "@/lib/buttonVariants";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   label: string;

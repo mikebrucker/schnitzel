@@ -1,17 +1,17 @@
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/Button";
-import { Header } from "@/components/Header";
-import { Input } from "@/components/Input";
-import { Select } from "@/components/Select";
 import { NavCard } from "@/components/card/NavCard";
 import { StatCard } from "@/components/card/StatCard";
+import { Header } from "@/components/Header";
+import { Input } from "@/components/Input";
 import { BarChartIcon, EditIcon, SettingsIcon, XIcon } from "@/components/icons";
+import { Select } from "@/components/Select";
 import { CURRICULUM } from "@/lib/curriculum";
 import { haptics } from "@/lib/haptics";
 import { languageProficiencyLevels } from "@/lib/types";
 import { loadQuizProgress } from "@/storage/quizStorage";
 import { useApp } from "@/store/useApp";
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
 
 type Stats = {
   totalQuestions: number;

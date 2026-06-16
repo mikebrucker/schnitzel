@@ -1,5 +1,5 @@
-import { ChevronDownIcon } from "@/components/icons";
 import { useEffect, useRef, useState } from "react";
+import { ChevronDownIcon } from "@/components/icons";
 
 interface SelectProps<K extends string> {
   options: Record<K, string>;

@@ -1,5 +1,5 @@
 import { App as CapApp } from "@capacitor/app";
-import { RouterProvider, createHashHistory, createRouter } from "@tanstack/react-router";
+import { createHashHistory, createRouter, RouterProvider } from "@tanstack/react-router";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { routeTree } from "./routeTree.gen";

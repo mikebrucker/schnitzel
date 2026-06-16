@@ -1,6 +1,6 @@
+import type { ComponentType } from "react";
 import type { IconProps } from "@/components/icons/types";
 import { BUTTON_VARIANTS, type ButtonVariant } from "@/lib/buttonVariants";
-import type { ComponentType } from "react";
 
 interface HeaderAction {
   label: string;

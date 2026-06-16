@@ -1,6 +1,6 @@
-import { ChevronDownIcon } from "@/components/icons";
-import { useState } from "react";
 import type { ReactNode } from "react";
+import { useState } from "react";
+import { ChevronDownIcon } from "@/components/icons";
 
 export type AccordionItem = {
   title: string;

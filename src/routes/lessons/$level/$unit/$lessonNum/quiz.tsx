@@ -1,14 +1,14 @@
+import { createFileRoute, useLoaderData, useNavigate } from "@tanstack/react-router";
+import { useEffect, useRef, useState } from "react";
 import { Header } from "@/components/Header";
-import { Results } from "@/components/Results";
 import { ChevronLeftIcon, ChevronRightIcon } from "@/components/icons";
+import { Results } from "@/components/Results";
 import { getQuiz, lessonToPath } from "@/lib/curriculum";
 import { haptics } from "@/lib/haptics";
 import { getPrompt, isAnswerCorrect } from "@/lib/quizLogic";
 import type { Lesson, QuizMode, QuizQuestion } from "@/lib/types";
 import { loadQuizProgress, saveQuizProgress } from "@/storage/quizStorage";
 import { useApp } from "@/store/useApp";
-import { createFileRoute, useLoaderData, useNavigate } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
 
 function validateQuizMode(m: unknown): QuizMode {
   return m === "view" || m === "retake" || m === "wrong" || m === "normal" ? m : "normal";

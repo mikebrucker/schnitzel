@@ -1,15 +1,15 @@
-import { Accordion } from "@/components/Accordion";
+import { createFileRoute, useLoaderData, useNavigate } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import type { AccordionItem } from "@/components/Accordion";
+import { Accordion } from "@/components/Accordion";
 import { Chip } from "@/components/Chip";
-import { Header } from "@/components/Header";
 import { Card } from "@/components/card";
+import { Header } from "@/components/Header";
 import { ChevronLeftIcon, ChevronRightIcon } from "@/components/icons";
 import { getPhrase, getWord } from "@/lib/curriculum";
 import { haptics } from "@/lib/haptics";
 import type { DictionaryEntry, PhrasebookEntry, QuizMode } from "@/lib/types";
 import { loadHobbyQuizProgress } from "@/storage/quizStorage";
-import { createFileRoute, useLoaderData, useNavigate } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
 
 type QuizSummary = { score: number; total: number; finished: boolean; answered: number };
 

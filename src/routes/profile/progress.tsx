@@ -1,15 +1,15 @@
-import { Button } from "@/components/Button";
-import { Header } from "@/components/Header";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import { Alert } from "@/components/alert/Alert";
+import { Button } from "@/components/Button";
 import { ProgressCard } from "@/components/card/ProgressCard";
+import { Header } from "@/components/Header";
 import { ChevronLeftIcon, RetryIcon, XIcon } from "@/components/icons";
 import { CURRICULUM } from "@/lib/curriculum";
 import { haptics } from "@/lib/haptics";
 import type { Lesson, LessonStat } from "@/lib/types";
 import { clearQuizProgress, loadQuizProgress } from "@/storage/quizStorage";
 import { useApp } from "@/store/useApp";
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
 
 type LessonEntry = (LessonStat & { id: number; title: string }) | null;
 

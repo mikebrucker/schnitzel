@@ -1,8 +1,8 @@
+import { SplashScreen } from "@capacitor/splash-screen";
+import { createRootRoute, Outlet } from "@tanstack/react-router";
+import { lazy, Suspense, useEffect } from "react";
 import { TabBar } from "@/components/TabBar";
 import { useApp } from "@/store/useApp";
-import { SplashScreen } from "@capacitor/splash-screen";
-import { Outlet, createRootRoute } from "@tanstack/react-router";
-import { Suspense, lazy, useEffect } from "react";
 
 const TanStackRouterDevtools = import.meta.env.PROD
   ? () => null

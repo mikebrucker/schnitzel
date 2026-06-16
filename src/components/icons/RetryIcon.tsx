@@ -1,4 +1,4 @@
-import { type IconProps, base } from "./types";
+import { base, type IconProps } from "./types";
 
 export function RetryIcon({ size, strokeWidth, className, style }: IconProps) {
   return (

@@ -1,5 +1,5 @@
-import { forwardRef, useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties, ReactNode } from "react";
+import { forwardRef, useEffect, useMemo, useRef, useState } from "react";
 
 type CardVariant = "accent" | "default";
 type CardPadding = "sm" | "md" | "lg";

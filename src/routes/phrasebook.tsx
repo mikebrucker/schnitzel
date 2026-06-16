@@ -1,11 +1,11 @@
-import { Accordion } from "@/components/Accordion";
-import type { AccordionItem } from "@/components/Accordion";
-import { Chip } from "@/components/Chip";
-import { Header } from "@/components/Header";
-import { Card } from "@/components/card";
-import { PHRASEBOOK } from "@/lib/curriculum";
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
+import type { AccordionItem } from "@/components/Accordion";
+import { Accordion } from "@/components/Accordion";
+import { Chip } from "@/components/Chip";
+import { Card } from "@/components/card";
+import { Header } from "@/components/Header";
+import { PHRASEBOOK } from "@/lib/curriculum";
 
 const FORMALITY_LABEL: Record<string, string> = {
   formal: "formal",

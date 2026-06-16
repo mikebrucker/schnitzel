@@ -1,7 +1,7 @@
+import { create } from "zustand";
 import { applyStatusBarTheme } from "@/lib/statusBar";
 import type { Lesson, Profile, QuizMode, Theme } from "@/lib/types";
 import { storage } from "@/storage/storage";
-import { create } from "zustand";
 
 const TAB_ROOTS = ["/lessons", "/dictionary", "/phrasebook", "/hobbies", "/profile"] as const;
 type TabRoot = (typeof TAB_ROOTS)[number];
@@ -59,8 +59,8 @@ const DEFAULT_TAB_PATHS: Record<TabRoot, string> = {
   "/profile": "/profile",
 };
 
-export { TAB_ROOTS };
 export type { TabRoot };
+export { TAB_ROOTS };
 
 export const useApp = create<AppState>((set, get) => ({
   activeLesson: null,

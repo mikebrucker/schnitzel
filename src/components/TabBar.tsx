@@ -1,10 +1,10 @@
-import { haptics } from "@/lib/haptics";
-import { TABS } from "@/lib/tabs";
-import type { TabDef } from "@/lib/tabs";
-import { TAB_ROOTS, useApp } from "@/store/useApp";
-import type { TabRoot } from "@/store/useApp";
 import { useRouter, useRouterState } from "@tanstack/react-router";
 import { useEffect } from "react";
+import { haptics } from "@/lib/haptics";
+import type { TabDef } from "@/lib/tabs";
+import { TABS } from "@/lib/tabs";
+import type { TabRoot } from "@/store/useApp";
+import { TAB_ROOTS, useApp } from "@/store/useApp";
 
 function activeRoot(pathname: string): TabRoot {
   return (TAB_ROOTS.find((r) => pathname.startsWith(r)) as TabRoot | undefined) ?? "/lessons";

@@ -1,3 +1,5 @@
+import { createFileRoute, useLoaderData, useNavigate } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/Button";
 import { Chip } from "@/components/Chip";
 import { Header } from "@/components/Header";
@@ -7,8 +9,6 @@ import { haptics } from "@/lib/haptics";
 import type { DictionaryEntry, QuizMode } from "@/lib/types";
 import { loadQuizProgress } from "@/storage/quizStorage";
 import { useApp } from "@/store/useApp";
-import { createFileRoute, useLoaderData, useNavigate } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
 
 type QuizState = "none" | "progress" | "done";
 

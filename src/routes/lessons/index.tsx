@@ -1,14 +1,14 @@
-import { Header } from "@/components/Header";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import { HeroCard } from "@/components/card/HeroCard";
 import { SummaryCard } from "@/components/card/SummaryCard";
+import { Header } from "@/components/Header";
 import { CURRICULUM, getQuiz, lessonToPath } from "@/lib/curriculum";
 import { haptics } from "@/lib/haptics";
 import { scoreFillColor } from "@/lib/scoreColors";
 import { languageProficiencyLevels } from "@/lib/types";
 import { loadQuizProgress } from "@/storage/quizStorage";
 import { useApp } from "@/store/useApp";
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
 
 type QuizSummary = { score: number; total: number; finished: boolean };
 

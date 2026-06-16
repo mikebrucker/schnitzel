@@ -1,6 +1,6 @@
+import { createFileRoute, notFound, Outlet } from "@tanstack/react-router";
 import { CURRICULUM } from "@/lib/curriculum";
 import { isLanguageProficiencyLevel } from "@/lib/types";
-import { Outlet, createFileRoute, notFound } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/lessons/$level/$unit")({
   loader: ({ params }) => {

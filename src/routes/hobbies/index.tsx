@@ -1,8 +1,8 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Chip } from "@/components/Chip";
 import { Header } from "@/components/Header";
 import { ChevronRightIcon } from "@/components/icons";
 import { HOBBIES } from "@/lib/curriculum";
-import { Link, createFileRoute } from "@tanstack/react-router";
 
 function HobbiesRoute() {
   return (

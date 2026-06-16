@@ -1,4 +1,4 @@
-import { type IconProps, base } from "./types";
+import { base, type IconProps } from "./types";
 
 export function BarChartIcon({ size, strokeWidth = 3, className, style }: IconProps) {
   return (

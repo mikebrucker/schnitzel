@@ -1,6 +1,6 @@
-import { useApp } from "@/store/useApp";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect } from "react";
+import { useApp } from "@/store/useApp";
 
 function IndexRoute() {
   const navigate = useNavigate();

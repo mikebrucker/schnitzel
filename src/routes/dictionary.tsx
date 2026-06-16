@@ -1,13 +1,13 @@
-import { BottomSheet } from "@/components/BottomSheet";
-import { Chip } from "@/components/Chip";
-import { Header } from "@/components/Header";
-import { Modal } from "@/components/Modal";
-import { Card } from "@/components/card";
-import { GridIcon, ListIcon } from "@/components/icons";
-import { DICTIONARY, getConjugation } from "@/lib/curriculum";
-import type { ConjugationEntry, DictionaryEntry, LanguageProficiencyLevel } from "@/lib/types";
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
+import { BottomSheet } from "@/components/BottomSheet";
+import { Chip } from "@/components/Chip";
+import { Card } from "@/components/card";
+import { Header } from "@/components/Header";
+import { GridIcon, ListIcon } from "@/components/icons";
+import { Modal } from "@/components/Modal";
+import { DICTIONARY, getConjugation } from "@/lib/curriculum";
+import type { ConjugationEntry, DictionaryEntry, LanguageProficiencyLevel } from "@/lib/types";
 
 type ViewMode = "list" | "grid";
 

@@ -1,6 +1,8 @@
-import { Header } from "@/components/Header";
+import { createFileRoute, useLoaderData, useNavigate } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import { Card } from "@/components/card";
 import { HeroCard } from "@/components/card/HeroCard";
+import { Header } from "@/components/Header";
 import { ChevronLeftIcon, ChevronRightIcon } from "@/components/icons";
 import { CURRICULUM, getQuiz, lessonToPath } from "@/lib/curriculum";
 import { haptics } from "@/lib/haptics";
@@ -8,8 +10,6 @@ import { scoreCardBg, scoreFillColor } from "@/lib/scoreColors";
 import { type Lesson, languageProficiencyLevels } from "@/lib/types";
 import { loadQuizProgress } from "@/storage/quizStorage";
 import { useApp } from "@/store/useApp";
-import { createFileRoute, useLoaderData, useNavigate } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
 
 type QuizSummary = { score: number; total: number; finished: boolean; answered: number };
 

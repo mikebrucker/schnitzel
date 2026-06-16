@@ -1,6 +1,6 @@
+import type { ComponentType } from "react";
 import { BookIcon, BubbleIcon, PersonIcon, SearchIcon, StarIcon } from "@/components/icons";
 import type { TabRoot } from "@/store/useApp";
-import type { ComponentType } from "react";
 
 export type TabDef = {
   root: TabRoot;
